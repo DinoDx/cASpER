@@ -34,12 +34,11 @@ public class DeepLearningStrategy implements ClassSmellDetectionStrategy {
                     content.append(inputLine);
                 }
                 in.close();
-                if(content.toString().equals("[1. 0. 0. 0. 0.]") || content.toString().equals("[0. 1. 0. 0. 0.]") || content.toString().equals("[0. 0. 1. 0. 0.]") || content.toString().equals("[0. 0. 0. 1. 0.]") || content.toString().equals("[0. 0. 0. 0. 1.]"))
+                if(content.toString().equals("[0. 0. 0. 0. 0.]") ||content.toString().equals("[1. 0. 0. 0. 0.]") || content.toString().equals("[0. 1. 0. 0. 0.]") || content.toString().equals("[0. 0. 1. 0. 0.]") || content.toString().equals("[0. 0. 0. 1. 0.]") || content.toString().equals("[0. 0. 0. 0. 1.]"))
                     return true;
             }
         } catch (IOException e) {
             System.out.println("Web Service non raggiungibile");
-            e.printStackTrace();
             return false;
         }
         return false;
