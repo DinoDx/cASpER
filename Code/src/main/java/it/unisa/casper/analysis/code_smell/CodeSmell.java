@@ -23,6 +23,10 @@ public abstract class CodeSmell<T> {
     public static final String DIVERGENT_CHANGE = "Divergent Change";
     public static final String SHOTGUN_SURGERY = "Shotgun Surgery";
     public static final String PARALLEL_INHERITANCE = "Parallel Inheritance";
+    public static final String COMPLEX_CLASS = "Complex Class";
+    public static final String LAZY_CLASS = "Lazy Class";
+    public static final String REFUSED_BEQUEST = "Refused Bequest";
+    public static final String SPAGHETTI_CODE = "Spaghetti Code";
 
     protected String smellName;
     protected CodeSmellDetectionStrategy detectionStrategy;

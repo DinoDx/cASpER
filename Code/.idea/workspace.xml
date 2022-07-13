@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47afe1f5-89a3-48a7-a848-fb15bcd093ed" name="Default Changelist" comment="project initialization">
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/structuralMetrics/CKMetrics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/structuralMetrics/CKMetrics.java" afterDir="false" />
+    <list default="true" id="47afe1f5-89a3-48a7-a848-fb15bcd093ed" name="Default Changelist" comment="CKMetrics modified for CR1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell/ComplexClassCodeSmell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell/CodeSmell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell/CodeSmell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +335,7 @@
       <workItem from="1590652465189" duration="685000" />
       <workItem from="1590766309263" duration="59000" />
       <workItem from="1657720869779" duration="534000" />
-      <workItem from="1657721411561" duration="360000" />
+      <workItem from="1657721411561" duration="695000" />
     </task>
     <task id="LOCAL-00001" summary="project initialization">
       <created>1657721606704</created>
@@ -343,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657721606704</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="CKMetrics modified for CR1">
+      <created>1657721905508</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657721905508</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -385,7 +393,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project initialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="project initialization" />
+    <MESSAGE value="CKMetrics modified for CR1" />
+    <option name="LAST_COMMIT_MESSAGE" value="CKMetrics modified for CR1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/casper$JUnitTestSuite.ic" NAME="JUnitTestSuite Coverage Results" MODIFIED="1575921719526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
