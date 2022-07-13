@@ -409,5 +409,59 @@ public class CKMetrics {
 
         return (numberOfParameters * dependencies);
     }
+    public static int getNumberOfNotAccessorOrMutatorMethods(ClassBean cb){
+        int nomnamm = 0;
+        Vector<MethodBean> methods = new Vector<MethodBean>(cb.getMethodList());
+        for (MethodBean m : methods) {
+            if(!(m.getFullQualifiedName().toLowerCase().contains("get")) && !(m.getFullQualifiedName().toLowerCase().contains("set")))
+                nomnamm +=1;
+        }
+        return nomnamm;
+    }
 
+    public static int getLinesOfCodeWithoutAccessorOrMutatorMethods(ClassBean cb){
+        int locnamm = 0;
+
+        locnamm = cb.getLOC();
+
+        Vector<MethodBean> methods = new Vector<MethodBean>(cb.getMethodList());
+        for (MethodBean m : methods) {
+            if(m.getFullQualifiedName().toLowerCase().contains("get") || m.getFullQualifiedName().toLowerCase().contains("set"))
+                locnamm -= getLOC(m);
+        }
+
+        return locnamm;
+    }
+
+    public static int getWeightedLOCNotAccessorOrMutatorMethods(ClassBean cb){
+        return getLinesOfCodeWithoutAccessorOrMutatorMethods(cb) / getNOM(cb);
+    }
+
+    public static int getWeightedMethodCountOfNotAccessorOrMutatorMethods(ClassBean cb){
+        int wmcnamm = 0;
+        Vector<MethodBean> methods = new Vector<MethodBean>(cb.getMethodList());
+        for (MethodBean m : methods) {
+            if(!(m.getFullQualifiedName().toLowerCase().contains("get")) && !(m.getFullQualifiedName().toLowerCase().contains("set")))
+                wmcnamm += getMcCabeCycloComplexity(m);
+        }
+        return wmcnamm;
+    }
+
+    public static double getProbabilityOfMiddleManMethod(ClassBean cb){
+        double pmmm = 0.1;
+        return pmmm;
+    }
+    public static double getProbabilityOfRefusedBequest(ClassBean cb){
+        double prb = 0.1;
+        return prb;
+    }
+
+    public static int getMcCabeCycloComplexity(ClassBean cb) {
+        int mccabe = 0;
+        Vector<MethodBean> methods = new Vector<MethodBean>(cb.getMethodList());
+        for (MethodBean m : methods) {
+            mccabe += getMcCabeCycloComplexity(m);
+        }
+        return mccabe;
+    }
 }
