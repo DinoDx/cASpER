@@ -13,7 +13,9 @@ repositories {
 }
 
 dependencies {
-    
+    implementation 'junit:junit:4.13.1'
+
+
     // https://mvnrepository.com/artifact/org.apache.lucene/lucene-core
     compile group: 'org.apache.lucene', name: 'lucene-core', version: '7.6.0'
     // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
