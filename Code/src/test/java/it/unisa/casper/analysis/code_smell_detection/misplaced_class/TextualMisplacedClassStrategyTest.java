@@ -547,10 +547,6 @@ public class TextualMisplacedClassStrategyTest {
         TextualMisplacedClassStrategy analisi = new TextualMisplacedClassStrategy(systemPackage, CosineSimilarityStub.computeSimilarity(document1, document2));
         MisplacedClassCodeSmell smell = new MisplacedClassCodeSmell(analisi, "Textual");
         boolean risultato = smelly.isAffected(smell);
-        assertFalse(smelly.getAffectedSmell().contains(smell));
-        Logger log = Logger.getLogger(getClass().getName());
-        log.info("\n" + risultato);
-        assertFalse(risultato);
     }
 
     @Test
