@@ -1,0 +1,248 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DivergentChangePage</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.gui</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DivergentChangePage (it.unisa.casper.gui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DivergentChangePage</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 49)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">DivergentChangePage$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 12)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 61)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.gui;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import com.intellij.openapi.progress.ProgressManager;
+<i>5</i>&nbsp;import com.intellij.openapi.ui.Messages;
+<i>6</i>&nbsp;import it.unisa.casper.gui.radarMap.RadarMapUtils;
+<i>7</i>&nbsp;import it.unisa.casper.gui.radarMap.RadarMapUtilsAdapter;
+<i>8</i>&nbsp;import it.unisa.casper.refactor.exceptions.RefactorException;
+<i>9</i>&nbsp;import it.unisa.casper.refactor.splitting_algorithm.SplitClasses;
+<i>10</i>&nbsp;import org.jetbrains.annotations.NotNull;
+<i>11</i>&nbsp;import src.main.java.it.unisa.casper.gui.StyleText;
+<i>12</i>&nbsp;import com.intellij.openapi.project.Project;
+<i>13</i>&nbsp;import com.intellij.openapi.ui.DialogWrapper;
+<i>14</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>15</i>&nbsp;import it.unisa.casper.storage.beans.MethodBean;
+<i>16</i>&nbsp;import org.jetbrains.annotations.Nullable;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;import javax.swing.*;
+<i>19</i>&nbsp;import javax.swing.border.TitledBorder;
+<i>20</i>&nbsp;import java.awt.*;
+<i>21</i>&nbsp;import java.awt.event.ActionEvent;
+<i>22</i>&nbsp;import java.awt.event.ActionListener;
+<i>23</i>&nbsp;import java.lang.reflect.Method;
+<i>24</i>&nbsp;import java.util.List;
+<i>25</i>&nbsp;
+<b class="nc"><i>26</i>&nbsp;public class DivergentChangePage  extends DialogWrapper {</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    private List&lt;ClassBean&gt; splittedClasses;
+<i>29</i>&nbsp;    private ClassBean divergentChangeClass;
+<i>30</i>&nbsp;    private Project project;
+<i>31</i>&nbsp;    private JPanel mainPanel;
+<i>32</i>&nbsp;    private boolean errorOccured;
+<i>33</i>&nbsp;    private RadarMapUtils radars;
+<i>34</i>&nbsp;    private JPanel radarmaps;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    protected DivergentChangePage(ClassBean divergentChangeClass, @Nullable Project project) {
+<b class="nc"><i>38</i>&nbsp;        super(project, true);</b>
+<b class="nc"><i>39</i>&nbsp;        this.divergentChangeClass = divergentChangeClass;</b>
+<b class="nc"><i>40</i>&nbsp;        this.project = project;</b>
+<b class="nc"><i>41</i>&nbsp;        this.errorOccured = false;</b>
+<b class="nc"><i>42</i>&nbsp;        setResizable(true);</b>
+<b class="nc"><i>43</i>&nbsp;        init();</b>
+<b class="nc"><i>44</i>&nbsp;        setTitle(&quot;DIVERGENT CHANGE PAGE&quot;);</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    @Nullable
+<i>48</i>&nbsp;    @Override
+<i>49</i>&nbsp;    protected JComponent createCenterPanel() {
+<b class="nc"><i>50</i>&nbsp;        radars = new RadarMapUtilsAdapter();</b>
+<b class="nc"><i>51</i>&nbsp;        JPanel radarMap = radars.createRadarMapFromClassBean(divergentChangeClass, &quot;Divergent Change Class Topics&quot;);</b>
+<i>52</i>&nbsp;
+<b class="nc"><i>53</i>&nbsp;        radarmaps = new JPanel();</b>
+<b class="nc"><i>54</i>&nbsp;        radarmaps.setLayout(new GridLayout(0, 1));</b>
+<b class="nc"><i>55</i>&nbsp;        radarMap.setSize(200,200);</b>
+<b class="nc"><i>56</i>&nbsp;        radarmaps.add(radarMap);</b>
+<i>57</i>&nbsp;
+<b class="nc"><i>58</i>&nbsp;        mainPanel = new JPanel();</b>
+<b class="nc"><i>59</i>&nbsp;        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));</b>
+<i>60</i>&nbsp;
+<b class="nc"><i>61</i>&nbsp;        JPanel sx = new JPanel();</b>
+<b class="nc"><i>62</i>&nbsp;        JPanel dx = new JPanel();</b>
+<b class="nc"><i>63</i>&nbsp;        sx.setLayout(new BoxLayout(sx, BoxLayout.Y_AXIS));</b>
+<b class="nc"><i>64</i>&nbsp;        dx.setLayout(new BoxLayout(dx, BoxLayout.Y_AXIS));</b>
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;
+<b class="nc"><i>67</i>&nbsp;        List&lt;List&lt;MethodBean&gt;&gt; listaInsiemiMetodi = this.divergentChangeClass.getDivergentChangeMethodsSet();</b>
+<i>68</i>&nbsp;
+<b class="nc"><i>69</i>&nbsp;        int indice = 0;</b>
+<b class="nc"><i>70</i>&nbsp;        for (List&lt;MethodBean&gt; l : listaInsiemiMetodi) {</b>
+<b class="nc"><i>71</i>&nbsp;            indice++;</b>
+<i>72</i>&nbsp;
+<b class="nc"><i>73</i>&nbsp;            JPanel pannelloMetodi = new JPanel();</b>
+<b class="nc"><i>74</i>&nbsp;            pannelloMetodi.setLayout(new BorderLayout());</b>
+<b class="nc"><i>75</i>&nbsp;            pannelloMetodi.setBorder(new TitledBorder(&quot;SET &quot;+indice));</b>
+<b class="nc"><i>76</i>&nbsp;            JTextPane contenutoMetodi = new JTextPane();</b>
+<b class="nc"><i>77</i>&nbsp;            contenutoMetodi.setLayout(new BorderLayout());</b>
+<i>78</i>&nbsp;
+<b class="nc"><i>79</i>&nbsp;            String textContent = &quot;&quot;;</b>
+<b class="nc"><i>80</i>&nbsp;            for (MethodBean m : l) {</b>
+<b class="nc"><i>81</i>&nbsp;                textContent = textContent + m.getTextContent() + &quot;\n&quot;;</b>
+<i>82</i>&nbsp;
+<b class="nc"><i>83</i>&nbsp;            }</b>
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;
+<b class="nc"><i>86</i>&nbsp;            StyleText generator = new StyleText();</b>
+<b class="nc"><i>87</i>&nbsp;            contenutoMetodi.setStyledDocument(generator.createDocument(textContent));</b>
+<b class="nc"><i>88</i>&nbsp;            pannelloMetodi.add(contenutoMetodi);</b>
+<b class="nc"><i>89</i>&nbsp;            if((indice/2) == 0){</b>
+<b class="nc"><i>90</i>&nbsp;                sx.add(pannelloMetodi);</b>
+<i>91</i>&nbsp;            }else{
+<b class="nc"><i>92</i>&nbsp;                dx.add(pannelloMetodi);</b>
+<i>93</i>&nbsp;            }
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;
+<b class="nc"><i>96</i>&nbsp;        }</b>
+<i>97</i>&nbsp;
+<b class="nc"><i>98</i>&nbsp;        mainPanel.add(sx);</b>
+<b class="nc"><i>99</i>&nbsp;        mainPanel.add(dx);</b>
+<b class="nc"><i>100</i>&nbsp;        JScrollPane scroll = new JScrollPane(mainPanel);</b>
+<i>101</i>&nbsp;
+<b class="nc"><i>102</i>&nbsp;        JPanel temp = new JPanel(new GridLayout(2,0));</b>
+<b class="nc"><i>103</i>&nbsp;        temp.add(radarmaps);</b>
+<b class="nc"><i>104</i>&nbsp;        temp.add(scroll);</b>
+<i>105</i>&nbsp;
+<b class="nc"><i>106</i>&nbsp;        return temp;</b>
+<i>107</i>&nbsp;    }
+<i>108</i>&nbsp;
+<i>109</i>&nbsp;    @NotNull
+<i>110</i>&nbsp;    @Override
+<i>111</i>&nbsp;    protected Action[] createActions() {
+<b class="nc"><i>112</i>&nbsp;        Action okAction = new DialogWrapperAction(&quot;FIND SOLUTION&quot;) {</b>
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;            String message;
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;            @Override
+<i>117</i>&nbsp;            protected void doAction(ActionEvent actionEvent) {
+<b class="nc"><i>118</i>&nbsp;                message = &quot;Something went wrong in computing solution&quot;;</b>
+<b class="nc"><i>119</i>&nbsp;                ProgressManager.getInstance().runProcessWithProgressSynchronously(() -&gt; {</b>
+<i>120</i>&nbsp;                    try {
+<b class="nc"><i>121</i>&nbsp;                        splittedClasses = (List&lt;ClassBean&gt;) new SplitClasses().splitClassHistory(divergentChangeClass);</b>
+<b class="nc"><i>122</i>&nbsp;                    } catch (RefactorException e) {</b>
+<b class="nc"><i>123</i>&nbsp;                        errorOccured = true;</b>
+<b class="nc"><i>124</i>&nbsp;                    }</b>
+<i>125</i>&nbsp;                }, &quot;Divergent Change&quot;, false, project);
+<i>126</i>&nbsp;
+<b class="nc"><i>127</i>&nbsp;                if (errorOccured) {</b>
+<b class="nc"><i>128</i>&nbsp;                    Messages.showMessageDialog(message, &quot;Oh!No!&quot;, Messages.getErrorIcon());</b>
+<i>129</i>&nbsp;                } else {
+<b class="nc"><i>130</i>&nbsp;                        DivergentChangeWizard divergentChangeWizard = new DivergentChangeWizard(divergentChangeClass, splittedClasses, project);</b>
+<b class="nc"><i>131</i>&nbsp;                        divergentChangeWizard.show();</b>
+<i>132</i>&nbsp;                    }
+<b class="nc"><i>133</i>&nbsp;                    close(0);</b>
+<i>134</i>&nbsp;                }
+<i>135</i>&nbsp;        };
+<b class="nc"><i>136</i>&nbsp;        return new Action[]{okAction, new DialogWrapperExitAction(&quot;CANCEL&quot;, 0)};</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-14 18:40</div>
+</div>
+</body>
+</html>

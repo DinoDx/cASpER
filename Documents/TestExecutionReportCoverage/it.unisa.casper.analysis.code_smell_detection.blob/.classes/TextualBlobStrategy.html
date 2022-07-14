@@ -1,0 +1,157 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TextualBlobStrategy</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.analysis.code_smell_detection.blob</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TextualBlobStrategy (it.unisa.casper.analysis.code_smell_detection.blob)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TextualBlobStrategy</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82,8%
+  </span>
+  <span class="absValue">
+    (24/ 29)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.analysis.code_smell_detection.blob;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.BeanDetection;
+<i>4</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.ComponentMutation;
+<i>5</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing.SmellynessMetric;
+<i>6</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.strategy.ClassSmellDetectionStrategy;
+<i>7</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>8</i>&nbsp;import it.unisa.casper.storage.beans.MethodBean;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.io.IOException;
+<i>11</i>&nbsp;import java.util.HashMap;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;/*
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;Blob: Classe caratterizzata da una taglia molto grande, alto numero di attributi e metodi
+<i>16</i>&nbsp;Il refactoring Extract Class prevede molte operazioni che possono essere applicate per rimuovere questo tipo di smell. 
+<i>17</i>&nbsp;Esso permette di dividere la classe originale creando nuove classi e ridistribuendo le responsabilità.
+<i>18</i>&nbsp;Le classi Blob sono caratterizzate da una dispersione semantica dei contenuti.
+<i>19</i>&nbsp;
+<i>20</i>&nbsp; */
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;public class TextualBlobStrategy implements ClassSmellDetectionStrategy {
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    private double soglia;
+<i>25</i>&nbsp;
+<b class="fc"><i>26</i>&nbsp;    public TextualBlobStrategy(double soglia) {</b>
+<b class="fc"><i>27</i>&nbsp;        this.soglia = soglia;</b>
+<b class="fc"><i>28</i>&nbsp;    }</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    public boolean isSmelly(ClassBean pClass) {
+<b class="fc"><i>31</i>&nbsp;        boolean bean = true;</b>
+<b class="fc"><i>32</i>&nbsp;        for (MethodBean method : pClass.getMethodList()) {</b>
+<b class="fc"><i>33</i>&nbsp;            if (!BeanDetection.detection(method)) {</b>
+<b class="fc"><i>34</i>&nbsp;                bean = false;</b>
+<i>35</i>&nbsp;            }
+<b class="fc"><i>36</i>&nbsp;        }</b>
+<i>37</i>&nbsp;
+<b class="fc"><i>38</i>&nbsp;        if (!bean) {</b>
+<b class="fc"><i>39</i>&nbsp;            SmellynessMetric smellyness = new SmellynessMetric();</b>
+<b class="fc"><i>40</i>&nbsp;            ComponentMutation componentMutation = new ComponentMutation();</b>
+<i>41</i>&nbsp;
+<b class="fc"><i>42</i>&nbsp;            String mutatedClass = componentMutation.alterClass(pClass);</b>
+<b class="fc"><i>43</i>&nbsp;            double smellynessIndex = 0;</b>
+<i>44</i>&nbsp;            try {
+<b class="fc"><i>45</i>&nbsp;                smellynessIndex = smellyness.computeSmellyness(mutatedClass);</b>
+<b class="fc"><i>46</i>&nbsp;                if (smellynessIndex &gt; soglia) {</b>
+<b class="fc"><i>47</i>&nbsp;                    return true;</b>
+<i>48</i>&nbsp;                }
+<i>49</i>&nbsp;
+<b class="nc"><i>50</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>51</i>&nbsp;                e.getMessage();</b>
+<b class="nc"><i>52</i>&nbsp;                return false;</b>
+<b class="fc"><i>53</i>&nbsp;            }</b>
+<i>54</i>&nbsp;        }
+<b class="fc"><i>55</i>&nbsp;        return false;</b>
+<i>56</i>&nbsp;    }
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    public HashMap&lt;String, Double&gt; getThresold(ClassBean pClass) {
+<b class="fc"><i>59</i>&nbsp;        SmellynessMetric smellyness = new SmellynessMetric();</b>
+<b class="fc"><i>60</i>&nbsp;        ComponentMutation componentMutation = new ComponentMutation();</b>
+<b class="fc"><i>61</i>&nbsp;        HashMap&lt;String, Double&gt; list = new HashMap&lt;String, Double&gt;();</b>
+<i>62</i>&nbsp;
+<b class="fc"><i>63</i>&nbsp;        String mutatedClass = componentMutation.alterClass(pClass);</b>
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;        try {
+<b class="fc"><i>66</i>&nbsp;            list.put(&quot;coseno&quot;, smellyness.computeSmellyness(mutatedClass));</b>
+<b class="fc"><i>67</i>&nbsp;            return list;</b>
+<i>68</i>&nbsp;
+<b class="nc"><i>69</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>70</i>&nbsp;            return list;</b>
+<i>71</i>&nbsp;        }
+<i>72</i>&nbsp;    }
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-14 18:40</div>
+</div>
+</body>
+</html>

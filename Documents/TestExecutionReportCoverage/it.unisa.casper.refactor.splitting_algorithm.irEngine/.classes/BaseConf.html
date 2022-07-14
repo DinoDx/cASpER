@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BaseConf</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.refactor.splitting_algorithm.irEngine</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BaseConf (it.unisa.casper.refactor.splitting_algorithm.irEngine)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BaseConf</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (16/ 24)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.refactor.splitting_algorithm.irEngine;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.io.File;
+<i>4</i>&nbsp;import java.io.FileNotFoundException;
+<i>5</i>&nbsp;import java.io.PrintStream;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;public class BaseConf {
+<i>8</i>&nbsp;    // nome dell&#39;applicazione
+<b class="fc"><i>9</i>&nbsp;    private String app_name = &quot;ARIEL&quot;;</b>
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    // nome del file di configurazione di default
+<b class="fc"><i>12</i>&nbsp;    private String default_configuration_filename = &quot;default.conf&quot;;</b>
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    // Cartella in cui si deve andare a creare la configurazione
+<i>15</i>&nbsp;    // dell&#39;applicazione
+<b class="fc"><i>16</i>&nbsp;    private String default_home_dir = &quot;&quot;;</b>
+<i>17</i>&nbsp;
+<b class="fc"><i>18</i>&nbsp;    private String default_configuration = this.defaultConfigurationContent();</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * Costruttore della classe BaseConf, se necessario crea la configurazione
+<i>22</i>&nbsp;     * standard
+<i>23</i>&nbsp;     */
+<b class="fc"><i>24</i>&nbsp;    public BaseConf() {</b>
+<b class="fc"><i>25</i>&nbsp;        this.default_home_dir = System.getProperty(&quot;user.home&quot;) + &quot;/.&quot; + this.app_name</b>
+<i>26</i>&nbsp;                + &quot;/&quot;;
+<i>27</i>&nbsp;        // controllo se esite la cartella di home dell&#39;applicazione
+<b class="fc"><i>28</i>&nbsp;        File home_dir = new File(this.default_home_dir);</b>
+<b class="fc"><i>29</i>&nbsp;        if (home_dir.exists() == false) {</b>
+<i>30</i>&nbsp;            // la cartella non esiste deve essere creata
+<b class="nc"><i>31</i>&nbsp;            home_dir.mkdir();</b>
+<i>32</i>&nbsp;        }
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;        // controllo se esite il file di configurazione standard
+<i>35</i>&nbsp;        // dell&#39;applicazione
+<b class="fc"><i>36</i>&nbsp;        File configuration_file = new File(this</b>
+<b class="fc"><i>37</i>&nbsp;                .getAbsolutePathForDefaultConfigurationFile());</b>
+<b class="fc"><i>38</i>&nbsp;        if (configuration_file.exists() == false) {</b>
+<i>39</i>&nbsp;            // il file non esiste deve essere creato
+<b class="nc"><i>40</i>&nbsp;            this.createStandardConfig(configuration_file);</b>
+<i>41</i>&nbsp;        }
+<i>42</i>&nbsp;
+<b class="fc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    /**
+<i>46</i>&nbsp;     * Questo metodo permette di scrivere la configurazione standard
+<i>47</i>&nbsp;     * dell&#39;applicazione su un file.
+<i>48</i>&nbsp;     *
+<i>49</i>&nbsp;     * @param configuration_file file in cui deve essere scritta la configurazione standard.
+<i>50</i>&nbsp;     */
+<i>51</i>&nbsp;    private void createStandardConfig(File configuration_file) {
+<i>52</i>&nbsp;        try {
+<b class="nc"><i>53</i>&nbsp;            PrintStream configuration = new PrintStream(configuration_file);</b>
+<b class="nc"><i>54</i>&nbsp;            configuration.println(this.default_configuration);</b>
+<b class="nc"><i>55</i>&nbsp;            configuration.close();</b>
+<b class="nc"><i>56</i>&nbsp;        } catch (FileNotFoundException e) {</b>
+<i>57</i>&nbsp;
+<b class="nc"><i>58</i>&nbsp;        }</b>
+<b class="nc"><i>59</i>&nbsp;    }</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    /**
+<i>62</i>&nbsp;     * Ritorna il path assoluto comprensivo di file name per il file di
+<i>63</i>&nbsp;     * configurazione standard
+<i>64</i>&nbsp;     *
+<i>65</i>&nbsp;     * @return
+<i>66</i>&nbsp;     */
+<i>67</i>&nbsp;    public String getAbsolutePathForDefaultConfigurationFile() {
+<b class="fc"><i>68</i>&nbsp;        return default_home_dir + &quot;/&quot; + this.default_configuration_filename;</b>
+<i>69</i>&nbsp;    }
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    private String defaultConfigurationContent() {
+<b class="fc"><i>72</i>&nbsp;        String defaultConfiguration = &quot;BadChars = \\!,\u00C2,\u00A3,$,%,&amp;,/,(,),\\=,?,&#39;,\&quot;,*,+,\\,-,;,{,},[,],_&quot;;</b>
+<b class="fc"><i>73</i>&nbsp;        defaultConfiguration += &quot;\nBadWords=public,private,protected,void,int,float,double,boolean,string,integer,if,else,while,for,try,throws,catch,switch,class,a,about,above,after,again,against,all,am,an,and,any,are,aren&#39;t,as,at,be,because,been,before,being,below,between,both,but,by,can&#39;t,cannot,could,couldn&#39;t,did,didn&#39;t,do,does,doesn&#39;t,doing,don&#39;t,down,during,each,few,for,from,further,had,hadn&#39;t,has,hasn&#39;t,have,haven&#39;t,having,he,he&#39;d,he&#39;ll,he&#39;s,her,here,here&#39;s,hers,herself,him,himself,his,how,how&#39;s,i,i&#39;d,i&#39;ll,i&#39;m,i&#39;ve,if,in,into,is,isn&#39;t,it,it&#39;s,its,itself,let&#39;s,me,more,most,mustn&#39;t,my,myself,no,nor,not,of,off,on,once,only,or,other,ought,our,ours,ourselves,out,over,own,same,shan&#39;t,she,she&#39;d,she&#39;ll,she&#39;s,should,shouldn&#39;t,so,some,such,than,that,that&#39;s,the,their,theirs,them,themselves,then,there,there&#39;s,these,they,they&#39;d,they&#39;ll,they&#39;re,they&#39;ve,this,those,through,to,too,under,until,up,very,was,wasn&#39;t,we,we&#39;d,we&#39;ll,we&#39;re,we&#39;ve,were,weren&#39;t,what,what&#39;s,when,when&#39;s,where,where&#39;s,which,while,who,who&#39;s,whom,why,why&#39;s,with,won&#39;t,would,wouldn&#39;t,you,you&#39;d,you&#39;ll,you&#39;re,you&#39;ve,your,yours,yourself,yourselves&quot;;</b>
+<i>74</i>&nbsp;
+<b class="fc"><i>75</i>&nbsp;        return defaultConfiguration;</b>
+<i>76</i>&nbsp;    }
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-14 18:40</div>
+</div>
+</body>
+</html>

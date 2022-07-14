@@ -1,0 +1,322 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MisplacedClassWizard</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.gui</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MisplacedClassWizard (it.unisa.casper.gui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MisplacedClassWizard</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 89)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MisplacedClassWizard$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 17)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 106)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.gui;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.intellij.openapi.project.Project;
+<i>4</i>&nbsp;import com.intellij.openapi.ui.DialogWrapper;
+<i>5</i>&nbsp;import com.intellij.openapi.ui.Messages;
+<i>6</i>&nbsp;import com.intellij.ui.components.JBScrollPane;
+<i>7</i>&nbsp;import it.unisa.casper.gui.radarMap.RadarMapUtils;
+<i>8</i>&nbsp;import it.unisa.casper.gui.radarMap.RadarMapUtilsAdapter;
+<i>9</i>&nbsp;import it.unisa.casper.refactor.manipulator.MisplacedClassRefactoringStrategy;
+<i>10</i>&nbsp;import it.unisa.casper.refactor.strategy.RefactoringManager;
+<i>11</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>12</i>&nbsp;import it.unisa.casper.storage.beans.PackageBean;
+<i>13</i>&nbsp;import it.unisa.casper.topic.TopicExtracter;
+<i>14</i>&nbsp;import org.jetbrains.annotations.NotNull;
+<i>15</i>&nbsp;import org.jetbrains.annotations.Nullable;
+<i>16</i>&nbsp;import src.main.java.it.unisa.casper.gui.StyleText;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;import javax.swing.*;
+<i>19</i>&nbsp;import javax.swing.border.TitledBorder;
+<i>20</i>&nbsp;import java.awt.*;
+<i>21</i>&nbsp;import java.awt.event.ActionEvent;
+<i>22</i>&nbsp;import java.io.File;
+<i>23</i>&nbsp;import java.io.FileWriter;
+<i>24</i>&nbsp;import java.io.IOException;
+<i>25</i>&nbsp;import java.util.Map;
+<i>26</i>&nbsp;import java.util.Set;
+<i>27</i>&nbsp;import java.util.TreeMap;
+<i>28</i>&nbsp;
+<b class="nc"><i>29</i>&nbsp;public class MisplacedClassWizard extends DialogWrapper {</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    private Project project;
+<i>32</i>&nbsp;    private ClassBean smellClass;
+<i>33</i>&nbsp;    private JPanel radarmaps;
+<i>34</i>&nbsp;    private JPanel contentPanel;
+<i>35</i>&nbsp;    private JPanel oldcurrentpackage;
+<i>36</i>&nbsp;    private JPanel oldenviedpackage;
+<i>37</i>&nbsp;    private JPanel newenviedpackage;
+<i>38</i>&nbsp;    private JPanel newcurrentpackage;
+<i>39</i>&nbsp;    private RadarMapUtils radars;
+<i>40</i>&nbsp;    private JPanel livelli;
+<i>41</i>&nbsp;    private JPanel codici;
+<i>42</i>&nbsp;    private static StringBuilder textAreaContent;
+<i>43</i>&nbsp;    boolean errorOccurred;
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    public MisplacedClassWizard(ClassBean smellClass, Project project) {
+<b class="nc"><i>46</i>&nbsp;        super(true);</b>
+<b class="nc"><i>47</i>&nbsp;        this.smellClass = smellClass;</b>
+<b class="nc"><i>48</i>&nbsp;        this.project = project;</b>
+<b class="nc"><i>49</i>&nbsp;        this.errorOccurred = false;</b>
+<b class="nc"><i>50</i>&nbsp;        setResizable(false);</b>
+<b class="nc"><i>51</i>&nbsp;        init();</b>
+<b class="nc"><i>52</i>&nbsp;        setTitle(&quot;MISPLACED CLASS REFACTORING&quot;);</b>
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    @Nullable
+<i>56</i>&nbsp;    @Override
+<i>57</i>&nbsp;    protected JComponent createCenterPanel() {
+<i>58</i>&nbsp;
+<b class="nc"><i>59</i>&nbsp;        contentPanel = new JPanel(); // pannello principale</b>
+<b class="nc"><i>60</i>&nbsp;        contentPanel.setLayout(new BorderLayout(0, 0));</b>
+<b class="nc"><i>61</i>&nbsp;        contentPanel.setPreferredSize(new Dimension(1250, 900));</b>
+<b class="nc"><i>62</i>&nbsp;        JPanel centralPanel = new JPanel();</b>
+<b class="nc"><i>63</i>&nbsp;        centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));</b>
+<b class="nc"><i>64</i>&nbsp;        livelli = new JPanel();</b>
+<b class="nc"><i>65</i>&nbsp;        radarmaps = new JPanel(); // pannello per visualizzare le radarMaps</b>
+<b class="nc"><i>66</i>&nbsp;        codici = new JPanel();</b>
+<b class="nc"><i>67</i>&nbsp;        radars = new RadarMapUtilsAdapter();</b>
+<i>68</i>&nbsp;
+<b class="nc"><i>69</i>&nbsp;        livelli.setLayout(new GridLayout(2, 0));</b>
+<b class="nc"><i>70</i>&nbsp;        radarmaps.setLayout(new GridLayout(0, 4));</b>
+<b class="nc"><i>71</i>&nbsp;        codici.setLayout(new GridLayout(0, 2));</b>
+<i>72</i>&nbsp;
+<b class="nc"><i>73</i>&nbsp;        oldcurrentpackage = radars.createRadarMapFromPackageBean(smellClass.getBelongingPackage(), &quot;Old Current Package Topics&quot;);</b>
+<b class="nc"><i>74</i>&nbsp;        oldenviedpackage = radars.createRadarMapFromPackageBean(smellClass.getEnviedPackage(), &quot;Old Envied Package Topics&quot;);</b>
+<b class="nc"><i>75</i>&nbsp;        newcurrentpackage = getRadarMapFromNewCurrentPackage(smellClass, smellClass.getBelongingPackage());</b>
+<b class="nc"><i>76</i>&nbsp;        newenviedpackage = getRadarMapFromNewEnviedPackage(smellClass, smellClass.getEnviedPackage());</b>
+<i>77</i>&nbsp;
+<b class="nc"><i>78</i>&nbsp;        oldcurrentpackage.setSize(100, 100);</b>
+<b class="nc"><i>79</i>&nbsp;        oldenviedpackage.setSize(200, 200);</b>
+<b class="nc"><i>80</i>&nbsp;        newcurrentpackage.setSize(200, 200);</b>
+<b class="nc"><i>81</i>&nbsp;        newenviedpackage.setSize(200, 200);</b>
+<i>82</i>&nbsp;
+<b class="nc"><i>83</i>&nbsp;        radarmaps.add(oldcurrentpackage);</b>
+<b class="nc"><i>84</i>&nbsp;        radarmaps.add(oldenviedpackage);</b>
+<b class="nc"><i>85</i>&nbsp;        radarmaps.add(newcurrentpackage);</b>
+<b class="nc"><i>86</i>&nbsp;        radarmaps.add(newenviedpackage);</b>
+<i>87</i>&nbsp;
+<b class="nc"><i>88</i>&nbsp;        contentPanel.add(centralPanel, BorderLayout.CENTER);</b>
+<i>89</i>&nbsp;
+<b class="nc"><i>90</i>&nbsp;        createTextArea(&quot;Old Text Content&quot;, smellClass.getTextContent());</b>
+<b class="nc"><i>91</i>&nbsp;        String newText = smellClass.getEnviedPackage().getTextContent();</b>
+<b class="nc"><i>92</i>&nbsp;        newText = newText.substring(0, newText.length() - 1) + &quot;\n\n&quot; + smellClass.getTextContent();</b>
+<b class="nc"><i>93</i>&nbsp;        createTextArea(&quot;New Text Content&quot;, newText);</b>
+<i>94</i>&nbsp;
+<b class="nc"><i>95</i>&nbsp;        livelli.add(radarmaps);</b>
+<b class="nc"><i>96</i>&nbsp;        livelli.add(codici);</b>
+<b class="nc"><i>97</i>&nbsp;        contentPanel.add(livelli);</b>
+<i>98</i>&nbsp;
+<b class="nc"><i>99</i>&nbsp;        contentPanel.setLayout(new BorderLayout());</b>
+<b class="nc"><i>100</i>&nbsp;        contentPanel.add(livelli, BorderLayout.CENTER);</b>
+<i>101</i>&nbsp;
+<b class="nc"><i>102</i>&nbsp;        JTextArea textArea = new JTextArea();</b>
+<b class="nc"><i>103</i>&nbsp;        textArea.setEditable(false);</b>
+<b class="nc"><i>104</i>&nbsp;        textAreaContent = new StringBuilder();</b>
+<b class="nc"><i>105</i>&nbsp;        textAreaContent.append(&quot;By clicking \&quot;REFACTOR\&quot; button, class &quot;);</b>
+<b class="nc"><i>106</i>&nbsp;        textAreaContent.append(smellClass.getFullQualifiedName());</b>
+<b class="nc"><i>107</i>&nbsp;        textAreaContent.append(&quot; will be moved from &quot;);</b>
+<b class="nc"><i>108</i>&nbsp;        textAreaContent.append(smellClass.getBelongingPackage().getFullQualifiedName());</b>
+<b class="nc"><i>109</i>&nbsp;        textAreaContent.append(&quot; to &quot;);</b>
+<b class="nc"><i>110</i>&nbsp;        textAreaContent.append(smellClass.getEnviedPackage().getFullQualifiedName());</b>
+<i>111</i>&nbsp;
+<b class="nc"><i>112</i>&nbsp;        textArea.setText(textAreaContent.toString());</b>
+<i>113</i>&nbsp;
+<b class="nc"><i>114</i>&nbsp;        contentPanel.add(new JBScrollPane(textArea), BorderLayout.SOUTH);</b>
+<i>115</i>&nbsp;
+<b class="nc"><i>116</i>&nbsp;        return contentPanel;</b>
+<i>117</i>&nbsp;    }
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;    private JPanel getRadarMapFromNewCurrentPackage(ClassBean smellClass, PackageBean oldBelongingPackage) {
+<b class="nc"><i>120</i>&nbsp;        TreeMap&lt;String, Integer&gt; belongingPackageTopicsFinali = new TreeMap&lt;&gt;(); // treemap in cui inserisco i topic definitivi del new belonging package</b>
+<b class="nc"><i>121</i>&nbsp;        TopicExtracter extracter1 = new TopicExtracter();</b>
+<b class="nc"><i>122</i>&nbsp;        TreeMap&lt;String, Integer&gt; oldBelongingPackageTopics = extracter1.extractTopicFromPackageBean(oldBelongingPackage);</b>
+<b class="nc"><i>123</i>&nbsp;        Set&lt;Map.Entry&lt;String, Integer&gt;&gt; oldBelongingPackageTopicSet = oldBelongingPackageTopics.entrySet(); //set dei topic del belonging package PRIMA del refactoring</b>
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;        //istanzia il new belonging package senza la classe smell
+<b class="nc"><i>126</i>&nbsp;        TopicExtracter extracter2 = new TopicExtracter();</b>
+<b class="nc"><i>127</i>&nbsp;        PackageBean newBelongingPackage = createNewBelongingPackage(smellClass, oldBelongingPackage);</b>
+<b class="nc"><i>128</i>&nbsp;        TreeMap&lt;String, Integer&gt; newBelongingPackageTopics = extracter2.extractTopicFromPackageBean(newBelongingPackage);</b>
+<b class="nc"><i>129</i>&nbsp;        Set&lt;Map.Entry&lt;String, Integer&gt;&gt; newBelongingPackageTopicSet = newBelongingPackageTopics.entrySet(); //set di topic del belonging package DOPO il refactoring</b>
+<i>130</i>&nbsp;
+<b class="nc"><i>131</i>&nbsp;        belongingPackageTopicsFinali = getStringIntegerTreeMap(oldBelongingPackageTopicSet, newBelongingPackageTopicSet);</b>
+<b class="nc"><i>132</i>&nbsp;        return radars.getRadarMapPanel(belongingPackageTopicsFinali, &quot;New Current Package Topic&quot;);</b>
+<i>133</i>&nbsp;    }
+<i>134</i>&nbsp;
+<i>135</i>&nbsp;    private void createTextArea(String titolo, String message) {
+<b class="nc"><i>136</i>&nbsp;        JTextPane textContentArea = new JTextPane();</b>
+<b class="nc"><i>137</i>&nbsp;        textContentArea.setEditable(false);</b>
+<b class="nc"><i>138</i>&nbsp;        JPanel nuovo = new JPanel();</b>
+<b class="nc"><i>139</i>&nbsp;        nuovo.setBorder(new TitledBorder(titolo));</b>
+<b class="nc"><i>140</i>&nbsp;        JScrollPane scroll = new JScrollPane(textContentArea);</b>
+<b class="nc"><i>141</i>&nbsp;        nuovo.setLayout(new BorderLayout(0, 0));</b>
+<b class="nc"><i>142</i>&nbsp;        nuovo.add(scroll, BorderLayout.CENTER);</b>
+<b class="nc"><i>143</i>&nbsp;        StyleText generator = new StyleText();</b>
+<b class="nc"><i>144</i>&nbsp;        textContentArea.setStyledDocument(generator.createDocument(message));</b>
+<b class="nc"><i>145</i>&nbsp;        codici.add(nuovo);</b>
+<i>146</i>&nbsp;    }
+<i>147</i>&nbsp;
+<i>148</i>&nbsp;    @NotNull
+<i>149</i>&nbsp;    static TreeMap&lt;String, Integer&gt; getStringIntegerTreeMap(Set&lt;Map.Entry&lt;String, Integer&gt;&gt; oldBelongingClassTopicSet, Set&lt;Map.Entry&lt;String, Integer&gt;&gt; newBelongingClassTopicSet) {
+<b class="nc"><i>150</i>&nbsp;        TreeMap&lt;String, Integer&gt; belongingClassTopicsFinali = new TreeMap&lt;&gt;(); // treemap in cui inserisco i topic definitivi della new belonging class</b>
+<b class="nc"><i>151</i>&nbsp;        for (Map.Entry&lt;String, Integer&gt; anOldTopic : oldBelongingClassTopicSet) {  //confronto ogni topic dei set old e new</b>
+<b class="nc"><i>152</i>&nbsp;            for (Map.Entry&lt;String, Integer&gt; aNewTopic : newBelongingClassTopicSet) {</b>
+<b class="nc"><i>153</i>&nbsp;                if (anOldTopic.getKey().equalsIgnoreCase(aNewTopic.getKey())) { //se i topic hanno la stessa chiave, cioè il nome, allora lo aggiungo alla treemap dei topic finali</b>
+<b class="nc"><i>154</i>&nbsp;                    belongingClassTopicsFinali.put(anOldTopic.getKey(), aNewTopic.getValue()); //il valore numerico relativo al topic aggiunto è quello presente nei topic della nuova belonging classù</b>
+<i>155</i>&nbsp;                }
+<b class="nc"><i>156</i>&nbsp;            }</b>
+<b class="nc"><i>157</i>&nbsp;        }</b>
+<b class="nc"><i>158</i>&nbsp;        return belongingClassTopicsFinali;</b>
+<i>159</i>&nbsp;    }
+<i>160</i>&nbsp;
+<i>161</i>&nbsp;    private PackageBean createNewBelongingPackage(ClassBean smellClass, PackageBean oldBelongingPackage) {
+<b class="nc"><i>162</i>&nbsp;        String newBelongingPackageTextContent = oldBelongingPackage.getTextContent().replace(smellClass.getTextContent(), &quot;&quot;);</b>
+<b class="nc"><i>163</i>&nbsp;        return new PackageBean.Builder(oldBelongingPackage.getFullQualifiedName(), newBelongingPackageTextContent).build();</b>
+<i>164</i>&nbsp;    }
+<i>165</i>&nbsp;
+<i>166</i>&nbsp;    private JPanel getRadarMapFromNewEnviedPackage(ClassBean smellClass, PackageBean enviedPackage) {
+<b class="nc"><i>167</i>&nbsp;        String newTextContent = enviedPackage.getTextContent() + smellClass.getTextContent();</b>
+<b class="nc"><i>168</i>&nbsp;        PackageBean newEnviedPackageBean = new PackageBean.Builder(enviedPackage.getFullQualifiedName(), newTextContent).build();</b>
+<b class="nc"><i>169</i>&nbsp;        return radars.createRadarMapFromPackageBean(newEnviedPackageBean, &quot;New Envied Package Topic&quot;);</b>
+<i>170</i>&nbsp;    }
+<i>171</i>&nbsp;
+<i>172</i>&nbsp;    @NotNull
+<i>173</i>&nbsp;    @Override
+<i>174</i>&nbsp;    protected Action[] createActions() {
+<b class="nc"><i>175</i>&nbsp;        Action okAction = new DialogWrapperAction(&quot;REFACTOR&quot;) {</b>
+<i>176</i>&nbsp;
+<i>177</i>&nbsp;            String message;
+<i>178</i>&nbsp;            Icon icon;
+<i>179</i>&nbsp;
+<i>180</i>&nbsp;            @Override
+<i>181</i>&nbsp;            protected void doAction(ActionEvent actionEvent) {
+<b class="nc"><i>182</i>&nbsp;                MisplacedClassRefactoringStrategy misplacedClassRefactoringStrategy = new MisplacedClassRefactoringStrategy(smellClass, smellClass.getEnviedPackage(), project);</b>
+<b class="nc"><i>183</i>&nbsp;                RefactoringManager manager = new RefactoringManager(misplacedClassRefactoringStrategy);</b>
+<i>184</i>&nbsp;
+<i>185</i>&nbsp;                try {
+<b class="nc"><i>186</i>&nbsp;                    manager.executeRefactor();</b>
+<b class="nc"><i>187</i>&nbsp;                } catch (Exception e) {</b>
+<b class="nc"><i>188</i>&nbsp;                    errorOccurred = true;</b>
+<b class="nc"><i>189</i>&nbsp;                    message = e.getMessage();</b>
+<i>190</i>&nbsp;
+<b class="nc"><i>191</i>&nbsp;                }</b>
+<i>192</i>&nbsp;
+<i>193</i>&nbsp;
+<b class="nc"><i>194</i>&nbsp;                if (errorOccurred) {</b>
+<i>195</i>&nbsp;                    //message = &quot;Something went wrong during refactoring. Press Ctrl+Z to fix&quot;;
+<b class="nc"><i>196</i>&nbsp;                    icon = Messages.getErrorIcon();</b>
+<i>197</i>&nbsp;                } else {
+<b class="nc"><i>198</i>&nbsp;                    message = &quot;Move class refactoring correctly executed&quot;;</b>
+<b class="nc"><i>199</i>&nbsp;                    icon = Messages.getInformationIcon();</b>
+<i>200</i>&nbsp;                    try {
+<b class="nc"><i>201</i>&nbsp;                        FileWriter f = new FileWriter(System.getProperty(&quot;user.home&quot;) + File.separator + &quot;.casper&quot; + File.separator + &quot;refactoring.txt&quot;);</b>
+<b class="nc"><i>202</i>&nbsp;                    } catch (IOException e) {</b>
+<i>203</i>&nbsp;
+<b class="nc"><i>204</i>&nbsp;                    }</b>
+<i>205</i>&nbsp;                }
+<i>206</i>&nbsp;
+<b class="nc"><i>207</i>&nbsp;                close(0);</b>
+<b class="nc"><i>208</i>&nbsp;                Messages.showMessageDialog(message, &quot;Outcome of refactoring&quot;, icon);</b>
+<i>209</i>&nbsp;            }
+<i>210</i>&nbsp;        };
+<b class="nc"><i>211</i>&nbsp;        return new Action[]{okAction, new DialogWrapperExitAction(&quot;CANCEL&quot;, 0)};</b>
+<i>212</i>&nbsp;    }
+<i>213</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-14 18:40</div>
+</div>
+</body>
+</html>
