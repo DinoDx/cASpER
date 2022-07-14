@@ -14,6 +14,7 @@ import java.util.Vector;
 public class DeepLearningStrategy implements ClassSmellDetectionStrategy {
 
     private Vector<String> metrics = new Vector<String>();
+    private String result = "";
 
     public DeepLearningStrategy(Vector<String> metrics){
         this.metrics = metrics;
@@ -34,18 +35,42 @@ public class DeepLearningStrategy implements ClassSmellDetectionStrategy {
                     content.append(inputLine);
                 }
                 in.close();
-                if(content.toString().equals("[0. 0. 0. 0. 0.]") ||content.toString().equals("[1. 0. 0. 0. 0.]") || content.toString().equals("[0. 1. 0. 0. 0.]") || content.toString().equals("[0. 0. 1. 0. 0.]") || content.toString().equals("[0. 0. 0. 1. 0.]") || content.toString().equals("[0. 0. 0. 0. 1.]"))
-                    return true;
+                switch (content.toString()) {
+                    case "[0. 0. 0. 0. 0.]":
+                        result = "No Code Smell";
+                        return true;
+                    case "[1. 0. 0. 0. 0.]":
+                        result = "Complex Class";
+                        return true;
+                    case "[0. 1. 0. 0. 0.]":
+                        result = "Blob Class";
+                        return true;
+                    case "[0. 0. 1. 0. 0.]":
+                        result = "Lazy Class";
+                        return true;
+                    case "[0. 0. 0. 1. 0.]":
+                        result = "Refused Bequest";
+                        return true;
+                    case "[0. 0. 0. 0. 1.]":
+                        result = "Spaghetti Code";
+                        return true;
+                    default:
+                        result = "Wrong parameter";
+                        return false;
+                }
             }
         } catch (IOException e) {
-            System.out.println("Web Service non raggiungibile");
-            return false;
+            throw new RuntimeException("Web service non disponibile");
         }
         return false;
     }
     @Override
     public HashMap<String, Double> getThresold(ClassBean pClass) {
         return null;
+    }
+
+    public String getResult() {
+        return result;
     }
 }
 

@@ -1,6 +1,7 @@
 package it.unisa.casper;
 
 import it.unisa.casper.analysis.code_smell_detection.BeanDetectionTest;
+import it.unisa.casper.analysis.code_smell_detection.DeepLearningCodeSmellStrategyTest;
 import it.unisa.casper.analysis.code_smell_detection.blob.StructuralBlobStrategyTest;
 import it.unisa.casper.analysis.code_smell_detection.blob.TextualBlobStrategyTest;
 import it.unisa.casper.analysis.code_smell_detection.feature_envy.StructuralFeatureEnvyStrategyTest;
@@ -27,7 +28,8 @@ import org.junit.runners.Suite;
         StructuralPromiscuousPackageStrategyTest.class,
         SplitPackagesTest.class,
         SplitClassTest.class,
-        BeanDetectionTest.class
+        BeanDetectionTest.class,
+        DeepLearningCodeSmellStrategyTest.class
 })
 
 public class JUnitTestSuite {
