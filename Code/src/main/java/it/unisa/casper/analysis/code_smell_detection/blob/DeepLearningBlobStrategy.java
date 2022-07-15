@@ -14,6 +14,7 @@ import java.util.Vector;
 public class DeepLearningBlobStrategy implements ClassSmellDetectionStrategy {
 
     private Vector<String> metrics = new Vector<String>();
+    private String risultato;
 
     public DeepLearningBlobStrategy(Vector<String> metrics){
         this.metrics = metrics;
@@ -34,8 +35,12 @@ public class DeepLearningBlobStrategy implements ClassSmellDetectionStrategy {
                     content.append(inputLine);
                 }
                 in.close();
-                if(content.toString().equals("[0. 1. 0. 0. 0.]"))
+                if(content.toString().equals("[0. 1. 0. 0. 0.]")) {
+                    risultato = content.toString();
                     return true;
+                }
+                else if(content.toString().contains("Error"))
+                    risultato = "Error";
             }
         } catch (IOException e) {
             throw new RuntimeException("Web Service non raggiungibile");
@@ -48,5 +53,9 @@ public class DeepLearningBlobStrategy implements ClassSmellDetectionStrategy {
     @Override
     public HashMap<String, Double> getThresold(ClassBean aClass) {
         return null;
+    }
+
+    public String getRisultato(){
+        return risultato;
     }
 }

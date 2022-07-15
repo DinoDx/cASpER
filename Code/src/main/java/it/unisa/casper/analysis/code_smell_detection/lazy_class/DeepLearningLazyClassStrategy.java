@@ -14,6 +14,7 @@ import java.util.Vector;
 public class DeepLearningLazyClassStrategy implements ClassSmellDetectionStrategy {
 
     private Vector<String> metrics = new Vector<String>();
+    private String risultato;
 
     public DeepLearningLazyClassStrategy(Vector<String> metrics){
         this.metrics = metrics;
@@ -34,9 +35,12 @@ public class DeepLearningLazyClassStrategy implements ClassSmellDetectionStrateg
                     content.append(inputLine);
                 }
                 in.close();
-                if(content.toString().equals("[0. 0. 1. 0. 0.]"))
+                if(content.toString().equals("[0. 0. 1. 0. 0.]")){
+                    risultato = content.toString();
                     return true;
-            }
+                }
+                else if(content.toString().contains("Error"))
+                    risultato = "Error";        }
         } catch (IOException e) {
             throw new RuntimeException("Web Service non raggiungibile");
         }
@@ -48,5 +52,9 @@ public class DeepLearningLazyClassStrategy implements ClassSmellDetectionStrateg
     @Override
     public HashMap<String, Double> getThresold(ClassBean aClass) {
         return null;
+    }
+
+    public String getRisultato() {
+        return risultato;
     }
 }
