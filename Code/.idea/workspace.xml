@@ -5,25 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47afe1f5-89a3-48a7-a848-fb15bcd093ed" name="Default Changelist" comment="CKMetrics modified for CR1">
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/JUnitTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/JUnitTestSuite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/DeepLearningCodeSmellStrategyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +67,12 @@
                 <item name="casper" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="casper" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -177,24 +178,23 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DeepLearningBlobStrategyTest.correctMetricsParameter" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Code [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;it.unisa.casper.analysis.code_smell_detection.blob.DeepLearningBlobStrategyTest.correctMetricsParameter&quot;" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
+            <option value="test" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="DeepLearningComplexClassStrategyTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -217,12 +217,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DeepLearningComplexClassStrategyTest.correctMetricsParameter" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DeepLearningLazyClassStrategyTest.lessMetricsParameter" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;it.unisa.casper.analysis.code_smell_detection.complex_class.DeepLearningComplexClassStrategyTest.correctMetricsParameter&quot;" />
+        <option name="scriptParameters" value="--tests &quot;it.unisa.casper.analysis.code_smell_detection.lazy_class.DeepLearningLazyClassStrategyTest.lessMetricsParameter&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -306,18 +306,18 @@
       <item itemvalue="Gradle.casper2" />
       <item itemvalue="Gradle.casper" />
       <item itemvalue="Gradle.JUnitTestSuite" />
-      <item itemvalue="Gradle.DeepLearningBlobStrategyTest.correctMetricsParameter" />
-      <item itemvalue="Gradle.DeepLearningComplexClassStrategyTest.correctMetricsParameter" />
       <item itemvalue="Gradle.DeepLearningComplexClassStrategyTest" />
       <item itemvalue="Gradle.Code [clean]" />
+      <item itemvalue="Gradle.Code [test]" />
+      <item itemvalue="Gradle.DeepLearningLazyClassStrategyTest.lessMetricsParameter" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.DeepLearningLazyClassStrategyTest.lessMetricsParameter" />
+        <item itemvalue="Gradle.Code [test]" />
         <item itemvalue="Gradle.Code [clean]" />
         <item itemvalue="Gradle.JUnitTestSuite" />
         <item itemvalue="Gradle.DeepLearningComplexClassStrategyTest" />
-        <item itemvalue="Gradle.DeepLearningComplexClassStrategyTest.correctMetricsParameter" />
-        <item itemvalue="Gradle.DeepLearningBlobStrategyTest.correctMetricsParameter" />
       </list>
     </recent_temporary>
   </component>
@@ -422,6 +422,7 @@
       <workItem from="1657816830356" duration="50000" />
       <workItem from="1657817380796" duration="199000" />
       <workItem from="1657890119358" duration="2662000" />
+      <workItem from="1657912931973" duration="3723000" />
     </task>
     <task id="LOCAL-00001" summary="project initialization">
       <created>1657721606704</created>
@@ -499,46 +500,46 @@
     </state>
     <state x="987" y="364" key="FileChooserDialogImpl/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657897049104" />
     <state x="740" y="270" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1657749490015" />
-    <state width="2517" height="366" key="GridCell.Tab.0.bottom" timestamp="1657902236153">
-      <screen x="0" y="0" width="2560" height="1392" />
+    <state width="1876" height="338" key="GridCell.Tab.0.bottom" timestamp="1657916832705">
+      <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
     <state width="2517" height="366" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657902236153" />
-    <state width="1876" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1657802592972" />
-    <state width="2517" height="366" key="GridCell.Tab.0.center" timestamp="1657902236153">
-      <screen x="0" y="0" width="2560" height="1392" />
+    <state width="1876" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
+    <state width="1876" height="338" key="GridCell.Tab.0.center" timestamp="1657916832705">
+      <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
     <state width="2517" height="366" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657902236153" />
-    <state width="1876" height="276" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1657802592972" />
-    <state width="2517" height="366" key="GridCell.Tab.0.left" timestamp="1657902236153">
-      <screen x="0" y="0" width="2560" height="1392" />
+    <state width="1876" height="338" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
+    <state width="1876" height="338" key="GridCell.Tab.0.left" timestamp="1657916832705">
+      <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
     <state width="2517" height="366" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657902236153" />
-    <state width="1876" height="276" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1657802592972" />
-    <state width="2517" height="366" key="GridCell.Tab.0.right" timestamp="1657902236153">
-      <screen x="0" y="0" width="2560" height="1392" />
+    <state width="1876" height="338" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
+    <state width="1876" height="338" key="GridCell.Tab.0.right" timestamp="1657916832705">
+      <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
     <state width="2517" height="366" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657902236153" />
-    <state width="1876" height="276" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1657802592972" />
-    <state width="1877" height="344" key="GridCell.Tab.1.bottom" timestamp="1657747923286">
+    <state width="1876" height="338" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
+    <state width="1876" height="338" key="GridCell.Tab.1.bottom" timestamp="1657916832705">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1877" height="344" key="GridCell.Tab.1.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1657747923286" />
-    <state width="1877" height="344" key="GridCell.Tab.1.center" timestamp="1657747923286">
+    <state width="1876" height="338" key="GridCell.Tab.1.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
+    <state width="1876" height="338" key="GridCell.Tab.1.center" timestamp="1657916832705">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1877" height="344" key="GridCell.Tab.1.center/0.0.1920.1032@0.0.1920.1032" timestamp="1657747923286" />
-    <state width="1877" height="344" key="GridCell.Tab.1.left" timestamp="1657747923286">
+    <state width="1876" height="338" key="GridCell.Tab.1.center/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
+    <state width="1876" height="338" key="GridCell.Tab.1.left" timestamp="1657916832705">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1877" height="344" key="GridCell.Tab.1.left/0.0.1920.1032@0.0.1920.1032" timestamp="1657747923286" />
-    <state width="1877" height="344" key="GridCell.Tab.1.right" timestamp="1657747923286">
+    <state width="1876" height="338" key="GridCell.Tab.1.left/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
+    <state width="1876" height="338" key="GridCell.Tab.1.right" timestamp="1657916832705">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1877" height="344" key="GridCell.Tab.1.right/0.0.1920.1032@0.0.1920.1032" timestamp="1657747923286" />
+    <state width="1876" height="338" key="GridCell.Tab.1.right/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
     <state x="860" y="432" key="IDE.errors.dialog" timestamp="1657894668947">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
@@ -548,11 +549,11 @@
     </state>
     <state x="863" y="233" key="SettingsEditor/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657895272951" />
     <state x="647" y="173" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1657802290386" />
-    <state x="881" y="459" key="com.intellij.ide.util.TipDialog" timestamp="1657895160571">
-      <screen x="0" y="0" width="2560" height="1392" />
+    <state x="661" y="340" key="com.intellij.ide.util.TipDialog" timestamp="1657912935808">
+      <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="881" y="459" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657895160571" />
-    <state x="661" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1657802550416" />
+    <state x="661" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1657912935808" />
     <state x="1089" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1657817388978">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
@@ -576,10 +577,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/casper$cASpER.ic" NAME="cASpER Coverage Results" MODIFIED="1574294040175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/casper$DeepLearningCodeSmellStrategyTest.ic" NAME="DeepLearningCodeSmellStrategyTest Coverage Results" MODIFIED="1657813822531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/casper$JUnitTestSuite.ic" NAME="JUnitTestSuite Coverage Results" MODIFIED="1575921719526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.unisa.casper.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/casper$DeepLearningCodeSmellStrategyTest.ic" NAME="DeepLearningCodeSmellStrategyTest Coverage Results" MODIFIED="1657813822531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/cASpER$Code__test_.ic" NAME="Code [test] Coverage Results" MODIFIED="1657816717995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/casper$Code__test_.ic" NAME="Code [test] Coverage Results" MODIFIED="1657813796048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/casper$Tests_in__casper_test_.ic" NAME="Tests in 'casper.test' Coverage Results" MODIFIED="1657815478973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
