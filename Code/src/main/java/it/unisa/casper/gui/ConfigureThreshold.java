@@ -95,6 +95,7 @@ public class ConfigureThreshold extends DialogWrapper {
         algorith.addItem("Textual");
         algorith.addItem("Structural");
         algorith.addItem("History");
+        algorith.addItem("Deep Learning");
         algorith.setSelectedIndex(0);
         JPanel contentPane = new JPanel();
         contentPane.setPreferredSize(new Dimension(1200, 600));
@@ -472,6 +473,11 @@ public class ConfigureThreshold extends DialogWrapper {
             case "Textual":
                 for (String s : livelli.keySet()) {
                     livelli.get(s).getComponent(0).setVisible(true);
+                    livelli.get(s).getComponent(1).setVisible(false);
+                }
+            case "Deep Learning":
+                for (String s : livelli.keySet()) {
+                    livelli.get(s).getComponent(0).setVisible(false);
                     livelli.get(s).getComponent(1).setVisible(false);
                 }
         }

@@ -5,15 +5,160 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47afe1f5-89a3-48a7-a848-fb15bcd093ed" name="Default Changelist" comment="CKMetrics modified for CR1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ccda0f18-2d2d-4bb8-8576-b9cb745ab759.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/actions/BeginAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/actions/CommitFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/actions/CommitFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/actions/ConfigureAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/actions/SystemStart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell/BlobCodeSmell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell/ClassLevelCodeSmell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell/CodeSmell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell/FeatureEnvyCodeSmell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell/MethodLevelCodeSmell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell/MisplacedClassCodeSmell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell/PackageLevelCodeSmell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell/PromiscuousPackageCodeSmell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/BeanDetection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/ComponentMutation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/blob/StructuralBlobStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/blob/TextualBlobStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/comparator/BeanComparator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/comparator/ComparableBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/feature_envy/StructuralFeatureEnvyStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/feature_envy/TextualFeatureEnvyStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/misplaced_class/StructuralMisplacedClassStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/misplaced_class/TextualMisplacedClassStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/promiscuous_package/StructuralPromiscuousPackageStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/promiscuous_package/TextualPromiscuousPackageStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/similarityComputation/CosineSimilarity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/smellynessMetricProcessing/SmellynessMetric.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/strategy/ClassSmellDetectionStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/strategy/CodeSmellDetectionStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/strategy/MethodSmellDetectionStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/analysis/code_smell_detection/strategy/PackageSmellDetectionStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/BlobPage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/BlobPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/BlobWizard$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/BlobWizard$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/BlobWizard$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/BlobWizard$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/BlobWizard$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/BlobWizard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/CheckProjectPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/ConfigureThreshold$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/ConfigureThreshold$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/ConfigureThreshold$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/ConfigureThreshold$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/ConfigureThreshold$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/ConfigureThreshold$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/ConfigureThreshold$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/ConfigureThreshold.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/FeatureEnvyPage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/FeatureEnvyPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/FeatureEnvyWizard$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/FeatureEnvyWizard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/MisplacedClassPage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/MisplacedClassPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/MisplacedClassWizard$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/MisplacedClassWizard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/PromiscuousPackagePage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/PromiscuousPackagePage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/PromiscuousPackageWizard$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/PromiscuousPackageWizard$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/PromiscuousPackageWizard$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/PromiscuousPackageWizard$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/PromiscuousPackageWizard$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/PromiscuousPackageWizard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/radarMap/RadarMapUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/radarMap/RadarMapUtilsAdapter$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/gui/radarMap/RadarMapUtilsAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/parser/Parser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/parser/ParsingException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/parser/PsiParser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/parser/PsiParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/exceptions/BlobException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/exceptions/FeatureEnvyException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/exceptions/MisplacedClassException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/exceptions/PromiscuousPackageException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/exceptions/RefactorException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/manipulator/BlobRefatoringStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/manipulator/FeatureEnvyRefactoringStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/manipulator/MethodMover.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/manipulator/MisplacedClassRefactoringStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/manipulator/PromiscuousPackageRefactoringStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/manipulator/PsiUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/ClassByClassMatrixConstruction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/MethodByMethodMatrixConstruction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/PromiscuousPackageQualityChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/SplitClasses.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/SplitPackages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/Utility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/irEngine/BaseConf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/irEngine/ConfigLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/irEngine/IREngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/irEngine/Stemmer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/splitting_algorithm/irEngine/VectorSpaceModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/strategy/RefactoringManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/refactor/strategy/RefactoringStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/ClassBean$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/ClassBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/ClassBeanList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/ClassList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/InstanceVariableBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/InstanceVariableBeanList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/InstanceVariableList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/MethodBean$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/MethodBean$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/MethodBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/MethodBeanList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/MethodList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/PackageBean$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/storage/beans/PackageBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/structuralMetrics/CKMetrics.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/it/unisa/casper/topic/TopicExtracter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Code/src/main/java/it/unisa/casper/gui/StyleText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/DeepLearningStrategy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/gui/CheckProjectPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/gui/CheckProjectPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/gui/ConfigureThreshold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/gui/ConfigureThreshold.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/parser/PsiParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/casper/parser/PsiParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/JUnitTestSuite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/TestRunner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/BeanDetectionTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/Helper/CKMetricsStub.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/Helper/CosineSimilarityStub.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/Helper/SmellynessMetricStub.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/blob/StructuralBlobStrategyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/blob/TextualBlobStrategyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/feature_envy/StructuralFeatureEnvyStrategyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/feature_envy/TextualFeatureEnvyStrategyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/misplaced_class/StructuralMisplacedClassStrategyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/misplaced_class/TextualMisplacedClassStrategyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/promiscuous_package/StructuralPromiscuousPackageStrategyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/analysis/code_smell_detection/promiscuous_package/TextualPromiscuousPackageStrategyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/refactor/SplitClassTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Code/it/unisa/casper/refactor/SplitPackagesTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +187,9 @@
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
+        <task path="">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -53,18 +201,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="casper" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="casper" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="casper" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -96,6 +232,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -112,7 +249,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Documents" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -122,7 +259,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="PsiViewer.ProjectComponent">
@@ -144,20 +281,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Gradle.Code [clean]">
-    <configuration name="TestRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.unisa.casper.TestRunner" />
-      <module name="casper.test" />
-      <shortenClasspath name="MANIFEST" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unisa.casper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <shortenClasspath name="MANIFEST" />
       <method v="2">
@@ -176,6 +299,25 @@
         <option name="taskNames">
           <list>
             <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Code [runIde]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="runIde" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -288,23 +430,35 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.TestRunner" />
       <item itemvalue="Gradle.casper2" />
       <item itemvalue="Gradle.casper" />
+      <item itemvalue="Gradle.Code [clean]" />
+      <item itemvalue="Gradle.Code [runIde]" />
+      <item itemvalue="Gradle.Code [test]" />
       <item itemvalue="Gradle.JUnitTestSuite" />
       <item itemvalue="Gradle.Tests in 'casper.test'" />
-      <item itemvalue="Gradle.Code [clean]" />
-      <item itemvalue="Gradle.Code [test]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Code [runIde]" />
         <item itemvalue="Gradle.Code [test]" />
         <item itemvalue="Gradle.Code [clean]" />
         <item itemvalue="Gradle.Tests in 'casper.test'" />
         <item itemvalue="Gradle.JUnitTestSuite" />
-        <item itemvalue="Application.TestRunner" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
@@ -392,6 +546,9 @@
       <workItem from="1657802366848" duration="2000" />
       <workItem from="1657802544880" duration="49000" />
       <workItem from="1657816705410" duration="104000" />
+      <workItem from="1657816830356" duration="50000" />
+      <workItem from="1657817380796" duration="199000" />
+      <workItem from="1657890119358" duration="2662000" />
     </task>
     <task id="LOCAL-00001" summary="project initialization">
       <created>1657721606704</created>
@@ -448,34 +605,50 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="679" y="143" key="#Tests_in_'casper.test'/0.0.1920.1032@0.0.1920.1032" timestamp="1657747507380" />
-    <state x="987" y="364" key="FileChooserDialogImpl" timestamp="1657816782139">
+    <state x="1085" y="405" key="#com.intellij.ide.util.MemberChooser" timestamp="1657891197138">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
-    <state x="987" y="364" key="FileChooserDialogImpl/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657816782139" />
+    <state x="1085" y="405" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657891197138" />
+    <state x="919" y="621" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1657891434168">
+      <screen x="0" y="0" width="2560" height="1392" />
+    </state>
+    <state x="919" y="621" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657891434168" />
+    <state x="1010" y="443" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1657892229527">
+      <screen x="0" y="0" width="2560" height="1392" />
+    </state>
+    <state x="1010" y="443" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657892229527" />
+    <state x="905" y="290" key="CommitChangelistDialog2" timestamp="1657817385868">
+      <screen x="0" y="0" width="2560" height="1392" />
+    </state>
+    <state x="905" y="290" key="CommitChangelistDialog2/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657817385868" />
+    <state x="987" y="364" key="FileChooserDialogImpl" timestamp="1657897049104">
+      <screen x="0" y="0" width="2560" height="1392" />
+    </state>
+    <state x="987" y="364" key="FileChooserDialogImpl/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657897049104" />
     <state x="740" y="270" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1657749490015" />
-    <state width="2517" height="393" key="GridCell.Tab.0.bottom" timestamp="1657816809546">
+    <state width="2517" height="366" key="GridCell.Tab.0.bottom" timestamp="1657899694484">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="393" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657816809546" />
+    <state width="2517" height="366" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657899694484" />
     <state width="1876" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1657802592972" />
-    <state width="2517" height="393" key="GridCell.Tab.0.center" timestamp="1657816809546">
+    <state width="2517" height="366" key="GridCell.Tab.0.center" timestamp="1657899694484">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="393" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657816809546" />
+    <state width="2517" height="366" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657899694484" />
     <state width="1876" height="276" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1657802592972" />
-    <state width="2517" height="393" key="GridCell.Tab.0.left" timestamp="1657816809546">
+    <state width="2517" height="366" key="GridCell.Tab.0.left" timestamp="1657899694484">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="393" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657816809546" />
+    <state width="2517" height="366" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657899694484" />
     <state width="1876" height="276" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1657802592972" />
-    <state width="2517" height="393" key="GridCell.Tab.0.right" timestamp="1657816809546">
+    <state width="2517" height="366" key="GridCell.Tab.0.right" timestamp="1657899694484">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="393" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657816809546" />
+    <state width="2517" height="366" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657899694484" />
     <state width="1876" height="276" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1657802592972" />
     <state width="1877" height="344" key="GridCell.Tab.1.bottom" timestamp="1657747923286">
       <screen x="0" y="0" width="1920" height="1032" />
@@ -493,20 +666,28 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state width="1877" height="344" key="GridCell.Tab.1.right/0.0.1920.1032@0.0.1920.1032" timestamp="1657747923286" />
-    <state x="863" y="233" key="SettingsEditor" timestamp="1657802941655">
+    <state x="860" y="432" key="IDE.errors.dialog" timestamp="1657894668947">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
-    <state x="863" y="233" key="SettingsEditor/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657802941655" />
+    <state x="860" y="432" key="IDE.errors.dialog/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657894668947" />
+    <state x="863" y="233" key="SettingsEditor" timestamp="1657895272951">
+      <screen x="0" y="0" width="2560" height="1392" />
+    </state>
+    <state x="863" y="233" key="SettingsEditor/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657895272951" />
     <state x="647" y="173" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1657802290386" />
-    <state x="881" y="459" key="com.intellij.ide.util.TipDialog" timestamp="1657816830683">
+    <state x="881" y="459" key="com.intellij.ide.util.TipDialog" timestamp="1657895160571">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
-    <state x="881" y="459" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657816830683" />
+    <state x="881" y="459" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657895160571" />
     <state x="661" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1657802550416" />
-    <state x="-2104" y="-8" width="1721" height="1119" maximized="true" key="dock-window-1" timestamp="1657811365495">
+    <state x="1089" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1657817388978">
+      <screen x="0" y="0" width="2560" height="1392" />
+    </state>
+    <state x="1089" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657817388978" />
+    <state x="-1469" y="-15" width="1228" height="442" maximized="true" key="dock-window-1" timestamp="1657891117405">
       <screen x="-1920" y="0" width="1920" height="1032" />
     </state>
-    <state x="-2104" y="-8" width="1721" height="1119" maximized="true" key="dock-window-1/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657811365495" />
+    <state x="-1469" y="-15" width="1228" height="442" maximized="true" key="dock-window-1/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657891117405" />
     <state x="-1141" y="343" key="export.test.results" timestamp="1657814579885">
       <screen x="-1920" y="0" width="1920" height="1032" />
     </state>

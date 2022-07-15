@@ -5,21 +5,21 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.intellij.psi.util.PsiTreeUtil;
 import it.unisa.casper.analysis.code_smell.*;
-import it.unisa.casper.analysis.code_smell_detection.blob.HistoryBlobStrategy;
+import it.unisa.casper.analysis.code_smell_detection.blob.DeepLearningBlobStrategy;
 import it.unisa.casper.analysis.code_smell_detection.blob.StructuralBlobStrategy;
 import it.unisa.casper.analysis.code_smell_detection.blob.TextualBlobStrategy;
-import it.unisa.casper.analysis.code_smell_detection.divergent_change.HistoryDivergentChangeStrategy;
-import it.unisa.casper.analysis.code_smell_detection.feature_envy.HistoryFeatureEnvyStrategy;
+import it.unisa.casper.analysis.code_smell_detection.complex_class.DeepLearningComplexClassStrategy;
 import it.unisa.casper.analysis.code_smell_detection.feature_envy.StructuralFeatureEnvyStrategy;
 import it.unisa.casper.analysis.code_smell_detection.feature_envy.TextualFeatureEnvyStrategy;
+import it.unisa.casper.analysis.code_smell_detection.lazy_class.DeepLearningLazyClassStrategy;
 import it.unisa.casper.analysis.code_smell_detection.misplaced_class.StructuralMisplacedClassStrategy;
 import it.unisa.casper.analysis.code_smell_detection.misplaced_class.TextualMisplacedClassStrategy;
-import it.unisa.casper.analysis.code_smell_detection.parallel_inheritance.HistoryParallelInheritanceStrategy;
 import it.unisa.casper.analysis.code_smell_detection.promiscuous_package.StructuralPromiscuousPackageStrategy;
 import it.unisa.casper.analysis.code_smell_detection.promiscuous_package.TextualPromiscuousPackageStrategy;
-import it.unisa.casper.analysis.code_smell_detection.shotgun_surgery.HistoryShotgunSurgeryStrategy;
-import it.unisa.casper.analysis.history_analysis_utility.AnalyzerThread;
+import it.unisa.casper.analysis.code_smell_detection.refused_bequest.DeepLearningRefusedBequestStrategy;
+import it.unisa.casper.analysis.code_smell_detection.spaghetti_code.DeepLearningSpaghettiCodeStrategy;
 import it.unisa.casper.storage.beans.*;
+import it.unisa.casper.structuralMetrics.CKMetrics;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -174,6 +174,65 @@ public class PsiParser implements Parser {
         classBean.isAffected(sBlobCodeSmell);
         classBean.isAffected(sMisplacedClassCodeSmell);
         classBean.setSimilarity(0);
+
+        Vector<String> metrics = new Vector<String>();
+        Vector<ClassBean> system = new Vector<ClassBean>();
+        for(PackageBean packageBean : projectPackages){
+            system.addAll(packageBean.getClassList());
+        }
+
+        double fanin = 0;
+        for(PackageBean packageBean : projectPackages){
+            for(ClassBean classBean1 : packageBean.getClassList()){
+                fanin = CKMetrics.getNumberOfDependencies(classBean1, packageBean);
+            }
+        }
+        double fanin1 = 0;
+        for(PackageBean packageBean : projectPackages){
+            for(ClassBean classBean1 : packageBean.getClassList()){
+                for(MethodBean methodBean : classBean1.getMethodList()){
+                    fanin1 = CKMetrics.getNumberOfDependencies(methodBean, classBean1);
+                }
+
+            }
+        }
+
+        metrics.add(String.valueOf(CKMetrics.getCBO(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getMcCabeCycloComplexity(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getDIT(classBean,system,0)));
+        metrics.add(String.valueOf(CKMetrics.getELOC(classBean)));
+        metrics.add(String.valueOf(fanin));
+        metrics.add(String.valueOf(fanin1));
+        metrics.add(String.valueOf(CKMetrics.getLCOM(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getLOC(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getLinesOfCodeWithoutAccessorOrMutatorMethods(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getNOA(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getNOC(classBean,system)));
+        metrics.add(String.valueOf(CKMetrics.getNOM(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getNumberOfNotAccessorOrMutatorMethods(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getNOPA(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getProbabilityOfMiddleManMethod(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getProbabilityOfRefusedBequest(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getWeightedLOCNotAccessorOrMutatorMethods(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getWMC(classBean)));
+        metrics.add(String.valueOf(CKMetrics.getWeightedMethodCountOfNotAccessorOrMutatorMethods(classBean)));
+
+        DeepLearningBlobStrategy deepLearningBlobStrategy = new DeepLearningBlobStrategy(metrics);
+        DeepLearningComplexClassStrategy deepLearningComplexClassStrategy = new DeepLearningComplexClassStrategy(metrics);
+        DeepLearningLazyClassStrategy deepLearningLazyClassStrategy = new DeepLearningLazyClassStrategy(metrics);
+        DeepLearningRefusedBequestStrategy deepLearningRefusedBequestStrategy = new DeepLearningRefusedBequestStrategy(metrics);
+        DeepLearningSpaghettiCodeStrategy deepLearningSpaghettiCodeStrategy = new DeepLearningSpaghettiCodeStrategy(metrics);
+
+        BlobCodeSmell dBlob = new BlobCodeSmell(deepLearningBlobStrategy, "Deep Learning");
+        ComplexClassCodeSmell dComplexClass = new ComplexClassCodeSmell(deepLearningComplexClassStrategy, "Deep Learning");
+        LazyClassCodeSmell dLazyClass = new LazyClassCodeSmell(deepLearningLazyClassStrategy, "Deep Learning");
+        RefusedBequestCodeSmell dRefusedBequest = new RefusedBequestCodeSmell(deepLearningRefusedBequestStrategy, "Deep Learning");
+        SpaghettiCodeCodeSmell dSpaghettiCode = new SpaghettiCodeCodeSmell(deepLearningSpaghettiCodeStrategy, "Deep Learning");
+        classBean.isAffected(dBlob);
+        classBean.isAffected(dComplexClass);
+        classBean.isAffected(dLazyClass);
+        classBean.isAffected(dRefusedBequest);
+        classBean.isAffected(dSpaghettiCode);
 
     }
 

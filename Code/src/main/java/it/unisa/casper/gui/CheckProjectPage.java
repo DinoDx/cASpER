@@ -45,6 +45,10 @@ public class CheckProjectPage extends DialogWrapper {
     private List<ClassBean> divergentChangeList;
     private List<ClassBean> parallelInheritanceList;
     private List<ClassBean> shotgunSurgeryList;
+    private List<ClassBean> complexClassList;
+    private List<ClassBean> lazyClassList;
+    private List<ClassBean> refusedBequestList;
+    private List<ClassBean> spaghettiCodeList;
     private JPanel pannello;
     private JTextPane codeVisual;
     private JTable table;
@@ -92,6 +96,11 @@ public class CheckProjectPage extends DialogWrapper {
         smellName.add("Divergent Change");
         smellName.add("Shotgun Surgery");
         smellName.add("Parallel Inheritance");
+        smellName.add("Lazy Class");
+        smellName.add("Complex Class");
+        smellName.add("Refused Bequest");
+        smellName.add("Spaghetti Code");
+
 
         blobThresholdName = new ArrayList<String>();
         blobThresholdName.add("LCOM");
@@ -108,6 +117,10 @@ public class CheckProjectPage extends DialogWrapper {
         divergentChangeList = new ArrayList<ClassBean>();
         parallelInheritanceList = new ArrayList<ClassBean>();
         shotgunSurgeryList = new ArrayList<ClassBean>();
+        complexClassList = new ArrayList<ClassBean>();
+        lazyClassList = new ArrayList<ClassBean>();
+        refusedBequestList = new ArrayList<ClassBean>();
+        spaghettiCodeList = new ArrayList<ClassBean>();
 
         this.currentProject = currentProj;
         this.packages = packages;
@@ -157,6 +170,22 @@ public class CheckProjectPage extends DialogWrapper {
                             case "Parallel Inheritance":
                                 name = "Parallel Inheritance";
                                 parallelInheritanceList.add(c);
+                                break;
+                            case "Complex Class":
+                                name = "Complex Class";
+                                complexClassList.add(c);
+                                break;
+                            case "Lazy Class":
+                                name = "Lazy Class";
+                                lazyClassList.add(c);
+                                break;
+                            case "Refused Bequest":
+                                name = "Refused Bequest";
+                                refusedBequestList.add(c);
+                                break;
+                            case "Spaghetti Code":
+                                name = "Spaghetti Code";
+                                spaghettiCodeList.add(c);
                                 break;
                         }
                 }
@@ -243,16 +272,15 @@ public class CheckProjectPage extends DialogWrapper {
 
             }
 
-            if(smellName.get(i).equalsIgnoreCase("blob") || smellName.get(i).equalsIgnoreCase("Feature Envy")){
+            if(smellName.get(i).equalsIgnoreCase("blob") || smellName.get(i).equalsIgnoreCase("Feature Envy")) {
 
-                    algoritmi.put("textual" + smellName.get(i).substring(0, 1), new JCheckBox("Textual"));
-                    algo.get(i).add(algoritmi.get("textual" + smellName.get(i).substring(0, 1)));
-                    algoritmi.put("structural" + smellName.get(i).substring(0, 1), new JCheckBox("Structural"));
-                    algo.get(i).add(algoritmi.get("structural" + smellName.get(i).substring(0, 1)));
-                    algoritmi.put("history"+smellName.get(i).substring(0,1), new JCheckBox("History"));
-                    algo.get(i).add(algoritmi.get("history"+smellName.get(i).substring(0,1)));
-
-                }
+                algoritmi.put("textual" + smellName.get(i).substring(0, 1), new JCheckBox("Textual"));
+                algo.get(i).add(algoritmi.get("textual" + smellName.get(i).substring(0, 1)));
+                algoritmi.put("structural" + smellName.get(i).substring(0, 1), new JCheckBox("Structural"));
+                algo.get(i).add(algoritmi.get("structural" + smellName.get(i).substring(0, 1)));
+                algoritmi.put("history" + smellName.get(i).substring(0, 1), new JCheckBox("History"));
+                algo.get(i).add(algoritmi.get("history" + smellName.get(i).substring(0, 1)));
+            }
 
             if(smellName.get(i).equalsIgnoreCase("Promiscuous Package") || smellName.get(i).equalsIgnoreCase("Misplaced Class")){
                     algoritmi.put("textual" + smellName.get(i).substring(0, 1), new JCheckBox("Textual"));
@@ -261,7 +289,10 @@ public class CheckProjectPage extends DialogWrapper {
                     algo.get(i).add(algoritmi.get("structural" + smellName.get(i).substring(0, 1)));
                 }
 
-
+            if(smellName.get(i).equalsIgnoreCase("Blob") || smellName.get(i).equalsIgnoreCase("Complex Class") || smellName.get(i).equalsIgnoreCase("Lazy Class") || smellName.get(i).equalsIgnoreCase("Refused Bequest") || smellName.get(i).equalsIgnoreCase("Spaghetti Code")){
+                algoritmi.put("deepLearning" + smellName.get(i).substring(0,1), new JCheckBox("Deep Learning"));
+                algo.get(i).add(algoritmi.get("deepLearning"+smellName.get(i).substring(0,1)));
+            }
 
 /*
             algoritmi.put("textual" + smellName.get(i).substring(0, 1), new JCheckBox("Textual"));
@@ -300,7 +331,7 @@ public class CheckProjectPage extends DialogWrapper {
             if (algorithm.equalsIgnoreCase("All")) {
                 c.setSelected(true);
             } else {
-                if ((s.contains("textual") && algorithm.equalsIgnoreCase("Textual")) || (s.contains("structural") && algorithm.equalsIgnoreCase("Structural"))) {
+                if ((s.contains("textual") && algorithm.equalsIgnoreCase("Textual")) || (s.contains("structural") && algorithm.equalsIgnoreCase("Structural")) || (s.contains("deepLearning") && algorithm.equalsIgnoreCase("Deep Learning"))) {
                     c.setSelected(true);
                 }
             }
@@ -655,6 +686,7 @@ public class CheckProjectPage extends DialogWrapper {
         columnNames.add("Structural algorithm");
         //History analysis
         columnNames.add("History algorithm");
+        columnNames.add("Deep Learning Algorithm");
 
         columnNames.add("priority");
         model = new DefaultTableModel(columnNames, 0);
@@ -667,6 +699,37 @@ public class CheckProjectPage extends DialogWrapper {
             }
         }
 
+        if (complexClassList.size() != 0) {
+            if (codeSmell.get("Complex Class").isSelected()) {
+                for (ClassBean c : complexClassList) {
+                    gestione(c.getAffectedSmell(), "Complex Class", c.getFullQualifiedName());
+                }
+            }
+        }
+
+        if (lazyClassList.size() != 0) {
+            if (codeSmell.get("Lazy Class").isSelected()) {
+                for (ClassBean c : lazyClassList) {
+                    gestione(c.getAffectedSmell(), "Lazy Class", c.getFullQualifiedName());
+                }
+            }
+        }
+
+        if (refusedBequestList.size() != 0) {
+            if (codeSmell.get("Refused Bequest").isSelected()) {
+                for (ClassBean c : refusedBequestList) {
+                    gestione(c.getAffectedSmell(), "Refused Bequest", c.getFullQualifiedName());
+                }
+            }
+        }
+
+        if (spaghettiCodeList.size() != 0) {
+            if (codeSmell.get("Spaghetti Code").isSelected()) {
+                for (ClassBean c : spaghettiCodeList) {
+                    gestione(c.getAffectedSmell(), "Spaghetti Code", c.getFullQualifiedName());
+                }
+            }
+        }
 //        if(divergentChangeList.size() != 0){
 //            if(codeSmell.get("Divergent Change").isSelected()){
 //                for (ClassBean c : divergentChangeList){
@@ -882,6 +945,16 @@ public class CheckProjectPage extends DialogWrapper {
                     tableItem.add(""+threshold.get("threshold"));
                     tableItem.add(HistoryAnalysisStartup.historyPriority(smell));
                     model.addRow(tableItem);
+                }
+                if(used.equalsIgnoreCase("Deep Learning") && algoritmi.get("deepLearning" + codeSmell.substring(0,1)).isSelected()){
+                    tableItem.add(bean);
+                    tableItem.add(smell.getSmellName());
+                    tableItem.add("---");
+                    tableItem.add("---");
+                    tableItem.add("---");
+                    tableItem.add("found");
+                    tableItem.add(prioritySmell(controllo, complessita, basso, alto));
+                    model.addRow((tableItem));
                 }
             }
 
