@@ -42,26 +42,26 @@
   <td class="name">ComplexClassCodeSmell</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/ 1)
+    (1/ 1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/ 2)
+    (2/ 2)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    66,7%
   </span>
   <span class="absValue">
-    (0/ 5)
+    (4/ 6)
   </span>
 </td>
 </tr>
@@ -89,8 +89,8 @@
 <i>15</i>&nbsp;     * @param algoritmsUsed     Stringa che rappresenta il tipo di algoritmo che ha rilevato tale smell
 <i>16</i>&nbsp;     */
 <i>17</i>&nbsp;    public ComplexClassCodeSmell(ClassSmellDetectionStrategy detectionStrategy, String algoritmsUsed) {
-<b class="nc"><i>18</i>&nbsp;        super(COMPLEX_CLASS, detectionStrategy, algoritmsUsed);</b>
-<i>19</i>&nbsp;    }
+<b class="fc"><i>18</i>&nbsp;        super(COMPLEX_CLASS, detectionStrategy, algoritmsUsed);</b>
+<b class="fc"><i>19</i>&nbsp;    }</b>
 <i>20</i>&nbsp;
 <i>21</i>&nbsp;    /**
 <i>22</i>&nbsp;     * Metodo che sancisce la presenza di blob in una classe
@@ -99,11 +99,11 @@
 <i>25</i>&nbsp;     * @return true se la classe è affetta da blob, false altrimenti
 <i>26</i>&nbsp;     */
 <i>27</i>&nbsp;    public boolean affects(ClassBean aClass) {
-<b class="nc"><i>28</i>&nbsp;        if (detectionStrategy.isSmelly(aClass)) {</b>
+<b class="fc"><i>28</i>&nbsp;        if (detectionStrategy.isSmelly(aClass)) {</b>
 <b class="nc"><i>29</i>&nbsp;            aClass.addSmell(this);</b>
 <b class="nc"><i>30</i>&nbsp;            return true;</b>
 <i>31</i>&nbsp;        }
-<b class="nc"><i>32</i>&nbsp;        return false;</b>
+<b class="fc"><i>32</i>&nbsp;        return false;</b>
 <i>33</i>&nbsp;    }
 <i>34</i>&nbsp;}
 </div>
@@ -111,7 +111,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-07-14 18:40</div>
+    <div style="float:right;">generated on 2022-07-16 16:18</div>
 </div>
 </body>
 </html>

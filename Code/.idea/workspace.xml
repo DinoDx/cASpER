@@ -8,17 +8,405 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/Impact Analysis.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../Documents/Impact Analysis.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/Test Case Specification POST.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../Documents/Test Case Specification POST.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportADD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/.css/coverage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/.img/arrowDown.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/.img/arrowUp.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/.classes/BeginAction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/.classes/CommitFactory.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/.classes/ConfigureAction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/.classes/SystemStart.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.actions/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/BlobCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/ClassLevelCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/CodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/ComplexClassCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/DivergentChangeCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/FeatureEnvyCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/LazyClassCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/MethodLevelCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/MisplacedClassCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/PackageLevelCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/ParallelInheritanceCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/PromiscuousPackageCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/RefusedBequestCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/ShotgunSurgeryCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/.classes/SpaghettiCodeCodeSmell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/.classes/HistoryBlobStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/.classes/StructuralBlobStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/.classes/TextualBlobStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.blob/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/.classes/BeanComparator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/.classes/ComparableBean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.comparator/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/.classes/HistoryDivergentChangeStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.divergent_change/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/.classes/HistoryFeatureEnvyStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/.classes/StructuralFeatureEnvyStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/.classes/TextualFeatureEnvyStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.feature_envy/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/.classes/StructuralMisplacedClassStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/.classes/TextualMisplacedClassStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.misplaced_class/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/.classes/HistoryParallelInheritanceStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.parallel_inheritance/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/.classes/StructuralPromiscuousPackageStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/.classes/TextualPromiscuousPackageStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.promiscuous_package/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/.classes/HistoryShotgunSurgeryStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.shotgun_surgery/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/.classes/CosineSimilarity.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.similarityComputation/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/.classes/SmellynessMetric.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/.classes/ClassSmellDetectionStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/.classes/CodeSmellDetectionStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/.classes/MethodSmellDetectionStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/.classes/PackageSmellDetectionStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection.strategy/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/.classes/BeanDetection.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/.classes/ComponentMutation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/.classes/DeepLearningStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.code_smell_detection/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/.classes/AnalyzerThread.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/.classes/HistoryAnalysisStartup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/.classes/PythonExeSingleton.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/.classes/RepositorySingleton.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.analysis.history_analysis_utility/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/.classes/RadarMapUtilsAdapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui.radarMap/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/BlobPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/BlobWizard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/CheckProjectPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/ConfigureThreshold.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/DivergentChangePage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/DivergentChangeWizard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/FeatureEnvyPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/FeatureEnvyWizard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/MisplacedClassPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/MisplacedClassWizard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/ParallelInheritancePage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/ParallelInheritanceWizard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/PromiscuousPackagePage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/PromiscuousPackageWizard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/ShotgunSurgeryPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/.classes/ShothunSurgeryWizard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.gui/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/.classes/ParsingException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/.classes/PsiParser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.parser/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/.classes/BlobException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/.classes/FeatureEnvyException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/.classes/MisplacedClassException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/.classes/PromiscuousPackageException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/.classes/RefactorException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.exceptions/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/BlobRefatoringStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/DivergentChangeRefactoringStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/FeatureEnvyRefactoringStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/FieldMover.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/MethodMover.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/MisplacedClassRefactoringStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/MockMoveMembersOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/ParallelInheritanceStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/PromiscuousPackageRefactoringStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/PsiUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/ShotgunSurgeryRefactoringStrategy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/.classes/UpdateClassUtility.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.manipulator/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/.classes/BaseConf.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/.classes/ConfigLoader.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/.classes/IREngine.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/.classes/Stemmer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/.classes/VectorSpaceModel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm.irEngine/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/.classes/ClassByClassMatrixConstruction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/.classes/MethodByMethodMatrixConstruction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/.classes/PromiscuousPackageQualityChecker.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/.classes/SplitClasses.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/.classes/SplitPackages.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/.classes/Utility.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.splitting_algorithm/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/.classes/RefactoringManager.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.refactor.strategy/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/ClassBean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/ClassBeanList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/ClassList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/InstanceVariableBean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/InstanceVariableBeanList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/InstanceVariableList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/MethodBean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/MethodBeanList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/MethodList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/.classes/PackageBean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.storage.beans/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/.classes/CKMetrics.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.structuralMetrics/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/.classes/TopicExtracter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/it.unisa.casper.topic/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/.classes/StyleText.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportCoverage/src.main.java.it.unisa.casper.gui/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/TestExecutionReportPOST.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +566,25 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Code [runIde]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="runIde" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Code [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -195,26 +602,6 @@
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="DeepLearningComplexClassStrategyTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;it.unisa.casper.analysis.code_smell_detection.complex_class.DeepLearningComplexClassStrategyTest&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="DeepLearningLazyClassStrategyTest.lessMetricsParameter" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -306,18 +693,18 @@
       <item itemvalue="Gradle.casper2" />
       <item itemvalue="Gradle.casper" />
       <item itemvalue="Gradle.JUnitTestSuite" />
-      <item itemvalue="Gradle.DeepLearningComplexClassStrategyTest" />
       <item itemvalue="Gradle.Code [clean]" />
       <item itemvalue="Gradle.Code [test]" />
       <item itemvalue="Gradle.DeepLearningLazyClassStrategyTest.lessMetricsParameter" />
+      <item itemvalue="Gradle.Code [runIde]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.DeepLearningLazyClassStrategyTest.lessMetricsParameter" />
         <item itemvalue="Gradle.Code [test]" />
-        <item itemvalue="Gradle.Code [clean]" />
         <item itemvalue="Gradle.JUnitTestSuite" />
-        <item itemvalue="Gradle.DeepLearningComplexClassStrategyTest" />
+        <item itemvalue="Gradle.Code [runIde]" />
+        <item itemvalue="Gradle.DeepLearningLazyClassStrategyTest.lessMetricsParameter" />
+        <item itemvalue="Gradle.Code [clean]" />
       </list>
     </recent_temporary>
   </component>
@@ -423,6 +810,7 @@
       <workItem from="1657817380796" duration="199000" />
       <workItem from="1657890119358" duration="2662000" />
       <workItem from="1657912931973" duration="3723000" />
+      <workItem from="1657978418945" duration="2617000" />
     </task>
     <task id="LOCAL-00001" summary="project initialization">
       <created>1657721606704</created>
@@ -495,34 +883,34 @@
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state x="905" y="290" key="CommitChangelistDialog2/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657817385868" />
-    <state x="987" y="364" key="FileChooserDialogImpl" timestamp="1657897049104">
+    <state x="987" y="364" key="FileChooserDialogImpl" timestamp="1657980970722">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
-    <state x="987" y="364" key="FileChooserDialogImpl/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657897049104" />
+    <state x="987" y="364" key="FileChooserDialogImpl/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657980970722" />
     <state x="740" y="270" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1657749490015" />
-    <state width="1876" height="338" key="GridCell.Tab.0.bottom" timestamp="1657916832705">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="2517" height="366" key="GridCell.Tab.0.bottom" timestamp="1657981147382">
+      <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="366" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657902236153" />
+    <state width="2517" height="366" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657981147382" />
     <state width="1876" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
-    <state width="1876" height="338" key="GridCell.Tab.0.center" timestamp="1657916832705">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="2517" height="366" key="GridCell.Tab.0.center" timestamp="1657981147382">
+      <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="366" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657902236153" />
+    <state width="2517" height="366" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657981147382" />
     <state width="1876" height="338" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
-    <state width="1876" height="338" key="GridCell.Tab.0.left" timestamp="1657916832705">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="2517" height="366" key="GridCell.Tab.0.left" timestamp="1657981147382">
+      <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="366" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657902236153" />
+    <state width="2517" height="366" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657981147382" />
     <state width="1876" height="338" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
-    <state width="1876" height="338" key="GridCell.Tab.0.right" timestamp="1657916832705">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state width="2517" height="366" key="GridCell.Tab.0.right" timestamp="1657981147382">
+      <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="366" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657902236153" />
+    <state width="2517" height="366" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657981147382" />
     <state width="1876" height="338" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
     <state width="1876" height="338" key="GridCell.Tab.1.bottom" timestamp="1657916832705">
       <screen x="0" y="0" width="1920" height="1032" />
@@ -562,10 +950,11 @@
       <screen x="-1920" y="0" width="1920" height="1032" />
     </state>
     <state x="-1469" y="-15" width="1228" height="442" maximized="true" key="dock-window-1/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657891117405" />
-    <state x="-1141" y="343" key="export.test.results" timestamp="1657814579885">
-      <screen x="-1920" y="0" width="1920" height="1032" />
+    <state x="1039" y="463" width="361" height="364" key="export.test.results" timestamp="1657981047762">
+      <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state x="-1141" y="343" key="export.test.results/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657814579885" />
+    <state x="1039" y="463" width="361" height="364" key="export.test.results/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657981047762" />
     <state x="936" y="328" width="672" height="677" key="run.anything.popup" timestamp="1657803455648">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
@@ -577,11 +966,11 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/casper$cASpER.ic" NAME="cASpER Coverage Results" MODIFIED="1574294040175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/casper$DeepLearningCodeSmellStrategyTest.ic" NAME="DeepLearningCodeSmellStrategyTest Coverage Results" MODIFIED="1657813822531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/casper$JUnitTestSuite.ic" NAME="JUnitTestSuite Coverage Results" MODIFIED="1575921719526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>it.unisa.casper.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/casper$DeepLearningCodeSmellStrategyTest.ic" NAME="DeepLearningCodeSmellStrategyTest Coverage Results" MODIFIED="1657813822531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/cASpER$Code__test_.ic" NAME="Code [test] Coverage Results" MODIFIED="1657816717995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/cASpER$Code__test_.ic" NAME="Code [test] Coverage Results" MODIFIED="1657981088842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/casper$Code__test_.ic" NAME="Code [test] Coverage Results" MODIFIED="1657813796048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/casper$Tests_in__casper_test_.ic" NAME="Tests in 'casper.test' Coverage Results" MODIFIED="1657815478973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
