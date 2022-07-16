@@ -1,0 +1,514 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TopicExtracter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.topic</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TopicExtracter (it.unisa.casper.topic)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TopicExtracter</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 169)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.topic;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>4</i>&nbsp;import it.unisa.casper.storage.beans.MethodBean;
+<i>5</i>&nbsp;import it.unisa.casper.storage.beans.PackageBean;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.util.ArrayList;
+<i>8</i>&nbsp;import java.util.Collection;
+<i>9</i>&nbsp;import java.util.HashMap;
+<i>10</i>&nbsp;import java.util.TreeMap;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;/**
+<i>13</i>&nbsp; * Estrae i topic, cioè i termini più frequenti, dal contenuto testuale di un PackageBean, un ClassBean o un MethodBean
+<i>14</i>&nbsp; *
+<i>15</i>&nbsp; * @author Sara Patierno
+<i>16</i>&nbsp; * @version 2.0
+<i>17</i>&nbsp; */
+<i>18</i>&nbsp;public class TopicExtracter {
+<i>19</i>&nbsp;
+<b class="nc"><i>20</i>&nbsp;    private ArrayList&lt;Double&gt; occourences = new ArrayList&lt;Double&gt;();</b>
+<b class="nc"><i>21</i>&nbsp;    private ArrayList&lt;Double&gt; values = new ArrayList&lt;Double&gt;();</b>
+<b class="nc"><i>22</i>&nbsp;    private HashMap&lt;String, Integer&gt; termsSet = new HashMap&lt;String, Integer&gt;();</b>
+<b class="nc"><i>23</i>&nbsp;    private TreeMap&lt;String, Integer&gt; topicsMap = new TreeMap&lt;String, Integer&gt;();</b>
+<i>24</i>&nbsp;
+<b class="nc"><i>25</i>&nbsp;    public TopicExtracter() {</b>
+<i>26</i>&nbsp;    }
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * Estrae i topic da un PackageBean
+<i>30</i>&nbsp;     *
+<i>31</i>&nbsp;     * @param aBean PackageBean da cui estrarre i topic
+<i>32</i>&nbsp;     * @return TreeMap&lt;String, Integer&gt;
+<i>33</i>&nbsp;     * con String valore del topic (chiave univoca)
+<i>34</i>&nbsp;     * e Integer numero di volte che il topic appare nel PackageBean
+<i>35</i>&nbsp;     */
+<i>36</i>&nbsp;    public TreeMap&lt;String, Integer&gt; extractTopicFromPackageBean(PackageBean aBean) {
+<b class="nc"><i>37</i>&nbsp;        String textContent = aBean.getTextContent();</b>
+<b class="nc"><i>38</i>&nbsp;        return extractTopicFromText(textContent);</b>
+<i>39</i>&nbsp;    }
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * Estrae i topic da un ClassBean
+<i>43</i>&nbsp;     *
+<i>44</i>&nbsp;     * @param aBean ClassBean da cui estrarre i topic
+<i>45</i>&nbsp;     * @return TreeMap&lt;String, Integer&gt;
+<i>46</i>&nbsp;     * con String valore del topic (chiave univoca)
+<i>47</i>&nbsp;     * e Integer numero di volte che il topic appare nel ClassBean
+<i>48</i>&nbsp;     */
+<i>49</i>&nbsp;    public TreeMap&lt;String, Integer&gt; extractTopicFromClassBean(ClassBean aBean) {
+<b class="nc"><i>50</i>&nbsp;        String textContent = aBean.getTextContent();</b>
+<b class="nc"><i>51</i>&nbsp;        return extractTopicFromText(textContent);</b>
+<i>52</i>&nbsp;    }
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    /**
+<i>55</i>&nbsp;     * Estrae i topic da un MethodBean
+<i>56</i>&nbsp;     *
+<i>57</i>&nbsp;     * @param aBean MethodBean da cui estrarre i topic
+<i>58</i>&nbsp;     * @return TreeMap&lt;String, Integer&gt;
+<i>59</i>&nbsp;     * con String valore del topic (chiave univoca)
+<i>60</i>&nbsp;     * e Integer numero di volte che il topic appare nel MethodBean
+<i>61</i>&nbsp;     */
+<i>62</i>&nbsp;    public TreeMap&lt;String, Integer&gt; extractTopicFromMethodBean(MethodBean aBean) {
+<b class="nc"><i>63</i>&nbsp;        String textContent = aBean.getTextContent();</b>
+<b class="nc"><i>64</i>&nbsp;        return extractTopicFromText(textContent);</b>
+<i>65</i>&nbsp;    }
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * Estrae i topic da un testo
+<i>69</i>&nbsp;     *
+<i>70</i>&nbsp;     * @param textContent contenuto testuale del Bean da cui estrarre i topic
+<i>71</i>&nbsp;     * @return TreeMap&lt;String, Integer&gt;
+<i>72</i>&nbsp;     * con String valore del topic (chiave univoca)
+<i>73</i>&nbsp;     * e Integer numero di volte che il topic appare nel testo
+<i>74</i>&nbsp;     */
+<i>75</i>&nbsp;    private TreeMap&lt;String, Integer&gt; extractTopicFromText(String textContent) {
+<b class="nc"><i>76</i>&nbsp;        Collection&lt;String&gt; terms = this.termsExtracter(textContent);</b>
+<b class="nc"><i>77</i>&nbsp;        terms = this.deleteSpaces(terms);</b>
+<b class="nc"><i>78</i>&nbsp;        terms = this.deleteNumbers(terms);</b>
+<b class="nc"><i>79</i>&nbsp;        terms = this.splitCamelCaseWords(terms);</b>
+<b class="nc"><i>80</i>&nbsp;        terms = (ArrayList&lt;String&gt;) this.stemming(terms);</b>
+<b class="nc"><i>81</i>&nbsp;        terms = (ArrayList&lt;String&gt;) this.lowerCase(terms);</b>
+<b class="nc"><i>82</i>&nbsp;        terms = (ArrayList&lt;String&gt;) this.deleteTrivialWords(terms);</b>
+<b class="nc"><i>83</i>&nbsp;        occourences = new ArrayList&lt;Double&gt;();</b>
+<b class="nc"><i>84</i>&nbsp;        values = new ArrayList&lt;Double&gt;();</b>
+<b class="nc"><i>85</i>&nbsp;        for (String term : terms) {</b>
+<b class="nc"><i>86</i>&nbsp;            if (!termsSet.containsKey(term)) {</b>
+<b class="nc"><i>87</i>&nbsp;                termsSet.put(term, 0);</b>
+<b class="nc"><i>88</i>&nbsp;                for (String s : terms) {</b>
+<b class="nc"><i>89</i>&nbsp;                    if (term.equals(s)) {</b>
+<b class="nc"><i>90</i>&nbsp;                        int value = termsSet.get(term) + 1;</b>
+<b class="nc"><i>91</i>&nbsp;                        termsSet.put(term, value);</b>
+<i>92</i>&nbsp;                    }
+<b class="nc"><i>93</i>&nbsp;                }</b>
+<i>94</i>&nbsp;            }
+<b class="nc"><i>95</i>&nbsp;        }</b>
+<b class="nc"><i>96</i>&nbsp;        double total = 0;</b>
+<b class="nc"><i>97</i>&nbsp;        int calculateMax = 0;</b>
+<b class="nc"><i>98</i>&nbsp;        int numTerms = termsSet.size();</b>
+<b class="nc"><i>99</i>&nbsp;        while ((calculateMax != 5) &amp;&amp; (numTerms &gt; calculateMax)) {</b>
+<b class="nc"><i>100</i>&nbsp;            String key = max(termsSet);</b>
+<b class="nc"><i>101</i>&nbsp;            int value = termsSet.get(key);</b>
+<b class="nc"><i>102</i>&nbsp;            topicsMap.put(key, value);</b>
+<b class="nc"><i>103</i>&nbsp;            this.values.add((double) termsSet.get(key));</b>
+<b class="nc"><i>104</i>&nbsp;            total += (double) termsSet.get(key);</b>
+<b class="nc"><i>105</i>&nbsp;            termsSet.remove(key);</b>
+<b class="nc"><i>106</i>&nbsp;            calculateMax++;</b>
+<b class="nc"><i>107</i>&nbsp;        }</b>
+<b class="nc"><i>108</i>&nbsp;        for (int j = 0; j &lt; this.values.size(); j++) {</b>
+<b class="nc"><i>109</i>&nbsp;            this.occourences.add(this.values.get(j) / total);</b>
+<i>110</i>&nbsp;        }
+<b class="nc"><i>111</i>&nbsp;        return topicsMap;</b>
+<i>112</i>&nbsp;    }
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;    /**
+<i>115</i>&nbsp;     * Estrae tutte le parole di un testo
+<i>116</i>&nbsp;     *
+<i>117</i>&nbsp;     * @param textContent testo da cui estrarre i termini
+<i>118</i>&nbsp;     * @return Collection&lt;String&gt; di tutti i termini estratti
+<i>119</i>&nbsp;     */
+<i>120</i>&nbsp;    public Collection&lt;String&gt; termsExtracter(String textContent) {
+<b class="nc"><i>121</i>&nbsp;        textContent = deleteComments(textContent);</b>
+<b class="nc"><i>122</i>&nbsp;        char[] charText = textContent.toCharArray();</b>
+<b class="nc"><i>123</i>&nbsp;        String term = &quot;&quot;;</b>
+<b class="nc"><i>124</i>&nbsp;        ArrayList&lt;String&gt; terms = new ArrayList&lt;String&gt;();</b>
+<i>125</i>&nbsp;
+<b class="nc"><i>126</i>&nbsp;        for (int i = 0; i &lt; charText.length; i++) {</b>
+<b class="nc"><i>127</i>&nbsp;            if (this.isPuntuaction(charText[i])) {</b>
+<b class="nc"><i>128</i>&nbsp;                if (!term.equals(&quot;&quot;)) {</b>
+<b class="nc"><i>129</i>&nbsp;                    terms.add(term);</b>
+<i>130</i>&nbsp;                }
+<b class="nc"><i>131</i>&nbsp;                term = &quot;&quot;;</b>
+<b class="nc"><i>132</i>&nbsp;            } else if (charText[i] != &#39; &#39;) {</b>
+<b class="nc"><i>133</i>&nbsp;                term += charText[i];</b>
+<i>134</i>&nbsp;            }
+<i>135</i>&nbsp;        }
+<b class="nc"><i>136</i>&nbsp;        return terms;</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    /**
+<i>140</i>&nbsp;     * Restituisce la parola che ha frequenza maggiore
+<i>141</i>&nbsp;     *
+<i>142</i>&nbsp;     * @param pTermsSet HashMap&lt;String, Integer&gt; dove String è il termine e Integer è il numero di volte che il termine appare
+<i>143</i>&nbsp;     * @return String che contiene il termine con frequenza maggiore
+<i>144</i>&nbsp;     */
+<i>145</i>&nbsp;    private String max(HashMap&lt;String, Integer&gt; pTermsSet) {
+<b class="nc"><i>146</i>&nbsp;        String term = &quot;&quot;;</b>
+<b class="nc"><i>147</i>&nbsp;        int maxValue = 0;</b>
+<b class="nc"><i>148</i>&nbsp;        for (String key : pTermsSet.keySet()) {</b>
+<b class="nc"><i>149</i>&nbsp;            int value = pTermsSet.get(key);</b>
+<b class="nc"><i>150</i>&nbsp;            if (value &gt; maxValue) {</b>
+<b class="nc"><i>151</i>&nbsp;                maxValue = value;</b>
+<b class="nc"><i>152</i>&nbsp;                term = key;</b>
+<i>153</i>&nbsp;            }
+<b class="nc"><i>154</i>&nbsp;        }</b>
+<b class="nc"><i>155</i>&nbsp;        return term;</b>
+<i>156</i>&nbsp;
+<i>157</i>&nbsp;    }
+<i>158</i>&nbsp;
+<i>159</i>&nbsp;    /**
+<i>160</i>&nbsp;     * Rimuove i commenti dal testo
+<i>161</i>&nbsp;     *
+<i>162</i>&nbsp;     * @param pTextContent testo da cui eliminare i commenti
+<i>163</i>&nbsp;     * @return String testo senza commenti
+<i>164</i>&nbsp;     */
+<i>165</i>&nbsp;    public String deleteComments(String pTextContent) {
+<b class="nc"><i>166</i>&nbsp;        char[] charText = pTextContent.toCharArray();</b>
+<b class="nc"><i>167</i>&nbsp;        String textWithoutComments = &quot;&quot;;</b>
+<b class="nc"><i>168</i>&nbsp;        for (int i = 0; i &lt; charText.length; i++) {</b>
+<b class="nc"><i>169</i>&nbsp;            if ((charText[i] == &#39;/&#39;) &amp;&amp; (charText[i + 1] == &#39;*&#39;)) {</b>
+<b class="nc"><i>170</i>&nbsp;                i = i + 2;</b>
+<b class="nc"><i>171</i>&nbsp;                while (!((charText[i] == &#39;*&#39;) &amp;&amp; (charText[i + 1] == &#39;/&#39;))) {</b>
+<b class="nc"><i>172</i>&nbsp;                    i++;</b>
+<i>173</i>&nbsp;                }
+<b class="nc"><i>174</i>&nbsp;                i++;</b>
+<b class="nc"><i>175</i>&nbsp;            } else if ((charText[i] == &#39;/&#39;) &amp;&amp; (charText[i + 1] == &#39;/&#39;)) {</b>
+<b class="nc"><i>176</i>&nbsp;                while (charText[i] != &#39;\n&#39;) {</b>
+<b class="nc"><i>177</i>&nbsp;                    i++;</b>
+<b class="nc"><i>178</i>&nbsp;                    if (i == charText.length) break;</b>
+<i>179</i>&nbsp;                }
+<b class="nc"><i>180</i>&nbsp;            } else textWithoutComments += charText[i];</b>
+<i>181</i>&nbsp;        }
+<b class="nc"><i>182</i>&nbsp;        return textWithoutComments;</b>
+<i>183</i>&nbsp;    }
+<i>184</i>&nbsp;
+<i>185</i>&nbsp;    /**
+<i>186</i>&nbsp;     * Verifica se un carattere sia un simbolo
+<i>187</i>&nbsp;     *
+<i>188</i>&nbsp;     * @param pCharacter carattere da controllare
+<i>189</i>&nbsp;     * @return boolean true se il carattere controllato è un simbolo, false altrimenti
+<i>190</i>&nbsp;     */
+<i>191</i>&nbsp;    private boolean isPuntuaction(char pCharacter) {
+<b class="nc"><i>192</i>&nbsp;        if ((pCharacter != &#39; &#39;) &amp;&amp; (pCharacter != &#39;;&#39;) &amp;&amp; (pCharacter != &#39;.&#39;) &amp;&amp; (pCharacter != &#39;[&#39;) &amp;&amp;</b>
+<i>193</i>&nbsp;                (pCharacter != &#39;]&#39;) &amp;&amp; (pCharacter != &#39;{&#39;) &amp;&amp; (pCharacter != &#39;}&#39;) &amp;&amp; (pCharacter != &#39;&lt;&#39;) &amp;&amp;
+<i>194</i>&nbsp;                (pCharacter != &#39;&gt;&#39;) &amp;&amp; (pCharacter != &#39;+&#39;) &amp;&amp; (pCharacter != &#39;-&#39;) &amp;&amp; (pCharacter != &#39;*&#39;) &amp;&amp;
+<i>195</i>&nbsp;                (pCharacter != &#39;:&#39;) &amp;&amp; (pCharacter != &#39;/&#39;) &amp;&amp; (pCharacter != &#39;!&#39;) &amp;&amp; (pCharacter != &#39;&quot;&#39;) &amp;&amp;
+<i>196</i>&nbsp;                (pCharacter != &#39;$&#39;) &amp;&amp; (pCharacter != &#39;%&#39;) &amp;&amp; (pCharacter != &#39;(&#39;) &amp;&amp; (pCharacter != &#39;)&#39;) &amp;&amp;
+<i>197</i>&nbsp;                (pCharacter != &#39;=&#39;) &amp;&amp; (pCharacter != &#39;^&#39;) &amp;&amp; (pCharacter != &#39;?&#39;) &amp;&amp; (pCharacter != &#39;&amp;&#39;) &amp;&amp;
+<i>198</i>&nbsp;                (pCharacter != &#39;|&#39;) &amp;&amp; (pCharacter != &#39;~&#39;) &amp;&amp; (pCharacter != &#39;,&#39;) &amp;&amp; (pCharacter != &#39;	&#39;) &amp;&amp;
+<i>199</i>&nbsp;                (pCharacter != &#39;\&#39;&#39;) &amp;&amp; (pCharacter != &#39;\n&#39;) &amp;&amp; (pCharacter != &#39;\t&#39;) &amp;&amp; (pCharacter != &#39;\b&#39;) &amp;&amp;
+<b class="nc"><i>200</i>&nbsp;                (pCharacter != &#39;\r&#39;) &amp;&amp; (pCharacter != &#39;\f&#39;)) return false;</b>
+<b class="nc"><i>201</i>&nbsp;        return true;</b>
+<i>202</i>&nbsp;    }
+<i>203</i>&nbsp;
+<i>204</i>&nbsp;    /**
+<i>205</i>&nbsp;     * Rimuove i numeri dal testo
+<i>206</i>&nbsp;     *
+<i>207</i>&nbsp;     * @param pTerms Collection&lt;String&gt; di termini estratti
+<i>208</i>&nbsp;     * @return Collection&lt;String&gt; dei termini estratti con numeri rimossi
+<i>209</i>&nbsp;     */
+<i>210</i>&nbsp;    private Collection&lt;String&gt; deleteNumbers(Collection&lt;String&gt; pTerms) {
+<b class="nc"><i>211</i>&nbsp;        ArrayList&lt;String&gt; terms = new ArrayList&lt;String&gt;();</b>
+<b class="nc"><i>212</i>&nbsp;        for (String s : pTerms) {</b>
+<b class="nc"><i>213</i>&nbsp;            if (!this.isNumber(s)) {</b>
+<b class="nc"><i>214</i>&nbsp;                terms.add(s);</b>
+<i>215</i>&nbsp;            }
+<b class="nc"><i>216</i>&nbsp;        }</b>
+<b class="nc"><i>217</i>&nbsp;        return terms;</b>
+<i>218</i>&nbsp;    }
+<i>219</i>&nbsp;
+<i>220</i>&nbsp;    /**
+<i>221</i>&nbsp;     * Verifica se una parola sia un numero
+<i>222</i>&nbsp;     *
+<i>223</i>&nbsp;     * @param pIstruction carattere da controllare
+<i>224</i>&nbsp;     * @return boolean true se il carattere controllato è un numero, false altrimenti
+<i>225</i>&nbsp;     */
+<i>226</i>&nbsp;    private boolean isNumber(String pIstruction) {
+<i>227</i>&nbsp;        try {
+<b class="nc"><i>228</i>&nbsp;            Integer.parseInt(pIstruction);</b>
+<b class="nc"><i>229</i>&nbsp;        } catch (Exception e) {</b>
+<b class="nc"><i>230</i>&nbsp;            return false;</b>
+<b class="nc"><i>231</i>&nbsp;        }</b>
+<b class="nc"><i>232</i>&nbsp;        return true;</b>
+<i>233</i>&nbsp;    }
+<i>234</i>&nbsp;
+<i>235</i>&nbsp;    /**
+<i>236</i>&nbsp;     * Rimuove le keywords dal testo
+<i>237</i>&nbsp;     *
+<i>238</i>&nbsp;     * @param pWords Collection&lt;String&gt; di termini estratti
+<i>239</i>&nbsp;     * @return Collection&lt;String&gt; dei termini estratti con rimozione di keywords
+<i>240</i>&nbsp;     */
+<i>241</i>&nbsp;    private Collection&lt;String&gt; stemming(Collection&lt;String&gt; pWords) {
+<b class="nc"><i>242</i>&nbsp;        ArrayList&lt;String&gt; effectiveWords = new ArrayList&lt;String&gt;();</b>
+<b class="nc"><i>243</i>&nbsp;        for (String s : pWords) {</b>
+<b class="nc"><i>244</i>&nbsp;            if (!this.isKeyword(s)) {</b>
+<b class="nc"><i>245</i>&nbsp;                effectiveWords.add(s);</b>
+<i>246</i>&nbsp;            }
+<b class="nc"><i>247</i>&nbsp;        }</b>
+<b class="nc"><i>248</i>&nbsp;        return effectiveWords;</b>
+<i>249</i>&nbsp;    }
+<i>250</i>&nbsp;
+<i>251</i>&nbsp;    /**
+<i>252</i>&nbsp;     * Verifica se la parola sia una keyword
+<i>253</i>&nbsp;     *
+<i>254</i>&nbsp;     * @param pWord String parola da controllare
+<i>255</i>&nbsp;     * @return boolean true se la parola controllate è una keyword, false altrimenti
+<i>256</i>&nbsp;     */
+<i>257</i>&nbsp;    private boolean isKeyword(String pWord) {
+<b class="nc"><i>258</i>&nbsp;        if ((pWord.equalsIgnoreCase(&quot;for&quot;)) || (pWord.equalsIgnoreCase(&quot;if&quot;)) || (pWord.equalsIgnoreCase(&quot;while&quot;)) || (pWord.equalsIgnoreCase(&quot;else&quot;)) ||</b>
+<b class="nc"><i>259</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;continue&quot;)) || (pWord.equalsIgnoreCase(&quot;int&quot;)) || (pWord.equalsIgnoreCase(&quot;String&quot;)) || (pWord.equalsIgnoreCase(&quot;float&quot;)) ||</b>
+<b class="nc"><i>260</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;double&quot;)) || (pWord.equalsIgnoreCase(&quot;return&quot;)) || (pWord.equalsIgnoreCase(&quot;false&quot;)) || (pWord.equalsIgnoreCase(&quot;true&quot;)) ||</b>
+<b class="nc"><i>261</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;char&quot;)) || (pWord.equalsIgnoreCase(&quot;boolean&quot;)) || (pWord.equalsIgnoreCase(&quot;public&quot;)) || (pWord.equalsIgnoreCase(&quot;private&quot;)) ||</b>
+<b class="nc"><i>262</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;protected&quot;)) || (pWord.equalsIgnoreCase(&quot;class&quot;)) || (pWord.equalsIgnoreCase(&quot;Integer&quot;)) || (pWord.equalsIgnoreCase(&quot;Double&quot;)) ||</b>
+<b class="nc"><i>263</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;Boolean&quot;)) || (pWord.equalsIgnoreCase(&quot;Character&quot;)) || (pWord.equalsIgnoreCase(&quot;import&quot;)) || (pWord.equalsIgnoreCase(&quot;package&quot;)) ||</b>
+<b class="nc"><i>264</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;null&quot;)) || (pWord.equalsIgnoreCase(&quot;this&quot;)) || (pWord.equalsIgnoreCase(&quot;Float&quot;)) || (pWord.equalsIgnoreCase(&quot;abstract&quot;)) ||</b>
+<b class="nc"><i>265</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;new&quot;)) || (pWord.equalsIgnoreCase(&quot;switch&quot;)) || (pWord.equalsIgnoreCase(&quot;assert&quot;)) || (pWord.equalsIgnoreCase(&quot;default&quot;)) ||</b>
+<b class="nc"><i>266</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;goto&quot;)) || (pWord.equalsIgnoreCase(&quot;synchronized&quot;)) || (pWord.equalsIgnoreCase(&quot;do&quot;)) || (pWord.equalsIgnoreCase(&quot;break&quot;)) ||</b>
+<b class="nc"><i>267</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;implements&quot;)) || (pWord.equalsIgnoreCase(&quot;throw&quot;)) || (pWord.equalsIgnoreCase(&quot;byte&quot;)) || (pWord.equalsIgnoreCase(&quot;throws&quot;)) ||</b>
+<b class="nc"><i>268</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;case&quot;)) || (pWord.equalsIgnoreCase(&quot;enum&quot;)) || (pWord.equalsIgnoreCase(&quot;instanceof&quot;)) || (pWord.equalsIgnoreCase(&quot;transient&quot;)) ||</b>
+<b class="nc"><i>269</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;catch&quot;)) || (pWord.equalsIgnoreCase(&quot;extends&quot;)) || (pWord.equalsIgnoreCase(&quot;short&quot;)) || (pWord.equalsIgnoreCase(&quot;try&quot;)) ||</b>
+<b class="nc"><i>270</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;final&quot;)) || (pWord.equalsIgnoreCase(&quot;interface&quot;)) || (pWord.equalsIgnoreCase(&quot;statico&quot;)) || (pWord.equalsIgnoreCase(&quot;void&quot;)) ||</b>
+<b class="nc"><i>271</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;finally&quot;)) || (pWord.equalsIgnoreCase(&quot;long&quot;)) || (pWord.equalsIgnoreCase(&quot;strictfp&quot;)) || (pWord.equalsIgnoreCase(&quot;volatile&quot;)) ||</b>
+<b class="nc"><i>272</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;const&quot;)) || (pWord.equalsIgnoreCase(&quot;native&quot;)) || (pWord.equalsIgnoreCase(&quot;super&quot;)) || (pWord.equalsIgnoreCase(&quot;Long&quot;)) ||</b>
+<b class="nc"><i>273</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;Byte&quot;)) || (pWord.equalsIgnoreCase(&quot;Short&quot;)) || (pWord.equalsIgnoreCase(&quot;exception&quot;)) || (pWord.equalsIgnoreCase(&quot;org&quot;)) ||</b>
+<b class="nc"><i>274</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;eclipse&quot;)) || (pWord.equalsIgnoreCase(&quot;FileNotFoundException&quot;)) || (pWord.equalsIgnoreCase(&quot;IOException&quot;)) ||</b>
+<b class="nc"><i>275</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;NotValidValueException&quot;)) || (pWord.equalsIgnoreCase(&quot;Object&quot;)) || (pWord.equalsIgnoreCase(&quot;println&quot;) || (pWord.equalsIgnoreCase(&quot;System&quot;)) ||</b>
+<b class="nc"><i>276</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;out&quot;)) || (pWord.equalsIgnoreCase(&quot;JOptionPane&quot;)) || (pWord.equalsIgnoreCase(&quot;equalsIgnoreCase&quot;)) || (pWord.equalsIgnoreCase(&quot;equalsIgnoreCaseIgnoreCase&quot;)) ||</b>
+<b class="nc"><i>277</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;ArrayList&quot;)) || (pWord.equalsIgnoreCase(&quot;List&quot;)) || (pWord.equalsIgnoreCase(&quot;Vector&quot;)) || (pWord.equalsIgnoreCase(&quot;Set&quot;)) || (pWord.equalsIgnoreCase(&quot;HashMap&quot;)) ||</b>
+<b class="nc"><i>278</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;Map&quot;)) || (pWord.equalsIgnoreCase(&quot;SortedSet&quot;)) || (pWord.equalsIgnoreCase(&quot;SortedMap&quot;)) || (pWord.equalsIgnoreCase(&quot;TreeSet&quot;)) ||</b>
+<b class="nc"><i>279</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;LinkedList&quot;)) || (pWord.equalsIgnoreCase(&quot;TreeMap&quot;)) || (pWord.equalsIgnoreCase(&quot;Properties&quot;)) || (pWord.equalsIgnoreCase(&quot;Stack&quot;)) ||</b>
+<b class="nc"><i>280</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;Hashtable&quot;)) || (pWord.equalsIgnoreCase(&quot;Iterator&quot;)) || (pWord.equalsIgnoreCase(&quot;AbstractCollection&quot;)) || (pWord.equalsIgnoreCase(&quot;ListIterator&quot;)) ||</b>
+<b class="nc"><i>281</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;Properties&quot;)) || (pWord.equalsIgnoreCase(&quot;AbstractSequentialList&quot;)) || (pWord.equalsIgnoreCase(&quot;AbstractMap&quot;)) || (pWord.equalsIgnoreCase(&quot;Comparable&quot;)) ||</b>
+<b class="nc"><i>282</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;BigDecimal&quot;)) || (pWord.equalsIgnoreCase(&quot;BigInteger&quot;)) || (pWord.equalsIgnoreCase(&quot;CollationKey&quot;)) || (pWord.equalsIgnoreCase(&quot;ObjectStreamField&quot;)) ||</b>
+<b class="nc"><i>283</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;Date&quot;)) || (pWord.equalsIgnoreCase(&quot;Collator&quot;)) || (pWord.equalsIgnoreCase(&quot;Comparator&quot;)) || (pWord.equalsIgnoreCase(&quot;java&quot;)) || (pWord.equalsIgnoreCase(&quot;util&quot;)) ||</b>
+<b class="nc"><i>284</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;arraycopy&quot;)) || (pWord.equalsIgnoreCase(&quot;Enumeration&quot;)) || (pWord.equalsIgnoreCase(&quot;Collections&quot;)) || (pWord.equalsIgnoreCase(&quot;Dimension&quot;)) ||</b>
+<b class="nc"><i>285</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;Arrays&quot;)) || (pWord.equalsIgnoreCase(&quot;SortedListModel&quot;)) || (pWord.equalsIgnoreCase(&quot;connection&quot;)) || (pWord.equalsIgnoreCase(&quot;get&quot;)) ||</b>
+<b class="nc"><i>286</i>&nbsp;                (pWord.equalsIgnoreCase(&quot;set&quot;)) || (pWord.equalsIgnoreCase(&quot;is&quot;)) || (pWord.equalsIgnoreCase(&quot;main&quot;)) || (pWord.equalsIgnoreCase(&quot;args&quot;)) || (pWord.equalsIgnoreCase(&quot;argv&quot;)))) {</b>
+<b class="nc"><i>287</i>&nbsp;            return true;</b>
+<b class="nc"><i>288</i>&nbsp;        } else if (pWord.contains(&quot;Exception&quot;)) return true;</b>
+<b class="nc"><i>289</i>&nbsp;        return false;</b>
+<i>290</i>&nbsp;    }
+<i>291</i>&nbsp;
+<i>292</i>&nbsp;    /**
+<i>293</i>&nbsp;     * Rimuove gli spazi fra le parole del testo
+<i>294</i>&nbsp;     *
+<i>295</i>&nbsp;     * @param pTerms Collection&lt;String&gt; delle parole estratte
+<i>296</i>&nbsp;     * @return Collection&lt;String&gt; delle parole estratte con rimozione degli spazi fra una parola e l&#39;altra
+<i>297</i>&nbsp;     */
+<i>298</i>&nbsp;    private Collection&lt;String&gt; deleteSpaces(Collection&lt;String&gt; pTerms) {
+<b class="nc"><i>299</i>&nbsp;        ArrayList&lt;String&gt; terms = new ArrayList&lt;String&gt;();</b>
+<i>300</i>&nbsp;
+<b class="nc"><i>301</i>&nbsp;        for (String s : pTerms) {</b>
+<b class="nc"><i>302</i>&nbsp;            terms.add(s.replace(&quot; &quot;, &quot;&quot;));</b>
+<i>303</i>&nbsp;			/*if(!s.equals(&quot; &quot;)){
+<i>304</i>&nbsp;				char[] charTerm=s.toCharArray();
+<i>305</i>&nbsp;				for(int i=0; i&lt;charTerm.length;i++){
+<i>306</i>&nbsp;					if((charTerm[i]!=&#39; &#39;)){
+<i>307</i>&nbsp;						term+=charTerm[i];
+<i>308</i>&nbsp;					}
+<i>309</i>&nbsp;				}
+<i>310</i>&nbsp;			terms.add(term);
+<i>311</i>&nbsp;			term=&quot;&quot;;
+<i>312</i>&nbsp;			}*/
+<b class="nc"><i>313</i>&nbsp;        }</b>
+<b class="nc"><i>314</i>&nbsp;        return terms;</b>
+<i>315</i>&nbsp;    }
+<i>316</i>&nbsp;
+<i>317</i>&nbsp;    /**
+<i>318</i>&nbsp;     * Trasforma in lower case le parole del testo se necessario
+<i>319</i>&nbsp;     *
+<i>320</i>&nbsp;     * @param pTerms Collection&lt;String&gt; delle parole estratte
+<i>321</i>&nbsp;     * @return Collection&lt;String&gt; contiene le parole estratte trasformate in minuscolo
+<i>322</i>&nbsp;     */
+<i>323</i>&nbsp;    private Collection&lt;String&gt; lowerCase(Collection&lt;String&gt; pTerms) {
+<b class="nc"><i>324</i>&nbsp;        Collection&lt;String&gt; lowerCaseTerms = new ArrayList&lt;String&gt;();</b>
+<b class="nc"><i>325</i>&nbsp;        for (String s : pTerms) {</b>
+<b class="nc"><i>326</i>&nbsp;            lowerCaseTerms.add(s.toLowerCase());</b>
+<b class="nc"><i>327</i>&nbsp;        }</b>
+<b class="nc"><i>328</i>&nbsp;        return lowerCaseTerms;</b>
+<i>329</i>&nbsp;    }
+<i>330</i>&nbsp;
+<i>331</i>&nbsp;    /**
+<i>332</i>&nbsp;     * Aggiunge spazi nelle parole scritte con camel case e crea una collezione contenente tali parole
+<i>333</i>&nbsp;     *
+<i>334</i>&nbsp;     * @param pTerms Collection&lt;String&gt; delle parole estratte
+<i>335</i>&nbsp;     * @return Collection&lt;String&gt; contiene le parole in camel case a cui sono stati aggiunti spazi
+<i>336</i>&nbsp;     */
+<i>337</i>&nbsp;    private Collection&lt;String&gt; splitCamelCaseWords(Collection&lt;String&gt; pTerms) {
+<b class="nc"><i>338</i>&nbsp;        Collection&lt;String&gt; noCamelCaseWords = new ArrayList&lt;String&gt;();</b>
+<b class="nc"><i>339</i>&nbsp;        for (String s : pTerms) {</b>
+<b class="nc"><i>340</i>&nbsp;            String[] splittedString = this.splitCamelCase(s).split(&quot; &quot;);</b>
+<b class="nc"><i>341</i>&nbsp;            for (String splitted : splittedString) {</b>
+<b class="nc"><i>342</i>&nbsp;                noCamelCaseWords.add(splitted);</b>
+<i>343</i>&nbsp;            }
+<b class="nc"><i>344</i>&nbsp;        }</b>
+<b class="nc"><i>345</i>&nbsp;        return noCamelCaseWords;</b>
+<i>346</i>&nbsp;    }
+<i>347</i>&nbsp;
+<i>348</i>&nbsp;    /**
+<i>349</i>&nbsp;     * Aggiunge gli spazi nelle stringhe scritte con camel case
+<i>350</i>&nbsp;     *
+<i>351</i>&nbsp;     * @param s String stringa in camel case
+<i>352</i>&nbsp;     * @return String stringa con aggiunta di spazi fra le parole in camel case
+<i>353</i>&nbsp;     */
+<i>354</i>&nbsp;    private String splitCamelCase(String s) {
+<b class="nc"><i>355</i>&nbsp;        return s.replaceAll(String.format(&quot;%s|%s|%s&quot;,</b>
+<i>356</i>&nbsp;                &quot;(?&lt;=[A-Z])(?=[A-Z][a-z])&quot;, &quot;(?&lt;=[^A-Z])(?=[A-Z])&quot;,
+<i>357</i>&nbsp;                &quot;(?&lt;=[A-Za-z])(?=[^A-Za-z])&quot;), &quot; &quot;);
+<i>358</i>&nbsp;    }
+<i>359</i>&nbsp;
+<i>360</i>&nbsp;    /**
+<i>361</i>&nbsp;     * Rimuove le parole banali, composte da una sola lettera
+<i>362</i>&nbsp;     *
+<i>363</i>&nbsp;     * @param pTerms Collection&lt;String&gt; delle parole estratte
+<i>364</i>&nbsp;     * @return ArrayList&lt;String&gt; di parole con lunghezza superiore a uno
+<i>365</i>&nbsp;     */
+<i>366</i>&nbsp;    private ArrayList&lt;String&gt; deleteTrivialWords(Collection&lt;String&gt; pTerms) {
+<b class="nc"><i>367</i>&nbsp;        ArrayList&lt;String&gt; newTerms = new ArrayList&lt;String&gt;();</b>
+<b class="nc"><i>368</i>&nbsp;        for (String s : pTerms) {</b>
+<b class="nc"><i>369</i>&nbsp;            if (s.length() == 1) {</b>
+<i>370</i>&nbsp;                // do nothing
+<i>371</i>&nbsp;            } else {
+<b class="nc"><i>372</i>&nbsp;                newTerms.add(s);</b>
+<i>373</i>&nbsp;            }
+<b class="nc"><i>374</i>&nbsp;        }</b>
+<b class="nc"><i>375</i>&nbsp;        return newTerms;</b>
+<i>376</i>&nbsp;    }
+<i>377</i>&nbsp;
+<i>378</i>&nbsp;    /**
+<i>379</i>&nbsp;     * Rimuove spazi e separa le stringhe con camel case
+<i>380</i>&nbsp;     *
+<i>381</i>&nbsp;     * @param pTerms Collection&lt;String&gt; delle parole estratte
+<i>382</i>&nbsp;     * @return Collection&lt;String&gt; di stringhe senza camel case, in lower case, e senza keyword
+<i>383</i>&nbsp;     */
+<i>384</i>&nbsp;    private Collection&lt;String&gt; filter(Collection&lt;String&gt; pTerms) {
+<b class="nc"><i>385</i>&nbsp;        ArrayList&lt;String&gt; terms = new ArrayList&lt;String&gt;();</b>
+<b class="nc"><i>386</i>&nbsp;        for (String term : pTerms) {</b>
+<b class="nc"><i>387</i>&nbsp;            term = term.replace(&quot; &quot;, &quot;&quot;);</b>
+<b class="nc"><i>388</i>&nbsp;            String[] splittedString = this.splitCamelCase(term).split(&quot; &quot;);</b>
+<b class="nc"><i>389</i>&nbsp;            for (String splitted : splittedString) {</b>
+<b class="nc"><i>390</i>&nbsp;                if (splitted.length() &gt; 1 &amp;&amp; !this.isKeyword(splitted))</b>
+<b class="nc"><i>391</i>&nbsp;                    terms.add(splitted.toLowerCase());</b>
+<i>392</i>&nbsp;            }
+<b class="nc"><i>393</i>&nbsp;        }</b>
+<b class="nc"><i>394</i>&nbsp;        return terms;</b>
+<i>395</i>&nbsp;    }
+<i>396</i>&nbsp;
+<i>397</i>&nbsp;    /**
+<i>398</i>&nbsp;     * @return occorrenze di una parola
+<i>399</i>&nbsp;     */
+<i>400</i>&nbsp;    public Collection&lt;Double&gt; getOccourences() {
+<b class="nc"><i>401</i>&nbsp;        return this.occourences;</b>
+<i>402</i>&nbsp;    }
+<i>403</i>&nbsp;
+<i>404</i>&nbsp;    /**
+<i>405</i>&nbsp;     * @return termini estratti dal contenuto testuale del Bean
+<i>406</i>&nbsp;     */
+<i>407</i>&nbsp;    public HashMap&lt;String, Integer&gt; getTermsSet() {
+<b class="nc"><i>408</i>&nbsp;        return termsSet;</b>
+<i>409</i>&nbsp;    }
+<i>410</i>&nbsp;
+<i>411</i>&nbsp;    /**
+<i>412</i>&nbsp;     * @param termsSet termini estratti dal contenuto testuale del Bean
+<i>413</i>&nbsp;     */
+<i>414</i>&nbsp;    public void setTermsSet(HashMap&lt;String, Integer&gt; termsSet) {
+<b class="nc"><i>415</i>&nbsp;        this.termsSet = termsSet;</b>
+<i>416</i>&nbsp;    }
+<i>417</i>&nbsp;
+<i>418</i>&nbsp;    /**
+<i>419</i>&nbsp;     * @return cinque termini più frequenti nel contenuto testuale del Bean
+<i>420</i>&nbsp;     */
+<i>421</i>&nbsp;    public TreeMap&lt;String, Integer&gt; getTopicsMap() {
+<b class="nc"><i>422</i>&nbsp;        return topicsMap;</b>
+<i>423</i>&nbsp;    }
+<i>424</i>&nbsp;
+<i>425</i>&nbsp;    /**
+<i>426</i>&nbsp;     * @param topicsMap cinque termini più frequenti nel contenuto testuale del Bean
+<i>427</i>&nbsp;     */
+<i>428</i>&nbsp;    public void setTopicsMap(TreeMap&lt;String, Integer&gt; topicsMap) {
+<b class="nc"><i>429</i>&nbsp;        this.topicsMap = topicsMap;</b>
+<i>430</i>&nbsp;    }
+<i>431</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

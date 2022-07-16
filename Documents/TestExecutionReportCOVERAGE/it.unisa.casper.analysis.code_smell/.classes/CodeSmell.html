@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CodeSmell</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.analysis.code_smell</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CodeSmell (it.unisa.casper.analysis.code_smell)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CodeSmell</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    28,6%
+  </span>
+  <span class="absValue">
+    (2/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    57,1%
+  </span>
+  <span class="absValue">
+    (8/ 14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.analysis.code_smell;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.strategy.CodeSmellDetectionStrategy;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.util.HashMap;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * Classe astratta dell&#39;oggetto CodeSmell, necessario per tenere traccia nel database dei code smell
+<i>9</i>&nbsp; * individuati durante l&#39;analisi del codice
+<i>10</i>&nbsp; *
+<i>11</i>&nbsp; * @param &lt;T&gt; rappresenta un generico detection strategy, specificato caso per caso nelle classi figlie.
+<i>12</i>&nbsp; */
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;public abstract class CodeSmell&lt;T&gt; {
+<i>15</i>&nbsp;    /**
+<i>16</i>&nbsp;     * Le stringhe sottostanti dichiarano i nomi (invariabili) degli smell presi in esame
+<i>17</i>&nbsp;     * da questo plug-in.
+<i>18</i>&nbsp;     */
+<i>19</i>&nbsp;    public static final String MISPLACED_CLASS = &quot;Misplaced Class&quot;;
+<i>20</i>&nbsp;    public static final String FEATURE_ENVY = &quot;Feature Envy&quot;;
+<i>21</i>&nbsp;    public static final String BLOB = &quot;Blob&quot;;
+<i>22</i>&nbsp;    public static final String PROMISCUOUS_PACKAGE = &quot;Promiscuous Package&quot;;
+<i>23</i>&nbsp;    public static final String DIVERGENT_CHANGE = &quot;Divergent Change&quot;;
+<i>24</i>&nbsp;    public static final String SHOTGUN_SURGERY = &quot;Shotgun Surgery&quot;;
+<i>25</i>&nbsp;    public static final String PARALLEL_INHERITANCE = &quot;Parallel Inheritance&quot;;
+<i>26</i>&nbsp;    public static final String COMPLEX_CLASS = &quot;Complex Class&quot;;
+<i>27</i>&nbsp;    public static final String LAZY_CLASS = &quot;Lazy Class&quot;;
+<i>28</i>&nbsp;    public static final String REFUSED_BEQUEST = &quot;Refused Bequest&quot;;
+<i>29</i>&nbsp;    public static final String SPAGHETTI_CODE = &quot;Spaghetti Code&quot;;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    protected String smellName;
+<i>32</i>&nbsp;    protected CodeSmellDetectionStrategy detectionStrategy;
+<i>33</i>&nbsp;    protected String algoritmsUsed;
+<i>34</i>&nbsp;    protected HashMap&lt;String, Double&gt; index;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    /**
+<i>37</i>&nbsp;     * Costruttore
+<i>38</i>&nbsp;     *
+<i>39</i>&nbsp;     * @param name              Stringa che rappresenta il nome del code smell istanziato
+<i>40</i>&nbsp;     * @param detectionStrategy Strategy associato al code smell, da utilizzare per il refactoring
+<i>41</i>&nbsp;     * @param algoritmsUsed     Stringa che rappresenta il tipo di algoritmo che ha rilevato tale smell
+<i>42</i>&nbsp;     */
+<b class="fc"><i>43</i>&nbsp;    public CodeSmell(String name, CodeSmellDetectionStrategy detectionStrategy, String algoritmsUsed) {</b>
+<b class="fc"><i>44</i>&nbsp;        this.smellName = name;</b>
+<b class="fc"><i>45</i>&nbsp;        this.detectionStrategy = detectionStrategy;</b>
+<b class="fc"><i>46</i>&nbsp;        this.algoritmsUsed = algoritmsUsed;</b>
+<b class="fc"><i>47</i>&nbsp;        index = new HashMap&lt;String, Double&gt;();</b>
+<b class="fc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    /**
+<i>51</i>&nbsp;     * Metodo che stabilisce la presenza di uno smell in un component
+<i>52</i>&nbsp;     *
+<i>53</i>&nbsp;     * @param component generico componente da analizzare
+<i>54</i>&nbsp;     * @return true se il component è affetto da smell,false altrimenti
+<i>55</i>&nbsp;     */
+<i>56</i>&nbsp;    public abstract boolean affects(T component);
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    /**
+<i>59</i>&nbsp;     * override del toString per consentire il ritorno del nome dello smell
+<i>60</i>&nbsp;     *
+<i>61</i>&nbsp;     * @return
+<i>62</i>&nbsp;     */
+<i>63</i>&nbsp;    public String toString() {
+<b class="nc"><i>64</i>&nbsp;        return this.smellName;</b>
+<i>65</i>&nbsp;    }
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * getter
+<i>69</i>&nbsp;     *
+<i>70</i>&nbsp;     * @return stringa corrispondente al nome dello smell
+<i>71</i>&nbsp;     */
+<i>72</i>&nbsp;    public String getSmellName() {
+<b class="nc"><i>73</i>&nbsp;        return smellName;</b>
+<i>74</i>&nbsp;    }
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    /**
+<i>77</i>&nbsp;     * getter
+<i>78</i>&nbsp;     *
+<i>79</i>&nbsp;     * @return stringa corrispondente al tipo di algoritmo usato
+<i>80</i>&nbsp;     */
+<i>81</i>&nbsp;    public String getAlgoritmsUsed() {
+<b class="nc"><i>82</i>&nbsp;        return algoritmsUsed;</b>
+<i>83</i>&nbsp;    }
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    /**
+<i>86</i>&nbsp;     * getter
+<i>87</i>&nbsp;     *
+<i>88</i>&nbsp;     * @return HashMap&lt;String, Double&gt; lista di double corrispondente agli indici ottenuti dall&#39;algoritmo usato
+<i>89</i>&nbsp;     */
+<i>90</i>&nbsp;    public HashMap&lt;String, Double&gt; getIndex() {
+<b class="nc"><i>91</i>&nbsp;        return index;</b>
+<i>92</i>&nbsp;    }
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;    /**
+<i>95</i>&nbsp;     * setter
+<i>96</i>&nbsp;     *
+<i>97</i>&nbsp;     * @param key    String corrispondente all&#39;indice da inserire
+<i>98</i>&nbsp;     * @param indice double corrispondente all&#39;indice ottenute dall&#39;algoritmo usato
+<i>99</i>&nbsp;     */
+<i>100</i>&nbsp;    public void addIndex(String key, double indice) {
+<b class="nc"><i>101</i>&nbsp;        index.put(key, indice);</b>
+<b class="nc"><i>102</i>&nbsp;    }</b>
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;    /**
+<i>105</i>&nbsp;     * setter
+<i>106</i>&nbsp;     *
+<i>107</i>&nbsp;     * @param index HashMap&lt;String, Double&gt;  lista di double corrispondente agli indici da settare
+<i>108</i>&nbsp;     */
+<i>109</i>&nbsp;    public void setIndex(HashMap&lt;String, Double&gt; index) {
+<b class="fc"><i>110</i>&nbsp;        this.index = index;</b>
+<b class="fc"><i>111</i>&nbsp;    }</b>
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

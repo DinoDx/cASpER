@@ -1,0 +1,535 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MethodBean</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.storage.beans</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MethodBean (it.unisa.casper.storage.beans)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MethodBean</td>
+<td class="coverageStat">
+  <span class="percent">
+    65,2%
+  </span>
+  <span class="absValue">
+    (15/ 23)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    57,1%
+  </span>
+  <span class="absValue">
+    (36/ 63)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MethodBean$Builder</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (26/ 26)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    77,8%
+  </span>
+  <span class="absValue">
+    (28/ 36)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    69,7%
+  </span>
+  <span class="absValue">
+    (62/ 89)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.storage.beans;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.unisa.casper.analysis.code_smell.CodeSmell;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.util.ArrayList;
+<i>6</i>&nbsp;import java.util.HashMap;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;import java.util.Objects;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;/**
+<i>11</i>&nbsp; * oggetto che istanzia un metodo
+<i>12</i>&nbsp; */
+<b class="fc"><i>13</i>&nbsp;public class MethodBean implements Comparable {</b>
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    private String fullQualifiedName; // obbligatorio full qualified name del metodo
+<i>16</i>&nbsp;    private String textContent; // obbligatorio contenuto testuale del metodo
+<i>17</i>&nbsp;    private ClassBean returnType;// tipo di ritorno del metodo
+<i>18</i>&nbsp;    private HashMap&lt;String, ClassBean&gt; parameters; //lista di parametri passati al metodo
+<i>19</i>&nbsp;    private InstanceVariableBeanList instanceVariables; // lista di variabili di istanza usate dal metodo
+<i>20</i>&nbsp;    private MethodBeanList methodsCalls;// lista di metodi chiamati da un metodo
+<i>21</i>&nbsp;    private ClassBean belongingClass; // classe alla quale il metodo appartiene
+<i>22</i>&nbsp;    private ClassBean enviedClass; // classe invidiata dal metodo, se esistente
+<i>23</i>&nbsp;    private boolean staticMethod; // boolean che stabilisce se il metodo è statico
+<i>24</i>&nbsp;    private boolean isDefaultCostructor;// boolean che stabilisce se il costruttore utilizzato è quello di default
+<i>25</i>&nbsp;    private List&lt;CodeSmell&gt; affectedSmell; // lista di smell dai quali è affetto il metodo
+<i>26</i>&nbsp;    private String visibility; //visibilità del metodo
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /**
+<i>29</i>&nbsp;     * costruttore
+<i>30</i>&nbsp;     *
+<i>31</i>&nbsp;     * @param builder builder che istanzia effettivamente l&#39;oggetto
+<i>32</i>&nbsp;     */
+<b class="fc"><i>33</i>&nbsp;    private MethodBean(Builder builder) {</b>
+<b class="fc"><i>34</i>&nbsp;        fullQualifiedName = builder._fullQualifiedName;</b>
+<b class="fc"><i>35</i>&nbsp;        textContent = builder._textContent;</b>
+<b class="fc"><i>36</i>&nbsp;        returnType = builder._returnType;</b>
+<b class="fc"><i>37</i>&nbsp;        parameters = builder._parameters;</b>
+<b class="fc"><i>38</i>&nbsp;        instanceVariables = builder._instanceVariables;</b>
+<b class="fc"><i>39</i>&nbsp;        methodsCalls = builder._methodsCalls;</b>
+<b class="fc"><i>40</i>&nbsp;        belongingClass = builder._belongingClass;</b>
+<b class="fc"><i>41</i>&nbsp;        enviedClass = builder._enviedClass;</b>
+<b class="fc"><i>42</i>&nbsp;        staticMethod = builder._staticMethod;</b>
+<b class="fc"><i>43</i>&nbsp;        isDefaultCostructor = builder._isDefaultCostructor;</b>
+<b class="fc"><i>44</i>&nbsp;        if (builder._affectedSmell != null) {</b>
+<b class="fc"><i>45</i>&nbsp;            affectedSmell = builder._affectedSmell;</b>
+<i>46</i>&nbsp;        } else {
+<b class="fc"><i>47</i>&nbsp;            affectedSmell = new ArrayList&lt;&gt;();</b>
+<i>48</i>&nbsp;        }
+<b class="fc"><i>49</i>&nbsp;        visibility = builder._visibility;</b>
+<b class="fc"><i>50</i>&nbsp;    }</b>
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    /**
+<i>53</i>&nbsp;     * metodo che stabilisce se il metodo è affetto da un code smell
+<i>54</i>&nbsp;     *
+<i>55</i>&nbsp;     * @param smell smell del quale verificare la presenza
+<i>56</i>&nbsp;     * @return true se il metodo è affetto,false altrimenti
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;    public boolean isAffected(CodeSmell smell) {
+<b class="fc"><i>59</i>&nbsp;        return smell.affects(this);</b>
+<i>60</i>&nbsp;    }
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    /**
+<i>63</i>&nbsp;     * getter
+<i>64</i>&nbsp;     *
+<i>65</i>&nbsp;     * @return fqn del metodo
+<i>66</i>&nbsp;     */
+<i>67</i>&nbsp;    public String getFullQualifiedName() {
+<b class="fc"><i>68</i>&nbsp;        return fullQualifiedName;</b>
+<i>69</i>&nbsp;    }
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    /**
+<i>72</i>&nbsp;     * getter
+<i>73</i>&nbsp;     *
+<i>74</i>&nbsp;     * @return contenuto testuale del metodo
+<i>75</i>&nbsp;     */
+<i>76</i>&nbsp;    public String getTextContent() {
+<b class="fc"><i>77</i>&nbsp;        return textContent;</b>
+<i>78</i>&nbsp;    }
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    /**
+<i>81</i>&nbsp;     * getter
+<i>82</i>&nbsp;     *
+<i>83</i>&nbsp;     * @return tipo di ritorno del metodo
+<i>84</i>&nbsp;     */
+<i>85</i>&nbsp;    public ClassBean getReturnType() {
+<b class="fc"><i>86</i>&nbsp;        return returnType;</b>
+<i>87</i>&nbsp;    }
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    /**
+<i>90</i>&nbsp;     * getter
+<i>91</i>&nbsp;     *
+<i>92</i>&nbsp;     * @return parametri usati dal metodo
+<i>93</i>&nbsp;     */
+<i>94</i>&nbsp;    public HashMap&lt;String, ClassBean&gt; getParameters() {
+<b class="fc"><i>95</i>&nbsp;        if (parameters == null) return null;</b>
+<b class="fc"><i>96</i>&nbsp;        return parameters;</b>
+<i>97</i>&nbsp;    }
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    /**
+<i>100</i>&nbsp;     * getter
+<i>101</i>&nbsp;     *
+<i>102</i>&nbsp;     * @return lista di variabili utilizzate dal metodo
+<i>103</i>&nbsp;     */
+<i>104</i>&nbsp;    public List&lt;InstanceVariableBean&gt; getInstanceVariableList() {
+<b class="fc"><i>105</i>&nbsp;        if (instanceVariables == null) return null;</b>
+<b class="fc"><i>106</i>&nbsp;        return instanceVariables.getList();</b>
+<i>107</i>&nbsp;    }
+<i>108</i>&nbsp;
+<i>109</i>&nbsp;    /**
+<i>110</i>&nbsp;     * aggiunge una lista di variabili al metodo
+<i>111</i>&nbsp;     *
+<i>112</i>&nbsp;     * @param bean variabile da aggiungere
+<i>113</i>&nbsp;     */
+<i>114</i>&nbsp;    public void addInstanceVariableList(InstanceVariableBean bean) {
+<b class="nc"><i>115</i>&nbsp;        if (instanceVariables != null &amp;&amp; instanceVariables.getList() != null)</b>
+<b class="nc"><i>116</i>&nbsp;            instanceVariables.getList().add(bean);</b>
+<b class="nc"><i>117</i>&nbsp;    }</b>
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;    /**
+<i>120</i>&nbsp;     * rimuove una variabile dalla lista
+<i>121</i>&nbsp;     *
+<i>122</i>&nbsp;     * @param bean variabile da rimuovere
+<i>123</i>&nbsp;     */
+<i>124</i>&nbsp;    public void removeInstanceVariableList(InstanceVariableBean bean) {
+<b class="nc"><i>125</i>&nbsp;        if (instanceVariables != null &amp;&amp; instanceVariables.getList() != null)</b>
+<b class="nc"><i>126</i>&nbsp;            instanceVariables.getList().remove(bean);</b>
+<b class="nc"><i>127</i>&nbsp;    }</b>
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;    /**
+<i>130</i>&nbsp;     * getter
+<i>131</i>&nbsp;     *
+<i>132</i>&nbsp;     * @return lista di metodi chiamati
+<i>133</i>&nbsp;     */
+<i>134</i>&nbsp;    public List&lt;MethodBean&gt; getMethodsCalls() {
+<b class="fc"><i>135</i>&nbsp;        if (methodsCalls == null) return null;</b>
+<b class="fc"><i>136</i>&nbsp;        return methodsCalls.getList();</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    /**
+<i>140</i>&nbsp;     * getter
+<i>141</i>&nbsp;     *
+<i>142</i>&nbsp;     * @return la classe alla quale appartiene il metodo
+<i>143</i>&nbsp;     */
+<i>144</i>&nbsp;    public ClassBean getBelongingClass() {
+<b class="fc"><i>145</i>&nbsp;        return belongingClass;</b>
+<i>146</i>&nbsp;    }
+<i>147</i>&nbsp;
+<i>148</i>&nbsp;    /**
+<i>149</i>&nbsp;     * setter
+<i>150</i>&nbsp;     */
+<i>151</i>&nbsp;    public void setBelongingClass(ClassBean belongingClass) {
+<b class="nc"><i>152</i>&nbsp;        this.belongingClass = belongingClass;</b>
+<b class="nc"><i>153</i>&nbsp;    }</b>
+<i>154</i>&nbsp;
+<i>155</i>&nbsp;    /**
+<i>156</i>&nbsp;     * getter
+<i>157</i>&nbsp;     *
+<i>158</i>&nbsp;     * @return classe invidiata dal metodo, se esistente
+<i>159</i>&nbsp;     */
+<i>160</i>&nbsp;    public ClassBean getEnviedClass() {
+<b class="fc"><i>161</i>&nbsp;        return enviedClass;</b>
+<i>162</i>&nbsp;    }
+<i>163</i>&nbsp;
+<i>164</i>&nbsp;    /**
+<i>165</i>&nbsp;     * setter
+<i>166</i>&nbsp;     */
+<i>167</i>&nbsp;    public void setEnviedClass(ClassBean enviedClass) {
+<b class="fc"><i>168</i>&nbsp;        this.enviedClass = enviedClass;</b>
+<b class="fc"><i>169</i>&nbsp;    }</b>
+<i>170</i>&nbsp;
+<i>171</i>&nbsp;    /**
+<i>172</i>&nbsp;     * getter
+<i>173</i>&nbsp;     *
+<i>174</i>&nbsp;     * @return true se il metodo è statico,false altrimenti
+<i>175</i>&nbsp;     */
+<i>176</i>&nbsp;    public boolean getStaticMethod() {
+<b class="nc"><i>177</i>&nbsp;        return staticMethod;</b>
+<i>178</i>&nbsp;    }
+<i>179</i>&nbsp;
+<i>180</i>&nbsp;    /**
+<i>181</i>&nbsp;     * getter
+<i>182</i>&nbsp;     *
+<i>183</i>&nbsp;     * @return true se il costruttore è quello default, false altrimenti
+<i>184</i>&nbsp;     */
+<i>185</i>&nbsp;    public boolean getDefaultCostructor() {
+<b class="nc"><i>186</i>&nbsp;        return isDefaultCostructor;</b>
+<i>187</i>&nbsp;    }
+<i>188</i>&nbsp;
+<i>189</i>&nbsp;    /**
+<i>190</i>&nbsp;     * getter
+<i>191</i>&nbsp;     *
+<i>192</i>&nbsp;     * @return lista di smell dai quali è affetto il metodo
+<i>193</i>&nbsp;     */
+<i>194</i>&nbsp;    public List&lt;CodeSmell&gt; getAffectedSmell() {
+<b class="fc"><i>195</i>&nbsp;        return affectedSmell;</b>
+<i>196</i>&nbsp;    }
+<i>197</i>&nbsp;
+<i>198</i>&nbsp;    /**
+<i>199</i>&nbsp;     * aggiunge uno smell alla lista degli smell dai quali è affetto il metodo
+<i>200</i>&nbsp;     *
+<i>201</i>&nbsp;     * @param smell smell da aggiungere
+<i>202</i>&nbsp;     */
+<i>203</i>&nbsp;    public void addSmell(CodeSmell smell) {
+<b class="fc"><i>204</i>&nbsp;        if (affectedSmell != null) {</b>
+<b class="fc"><i>205</i>&nbsp;            this.affectedSmell.add(smell);</b>
+<i>206</i>&nbsp;        }
+<i>207</i>&nbsp;        ;
+<b class="fc"><i>208</i>&nbsp;    }</b>
+<i>209</i>&nbsp;
+<i>210</i>&nbsp;    /**
+<i>211</i>&nbsp;     * getter
+<i>212</i>&nbsp;     *
+<i>213</i>&nbsp;     * @return visibility del metodo
+<i>214</i>&nbsp;     */
+<i>215</i>&nbsp;    public String getVisibility() {
+<b class="nc"><i>216</i>&nbsp;        return visibility;</b>
+<i>217</i>&nbsp;    }
+<i>218</i>&nbsp;
+<i>219</i>&nbsp;    /**
+<i>220</i>&nbsp;     * override
+<i>221</i>&nbsp;     *
+<i>222</i>&nbsp;     * @return stringa contenente il contenuto di tutte le variabili d&#39;istanza dell&#39;oggetto della classe MethodBean
+<i>223</i>&nbsp;     */
+<i>224</i>&nbsp;    @Override
+<i>225</i>&nbsp;    public String toString() {
+<i>226</i>&nbsp;
+<b class="nc"><i>227</i>&nbsp;        String envied = &quot;&#39;null&#39;&quot;, belonging = &quot;&#39;null&#39;&quot;;</b>
+<i>228</i>&nbsp;
+<b class="nc"><i>229</i>&nbsp;        if (enviedClass != null) {</b>
+<b class="nc"><i>230</i>&nbsp;            envied = &quot;&#39;&quot; + enviedClass.getFullQualifiedName() + &quot;&#39;&quot;;</b>
+<i>231</i>&nbsp;        }
+<i>232</i>&nbsp;        ;
+<b class="nc"><i>233</i>&nbsp;        if (belongingClass != null) {</b>
+<b class="nc"><i>234</i>&nbsp;            belonging = &quot;&#39;&quot; + belongingClass.getFullQualifiedName() + &quot;&#39;&quot;;</b>
+<i>235</i>&nbsp;        }
+<i>236</i>&nbsp;        ;
+<i>237</i>&nbsp;
+<b class="nc"><i>238</i>&nbsp;        return &quot;MethodBean{&quot; +</b>
+<i>239</i>&nbsp;                &quot;fullQualifiedName=&#39;&quot; + fullQualifiedName + &#39;\&#39;&#39; +
+<i>240</i>&nbsp;                &quot;, textContent=&#39;&quot; + textContent + &#39;\&#39;&#39; +
+<i>241</i>&nbsp;                &quot;, returnType=&quot; + returnType +
+<i>242</i>&nbsp;                &quot;, parameters=&quot; + parameters +
+<i>243</i>&nbsp;                &quot;, instanceVariables=&quot; + instanceVariables +
+<i>244</i>&nbsp;                &quot;, methodsCalls=&quot; + methodsCalls +
+<i>245</i>&nbsp;                &quot;, belongingClass=&quot; + belonging +
+<i>246</i>&nbsp;                &quot;, enviedClass=&quot; + envied +
+<i>247</i>&nbsp;                &quot;, staticMethod=&quot; + staticMethod +
+<i>248</i>&nbsp;                &quot;, isDefaultCostructor=&quot; + isDefaultCostructor +
+<i>249</i>&nbsp;                &quot;, affectedSmell=&quot; + affectedSmell +
+<i>250</i>&nbsp;                &quot;, visibility=&quot; + visibility +
+<i>251</i>&nbsp;                &#39;}&#39;;
+<i>252</i>&nbsp;    }
+<i>253</i>&nbsp;
+<i>254</i>&nbsp;    /**
+<i>255</i>&nbsp;     * override
+<i>256</i>&nbsp;     *
+<i>257</i>&nbsp;     * @param o metodo da confrontare
+<i>258</i>&nbsp;     * @return true se  i metodi sono uguali, false altrimenti
+<i>259</i>&nbsp;     */
+<i>260</i>&nbsp;    @Override
+<i>261</i>&nbsp;    public boolean equals(Object o) {
+<b class="nc"><i>262</i>&nbsp;        if (this == o) return true;</b>
+<b class="nc"><i>263</i>&nbsp;        if (!(o instanceof MethodBean)) return false;</b>
+<b class="nc"><i>264</i>&nbsp;        MethodBean that = (MethodBean) o;</b>
+<b class="nc"><i>265</i>&nbsp;        return staticMethod == that.staticMethod &amp;&amp;</b>
+<i>266</i>&nbsp;                isDefaultCostructor == that.isDefaultCostructor &amp;&amp;
+<b class="nc"><i>267</i>&nbsp;                Objects.equals(fullQualifiedName, that.fullQualifiedName) &amp;&amp;</b>
+<b class="nc"><i>268</i>&nbsp;                Objects.equals(textContent, that.textContent) &amp;&amp;</b>
+<b class="nc"><i>269</i>&nbsp;                Objects.equals(returnType, that.returnType) &amp;&amp;</b>
+<b class="nc"><i>270</i>&nbsp;                Objects.equals(belongingClass, that.belongingClass) &amp;&amp;</b>
+<b class="nc"><i>271</i>&nbsp;                Objects.equals(enviedClass, that.enviedClass) &amp;&amp;</b>
+<b class="nc"><i>272</i>&nbsp;                Objects.equals(visibility, that.visibility);</b>
+<i>273</i>&nbsp;    }
+<i>274</i>&nbsp;
+<i>275</i>&nbsp;    public int compareTo(Object o) {
+<b class="fc"><i>276</i>&nbsp;        return this.getFullQualifiedName().compareTo(((MethodBean) o).getFullQualifiedName());</b>
+<i>277</i>&nbsp;    }
+<i>278</i>&nbsp;
+<i>279</i>&nbsp;    /**
+<i>280</i>&nbsp;     * builder del metodo
+<i>281</i>&nbsp;     */
+<b class="fc"><i>282</i>&nbsp;    public static class Builder {</b>
+<i>283</i>&nbsp;
+<i>284</i>&nbsp;        private String _fullQualifiedName; // obbligatorio
+<i>285</i>&nbsp;        private String _textContent; // obbligatorio
+<i>286</i>&nbsp;        private ClassBean _returnType;
+<i>287</i>&nbsp;        private HashMap&lt;String, ClassBean&gt; _parameters;
+<i>288</i>&nbsp;        private InstanceVariableBeanList _instanceVariables;
+<i>289</i>&nbsp;        private MethodBeanList _methodsCalls;
+<i>290</i>&nbsp;        private ClassBean _belongingClass;
+<i>291</i>&nbsp;        private ClassBean _enviedClass;
+<i>292</i>&nbsp;        private boolean _staticMethod;
+<i>293</i>&nbsp;        private boolean _isDefaultCostructor;
+<i>294</i>&nbsp;        private List&lt;CodeSmell&gt; _affectedSmell;
+<i>295</i>&nbsp;        private String _visibility;
+<i>296</i>&nbsp;
+<i>297</i>&nbsp;        /**
+<i>298</i>&nbsp;         * setter
+<i>299</i>&nbsp;         *
+<i>300</i>&nbsp;         * @param returnType tipo di ritorno da settare
+<i>301</i>&nbsp;         * @return builder
+<i>302</i>&nbsp;         */
+<i>303</i>&nbsp;        public Builder setReturnType(ClassBean returnType) {
+<b class="fc"><i>304</i>&nbsp;            _returnType = returnType;</b>
+<b class="fc"><i>305</i>&nbsp;            return this;</b>
+<i>306</i>&nbsp;        }
+<i>307</i>&nbsp;
+<i>308</i>&nbsp;        /**
+<i>309</i>&nbsp;         * setter
+<i>310</i>&nbsp;         *
+<i>311</i>&nbsp;         * @param parameters lista di parametri da settare
+<i>312</i>&nbsp;         * @return builder
+<i>313</i>&nbsp;         */
+<i>314</i>&nbsp;        public Builder setParameters(HashMap&lt;String, ClassBean&gt; parameters) {
+<b class="fc"><i>315</i>&nbsp;            _parameters = parameters;</b>
+<b class="fc"><i>316</i>&nbsp;            return this;</b>
+<i>317</i>&nbsp;        }
+<i>318</i>&nbsp;
+<i>319</i>&nbsp;        /**
+<i>320</i>&nbsp;         * setter
+<i>321</i>&nbsp;         *
+<i>322</i>&nbsp;         * @param instanceVariables lista di variabili di istanza utilizzate da settare
+<i>323</i>&nbsp;         * @return builder
+<i>324</i>&nbsp;         */
+<i>325</i>&nbsp;        public Builder setInstanceVariableList(InstanceVariableBeanList instanceVariables) {
+<b class="fc"><i>326</i>&nbsp;            _instanceVariables = instanceVariables;</b>
+<b class="fc"><i>327</i>&nbsp;            return this;</b>
+<i>328</i>&nbsp;        }
+<i>329</i>&nbsp;
+<i>330</i>&nbsp;        /**
+<i>331</i>&nbsp;         * setter
+<i>332</i>&nbsp;         *
+<i>333</i>&nbsp;         * @param methodsCalls lista di metodi chiamati da settare
+<i>334</i>&nbsp;         * @return builder
+<i>335</i>&nbsp;         */
+<i>336</i>&nbsp;        public Builder setMethodsCalls(MethodBeanList methodsCalls) {
+<b class="fc"><i>337</i>&nbsp;            _methodsCalls = methodsCalls;</b>
+<b class="fc"><i>338</i>&nbsp;            return this;</b>
+<i>339</i>&nbsp;        }
+<i>340</i>&nbsp;
+<i>341</i>&nbsp;        /**
+<i>342</i>&nbsp;         * setter
+<i>343</i>&nbsp;         *
+<i>344</i>&nbsp;         * @param belongingClass classe di appartenenza da settare
+<i>345</i>&nbsp;         * @return builder
+<i>346</i>&nbsp;         */
+<i>347</i>&nbsp;        public Builder setBelongingClass(ClassBean belongingClass) {
+<b class="fc"><i>348</i>&nbsp;            _belongingClass = belongingClass;</b>
+<b class="fc"><i>349</i>&nbsp;            return this;</b>
+<i>350</i>&nbsp;        }
+<i>351</i>&nbsp;
+<i>352</i>&nbsp;        /**
+<i>353</i>&nbsp;         * setter
+<i>354</i>&nbsp;         *
+<i>355</i>&nbsp;         * @param enviedClass classe invidiata da settare, se esistente
+<i>356</i>&nbsp;         * @return builder
+<i>357</i>&nbsp;         */
+<i>358</i>&nbsp;        public Builder setEnviedClass(ClassBean enviedClass) {
+<b class="fc"><i>359</i>&nbsp;            _enviedClass = enviedClass;</b>
+<b class="fc"><i>360</i>&nbsp;            return this;</b>
+<i>361</i>&nbsp;        }
+<i>362</i>&nbsp;
+<i>363</i>&nbsp;        /**
+<i>364</i>&nbsp;         * setter
+<i>365</i>&nbsp;         *
+<i>366</i>&nbsp;         * @param staticMethod boolean per definire se il metodo è statico
+<i>367</i>&nbsp;         * @return builder
+<i>368</i>&nbsp;         */
+<i>369</i>&nbsp;        public Builder setStaticMethod(boolean staticMethod) {
+<b class="fc"><i>370</i>&nbsp;            _staticMethod = staticMethod;</b>
+<b class="fc"><i>371</i>&nbsp;            return this;</b>
+<i>372</i>&nbsp;        }
+<i>373</i>&nbsp;
+<i>374</i>&nbsp;        /**
+<i>375</i>&nbsp;         * setter
+<i>376</i>&nbsp;         *
+<i>377</i>&nbsp;         * @param isDefaultCostructor boolean per definire se il costruttore usato è quello di default
+<i>378</i>&nbsp;         * @return builder
+<i>379</i>&nbsp;         */
+<i>380</i>&nbsp;        public Builder setDefaultCostructor(boolean isDefaultCostructor) {
+<b class="fc"><i>381</i>&nbsp;            _isDefaultCostructor = isDefaultCostructor;</b>
+<b class="fc"><i>382</i>&nbsp;            return this;</b>
+<i>383</i>&nbsp;        }
+<i>384</i>&nbsp;
+<i>385</i>&nbsp;        /**
+<i>386</i>&nbsp;         * setta la lista degli smell dai quali è affetto il metodo
+<i>387</i>&nbsp;         *
+<i>388</i>&nbsp;         * @return builder
+<i>389</i>&nbsp;         */
+<i>390</i>&nbsp;        public Builder setAffectedSmell() {
+<b class="fc"><i>391</i>&nbsp;            _affectedSmell = new ArrayList&lt;CodeSmell&gt;();</b>
+<b class="fc"><i>392</i>&nbsp;            return this;</b>
+<i>393</i>&nbsp;        }
+<i>394</i>&nbsp;
+<i>395</i>&nbsp;        /**
+<i>396</i>&nbsp;         * setta la visibilità del metodo
+<i>397</i>&nbsp;         *
+<i>398</i>&nbsp;         * @return builder
+<i>399</i>&nbsp;         */
+<i>400</i>&nbsp;        public Builder setVisibility(String visibility) {
+<b class="fc"><i>401</i>&nbsp;            _visibility = visibility;</b>
+<b class="fc"><i>402</i>&nbsp;            return this;</b>
+<i>403</i>&nbsp;        }
+<i>404</i>&nbsp;
+<i>405</i>&nbsp;        /**
+<i>406</i>&nbsp;         * costruttore
+<i>407</i>&nbsp;         *
+<i>408</i>&nbsp;         * @param fullQualifiedName fqn del metodo
+<i>409</i>&nbsp;         * @param textContent       contenuto testuale del metodo
+<i>410</i>&nbsp;         */
+<b class="fc"><i>411</i>&nbsp;        public Builder(String fullQualifiedName, String textContent) {</b>
+<b class="fc"><i>412</i>&nbsp;            _fullQualifiedName = fullQualifiedName;</b>
+<b class="fc"><i>413</i>&nbsp;            _textContent = textContent;</b>
+<b class="fc"><i>414</i>&nbsp;        }</b>
+<i>415</i>&nbsp;
+<i>416</i>&nbsp;        /**
+<i>417</i>&nbsp;         * costruisce il bean
+<i>418</i>&nbsp;         *
+<i>419</i>&nbsp;         * @return un methodbean
+<i>420</i>&nbsp;         */
+<i>421</i>&nbsp;        public MethodBean build() {
+<b class="fc"><i>422</i>&nbsp;            return new MethodBean(this);</b>
+<i>423</i>&nbsp;        }
+<i>424</i>&nbsp;
+<i>425</i>&nbsp;    }
+<i>426</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,982 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Stemmer</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.refactor.splitting_algorithm.irEngine</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Stemmer (it.unisa.casper.refactor.splitting_algorithm.irEngine)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Stemmer</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    42,9%
+  </span>
+  <span class="absValue">
+    (3/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    54,6%
+  </span>
+  <span class="absValue">
+    (325/ 595)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.refactor.splitting_algorithm.irEngine;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.HashMap;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;public class Stemmer {
+<i>6</i>&nbsp;    /**
+<i>7</i>&nbsp;     * Enters C version compatibility mode if set to true (emulates features of
+<i>8</i>&nbsp;     * the original C implementation that are inconsistent with the algorithm as
+<i>9</i>&nbsp;     * described in Lovins&#39;s paper)
+<i>10</i>&nbsp;     */
+<b class="fc"><i>11</i>&nbsp;    private static boolean m_CompMode = false;</b>
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    /**
+<i>14</i>&nbsp;     * The hash tables containing the list of endings.
+<i>15</i>&nbsp;     */
+<b class="fc"><i>16</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l11 = null;</b>
+<b class="fc"><i>17</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l10 = null;</b>
+<b class="fc"><i>18</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l9 = null;</b>
+<b class="fc"><i>19</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l8 = null;</b>
+<b class="fc"><i>20</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l7 = null;</b>
+<b class="fc"><i>21</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l6 = null;</b>
+<b class="fc"><i>22</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l5 = null;</b>
+<b class="fc"><i>23</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l4 = null;</b>
+<b class="fc"><i>24</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l3 = null;</b>
+<b class="fc"><i>25</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l2 = null;</b>
+<b class="fc"><i>26</i>&nbsp;    private static HashMap&lt;String, String&gt; m_l1 = null;</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    static {
+<i>29</i>&nbsp;
+<b class="fc"><i>30</i>&nbsp;        m_l11 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>31</i>&nbsp;        m_l11.put(&quot;alistically&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>32</i>&nbsp;        m_l11.put(&quot;arizability&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>33</i>&nbsp;        m_l11.put(&quot;izationally&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>34</i>&nbsp;        m_l10 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>35</i>&nbsp;        m_l10.put(&quot;antialness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>36</i>&nbsp;        m_l10.put(&quot;arisations&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>37</i>&nbsp;        m_l10.put(&quot;arizations&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>38</i>&nbsp;        m_l10.put(&quot;entialness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>39</i>&nbsp;        m_l9 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>40</i>&nbsp;        m_l9.put(&quot;allically&quot;, &quot;C&quot;);</b>
+<b class="fc"><i>41</i>&nbsp;        m_l9.put(&quot;antaneous&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>42</i>&nbsp;        m_l9.put(&quot;antiality&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>43</i>&nbsp;        m_l9.put(&quot;arisation&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>44</i>&nbsp;        m_l9.put(&quot;arization&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>45</i>&nbsp;        m_l9.put(&quot;ationally&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>46</i>&nbsp;        m_l9.put(&quot;ativeness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>47</i>&nbsp;        m_l9.put(&quot;eableness&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>48</i>&nbsp;        m_l9.put(&quot;entations&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>49</i>&nbsp;        m_l9.put(&quot;entiality&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>50</i>&nbsp;        m_l9.put(&quot;entialize&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>51</i>&nbsp;        m_l9.put(&quot;entiation&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>52</i>&nbsp;        m_l9.put(&quot;ionalness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>53</i>&nbsp;        m_l9.put(&quot;istically&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>54</i>&nbsp;        m_l9.put(&quot;itousness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>55</i>&nbsp;        m_l9.put(&quot;izability&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>56</i>&nbsp;        m_l9.put(&quot;izational&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>57</i>&nbsp;        m_l8 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>58</i>&nbsp;        m_l8.put(&quot;ableness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>59</i>&nbsp;        m_l8.put(&quot;arizable&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>60</i>&nbsp;        m_l8.put(&quot;entation&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>61</i>&nbsp;        m_l8.put(&quot;entially&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>62</i>&nbsp;        m_l8.put(&quot;eousness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>63</i>&nbsp;        m_l8.put(&quot;ibleness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>64</i>&nbsp;        m_l8.put(&quot;icalness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>65</i>&nbsp;        m_l8.put(&quot;ionalism&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>66</i>&nbsp;        m_l8.put(&quot;ionality&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>67</i>&nbsp;        m_l8.put(&quot;ionalize&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>68</i>&nbsp;        m_l8.put(&quot;iousness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>69</i>&nbsp;        m_l8.put(&quot;izations&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>70</i>&nbsp;        m_l8.put(&quot;lessness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>71</i>&nbsp;        m_l7 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>72</i>&nbsp;        m_l7.put(&quot;ability&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>73</i>&nbsp;        m_l7.put(&quot;aically&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>74</i>&nbsp;        m_l7.put(&quot;alistic&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>75</i>&nbsp;        m_l7.put(&quot;alities&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>76</i>&nbsp;        m_l7.put(&quot;ariness&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>77</i>&nbsp;        m_l7.put(&quot;aristic&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>78</i>&nbsp;        m_l7.put(&quot;arizing&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>79</i>&nbsp;        m_l7.put(&quot;ateness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>80</i>&nbsp;        m_l7.put(&quot;atingly&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>81</i>&nbsp;        m_l7.put(&quot;ational&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>82</i>&nbsp;        m_l7.put(&quot;atively&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>83</i>&nbsp;        m_l7.put(&quot;ativism&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>84</i>&nbsp;        m_l7.put(&quot;elihood&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>85</i>&nbsp;        m_l7.put(&quot;encible&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>86</i>&nbsp;        m_l7.put(&quot;entally&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>87</i>&nbsp;        m_l7.put(&quot;entials&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>88</i>&nbsp;        m_l7.put(&quot;entiate&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>89</i>&nbsp;        m_l7.put(&quot;entness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>90</i>&nbsp;        m_l7.put(&quot;fulness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>91</i>&nbsp;        m_l7.put(&quot;ibility&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>92</i>&nbsp;        m_l7.put(&quot;icalism&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>93</i>&nbsp;        m_l7.put(&quot;icalist&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>94</i>&nbsp;        m_l7.put(&quot;icality&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>95</i>&nbsp;        m_l7.put(&quot;icalize&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>96</i>&nbsp;        m_l7.put(&quot;ication&quot;, &quot;G&quot;);</b>
+<b class="fc"><i>97</i>&nbsp;        m_l7.put(&quot;icianry&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>98</i>&nbsp;        m_l7.put(&quot;ination&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>99</i>&nbsp;        m_l7.put(&quot;ingness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>100</i>&nbsp;        m_l7.put(&quot;ionally&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>101</i>&nbsp;        m_l7.put(&quot;isation&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>102</i>&nbsp;        m_l7.put(&quot;ishness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>103</i>&nbsp;        m_l7.put(&quot;istical&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>104</i>&nbsp;        m_l7.put(&quot;iteness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>105</i>&nbsp;        m_l7.put(&quot;iveness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>106</i>&nbsp;        m_l7.put(&quot;ivistic&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>107</i>&nbsp;        m_l7.put(&quot;ivities&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>108</i>&nbsp;        m_l7.put(&quot;ization&quot;, &quot;F&quot;);</b>
+<b class="fc"><i>109</i>&nbsp;        m_l7.put(&quot;izement&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>110</i>&nbsp;        m_l7.put(&quot;oidally&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>111</i>&nbsp;        m_l7.put(&quot;ousness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>112</i>&nbsp;        m_l6 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>113</i>&nbsp;        m_l6.put(&quot;aceous&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>114</i>&nbsp;        m_l6.put(&quot;acious&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>115</i>&nbsp;        m_l6.put(&quot;action&quot;, &quot;G&quot;);</b>
+<b class="fc"><i>116</i>&nbsp;        m_l6.put(&quot;alness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>117</i>&nbsp;        m_l6.put(&quot;ancial&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>118</i>&nbsp;        m_l6.put(&quot;ancies&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>119</i>&nbsp;        m_l6.put(&quot;ancing&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>120</i>&nbsp;        m_l6.put(&quot;ariser&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>121</i>&nbsp;        m_l6.put(&quot;arized&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>122</i>&nbsp;        m_l6.put(&quot;arizer&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>123</i>&nbsp;        m_l6.put(&quot;atable&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>124</i>&nbsp;        m_l6.put(&quot;ations&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>125</i>&nbsp;        m_l6.put(&quot;atives&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>126</i>&nbsp;        m_l6.put(&quot;eature&quot;, &quot;Z&quot;);</b>
+<b class="fc"><i>127</i>&nbsp;        m_l6.put(&quot;efully&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>128</i>&nbsp;        m_l6.put(&quot;encies&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>129</i>&nbsp;        m_l6.put(&quot;encing&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>130</i>&nbsp;        m_l6.put(&quot;ential&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>131</i>&nbsp;        m_l6.put(&quot;enting&quot;, &quot;C&quot;);</b>
+<b class="fc"><i>132</i>&nbsp;        m_l6.put(&quot;entist&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>133</i>&nbsp;        m_l6.put(&quot;eously&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>134</i>&nbsp;        m_l6.put(&quot;ialist&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>135</i>&nbsp;        m_l6.put(&quot;iality&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>136</i>&nbsp;        m_l6.put(&quot;ialize&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>137</i>&nbsp;        m_l6.put(&quot;ically&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>138</i>&nbsp;        m_l6.put(&quot;icance&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>139</i>&nbsp;        m_l6.put(&quot;icians&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>140</i>&nbsp;        m_l6.put(&quot;icists&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>141</i>&nbsp;        m_l6.put(&quot;ifully&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>142</i>&nbsp;        m_l6.put(&quot;ionals&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>143</i>&nbsp;        m_l6.put(&quot;ionate&quot;, &quot;D&quot;);</b>
+<b class="fc"><i>144</i>&nbsp;        m_l6.put(&quot;ioning&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>145</i>&nbsp;        m_l6.put(&quot;ionist&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>146</i>&nbsp;        m_l6.put(&quot;iously&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>147</i>&nbsp;        m_l6.put(&quot;istics&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>148</i>&nbsp;        m_l6.put(&quot;izable&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>149</i>&nbsp;        m_l6.put(&quot;lessly&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>150</i>&nbsp;        m_l6.put(&quot;nesses&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>151</i>&nbsp;        m_l6.put(&quot;oidism&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>152</i>&nbsp;        m_l5 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>153</i>&nbsp;        m_l5.put(&quot;acies&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>154</i>&nbsp;        m_l5.put(&quot;acity&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>155</i>&nbsp;        m_l5.put(&quot;aging&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>156</i>&nbsp;        m_l5.put(&quot;aical&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>157</i>&nbsp;        if (!m_CompMode) {</b>
+<b class="fc"><i>158</i>&nbsp;            m_l5.put(&quot;alist&quot;, &quot;A&quot;);</b>
+<i>159</i>&nbsp;        }
+<b class="fc"><i>160</i>&nbsp;        m_l5.put(&quot;alism&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>161</i>&nbsp;        m_l5.put(&quot;ality&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>162</i>&nbsp;        m_l5.put(&quot;alize&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>163</i>&nbsp;        m_l5.put(&quot;allic&quot;, &quot;b&quot;);</b>
+<b class="fc"><i>164</i>&nbsp;        m_l5.put(&quot;anced&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>165</i>&nbsp;        m_l5.put(&quot;ances&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>166</i>&nbsp;        m_l5.put(&quot;antic&quot;, &quot;C&quot;);</b>
+<b class="fc"><i>167</i>&nbsp;        m_l5.put(&quot;arial&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>168</i>&nbsp;        m_l5.put(&quot;aries&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>169</i>&nbsp;        m_l5.put(&quot;arily&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>170</i>&nbsp;        m_l5.put(&quot;arity&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>171</i>&nbsp;        m_l5.put(&quot;arize&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>172</i>&nbsp;        m_l5.put(&quot;aroid&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>173</i>&nbsp;        m_l5.put(&quot;ately&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>174</i>&nbsp;        m_l5.put(&quot;ating&quot;, &quot;I&quot;);</b>
+<b class="fc"><i>175</i>&nbsp;        m_l5.put(&quot;ation&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>176</i>&nbsp;        m_l5.put(&quot;ative&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>177</i>&nbsp;        m_l5.put(&quot;ators&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>178</i>&nbsp;        m_l5.put(&quot;atory&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>179</i>&nbsp;        m_l5.put(&quot;ature&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>180</i>&nbsp;        m_l5.put(&quot;early&quot;, &quot;Y&quot;);</b>
+<b class="fc"><i>181</i>&nbsp;        m_l5.put(&quot;ehood&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>182</i>&nbsp;        m_l5.put(&quot;eless&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>183</i>&nbsp;        if (!m_CompMode) {</b>
+<b class="fc"><i>184</i>&nbsp;            m_l5.put(&quot;elily&quot;, &quot;A&quot;);</b>
+<i>185</i>&nbsp;        } else {
+<b class="nc"><i>186</i>&nbsp;            m_l5.put(&quot;elity&quot;, &quot;A&quot;);</b>
+<i>187</i>&nbsp;        }
+<b class="fc"><i>188</i>&nbsp;        m_l5.put(&quot;ement&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>189</i>&nbsp;        m_l5.put(&quot;enced&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>190</i>&nbsp;        m_l5.put(&quot;ences&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>191</i>&nbsp;        m_l5.put(&quot;eness&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>192</i>&nbsp;        m_l5.put(&quot;ening&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>193</i>&nbsp;        m_l5.put(&quot;ental&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>194</i>&nbsp;        m_l5.put(&quot;ented&quot;, &quot;C&quot;);</b>
+<b class="fc"><i>195</i>&nbsp;        m_l5.put(&quot;ently&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>196</i>&nbsp;        m_l5.put(&quot;fully&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>197</i>&nbsp;        m_l5.put(&quot;ially&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>198</i>&nbsp;        m_l5.put(&quot;icant&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>199</i>&nbsp;        m_l5.put(&quot;ician&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>200</i>&nbsp;        m_l5.put(&quot;icide&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>201</i>&nbsp;        m_l5.put(&quot;icism&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>202</i>&nbsp;        m_l5.put(&quot;icist&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>203</i>&nbsp;        m_l5.put(&quot;icity&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>204</i>&nbsp;        m_l5.put(&quot;idine&quot;, &quot;I&quot;);</b>
+<b class="fc"><i>205</i>&nbsp;        m_l5.put(&quot;iedly&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>206</i>&nbsp;        m_l5.put(&quot;ihood&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>207</i>&nbsp;        m_l5.put(&quot;inate&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>208</i>&nbsp;        m_l5.put(&quot;iness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>209</i>&nbsp;        m_l5.put(&quot;ingly&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>210</i>&nbsp;        m_l5.put(&quot;inism&quot;, &quot;J&quot;);</b>
+<b class="fc"><i>211</i>&nbsp;        m_l5.put(&quot;inity&quot;, &quot;c&quot;);</b>
+<b class="fc"><i>212</i>&nbsp;        m_l5.put(&quot;ional&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>213</i>&nbsp;        m_l5.put(&quot;ioned&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>214</i>&nbsp;        m_l5.put(&quot;ished&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>215</i>&nbsp;        m_l5.put(&quot;istic&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>216</i>&nbsp;        m_l5.put(&quot;ities&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>217</i>&nbsp;        m_l5.put(&quot;itous&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>218</i>&nbsp;        m_l5.put(&quot;ively&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>219</i>&nbsp;        m_l5.put(&quot;ivity&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>220</i>&nbsp;        m_l5.put(&quot;izers&quot;, &quot;F&quot;);</b>
+<b class="fc"><i>221</i>&nbsp;        m_l5.put(&quot;izing&quot;, &quot;F&quot;);</b>
+<b class="fc"><i>222</i>&nbsp;        m_l5.put(&quot;oidal&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>223</i>&nbsp;        m_l5.put(&quot;oides&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>224</i>&nbsp;        m_l5.put(&quot;otide&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>225</i>&nbsp;        m_l5.put(&quot;ously&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>226</i>&nbsp;        m_l4 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>227</i>&nbsp;        m_l4.put(&quot;able&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>228</i>&nbsp;        m_l4.put(&quot;ably&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>229</i>&nbsp;        m_l4.put(&quot;ages&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>230</i>&nbsp;        m_l4.put(&quot;ally&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>231</i>&nbsp;        m_l4.put(&quot;ance&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>232</i>&nbsp;        m_l4.put(&quot;ancy&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>233</i>&nbsp;        m_l4.put(&quot;ants&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>234</i>&nbsp;        m_l4.put(&quot;aric&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>235</i>&nbsp;        m_l4.put(&quot;arly&quot;, &quot;K&quot;);</b>
+<b class="fc"><i>236</i>&nbsp;        m_l4.put(&quot;ated&quot;, &quot;I&quot;);</b>
+<b class="fc"><i>237</i>&nbsp;        m_l4.put(&quot;ates&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>238</i>&nbsp;        m_l4.put(&quot;atic&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>239</i>&nbsp;        m_l4.put(&quot;ator&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>240</i>&nbsp;        m_l4.put(&quot;ealy&quot;, &quot;Y&quot;);</b>
+<b class="fc"><i>241</i>&nbsp;        m_l4.put(&quot;edly&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>242</i>&nbsp;        m_l4.put(&quot;eful&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>243</i>&nbsp;        m_l4.put(&quot;eity&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>244</i>&nbsp;        m_l4.put(&quot;ence&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>245</i>&nbsp;        m_l4.put(&quot;ency&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>246</i>&nbsp;        m_l4.put(&quot;ened&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>247</i>&nbsp;        m_l4.put(&quot;enly&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>248</i>&nbsp;        m_l4.put(&quot;eous&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>249</i>&nbsp;        m_l4.put(&quot;hood&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>250</i>&nbsp;        m_l4.put(&quot;ials&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>251</i>&nbsp;        m_l4.put(&quot;ians&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>252</i>&nbsp;        m_l4.put(&quot;ible&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>253</i>&nbsp;        m_l4.put(&quot;ibly&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>254</i>&nbsp;        m_l4.put(&quot;ical&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>255</i>&nbsp;        m_l4.put(&quot;ides&quot;, &quot;L&quot;);</b>
+<b class="fc"><i>256</i>&nbsp;        m_l4.put(&quot;iers&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>257</i>&nbsp;        m_l4.put(&quot;iful&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>258</i>&nbsp;        m_l4.put(&quot;ines&quot;, &quot;M&quot;);</b>
+<b class="fc"><i>259</i>&nbsp;        m_l4.put(&quot;ings&quot;, &quot;N&quot;);</b>
+<b class="fc"><i>260</i>&nbsp;        m_l4.put(&quot;ions&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>261</i>&nbsp;        m_l4.put(&quot;ious&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>262</i>&nbsp;        m_l4.put(&quot;isms&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>263</i>&nbsp;        m_l4.put(&quot;ists&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>264</i>&nbsp;        m_l4.put(&quot;itic&quot;, &quot;H&quot;);</b>
+<b class="fc"><i>265</i>&nbsp;        m_l4.put(&quot;ized&quot;, &quot;F&quot;);</b>
+<b class="fc"><i>266</i>&nbsp;        m_l4.put(&quot;izer&quot;, &quot;F&quot;);</b>
+<b class="fc"><i>267</i>&nbsp;        m_l4.put(&quot;less&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>268</i>&nbsp;        m_l4.put(&quot;lily&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>269</i>&nbsp;        m_l4.put(&quot;ness&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>270</i>&nbsp;        m_l4.put(&quot;ogen&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>271</i>&nbsp;        m_l4.put(&quot;ward&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>272</i>&nbsp;        m_l4.put(&quot;wise&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>273</i>&nbsp;        m_l4.put(&quot;ying&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>274</i>&nbsp;        m_l4.put(&quot;yish&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>275</i>&nbsp;        m_l3 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>276</i>&nbsp;        m_l3.put(&quot;acy&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>277</i>&nbsp;        m_l3.put(&quot;age&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>278</i>&nbsp;        m_l3.put(&quot;aic&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>279</i>&nbsp;        m_l3.put(&quot;als&quot;, &quot;b&quot;);</b>
+<b class="fc"><i>280</i>&nbsp;        m_l3.put(&quot;ant&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>281</i>&nbsp;        m_l3.put(&quot;ars&quot;, &quot;O&quot;);</b>
+<b class="fc"><i>282</i>&nbsp;        m_l3.put(&quot;ary&quot;, &quot;F&quot;);</b>
+<b class="fc"><i>283</i>&nbsp;        m_l3.put(&quot;ata&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>284</i>&nbsp;        m_l3.put(&quot;ate&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>285</i>&nbsp;        m_l3.put(&quot;eal&quot;, &quot;Y&quot;);</b>
+<b class="fc"><i>286</i>&nbsp;        m_l3.put(&quot;ear&quot;, &quot;Y&quot;);</b>
+<b class="fc"><i>287</i>&nbsp;        m_l3.put(&quot;ely&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>288</i>&nbsp;        m_l3.put(&quot;ene&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>289</i>&nbsp;        m_l3.put(&quot;ent&quot;, &quot;C&quot;);</b>
+<b class="fc"><i>290</i>&nbsp;        m_l3.put(&quot;ery&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>291</i>&nbsp;        m_l3.put(&quot;ese&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>292</i>&nbsp;        m_l3.put(&quot;ful&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>293</i>&nbsp;        m_l3.put(&quot;ial&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>294</i>&nbsp;        m_l3.put(&quot;ian&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>295</i>&nbsp;        m_l3.put(&quot;ics&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>296</i>&nbsp;        m_l3.put(&quot;ide&quot;, &quot;L&quot;);</b>
+<b class="fc"><i>297</i>&nbsp;        m_l3.put(&quot;ied&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>298</i>&nbsp;        m_l3.put(&quot;ier&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>299</i>&nbsp;        m_l3.put(&quot;ies&quot;, &quot;P&quot;);</b>
+<b class="fc"><i>300</i>&nbsp;        m_l3.put(&quot;ily&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>301</i>&nbsp;        m_l3.put(&quot;ine&quot;, &quot;M&quot;);</b>
+<b class="fc"><i>302</i>&nbsp;        m_l3.put(&quot;ing&quot;, &quot;N&quot;);</b>
+<b class="fc"><i>303</i>&nbsp;        m_l3.put(&quot;ion&quot;, &quot;Q&quot;);</b>
+<b class="fc"><i>304</i>&nbsp;        m_l3.put(&quot;ish&quot;, &quot;C&quot;);</b>
+<b class="fc"><i>305</i>&nbsp;        m_l3.put(&quot;ism&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>306</i>&nbsp;        m_l3.put(&quot;ist&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>307</i>&nbsp;        m_l3.put(&quot;ite&quot;, &quot;a&quot;);</b>
+<b class="fc"><i>308</i>&nbsp;        m_l3.put(&quot;ity&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>309</i>&nbsp;        m_l3.put(&quot;ium&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>310</i>&nbsp;        m_l3.put(&quot;ive&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>311</i>&nbsp;        m_l3.put(&quot;ize&quot;, &quot;F&quot;);</b>
+<b class="fc"><i>312</i>&nbsp;        m_l3.put(&quot;oid&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>313</i>&nbsp;        m_l3.put(&quot;one&quot;, &quot;R&quot;);</b>
+<b class="fc"><i>314</i>&nbsp;        m_l3.put(&quot;ous&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>315</i>&nbsp;        m_l2 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>316</i>&nbsp;        m_l2.put(&quot;ae&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>317</i>&nbsp;        m_l2.put(&quot;al&quot;, &quot;b&quot;);</b>
+<b class="fc"><i>318</i>&nbsp;        m_l2.put(&quot;ar&quot;, &quot;X&quot;);</b>
+<b class="fc"><i>319</i>&nbsp;        m_l2.put(&quot;as&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>320</i>&nbsp;        m_l2.put(&quot;ed&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>321</i>&nbsp;        m_l2.put(&quot;en&quot;, &quot;F&quot;);</b>
+<b class="fc"><i>322</i>&nbsp;        m_l2.put(&quot;es&quot;, &quot;E&quot;);</b>
+<b class="fc"><i>323</i>&nbsp;        m_l2.put(&quot;ia&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>324</i>&nbsp;        m_l2.put(&quot;ic&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>325</i>&nbsp;        m_l2.put(&quot;is&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>326</i>&nbsp;        m_l2.put(&quot;ly&quot;, &quot;B&quot;);</b>
+<b class="fc"><i>327</i>&nbsp;        m_l2.put(&quot;on&quot;, &quot;S&quot;);</b>
+<b class="fc"><i>328</i>&nbsp;        m_l2.put(&quot;or&quot;, &quot;T&quot;);</b>
+<b class="fc"><i>329</i>&nbsp;        m_l2.put(&quot;um&quot;, &quot;U&quot;);</b>
+<b class="fc"><i>330</i>&nbsp;        m_l2.put(&quot;us&quot;, &quot;V&quot;);</b>
+<b class="fc"><i>331</i>&nbsp;        m_l2.put(&quot;yl&quot;, &quot;R&quot;);</b>
+<b class="fc"><i>332</i>&nbsp;        m_l2.put(&quot;s\&#39;&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>333</i>&nbsp;        m_l2.put(&quot;\&#39;s&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>334</i>&nbsp;        m_l1 = new HashMap&lt;String, String&gt;();</b>
+<b class="fc"><i>335</i>&nbsp;        m_l1.put(&quot;a&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>336</i>&nbsp;        m_l1.put(&quot;e&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>337</i>&nbsp;        m_l1.put(&quot;i&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>338</i>&nbsp;        m_l1.put(&quot;o&quot;, &quot;A&quot;);</b>
+<b class="fc"><i>339</i>&nbsp;        m_l1.put(&quot;s&quot;, &quot;W&quot;);</b>
+<b class="fc"><i>340</i>&nbsp;        m_l1.put(&quot;y&quot;, &quot;B&quot;);</b>
+<i>341</i>&nbsp;    }
+<i>342</i>&nbsp;
+<i>343</i>&nbsp;    /**
+<i>344</i>&nbsp;     * Finds and removes ending from given word.
+<i>345</i>&nbsp;     *
+<i>346</i>&nbsp;     * @param word the word to work on
+<i>347</i>&nbsp;     * @return the processed word
+<i>348</i>&nbsp;     */
+<i>349</i>&nbsp;    private String removeEnding(String word) {
+<i>350</i>&nbsp;
+<b class="nc"><i>351</i>&nbsp;        int length = word.length();</b>
+<b class="nc"><i>352</i>&nbsp;        int el = 11;</b>
+<i>353</i>&nbsp;
+<b class="nc"><i>354</i>&nbsp;        while (el &gt; 0) {</b>
+<b class="nc"><i>355</i>&nbsp;            if (length - el &gt; 1) {</b>
+<b class="nc"><i>356</i>&nbsp;                String ending = word.substring(length - el);</b>
+<b class="nc"><i>357</i>&nbsp;                String conditionCode = null;</b>
+<b class="nc"><i>358</i>&nbsp;                switch (el) {</b>
+<i>359</i>&nbsp;                    case 11:
+<b class="nc"><i>360</i>&nbsp;                        conditionCode = (String) m_l11.get(ending);</b>
+<b class="nc"><i>361</i>&nbsp;                        break;</b>
+<i>362</i>&nbsp;                    case 10:
+<b class="nc"><i>363</i>&nbsp;                        conditionCode = (String) m_l10.get(ending);</b>
+<b class="nc"><i>364</i>&nbsp;                        break;</b>
+<i>365</i>&nbsp;                    case 9:
+<b class="nc"><i>366</i>&nbsp;                        conditionCode = (String) m_l9.get(ending);</b>
+<b class="nc"><i>367</i>&nbsp;                        break;</b>
+<i>368</i>&nbsp;                    case 8:
+<b class="nc"><i>369</i>&nbsp;                        conditionCode = (String) m_l8.get(ending);</b>
+<b class="nc"><i>370</i>&nbsp;                        break;</b>
+<i>371</i>&nbsp;                    case 7:
+<b class="nc"><i>372</i>&nbsp;                        conditionCode = (String) m_l7.get(ending);</b>
+<b class="nc"><i>373</i>&nbsp;                        break;</b>
+<i>374</i>&nbsp;                    case 6:
+<b class="nc"><i>375</i>&nbsp;                        conditionCode = (String) m_l6.get(ending);</b>
+<b class="nc"><i>376</i>&nbsp;                        break;</b>
+<i>377</i>&nbsp;                    case 5:
+<b class="nc"><i>378</i>&nbsp;                        conditionCode = (String) m_l5.get(ending);</b>
+<b class="nc"><i>379</i>&nbsp;                        break;</b>
+<i>380</i>&nbsp;                    case 4:
+<b class="nc"><i>381</i>&nbsp;                        conditionCode = (String) m_l4.get(ending);</b>
+<b class="nc"><i>382</i>&nbsp;                        break;</b>
+<i>383</i>&nbsp;                    case 3:
+<b class="nc"><i>384</i>&nbsp;                        conditionCode = (String) m_l3.get(ending);</b>
+<b class="nc"><i>385</i>&nbsp;                        break;</b>
+<i>386</i>&nbsp;                    case 2:
+<b class="nc"><i>387</i>&nbsp;                        conditionCode = (String) m_l2.get(ending);</b>
+<b class="nc"><i>388</i>&nbsp;                        break;</b>
+<i>389</i>&nbsp;                    case 1:
+<b class="nc"><i>390</i>&nbsp;                        conditionCode = (String) m_l1.get(ending);</b>
+<b class="nc"><i>391</i>&nbsp;                        break;</b>
+<i>392</i>&nbsp;                    default:
+<i>393</i>&nbsp;                }
+<b class="nc"><i>394</i>&nbsp;                if (conditionCode != null) {</b>
+<b class="nc"><i>395</i>&nbsp;                    switch (conditionCode.charAt(0)) {</b>
+<i>396</i>&nbsp;                        case &#39;A&#39;:
+<b class="nc"><i>397</i>&nbsp;                            return word.substring(0, length - el);</b>
+<i>398</i>&nbsp;                        case &#39;B&#39;:
+<b class="nc"><i>399</i>&nbsp;                            if (length - el &gt; 2) {</b>
+<b class="nc"><i>400</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>401</i>&nbsp;                            }
+<i>402</i>&nbsp;                            break;
+<i>403</i>&nbsp;                        case &#39;C&#39;:
+<b class="nc"><i>404</i>&nbsp;                            if (length - el &gt; 3) {</b>
+<b class="nc"><i>405</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>406</i>&nbsp;                            }
+<i>407</i>&nbsp;                            break;
+<i>408</i>&nbsp;                        case &#39;D&#39;:
+<b class="nc"><i>409</i>&nbsp;                            if (length - el &gt; 4) {</b>
+<b class="nc"><i>410</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>411</i>&nbsp;                            }
+<i>412</i>&nbsp;                            break;
+<i>413</i>&nbsp;                        case &#39;E&#39;:
+<b class="nc"><i>414</i>&nbsp;                            if (word.charAt(length - el - 1) != &#39;e&#39;) {</b>
+<b class="nc"><i>415</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>416</i>&nbsp;                            }
+<i>417</i>&nbsp;                            break;
+<i>418</i>&nbsp;                        case &#39;F&#39;:
+<b class="nc"><i>419</i>&nbsp;                            if ((length - el &gt; 2)</b>
+<b class="nc"><i>420</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;e&#39;)) {</b>
+<b class="nc"><i>421</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>422</i>&nbsp;                            }
+<i>423</i>&nbsp;                            break;
+<i>424</i>&nbsp;                        case &#39;G&#39;:
+<b class="nc"><i>425</i>&nbsp;                            if ((length - el &gt; 2)</b>
+<b class="nc"><i>426</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) == &#39;f&#39;)) {</b>
+<b class="nc"><i>427</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>428</i>&nbsp;                            }
+<i>429</i>&nbsp;                            break;
+<i>430</i>&nbsp;                        case &#39;H&#39;:
+<b class="nc"><i>431</i>&nbsp;                            if ((word.charAt(length - el - 1) == &#39;t&#39;)</b>
+<b class="nc"><i>432</i>&nbsp;                                    || ((word.charAt(length - el - 1) == &#39;l&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>433</i>&nbsp;                                    .charAt(length - el - 2) == &#39;l&#39;))) {</b>
+<b class="nc"><i>434</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>435</i>&nbsp;                            }
+<i>436</i>&nbsp;                            break;
+<i>437</i>&nbsp;                        case &#39;I&#39;:
+<b class="nc"><i>438</i>&nbsp;                            if ((word.charAt(length - el - 1) != &#39;o&#39;)</b>
+<b class="nc"><i>439</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;e&#39;)) {</b>
+<b class="nc"><i>440</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>441</i>&nbsp;                            }
+<i>442</i>&nbsp;                            break;
+<i>443</i>&nbsp;                        case &#39;J&#39;:
+<b class="nc"><i>444</i>&nbsp;                            if ((word.charAt(length - el - 1) != &#39;a&#39;)</b>
+<b class="nc"><i>445</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;e&#39;)) {</b>
+<b class="nc"><i>446</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>447</i>&nbsp;                            }
+<i>448</i>&nbsp;                            break;
+<i>449</i>&nbsp;                        case &#39;K&#39;:
+<b class="nc"><i>450</i>&nbsp;                            if ((length - el &gt; 2)</b>
+<b class="nc"><i>451</i>&nbsp;                                    &amp;&amp; ((word.charAt(length - el - 1) == &#39;l&#39;)</b>
+<b class="nc"><i>452</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;i&#39;) || ((word</b>
+<b class="nc"><i>453</i>&nbsp;                                    .charAt(length - el - 1) == &#39;e&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>454</i>&nbsp;                                    .charAt(length - el - 3) == &#39;u&#39;)))) {</b>
+<b class="nc"><i>455</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>456</i>&nbsp;                            }
+<i>457</i>&nbsp;                            break;
+<i>458</i>&nbsp;                        case &#39;L&#39;:
+<b class="nc"><i>459</i>&nbsp;                            if ((word.charAt(length - el - 1) != &#39;u&#39;)</b>
+<b class="nc"><i>460</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;x&#39;)</b>
+<b class="nc"><i>461</i>&nbsp;                                    &amp;&amp; ((word.charAt(length - el - 1) != &#39;s&#39;) || (word</b>
+<b class="nc"><i>462</i>&nbsp;                                    .charAt(length - el - 2) == &#39;o&#39;))) {</b>
+<b class="nc"><i>463</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>464</i>&nbsp;                            }
+<i>465</i>&nbsp;                            break;
+<i>466</i>&nbsp;                        case &#39;M&#39;:
+<b class="nc"><i>467</i>&nbsp;                            if ((word.charAt(length - el - 1) != &#39;a&#39;)</b>
+<b class="nc"><i>468</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;c&#39;)</b>
+<b class="nc"><i>469</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;e&#39;)</b>
+<b class="nc"><i>470</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;m&#39;)) {</b>
+<b class="nc"><i>471</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>472</i>&nbsp;                            }
+<i>473</i>&nbsp;                            break;
+<i>474</i>&nbsp;                        case &#39;N&#39;:
+<b class="nc"><i>475</i>&nbsp;                            if ((length - el &gt; 3)</b>
+<b class="nc"><i>476</i>&nbsp;                                    || ((length - el == 3) &amp;&amp; ((word.charAt(length</b>
+<i>477</i>&nbsp;                                    - el - 3) != &#39;s&#39;)))) {
+<b class="nc"><i>478</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>479</i>&nbsp;                            }
+<i>480</i>&nbsp;                            break;
+<i>481</i>&nbsp;                        case &#39;O&#39;:
+<b class="nc"><i>482</i>&nbsp;                            if ((word.charAt(length - el - 1) == &#39;l&#39;)</b>
+<b class="nc"><i>483</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;i&#39;)) {</b>
+<b class="nc"><i>484</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>485</i>&nbsp;                            }
+<i>486</i>&nbsp;                            break;
+<i>487</i>&nbsp;                        case &#39;P&#39;:
+<b class="nc"><i>488</i>&nbsp;                            if (word.charAt(length - el - 1) != &#39;c&#39;) {</b>
+<b class="nc"><i>489</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>490</i>&nbsp;                            }
+<i>491</i>&nbsp;                            break;
+<i>492</i>&nbsp;                        case &#39;Q&#39;:
+<b class="nc"><i>493</i>&nbsp;                            if ((length - el &gt; 2)</b>
+<b class="nc"><i>494</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;l&#39;)</b>
+<b class="nc"><i>495</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;n&#39;)) {</b>
+<b class="nc"><i>496</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>497</i>&nbsp;                            }
+<i>498</i>&nbsp;                            break;
+<i>499</i>&nbsp;                        case &#39;R&#39;:
+<b class="nc"><i>500</i>&nbsp;                            if ((word.charAt(length - el - 1) == &#39;n&#39;)</b>
+<b class="nc"><i>501</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;r&#39;)) {</b>
+<b class="nc"><i>502</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>503</i>&nbsp;                            }
+<i>504</i>&nbsp;                            break;
+<i>505</i>&nbsp;                        case &#39;S&#39;:
+<b class="nc"><i>506</i>&nbsp;                            if (((word.charAt(length - el - 1) == &#39;r&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>507</i>&nbsp;                                    .charAt(length - el - 2) == &#39;d&#39;))</b>
+<b class="nc"><i>508</i>&nbsp;                                    || ((word.charAt(length - el - 1) == &#39;t&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>509</i>&nbsp;                                    .charAt(length - el - 2) != &#39;t&#39;))) {</b>
+<b class="nc"><i>510</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>511</i>&nbsp;                            }
+<i>512</i>&nbsp;                            break;
+<i>513</i>&nbsp;                        case &#39;T&#39;:
+<b class="nc"><i>514</i>&nbsp;                            if ((word.charAt(length - el - 1) == &#39;s&#39;)</b>
+<b class="nc"><i>515</i>&nbsp;                                    || ((word.charAt(length - el - 1) == &#39;t&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>516</i>&nbsp;                                    .charAt(length - el - 2) != &#39;o&#39;))) {</b>
+<b class="nc"><i>517</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>518</i>&nbsp;                            }
+<i>519</i>&nbsp;                            break;
+<i>520</i>&nbsp;                        case &#39;U&#39;:
+<b class="nc"><i>521</i>&nbsp;                            if ((word.charAt(length - el - 1) == &#39;l&#39;)</b>
+<b class="nc"><i>522</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;m&#39;)</b>
+<b class="nc"><i>523</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;n&#39;)</b>
+<b class="nc"><i>524</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;r&#39;)) {</b>
+<b class="nc"><i>525</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>526</i>&nbsp;                            }
+<i>527</i>&nbsp;                            break;
+<i>528</i>&nbsp;                        case &#39;V&#39;:
+<b class="nc"><i>529</i>&nbsp;                            if (word.charAt(length - el - 1) == &#39;c&#39;) {</b>
+<b class="nc"><i>530</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>531</i>&nbsp;                            }
+<i>532</i>&nbsp;                            break;
+<i>533</i>&nbsp;                        case &#39;W&#39;:
+<b class="nc"><i>534</i>&nbsp;                            if ((word.charAt(length - el - 1) != &#39;s&#39;)</b>
+<b class="nc"><i>535</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) != &#39;u&#39;)) {</b>
+<b class="nc"><i>536</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>537</i>&nbsp;                            }
+<i>538</i>&nbsp;                            break;
+<i>539</i>&nbsp;                        case &#39;X&#39;:
+<b class="nc"><i>540</i>&nbsp;                            if ((word.charAt(length - el - 1) == &#39;l&#39;)</b>
+<b class="nc"><i>541</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;i&#39;)</b>
+<i>542</i>&nbsp;                                    || ((length - el &gt; 2)
+<b class="nc"><i>543</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 1) == &#39;e&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>544</i>&nbsp;                                    .charAt(length - el - 3) == &#39;u&#39;))) {</b>
+<b class="nc"><i>545</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>546</i>&nbsp;                            }
+<i>547</i>&nbsp;                            break;
+<i>548</i>&nbsp;                        case &#39;Y&#39;:
+<b class="nc"><i>549</i>&nbsp;                            if ((word.charAt(length - el - 1) == &#39;n&#39;)</b>
+<b class="nc"><i>550</i>&nbsp;                                    &amp;&amp; (word.charAt(length - el - 2) == &#39;i&#39;)) {</b>
+<b class="nc"><i>551</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>552</i>&nbsp;                            }
+<i>553</i>&nbsp;                            break;
+<i>554</i>&nbsp;                        case &#39;Z&#39;:
+<b class="nc"><i>555</i>&nbsp;                            if (word.charAt(length - el - 1) != &#39;f&#39;) {</b>
+<b class="nc"><i>556</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>557</i>&nbsp;                            }
+<i>558</i>&nbsp;                            break;
+<i>559</i>&nbsp;                        case &#39;a&#39;:
+<b class="nc"><i>560</i>&nbsp;                            if ((word.charAt(length - el - 1) == &#39;d&#39;)</b>
+<b class="nc"><i>561</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;f&#39;)</b>
+<b class="nc"><i>562</i>&nbsp;                                    || (((word.charAt(length - el - 1) == &#39;h&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>563</i>&nbsp;                                    .charAt(length - el - 2) == &#39;p&#39;)))</b>
+<b class="nc"><i>564</i>&nbsp;                                    || (((word.charAt(length - el - 1) == &#39;h&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>565</i>&nbsp;                                    .charAt(length - el - 2) == &#39;t&#39;)))</b>
+<b class="nc"><i>566</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;l&#39;)</b>
+<b class="nc"><i>567</i>&nbsp;                                    || (((word.charAt(length - el - 1) == &#39;r&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>568</i>&nbsp;                                    .charAt(length - el - 2) == &#39;e&#39;)))</b>
+<b class="nc"><i>569</i>&nbsp;                                    || (((word.charAt(length - el - 1) == &#39;r&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>570</i>&nbsp;                                    .charAt(length - el - 2) == &#39;o&#39;)))</b>
+<b class="nc"><i>571</i>&nbsp;                                    || (((word.charAt(length - el - 1) == &#39;s&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>572</i>&nbsp;                                    .charAt(length - el - 2) == &#39;e&#39;)))</b>
+<b class="nc"><i>573</i>&nbsp;                                    || (word.charAt(length - el - 1) == &#39;t&#39;)) {</b>
+<b class="nc"><i>574</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>575</i>&nbsp;                            }
+<i>576</i>&nbsp;                            break;
+<i>577</i>&nbsp;                        case &#39;b&#39;:
+<b class="nc"><i>578</i>&nbsp;                            if (m_CompMode) {</b>
+<b class="nc"><i>579</i>&nbsp;                                if (((length - el == 3) &amp;&amp; (!((word.charAt(length</b>
+<i>580</i>&nbsp;                                        - el - 1) == &#39;t&#39;)
+<b class="nc"><i>581</i>&nbsp;                                        &amp;&amp; (word.charAt(length - el - 2) == &#39;e&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>582</i>&nbsp;                                        .charAt(length - el - 3) == &#39;m&#39;))))</b>
+<i>583</i>&nbsp;                                        || ((length - el &gt; 3) &amp;&amp; (!((word
+<b class="nc"><i>584</i>&nbsp;                                        .charAt(length - el - 1) == &#39;t&#39;)</b>
+<b class="nc"><i>585</i>&nbsp;                                        &amp;&amp; (word.charAt(length - el - 2) == &#39;s&#39;)</b>
+<b class="nc"><i>586</i>&nbsp;                                        &amp;&amp; (word.charAt(length - el - 3) == &#39;y&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>587</i>&nbsp;                                        .charAt(length - el - 4) == &#39;r&#39;))))) {</b>
+<b class="nc"><i>588</i>&nbsp;                                    return word.substring(0, length - el);</b>
+<i>589</i>&nbsp;                                }
+<i>590</i>&nbsp;                            } else {
+<b class="nc"><i>591</i>&nbsp;                                if ((length - el &gt; 2)</b>
+<b class="nc"><i>592</i>&nbsp;                                        &amp;&amp; (!((word.charAt(length - el - 1) == &#39;t&#39;)</b>
+<b class="nc"><i>593</i>&nbsp;                                        &amp;&amp; (word.charAt(length - el - 2) == &#39;e&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>594</i>&nbsp;                                        .charAt(length - el - 3) == &#39;m&#39;)))</b>
+<i>595</i>&nbsp;                                        &amp;&amp; ((length - el &lt; 4) || (!((word
+<b class="nc"><i>596</i>&nbsp;                                        .charAt(length - el - 1) == &#39;t&#39;)</b>
+<b class="nc"><i>597</i>&nbsp;                                        &amp;&amp; (word.charAt(length - el - 2) == &#39;s&#39;)</b>
+<b class="nc"><i>598</i>&nbsp;                                        &amp;&amp; (word.charAt(length - el - 3) == &#39;y&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>599</i>&nbsp;                                        .charAt(length - el - 4) == &#39;r&#39;))))) {</b>
+<b class="nc"><i>600</i>&nbsp;                                    return word.substring(0, length - el);</b>
+<i>601</i>&nbsp;                                }
+<i>602</i>&nbsp;                            }
+<i>603</i>&nbsp;                            break;
+<i>604</i>&nbsp;                        case &#39;c&#39;:
+<b class="nc"><i>605</i>&nbsp;                            if (word.charAt(length - el - 1) == &#39;l&#39;) {</b>
+<b class="nc"><i>606</i>&nbsp;                                return word.substring(0, length - el);</b>
+<i>607</i>&nbsp;                            }
+<i>608</i>&nbsp;                            break;
+<i>609</i>&nbsp;                        default:
+<b class="nc"><i>610</i>&nbsp;                            throw new IllegalArgumentException(&quot;Fatal error.&quot;);</b>
+<i>611</i>&nbsp;                    }
+<i>612</i>&nbsp;                }
+<i>613</i>&nbsp;            }
+<b class="nc"><i>614</i>&nbsp;            el--;</b>
+<i>615</i>&nbsp;        }
+<b class="nc"><i>616</i>&nbsp;        return word;</b>
+<i>617</i>&nbsp;    }
+<i>618</i>&nbsp;
+<i>619</i>&nbsp;    /**
+<i>620</i>&nbsp;     * Recodes ending of given word.
+<i>621</i>&nbsp;     *
+<i>622</i>&nbsp;     * @param word the word to work on
+<i>623</i>&nbsp;     * @return the processed word
+<i>624</i>&nbsp;     */
+<i>625</i>&nbsp;    private String recodeEnding(String word) {
+<i>626</i>&nbsp;
+<b class="nc"><i>627</i>&nbsp;        int lastPos = word.length() - 1;</b>
+<i>628</i>&nbsp;
+<i>629</i>&nbsp;        // Rule 1
+<b class="nc"><i>630</i>&nbsp;        if (word.endsWith(&quot;bb&quot;) || word.endsWith(&quot;dd&quot;) || word.endsWith(&quot;gg&quot;)</b>
+<b class="nc"><i>631</i>&nbsp;                || word.endsWith(&quot;ll&quot;) || word.endsWith(&quot;mm&quot;)</b>
+<b class="nc"><i>632</i>&nbsp;                || word.endsWith(&quot;nn&quot;) || word.endsWith(&quot;pp&quot;)</b>
+<b class="nc"><i>633</i>&nbsp;                || word.endsWith(&quot;rr&quot;) || word.endsWith(&quot;ss&quot;)</b>
+<b class="nc"><i>634</i>&nbsp;                || word.endsWith(&quot;tt&quot;)) {</b>
+<b class="nc"><i>635</i>&nbsp;            word = word.substring(0, lastPos);</b>
+<b class="nc"><i>636</i>&nbsp;            lastPos--;</b>
+<i>637</i>&nbsp;        }
+<i>638</i>&nbsp;
+<i>639</i>&nbsp;        // Rule 2
+<b class="nc"><i>640</i>&nbsp;        if (word.endsWith(&quot;iev&quot;)) {</b>
+<b class="nc"><i>641</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;ief&quot;);</b>
+<i>642</i>&nbsp;        }
+<i>643</i>&nbsp;
+<i>644</i>&nbsp;        // Rule 3
+<b class="nc"><i>645</i>&nbsp;        if (word.endsWith(&quot;uct&quot;)) {</b>
+<b class="nc"><i>646</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;uc&quot;);</b>
+<b class="nc"><i>647</i>&nbsp;            lastPos--;</b>
+<i>648</i>&nbsp;        }
+<i>649</i>&nbsp;
+<i>650</i>&nbsp;        // Rule 4
+<b class="nc"><i>651</i>&nbsp;        if (word.endsWith(&quot;umpt&quot;)) {</b>
+<b class="nc"><i>652</i>&nbsp;            word = word.substring(0, lastPos - 3).concat(&quot;um&quot;);</b>
+<b class="nc"><i>653</i>&nbsp;            lastPos -= 2;</b>
+<i>654</i>&nbsp;        }
+<i>655</i>&nbsp;
+<i>656</i>&nbsp;        // Rule 5
+<b class="nc"><i>657</i>&nbsp;        if (word.endsWith(&quot;rpt&quot;)) {</b>
+<b class="nc"><i>658</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;rb&quot;);</b>
+<b class="nc"><i>659</i>&nbsp;            lastPos--;</b>
+<i>660</i>&nbsp;        }
+<i>661</i>&nbsp;
+<i>662</i>&nbsp;        // Rule 6
+<b class="nc"><i>663</i>&nbsp;        if (word.endsWith(&quot;urs&quot;)) {</b>
+<b class="nc"><i>664</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;ur&quot;);</b>
+<b class="nc"><i>665</i>&nbsp;            lastPos--;</b>
+<i>666</i>&nbsp;        }
+<i>667</i>&nbsp;
+<i>668</i>&nbsp;        // Rule 7
+<b class="nc"><i>669</i>&nbsp;        if (word.endsWith(&quot;istr&quot;)) {</b>
+<b class="nc"><i>670</i>&nbsp;            word = word.substring(0, lastPos - 3).concat(&quot;ister&quot;);</b>
+<b class="nc"><i>671</i>&nbsp;            lastPos++;</b>
+<i>672</i>&nbsp;        }
+<i>673</i>&nbsp;
+<i>674</i>&nbsp;        // Rule 7a
+<b class="nc"><i>675</i>&nbsp;        if (word.endsWith(&quot;metr&quot;)) {</b>
+<b class="nc"><i>676</i>&nbsp;            word = word.substring(0, lastPos - 3).concat(&quot;meter&quot;);</b>
+<b class="nc"><i>677</i>&nbsp;            lastPos++;</b>
+<i>678</i>&nbsp;        }
+<i>679</i>&nbsp;
+<i>680</i>&nbsp;        // Rule 8
+<b class="nc"><i>681</i>&nbsp;        if (word.endsWith(&quot;olv&quot;)) {</b>
+<b class="nc"><i>682</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;olut&quot;);</b>
+<b class="nc"><i>683</i>&nbsp;            lastPos++;</b>
+<i>684</i>&nbsp;        }
+<i>685</i>&nbsp;
+<i>686</i>&nbsp;        // Rule 9
+<b class="nc"><i>687</i>&nbsp;        if (word.endsWith(&quot;ul&quot;)) {</b>
+<b class="nc"><i>688</i>&nbsp;            if ((lastPos - 2 &lt; 0)</b>
+<b class="nc"><i>689</i>&nbsp;                    || ((word.charAt(lastPos - 2) != &#39;a&#39;)</b>
+<b class="nc"><i>690</i>&nbsp;                    &amp;&amp; (word.charAt(lastPos - 2) != &#39;i&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>691</i>&nbsp;                    .charAt(lastPos - 2) != &#39;o&#39;))) {</b>
+<b class="nc"><i>692</i>&nbsp;                word = word.substring(0, lastPos - 1).concat(&quot;l&quot;);</b>
+<b class="nc"><i>693</i>&nbsp;                lastPos--;</b>
+<i>694</i>&nbsp;            }
+<i>695</i>&nbsp;        }
+<i>696</i>&nbsp;
+<i>697</i>&nbsp;        // Rule 10
+<b class="nc"><i>698</i>&nbsp;        if (word.endsWith(&quot;bex&quot;)) {</b>
+<b class="nc"><i>699</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;bic&quot;);</b>
+<i>700</i>&nbsp;        }
+<i>701</i>&nbsp;
+<i>702</i>&nbsp;        // Rule 11
+<b class="nc"><i>703</i>&nbsp;        if (word.endsWith(&quot;dex&quot;)) {</b>
+<b class="nc"><i>704</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;dic&quot;);</b>
+<i>705</i>&nbsp;        }
+<i>706</i>&nbsp;
+<i>707</i>&nbsp;        // Rule 12
+<b class="nc"><i>708</i>&nbsp;        if (word.endsWith(&quot;pex&quot;)) {</b>
+<b class="nc"><i>709</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;pic&quot;);</b>
+<i>710</i>&nbsp;        }
+<i>711</i>&nbsp;
+<i>712</i>&nbsp;        // Rule 13
+<b class="nc"><i>713</i>&nbsp;        if (word.endsWith(&quot;tex&quot;)) {</b>
+<b class="nc"><i>714</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;tic&quot;);</b>
+<i>715</i>&nbsp;        }
+<i>716</i>&nbsp;
+<i>717</i>&nbsp;        // Rule 14
+<b class="nc"><i>718</i>&nbsp;        if (word.endsWith(&quot;ax&quot;)) {</b>
+<b class="nc"><i>719</i>&nbsp;            word = word.substring(0, lastPos - 1).concat(&quot;ac&quot;);</b>
+<i>720</i>&nbsp;        }
+<i>721</i>&nbsp;
+<i>722</i>&nbsp;        // Rule 15
+<b class="nc"><i>723</i>&nbsp;        if (word.endsWith(&quot;ex&quot;)) {</b>
+<b class="nc"><i>724</i>&nbsp;            word = word.substring(0, lastPos - 1).concat(&quot;ec&quot;);</b>
+<i>725</i>&nbsp;        }
+<i>726</i>&nbsp;
+<i>727</i>&nbsp;        // Rule 16
+<b class="nc"><i>728</i>&nbsp;        if (word.endsWith(&quot;ix&quot;)) {</b>
+<b class="nc"><i>729</i>&nbsp;            word = word.substring(0, lastPos - 1).concat(&quot;ic&quot;);</b>
+<i>730</i>&nbsp;        }
+<i>731</i>&nbsp;
+<i>732</i>&nbsp;        // Rule 17
+<b class="nc"><i>733</i>&nbsp;        if (word.endsWith(&quot;lux&quot;)) {</b>
+<b class="nc"><i>734</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;luc&quot;);</b>
+<i>735</i>&nbsp;        }
+<i>736</i>&nbsp;
+<i>737</i>&nbsp;        // Rule 18
+<b class="nc"><i>738</i>&nbsp;        if (word.endsWith(&quot;uad&quot;)) {</b>
+<b class="nc"><i>739</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;uas&quot;);</b>
+<i>740</i>&nbsp;        }
+<i>741</i>&nbsp;
+<i>742</i>&nbsp;        // Rule 19
+<b class="nc"><i>743</i>&nbsp;        if (word.endsWith(&quot;vad&quot;)) {</b>
+<b class="nc"><i>744</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;vas&quot;);</b>
+<i>745</i>&nbsp;        }
+<i>746</i>&nbsp;
+<i>747</i>&nbsp;        // Rule 20
+<b class="nc"><i>748</i>&nbsp;        if (word.endsWith(&quot;cid&quot;)) {</b>
+<b class="nc"><i>749</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;cis&quot;);</b>
+<i>750</i>&nbsp;        }
+<i>751</i>&nbsp;
+<i>752</i>&nbsp;        // Rule 21
+<b class="nc"><i>753</i>&nbsp;        if (word.endsWith(&quot;lid&quot;)) {</b>
+<b class="nc"><i>754</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;lis&quot;);</b>
+<i>755</i>&nbsp;        }
+<i>756</i>&nbsp;
+<i>757</i>&nbsp;        // Rule 22
+<b class="nc"><i>758</i>&nbsp;        if (word.endsWith(&quot;erid&quot;)) {</b>
+<b class="nc"><i>759</i>&nbsp;            word = word.substring(0, lastPos - 3).concat(&quot;eris&quot;);</b>
+<i>760</i>&nbsp;        }
+<i>761</i>&nbsp;
+<i>762</i>&nbsp;        // Rule 23
+<b class="nc"><i>763</i>&nbsp;        if (word.endsWith(&quot;pand&quot;)) {</b>
+<b class="nc"><i>764</i>&nbsp;            word = word.substring(0, lastPos - 3).concat(&quot;pans&quot;);</b>
+<i>765</i>&nbsp;        }
+<i>766</i>&nbsp;
+<i>767</i>&nbsp;        // Rule 24
+<b class="nc"><i>768</i>&nbsp;        if (word.endsWith(&quot;end&quot;)) {</b>
+<b class="nc"><i>769</i>&nbsp;            if ((lastPos - 3 &lt; 0) || (word.charAt(lastPos - 3) != &#39;s&#39;)) {</b>
+<b class="nc"><i>770</i>&nbsp;                word = word.substring(0, lastPos - 2).concat(&quot;ens&quot;);</b>
+<i>771</i>&nbsp;            }
+<i>772</i>&nbsp;        }
+<i>773</i>&nbsp;
+<i>774</i>&nbsp;        // Rule 25
+<b class="nc"><i>775</i>&nbsp;        if (word.endsWith(&quot;ond&quot;)) {</b>
+<b class="nc"><i>776</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;ons&quot;);</b>
+<i>777</i>&nbsp;        }
+<i>778</i>&nbsp;
+<i>779</i>&nbsp;        // Rule 26
+<b class="nc"><i>780</i>&nbsp;        if (word.endsWith(&quot;lud&quot;)) {</b>
+<b class="nc"><i>781</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;lus&quot;);</b>
+<i>782</i>&nbsp;        }
+<i>783</i>&nbsp;
+<i>784</i>&nbsp;        // Rule 27
+<b class="nc"><i>785</i>&nbsp;        if (word.endsWith(&quot;rud&quot;)) {</b>
+<b class="nc"><i>786</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;rus&quot;);</b>
+<i>787</i>&nbsp;        }
+<i>788</i>&nbsp;
+<i>789</i>&nbsp;        // Rule 28
+<b class="nc"><i>790</i>&nbsp;        if (word.endsWith(&quot;her&quot;)) {</b>
+<b class="nc"><i>791</i>&nbsp;            if ((lastPos - 3 &lt; 0)</b>
+<b class="nc"><i>792</i>&nbsp;                    || ((word.charAt(lastPos - 3) != &#39;p&#39;) &amp;&amp; (word</b>
+<b class="nc"><i>793</i>&nbsp;                    .charAt(lastPos - 3) != &#39;t&#39;))) {</b>
+<b class="nc"><i>794</i>&nbsp;                word = word.substring(0, lastPos - 2).concat(&quot;hes&quot;);</b>
+<i>795</i>&nbsp;            }
+<i>796</i>&nbsp;        }
+<i>797</i>&nbsp;
+<i>798</i>&nbsp;        // Rule 29
+<b class="nc"><i>799</i>&nbsp;        if (word.endsWith(&quot;mit&quot;)) {</b>
+<b class="nc"><i>800</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;mis&quot;);</b>
+<i>801</i>&nbsp;        }
+<i>802</i>&nbsp;
+<i>803</i>&nbsp;        // Rule 30
+<b class="nc"><i>804</i>&nbsp;        if (word.endsWith(&quot;end&quot;)) {</b>
+<b class="nc"><i>805</i>&nbsp;            if ((lastPos - 3 &lt; 0) || (word.charAt(lastPos - 3) != &#39;m&#39;)) {</b>
+<b class="nc"><i>806</i>&nbsp;                word = word.substring(0, lastPos - 2).concat(&quot;ens&quot;);</b>
+<i>807</i>&nbsp;            }
+<i>808</i>&nbsp;        }
+<i>809</i>&nbsp;
+<i>810</i>&nbsp;        // Rule 31
+<b class="nc"><i>811</i>&nbsp;        if (word.endsWith(&quot;ert&quot;)) {</b>
+<b class="nc"><i>812</i>&nbsp;            word = word.substring(0, lastPos - 2).concat(&quot;ers&quot;);</b>
+<i>813</i>&nbsp;        }
+<i>814</i>&nbsp;
+<i>815</i>&nbsp;        // Rule 32
+<b class="nc"><i>816</i>&nbsp;        if (word.endsWith(&quot;et&quot;)) {</b>
+<b class="nc"><i>817</i>&nbsp;            if ((lastPos - 2 &lt; 0) || (word.charAt(lastPos - 2) != &#39;n&#39;)) {</b>
+<b class="nc"><i>818</i>&nbsp;                word = word.substring(0, lastPos - 1).concat(&quot;es&quot;);</b>
+<i>819</i>&nbsp;            }
+<i>820</i>&nbsp;        }
+<i>821</i>&nbsp;
+<i>822</i>&nbsp;        // Rule 33
+<b class="nc"><i>823</i>&nbsp;        if (word.endsWith(&quot;yt&quot;)) {</b>
+<b class="nc"><i>824</i>&nbsp;            word = word.substring(0, lastPos - 1).concat(&quot;ys&quot;);</b>
+<i>825</i>&nbsp;        }
+<i>826</i>&nbsp;
+<i>827</i>&nbsp;        // Rule 34
+<b class="nc"><i>828</i>&nbsp;        if (word.endsWith(&quot;yz&quot;)) {</b>
+<b class="nc"><i>829</i>&nbsp;            word = word.substring(0, lastPos - 1).concat(&quot;ys&quot;);</b>
+<i>830</i>&nbsp;        }
+<i>831</i>&nbsp;
+<b class="nc"><i>832</i>&nbsp;        return word;</b>
+<i>833</i>&nbsp;    }
+<i>834</i>&nbsp;
+<i>835</i>&nbsp;    /**
+<i>836</i>&nbsp;     * Returns the stemmed version of the given word. Word is converted to lower
+<i>837</i>&nbsp;     * case before stemming.
+<i>838</i>&nbsp;     *
+<i>839</i>&nbsp;     * @param word a string consisting of a single word
+<i>840</i>&nbsp;     * @return the stemmed word
+<i>841</i>&nbsp;     */
+<i>842</i>&nbsp;    public String stem(String word) {
+<i>843</i>&nbsp;
+<b class="nc"><i>844</i>&nbsp;        if (word.length() &gt; 2) {</b>
+<b class="nc"><i>845</i>&nbsp;            return recodeEnding(removeEnding(word.toLowerCase()));</b>
+<i>846</i>&nbsp;        } else {
+<b class="nc"><i>847</i>&nbsp;            return word.toLowerCase();</b>
+<i>848</i>&nbsp;        }
+<i>849</i>&nbsp;    }
+<i>850</i>&nbsp;
+<i>851</i>&nbsp;    /**
+<i>852</i>&nbsp;     * Stems everything in the given string. String is converted to lower case
+<i>853</i>&nbsp;     * before stemming.
+<i>854</i>&nbsp;     *
+<i>855</i>&nbsp;     * @param str the string to stem
+<i>856</i>&nbsp;     * @return the processed string
+<i>857</i>&nbsp;     */
+<i>858</i>&nbsp;    public String stemString(String str) {
+<i>859</i>&nbsp;
+<b class="nc"><i>860</i>&nbsp;        StringBuffer result = new StringBuffer();</b>
+<b class="nc"><i>861</i>&nbsp;        int start = -1;</b>
+<b class="nc"><i>862</i>&nbsp;        for (int j = 0; j &lt; str.length(); j++) {</b>
+<b class="nc"><i>863</i>&nbsp;            char c = str.charAt(j);</b>
+<b class="nc"><i>864</i>&nbsp;            if (Character.isLetterOrDigit(c)) {</b>
+<b class="nc"><i>865</i>&nbsp;                if (start == -1) {</b>
+<b class="nc"><i>866</i>&nbsp;                    start = j;</b>
+<i>867</i>&nbsp;                }
+<b class="nc"><i>868</i>&nbsp;            } else if (c == &#39;\&#39;&#39;) {</b>
+<b class="nc"><i>869</i>&nbsp;                if (start == -1) {</b>
+<b class="nc"><i>870</i>&nbsp;                    result.append(c);</b>
+<i>871</i>&nbsp;                }
+<i>872</i>&nbsp;            } else {
+<b class="nc"><i>873</i>&nbsp;                if (start != -1) {</b>
+<b class="nc"><i>874</i>&nbsp;                    result.append(stem(str.substring(start, j)));</b>
+<b class="nc"><i>875</i>&nbsp;                    start = -1;</b>
+<i>876</i>&nbsp;                }
+<b class="nc"><i>877</i>&nbsp;                result.append(c);</b>
+<i>878</i>&nbsp;            }
+<i>879</i>&nbsp;        }
+<b class="nc"><i>880</i>&nbsp;        if (start != -1) {</b>
+<b class="nc"><i>881</i>&nbsp;            result.append(stem(str.substring(start, str.length())));</b>
+<i>882</i>&nbsp;        }
+<b class="nc"><i>883</i>&nbsp;        return result.toString();</b>
+<i>884</i>&nbsp;    }
+<i>885</i>&nbsp;
+<i>886</i>&nbsp;    /* This is the instance of my object */
+<b class="fc"><i>887</i>&nbsp;    private static Stemmer instance = null;</b>
+<i>888</i>&nbsp;
+<i>889</i>&nbsp;
+<b class="fc"><i>890</i>&nbsp;    private Stemmer() {</b>
+<i>891</i>&nbsp;
+<b class="fc"><i>892</i>&nbsp;    }</b>
+<i>893</i>&nbsp;
+<i>894</i>&nbsp;    public static Stemmer getInstance() {
+<b class="fc"><i>895</i>&nbsp;        if (instance == null)</b>
+<b class="fc"><i>896</i>&nbsp;            instance = new Stemmer();</b>
+<b class="fc"><i>897</i>&nbsp;        return instance;</b>
+<i>898</i>&nbsp;    }
+<i>899</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

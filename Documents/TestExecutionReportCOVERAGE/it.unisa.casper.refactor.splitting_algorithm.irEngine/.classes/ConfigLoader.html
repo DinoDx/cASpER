@@ -1,0 +1,149 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ConfigLoader</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.refactor.splitting_algorithm.irEngine</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ConfigLoader (it.unisa.casper.refactor.splitting_algorithm.irEngine)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ConfigLoader</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76,2%
+  </span>
+  <span class="absValue">
+    (16/ 21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.refactor.splitting_algorithm.irEngine;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import java.io.FileInputStream;
+<i>5</i>&nbsp;import java.io.FileNotFoundException;
+<i>6</i>&nbsp;import java.io.IOException;
+<i>7</i>&nbsp;import java.io.InputStream;
+<i>8</i>&nbsp;import java.util.Properties;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;public class ConfigLoader {
+<b class="fc"><i>11</i>&nbsp;    private static Properties config = null;</b>
+<i>12</i>&nbsp;
+<b class="fc"><i>13</i>&nbsp;    private BaseConf base_conf = new BaseConf();</b>
+<i>14</i>&nbsp;
+<b class="fc"><i>15</i>&nbsp;    private String file_config_path = base_conf</b>
+<b class="fc"><i>16</i>&nbsp;            .getAbsolutePathForDefaultConfigurationFile();</b>
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    /**
+<i>19</i>&nbsp;     * Il costruttore di questa classe di preoccupa di caricare il file di
+<i>20</i>&nbsp;     * configurazione se non e&#39; mai stato caricato prima. La configurazione
+<i>21</i>&nbsp;     * viene caricata solo la prima volta che viene istanziata questa classe. Se
+<i>22</i>&nbsp;     * la configurazione del file dovesse cambiare allora si deve riavviare il
+<i>23</i>&nbsp;     * software per far si che le modifiche abbiano effetto.
+<i>24</i>&nbsp;     */
+<b class="fc"><i>25</i>&nbsp;    public ConfigLoader() {</b>
+<b class="fc"><i>26</i>&nbsp;        if (ConfigLoader.config == null) {</b>
+<b class="fc"><i>27</i>&nbsp;            this.loadConfig();</b>
+<i>28</i>&nbsp;        }
+<b class="fc"><i>29</i>&nbsp;    }</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    private void loadConfig() {
+<b class="fc"><i>32</i>&nbsp;        ConfigLoader.config = new Properties();</b>
+<b class="fc"><i>33</i>&nbsp;        InputStream file_conf = null;</b>
+<i>34</i>&nbsp;        try {
+<i>35</i>&nbsp;            // [01]
+<b class="fc"><i>36</i>&nbsp;            file_conf = new FileInputStream(this.file_config_path);</b>
+<i>37</i>&nbsp;            // [02]
+<b class="fc"><i>38</i>&nbsp;            ConfigLoader.config.load(file_conf);</b>
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;        } catch (FileNotFoundException e) {</b>
+<i>41</i>&nbsp;            // Errore nell&#39;apertura dello stream di input [01]
+<i>42</i>&nbsp;
+<b class="nc"><i>43</i>&nbsp;        } catch (IOException e) {</b>
+<i>44</i>&nbsp;            // Errore nel caricamento del file di configurazione [02]
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;        } finally {
+<b class="nc"><i>47</i>&nbsp;            try {</b>
+<b class="fc"><i>48</i>&nbsp;                file_conf.close();</b>
+<b class="nc"><i>49</i>&nbsp;            } catch (IOException e) {</b>
+<i>50</i>&nbsp;
+<b class="fc"><i>51</i>&nbsp;            }</b>
+<b class="nc"><i>52</i>&nbsp;        }</b>
+<b class="fc"><i>53</i>&nbsp;    }</b>
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    /**
+<i>56</i>&nbsp;     * Questo metodo permette di ottenere un valore di una proprieta&#39; del file
+<i>57</i>&nbsp;     * di configurazione.
+<i>58</i>&nbsp;     *
+<i>59</i>&nbsp;     * @param key Chiave della proprieta&#39;
+<i>60</i>&nbsp;     * @return Valore della proprieta&#39;
+<i>61</i>&nbsp;     */
+<i>62</i>&nbsp;    public String getProperties(String key) {
+<b class="fc"><i>63</i>&nbsp;        return ConfigLoader.config.getProperty(key);</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

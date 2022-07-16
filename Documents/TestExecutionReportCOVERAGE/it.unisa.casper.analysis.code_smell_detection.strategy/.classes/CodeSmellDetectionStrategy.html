@@ -1,0 +1,72 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CodeSmellDetectionStrategy</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.analysis.code_smell_detection.strategy</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CodeSmellDetectionStrategy (it.unisa.casper.analysis.code_smell_detection.strategy)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">CodeSmellDetectionStrategy</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.analysis.code_smell_detection.strategy;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.HashMap;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * Interfaccia che dichiara i metodi da implementare negli Strategy
+<i>7</i>&nbsp; */
+<i>8</i>&nbsp;public interface CodeSmellDetectionStrategy&lt;T&gt; {
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;    /**
+<i>11</i>&nbsp;     * metodo che analizza un component per verificare se è affetto da smell
+<i>12</i>&nbsp;     *
+<i>13</i>&nbsp;     * @param component generico component da dare in input allo strategy per l&#39;analisi
+<i>14</i>&nbsp;     * @return true se il component è affetto da smell, false altrimenti
+<i>15</i>&nbsp;     */
+<i>16</i>&nbsp;    boolean isSmelly(T component);
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    /**
+<i>19</i>&nbsp;     * metodo che ritorna la lista di soglie individuate durante l&#39;analisi
+<i>20</i>&nbsp;     *
+<i>21</i>&nbsp;     * @param component generico component da dare in input allo strategy per l&#39;analisi
+<i>22</i>&nbsp;     * @return List&lt;Double&gt; lista delle soglie individuate durante l&#39;analisi
+<i>23</i>&nbsp;     */
+<i>24</i>&nbsp;    HashMap&lt;String, Double&gt; getThresold(T component);
+<i>25</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1117 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CosineSimilarity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.analysis.code_smell_detection.similarityComputation</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CosineSimilarity (it.unisa.casper.analysis.code_smell_detection.similarityComputation)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CosineSimilarity</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    99,7%
+  </span>
+  <span class="absValue">
+    (949/ 952)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.analysis.code_smell_detection.similarityComputation;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.io.*;
+<i>4</i>&nbsp;import java.util.*;
+<i>5</i>&nbsp;
+<b class="fc"><i>6</i>&nbsp;public class CosineSimilarity {</b>
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    private File stopwordList;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;    public double computeSimilarity(String[] pDocumentOne, String[] pDocumentTwo) throws IOException {
+<i>11</i>&nbsp;        //Project p = ProjectManager.getInstance().getOpenProjects();
+<b class="fc"><i>12</i>&nbsp;        String filename = System.getProperty(&quot;user.home&quot;) + File.separator + &quot;.casper&quot; + File.separator + &quot;stopwordlist.txt&quot;;</b>
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;
+<b class="fc"><i>15</i>&nbsp;        this.stopwordList = new File(filename);</b>
+<i>16</i>&nbsp;
+<b class="fc"><i>17</i>&nbsp;        if (!this.stopwordList.getParentFile().exists()) {</b>
+<b class="nc"><i>18</i>&nbsp;            stopwordList.getParentFile().mkdirs();</b>
+<i>19</i>&nbsp;        }
+<i>20</i>&nbsp;        {
+<b class="fc"><i>21</i>&nbsp;            stopwordList.createNewFile();</b>
+<b class="fc"><i>22</i>&nbsp;            PrintWriter pw = new PrintWriter(stopwordList);</b>
+<b class="fc"><i>23</i>&nbsp;            pw.println(&quot;if&quot;);</b>
+<b class="fc"><i>24</i>&nbsp;            pw.println(&quot;then&quot;);</b>
+<b class="fc"><i>25</i>&nbsp;            pw.println(&quot;else&quot;);</b>
+<b class="fc"><i>26</i>&nbsp;            pw.println(&quot;do&quot;);</b>
+<b class="fc"><i>27</i>&nbsp;            pw.println(&quot;for&quot;);</b>
+<b class="fc"><i>28</i>&nbsp;            pw.println(&quot;while&quot;);</b>
+<b class="fc"><i>29</i>&nbsp;            pw.println(&quot;try&quot;);</b>
+<b class="fc"><i>30</i>&nbsp;            pw.println(&quot;catch&quot;);</b>
+<b class="fc"><i>31</i>&nbsp;            pw.println(&quot;switch&quot;);</b>
+<b class="fc"><i>32</i>&nbsp;            pw.println(&quot;case&quot;);</b>
+<b class="fc"><i>33</i>&nbsp;            pw.println(&quot;default&quot;);</b>
+<b class="fc"><i>34</i>&nbsp;            pw.println(&quot;break&quot;);</b>
+<b class="fc"><i>35</i>&nbsp;            pw.println(&quot;abstract&quot;);</b>
+<b class="fc"><i>36</i>&nbsp;            pw.println(&quot;continue&quot;);</b>
+<b class="fc"><i>37</i>&nbsp;            pw.println(&quot;new&quot;);</b>
+<b class="fc"><i>38</i>&nbsp;            pw.println(&quot;int&quot;);</b>
+<b class="fc"><i>39</i>&nbsp;            pw.println(&quot;double&quot;);</b>
+<b class="fc"><i>40</i>&nbsp;            pw.println(&quot;float&quot;);</b>
+<b class="fc"><i>41</i>&nbsp;            pw.println(&quot;boolean&quot;);</b>
+<b class="fc"><i>42</i>&nbsp;            pw.println(&quot;interface&quot;);</b>
+<b class="fc"><i>43</i>&nbsp;            pw.println(&quot;super&quot;);</b>
+<b class="fc"><i>44</i>&nbsp;            pw.println(&quot;char&quot;);</b>
+<b class="fc"><i>45</i>&nbsp;            pw.println(&quot;extends&quot;);</b>
+<b class="fc"><i>46</i>&nbsp;            pw.println(&quot;long&quot;);</b>
+<b class="fc"><i>47</i>&nbsp;            pw.println(&quot;assert&quot;);</b>
+<b class="fc"><i>48</i>&nbsp;            pw.println(&quot;byte&quot;);</b>
+<b class="fc"><i>49</i>&nbsp;            pw.println(&quot;final&quot;);</b>
+<b class="fc"><i>50</i>&nbsp;            pw.println(&quot;native&quot;);</b>
+<b class="fc"><i>51</i>&nbsp;            pw.println(&quot;synchronized&quot;);</b>
+<b class="fc"><i>52</i>&nbsp;            pw.println(&quot;String&quot;);</b>
+<b class="fc"><i>53</i>&nbsp;            pw.println(&quot;finally&quot;);</b>
+<b class="fc"><i>54</i>&nbsp;            pw.println(&quot;ArrayList&quot;);</b>
+<b class="fc"><i>55</i>&nbsp;            pw.println(&quot;this&quot;);</b>
+<b class="fc"><i>56</i>&nbsp;            pw.println(&quot;List&quot;);</b>
+<b class="fc"><i>57</i>&nbsp;            pw.println(&quot;null&quot;);</b>
+<b class="fc"><i>58</i>&nbsp;            pw.println(&quot;throw&quot;);</b>
+<b class="fc"><i>59</i>&nbsp;            pw.println(&quot;char&quot;);</b>
+<b class="fc"><i>60</i>&nbsp;            pw.println(&quot;implements&quot;);</b>
+<b class="fc"><i>61</i>&nbsp;            pw.println(&quot;package&quot;);</b>
+<b class="fc"><i>62</i>&nbsp;            pw.println(&quot;throws&quot;);</b>
+<b class="fc"><i>63</i>&nbsp;            pw.println(&quot;class&quot;);</b>
+<b class="fc"><i>64</i>&nbsp;            pw.println(&quot;private&quot;);</b>
+<b class="fc"><i>65</i>&nbsp;            pw.println(&quot;transient&quot;);</b>
+<b class="fc"><i>66</i>&nbsp;            pw.println(&quot;const&quot;);</b>
+<b class="fc"><i>67</i>&nbsp;            pw.println(&quot;import&quot;);</b>
+<b class="fc"><i>68</i>&nbsp;            pw.println(&quot;protected&quot;);</b>
+<b class="fc"><i>69</i>&nbsp;            pw.println(&quot;public&quot;);</b>
+<b class="fc"><i>70</i>&nbsp;            pw.println(&quot;void&quot;);</b>
+<b class="fc"><i>71</i>&nbsp;            pw.println(&quot;static&quot;);</b>
+<b class="fc"><i>72</i>&nbsp;            pw.println(&quot;System.out.println&quot;);</b>
+<b class="fc"><i>73</i>&nbsp;            pw.println(&quot;return&quot;);</b>
+<b class="fc"><i>74</i>&nbsp;            pw.println(&quot;volatile&quot;);</b>
+<b class="fc"><i>75</i>&nbsp;            pw.println(&quot;true&quot;);</b>
+<b class="fc"><i>76</i>&nbsp;            pw.println(&quot;instanceof&quot;);</b>
+<b class="fc"><i>77</i>&nbsp;            pw.println(&quot;short&quot;);</b>
+<b class="fc"><i>78</i>&nbsp;            pw.println(&quot;implements&quot;);</b>
+<b class="fc"><i>79</i>&nbsp;            pw.println(&quot;.get(&quot;);</b>
+<b class="fc"><i>80</i>&nbsp;            pw.println(&quot;false&quot;);</b>
+<b class="fc"><i>81</i>&nbsp;            pw.println(&quot;+&quot;);</b>
+<b class="fc"><i>82</i>&nbsp;            pw.println(&quot;-&quot;);</b>
+<b class="fc"><i>83</i>&nbsp;            pw.println(&quot;*&quot;);</b>
+<b class="fc"><i>84</i>&nbsp;            pw.println(&quot;/&quot;);</b>
+<b class="fc"><i>85</i>&nbsp;            pw.println(&quot;%&quot;);</b>
+<b class="fc"><i>86</i>&nbsp;            pw.println(&quot;your&quot;);</b>
+<b class="fc"><i>87</i>&nbsp;            pw.println(&quot;yours&quot;);</b>
+<b class="fc"><i>88</i>&nbsp;            pw.println(&quot;yourself&quot;);</b>
+<b class="fc"><i>89</i>&nbsp;            pw.println(&quot;yourselves&quot;);</b>
+<b class="fc"><i>90</i>&nbsp;            pw.println(&quot;you&quot;);</b>
+<b class="fc"><i>91</i>&nbsp;            pw.println(&quot;yond&quot;);</b>
+<b class="fc"><i>92</i>&nbsp;            pw.println(&quot;yonder&quot;);</b>
+<b class="fc"><i>93</i>&nbsp;            pw.println(&quot;yon&quot;);</b>
+<b class="fc"><i>94</i>&nbsp;            pw.println(&quot;ye&quot;);</b>
+<b class="fc"><i>95</i>&nbsp;            pw.println(&quot;yet&quot;);</b>
+<b class="fc"><i>96</i>&nbsp;            pw.println(&quot;z&quot;);</b>
+<b class="fc"><i>97</i>&nbsp;            pw.println(&quot;zillion&quot;);</b>
+<b class="fc"><i>98</i>&nbsp;            pw.println(&quot;j&quot;);</b>
+<b class="fc"><i>99</i>&nbsp;            pw.println(&quot;u&quot;);</b>
+<b class="fc"><i>100</i>&nbsp;            pw.println(&quot;umpteen&quot;);</b>
+<b class="fc"><i>101</i>&nbsp;            pw.println(&quot;usually&quot;);</b>
+<b class="fc"><i>102</i>&nbsp;            pw.println(&quot;us&quot;);</b>
+<b class="fc"><i>103</i>&nbsp;            pw.println(&quot;uponed&quot;);</b>
+<b class="fc"><i>104</i>&nbsp;            pw.println(&quot;upons&quot;);</b>
+<b class="fc"><i>105</i>&nbsp;            pw.println(&quot;uponing&quot;);</b>
+<b class="fc"><i>106</i>&nbsp;            pw.println(&quot;upon&quot;);</b>
+<b class="fc"><i>107</i>&nbsp;            pw.println(&quot;ups&quot;);</b>
+<b class="fc"><i>108</i>&nbsp;            pw.println(&quot;upping&quot;);</b>
+<b class="fc"><i>109</i>&nbsp;            pw.println(&quot;upped&quot;);</b>
+<b class="fc"><i>110</i>&nbsp;            pw.println(&quot;up&quot;);</b>
+<b class="fc"><i>111</i>&nbsp;            pw.println(&quot;unto&quot;);</b>
+<b class="fc"><i>112</i>&nbsp;            pw.println(&quot;until&quot;);</b>
+<b class="fc"><i>113</i>&nbsp;            pw.println(&quot;unless&quot;);</b>
+<b class="fc"><i>114</i>&nbsp;            pw.println(&quot;unlike&quot;);</b>
+<b class="fc"><i>115</i>&nbsp;            pw.println(&quot;unliker&quot;);</b>
+<b class="fc"><i>116</i>&nbsp;            pw.println(&quot;unlikest&quot;);</b>
+<b class="fc"><i>117</i>&nbsp;            pw.println(&quot;under&quot;);</b>
+<b class="fc"><i>118</i>&nbsp;            pw.println(&quot;underneath&quot;);</b>
+<b class="fc"><i>119</i>&nbsp;            pw.println(&quot;use&quot;);</b>
+<b class="fc"><i>120</i>&nbsp;            pw.println(&quot;used&quot;);</b>
+<b class="fc"><i>121</i>&nbsp;            pw.println(&quot;usedest&quot;);</b>
+<b class="fc"><i>122</i>&nbsp;            pw.println(&quot;r&quot;);</b>
+<b class="fc"><i>123</i>&nbsp;            pw.println(&quot;rath&quot;);</b>
+<b class="fc"><i>124</i>&nbsp;            pw.println(&quot;rather&quot;);</b>
+<b class="fc"><i>125</i>&nbsp;            pw.println(&quot;rathest&quot;);</b>
+<b class="fc"><i>126</i>&nbsp;            pw.println(&quot;rathe&quot;);</b>
+<b class="fc"><i>127</i>&nbsp;            pw.println(&quot;re&quot;);</b>
+<b class="fc"><i>128</i>&nbsp;            pw.println(&quot;relate&quot;);</b>
+<b class="fc"><i>129</i>&nbsp;            pw.println(&quot;related&quot;);</b>
+<b class="fc"><i>130</i>&nbsp;            pw.println(&quot;relatively&quot;);</b>
+<b class="fc"><i>131</i>&nbsp;            pw.println(&quot;regarding&quot;);</b>
+<b class="fc"><i>132</i>&nbsp;            pw.println(&quot;really&quot;);</b>
+<b class="fc"><i>133</i>&nbsp;            pw.println(&quot;res&quot;);</b>
+<b class="fc"><i>134</i>&nbsp;            pw.println(&quot;respecting&quot;);</b>
+<b class="fc"><i>135</i>&nbsp;            pw.println(&quot;respectively&quot;);</b>
+<b class="fc"><i>136</i>&nbsp;            pw.println(&quot;q&quot;);</b>
+<b class="fc"><i>137</i>&nbsp;            pw.println(&quot;quite&quot;);</b>
+<b class="fc"><i>138</i>&nbsp;            pw.println(&quot;que&quot;);</b>
+<b class="fc"><i>139</i>&nbsp;            pw.println(&quot;qua&quot;);</b>
+<b class="fc"><i>140</i>&nbsp;            pw.println(&quot;n&quot;);</b>
+<b class="fc"><i>141</i>&nbsp;            pw.println(&quot;neither&quot;);</b>
+<b class="fc"><i>142</i>&nbsp;            pw.println(&quot;neaths&quot;);</b>
+<b class="fc"><i>143</i>&nbsp;            pw.println(&quot;neath&quot;);</b>
+<b class="fc"><i>144</i>&nbsp;            pw.println(&quot;nethe&quot;);</b>
+<b class="fc"><i>145</i>&nbsp;            pw.println(&quot;nethermost&quot;);</b>
+<b class="fc"><i>146</i>&nbsp;            pw.println(&quot;necessary&quot;);</b>
+<b class="fc"><i>147</i>&nbsp;            pw.println(&quot;necessariest&quot;);</b>
+<b class="fc"><i>148</i>&nbsp;            pw.println(&quot;necessarier&quot;);</b>
+<b class="fc"><i>149</i>&nbsp;            pw.println(&quot;never&quot;);</b>
+<b class="fc"><i>150</i>&nbsp;            pw.println(&quot;nevertheless&quot;);</b>
+<b class="fc"><i>151</i>&nbsp;            pw.println(&quot;nigh&quot;);</b>
+<b class="fc"><i>152</i>&nbsp;            pw.println(&quot;nighest&quot;);</b>
+<b class="fc"><i>153</i>&nbsp;            pw.println(&quot;nigher&quot;);</b>
+<b class="fc"><i>154</i>&nbsp;            pw.println(&quot;nine&quot;);</b>
+<b class="fc"><i>155</i>&nbsp;            pw.println(&quot;noone&quot;);</b>
+<b class="fc"><i>156</i>&nbsp;            pw.println(&quot;nobody&quot;);</b>
+<b class="fc"><i>157</i>&nbsp;            pw.println(&quot;nobodies&quot;);</b>
+<b class="fc"><i>158</i>&nbsp;            pw.println(&quot;nowhere&quot;);</b>
+<b class="fc"><i>159</i>&nbsp;            pw.println(&quot;nowheres&quot;);</b>
+<b class="fc"><i>160</i>&nbsp;            pw.println(&quot;no&quot;);</b>
+<b class="fc"><i>161</i>&nbsp;            pw.println(&quot;noes&quot;);</b>
+<b class="fc"><i>162</i>&nbsp;            pw.println(&quot;nor&quot;);</b>
+<b class="fc"><i>163</i>&nbsp;            pw.println(&quot;nos&quot;);</b>
+<b class="fc"><i>164</i>&nbsp;            pw.println(&quot;no-one&quot;);</b>
+<b class="fc"><i>165</i>&nbsp;            pw.println(&quot;none&quot;);</b>
+<b class="fc"><i>166</i>&nbsp;            pw.println(&quot;not&quot;);</b>
+<b class="fc"><i>167</i>&nbsp;            pw.println(&quot;notwithstanding&quot;);</b>
+<b class="fc"><i>168</i>&nbsp;            pw.println(&quot;nothings&quot;);</b>
+<b class="fc"><i>169</i>&nbsp;            pw.println(&quot;nothing&quot;);</b>
+<b class="fc"><i>170</i>&nbsp;            pw.println(&quot;nathless&quot;);</b>
+<b class="fc"><i>171</i>&nbsp;            pw.println(&quot;natheless&quot;);</b>
+<b class="fc"><i>172</i>&nbsp;            pw.println(&quot;t&quot;);</b>
+<b class="fc"><i>173</i>&nbsp;            pw.println(&quot;ten&quot;);</b>
+<b class="fc"><i>174</i>&nbsp;            pw.println(&quot;tills&quot;);</b>
+<b class="fc"><i>175</i>&nbsp;            pw.println(&quot;till&quot;);</b>
+<b class="fc"><i>176</i>&nbsp;            pw.println(&quot;tilled&quot;);</b>
+<b class="fc"><i>177</i>&nbsp;            pw.println(&quot;tilling&quot;);</b>
+<b class="fc"><i>178</i>&nbsp;            pw.println(&quot;to&quot;);</b>
+<b class="fc"><i>179</i>&nbsp;            pw.println(&quot;towards&quot;);</b>
+<b class="fc"><i>180</i>&nbsp;            pw.println(&quot;toward&quot;);</b>
+<b class="fc"><i>181</i>&nbsp;            pw.println(&quot;towardest&quot;);</b>
+<b class="fc"><i>182</i>&nbsp;            pw.println(&quot;towarder&quot;);</b>
+<b class="fc"><i>183</i>&nbsp;            pw.println(&quot;together&quot;);</b>
+<b class="fc"><i>184</i>&nbsp;            pw.println(&quot;too&quot;);</b>
+<b class="fc"><i>185</i>&nbsp;            pw.println(&quot;thy&quot;);</b>
+<b class="fc"><i>186</i>&nbsp;            pw.println(&quot;thyself&quot;);</b>
+<b class="fc"><i>187</i>&nbsp;            pw.println(&quot;thus&quot;);</b>
+<b class="fc"><i>188</i>&nbsp;            pw.println(&quot;than&quot;);</b>
+<b class="fc"><i>189</i>&nbsp;            pw.println(&quot;that&quot;);</b>
+<b class="fc"><i>190</i>&nbsp;            pw.println(&quot;those&quot;);</b>
+<b class="fc"><i>191</i>&nbsp;            pw.println(&quot;thou&quot;);</b>
+<b class="fc"><i>192</i>&nbsp;            pw.println(&quot;though&quot;);</b>
+<b class="fc"><i>193</i>&nbsp;            pw.println(&quot;thous&quot;);</b>
+<b class="fc"><i>194</i>&nbsp;            pw.println(&quot;thouses&quot;);</b>
+<b class="fc"><i>195</i>&nbsp;            pw.println(&quot;thoroughest&quot;);</b>
+<b class="fc"><i>196</i>&nbsp;            pw.println(&quot;thorougher&quot;);</b>
+<b class="fc"><i>197</i>&nbsp;            pw.println(&quot;thorough&quot;);</b>
+<b class="fc"><i>198</i>&nbsp;            pw.println(&quot;thoroughly&quot;);</b>
+<b class="fc"><i>199</i>&nbsp;            pw.println(&quot;thru&quot;);</b>
+<b class="fc"><i>200</i>&nbsp;            pw.println(&quot;thruer&quot;);</b>
+<b class="fc"><i>201</i>&nbsp;            pw.println(&quot;thruest&quot;);</b>
+<b class="fc"><i>202</i>&nbsp;            pw.println(&quot;thro&quot;);</b>
+<b class="fc"><i>203</i>&nbsp;            pw.println(&quot;through&quot;);</b>
+<b class="fc"><i>204</i>&nbsp;            pw.println(&quot;throughout&quot;);</b>
+<b class="fc"><i>205</i>&nbsp;            pw.println(&quot;throughest&quot;);</b>
+<b class="fc"><i>206</i>&nbsp;            pw.println(&quot;througher&quot;);</b>
+<b class="fc"><i>207</i>&nbsp;            pw.println(&quot;thine&quot;);</b>
+<b class="fc"><i>208</i>&nbsp;            pw.println(&quot;this&quot;);</b>
+<b class="fc"><i>209</i>&nbsp;            pw.println(&quot;thises&quot;);</b>
+<b class="fc"><i>210</i>&nbsp;            pw.println(&quot;they&quot;);</b>
+<b class="fc"><i>211</i>&nbsp;            pw.println(&quot;thee&quot;);</b>
+<b class="fc"><i>212</i>&nbsp;            pw.println(&quot;the&quot;);</b>
+<b class="fc"><i>213</i>&nbsp;            pw.println(&quot;then&quot;);</b>
+<b class="fc"><i>214</i>&nbsp;            pw.println(&quot;thence&quot;);</b>
+<b class="fc"><i>215</i>&nbsp;            pw.println(&quot;thenest&quot;);</b>
+<b class="fc"><i>216</i>&nbsp;            pw.println(&quot;thener&quot;);</b>
+<b class="fc"><i>217</i>&nbsp;            pw.println(&quot;them&quot;);</b>
+<b class="fc"><i>218</i>&nbsp;            pw.println(&quot;themselves&quot;);</b>
+<b class="fc"><i>219</i>&nbsp;            pw.println(&quot;these&quot;);</b>
+<b class="fc"><i>220</i>&nbsp;            pw.println(&quot;therer&quot;);</b>
+<b class="fc"><i>221</i>&nbsp;            pw.println(&quot;there&quot;);</b>
+<b class="fc"><i>222</i>&nbsp;            pw.println(&quot;thereby&quot;);</b>
+<b class="fc"><i>223</i>&nbsp;            pw.println(&quot;therest&quot;);</b>
+<b class="fc"><i>224</i>&nbsp;            pw.println(&quot;thereafter&quot;);</b>
+<b class="fc"><i>225</i>&nbsp;            pw.println(&quot;therein&quot;);</b>
+<b class="fc"><i>226</i>&nbsp;            pw.println(&quot;thereupon&quot;);</b>
+<b class="fc"><i>227</i>&nbsp;            pw.println(&quot;therefore&quot;);</b>
+<b class="fc"><i>228</i>&nbsp;            pw.println(&quot;their&quot;);</b>
+<b class="fc"><i>229</i>&nbsp;            pw.println(&quot;theirs&quot;);</b>
+<b class="fc"><i>230</i>&nbsp;            pw.println(&quot;thing&quot;);</b>
+<b class="fc"><i>231</i>&nbsp;            pw.println(&quot;things&quot;);</b>
+<b class="fc"><i>232</i>&nbsp;            pw.println(&quot;three&quot;);</b>
+<b class="fc"><i>233</i>&nbsp;            pw.println(&quot;two&quot;);</b>
+<b class="fc"><i>234</i>&nbsp;            pw.println(&quot;o&quot;);</b>
+<b class="fc"><i>235</i>&nbsp;            pw.println(&quot;oh&quot;);</b>
+<b class="fc"><i>236</i>&nbsp;            pw.println(&quot;owt&quot;);</b>
+<b class="fc"><i>237</i>&nbsp;            pw.println(&quot;owning&quot;);</b>
+<b class="fc"><i>238</i>&nbsp;            pw.println(&quot;owned&quot;);</b>
+<b class="fc"><i>239</i>&nbsp;            pw.println(&quot;own&quot;);</b>
+<b class="fc"><i>240</i>&nbsp;            pw.println(&quot;owns&quot;);</b>
+<b class="fc"><i>241</i>&nbsp;            pw.println(&quot;others&quot;);</b>
+<b class="fc"><i>242</i>&nbsp;            pw.println(&quot;other&quot;);</b>
+<b class="fc"><i>243</i>&nbsp;            pw.println(&quot;otherwise&quot;);</b>
+<b class="fc"><i>244</i>&nbsp;            pw.println(&quot;otherwisest&quot;);</b>
+<b class="fc"><i>245</i>&nbsp;            pw.println(&quot;otherwiser&quot;);</b>
+<b class="fc"><i>246</i>&nbsp;            pw.println(&quot;of&quot;);</b>
+<b class="fc"><i>247</i>&nbsp;            pw.println(&quot;often&quot;);</b>
+<b class="fc"><i>248</i>&nbsp;            pw.println(&quot;oftener&quot;);</b>
+<b class="fc"><i>249</i>&nbsp;            pw.println(&quot;oftenest&quot;);</b>
+<b class="fc"><i>250</i>&nbsp;            pw.println(&quot;off&quot;);</b>
+<b class="fc"><i>251</i>&nbsp;            pw.println(&quot;offs&quot;);</b>
+<b class="fc"><i>252</i>&nbsp;            pw.println(&quot;offest&quot;);</b>
+<b class="fc"><i>253</i>&nbsp;            pw.println(&quot;one&quot;);</b>
+<b class="fc"><i>254</i>&nbsp;            pw.println(&quot;ought&quot;);</b>
+<b class="fc"><i>255</i>&nbsp;            pw.println(&quot;oughts&quot;);</b>
+<b class="fc"><i>256</i>&nbsp;            pw.println(&quot;our&quot;);</b>
+<b class="fc"><i>257</i>&nbsp;            pw.println(&quot;ours&quot;);</b>
+<b class="fc"><i>258</i>&nbsp;            pw.println(&quot;ourselves&quot;);</b>
+<b class="fc"><i>259</i>&nbsp;            pw.println(&quot;ourself&quot;);</b>
+<b class="fc"><i>260</i>&nbsp;            pw.println(&quot;outest&quot;);</b>
+<b class="fc"><i>261</i>&nbsp;            pw.println(&quot;outed&quot;);</b>
+<b class="fc"><i>262</i>&nbsp;            pw.println(&quot;outwith&quot;);</b>
+<b class="fc"><i>263</i>&nbsp;            pw.println(&quot;outs&quot;);</b>
+<b class="fc"><i>264</i>&nbsp;            pw.println(&quot;outside&quot;);</b>
+<b class="fc"><i>265</i>&nbsp;            pw.println(&quot;over&quot;);</b>
+<b class="fc"><i>266</i>&nbsp;            pw.println(&quot;overallest&quot;);</b>
+<b class="fc"><i>267</i>&nbsp;            pw.println(&quot;overaller&quot;);</b>
+<b class="fc"><i>268</i>&nbsp;            pw.println(&quot;overalls&quot;);</b>
+<b class="fc"><i>269</i>&nbsp;            pw.println(&quot;overall&quot;);</b>
+<b class="fc"><i>270</i>&nbsp;            pw.println(&quot;overs&quot;);</b>
+<b class="fc"><i>271</i>&nbsp;            pw.println(&quot;or&quot;);</b>
+<b class="fc"><i>272</i>&nbsp;            pw.println(&quot;orer&quot;);</b>
+<b class="fc"><i>273</i>&nbsp;            pw.println(&quot;orest&quot;);</b>
+<b class="fc"><i>274</i>&nbsp;            pw.println(&quot;on&quot;);</b>
+<b class="fc"><i>275</i>&nbsp;            pw.println(&quot;oneself&quot;);</b>
+<b class="fc"><i>276</i>&nbsp;            pw.println(&quot;onest&quot;);</b>
+<b class="fc"><i>277</i>&nbsp;            pw.println(&quot;ons&quot;);</b>
+<b class="fc"><i>278</i>&nbsp;            pw.println(&quot;onto&quot;);</b>
+<b class="fc"><i>279</i>&nbsp;            pw.println(&quot;a&quot;);</b>
+<b class="fc"><i>280</i>&nbsp;            pw.println(&quot;atween&quot;);</b>
+<b class="fc"><i>281</i>&nbsp;            pw.println(&quot;at&quot;);</b>
+<b class="fc"><i>282</i>&nbsp;            pw.println(&quot;athwart&quot;);</b>
+<b class="fc"><i>283</i>&nbsp;            pw.println(&quot;atop&quot;);</b>
+<b class="fc"><i>284</i>&nbsp;            pw.println(&quot;afore&quot;);</b>
+<b class="fc"><i>285</i>&nbsp;            pw.println(&quot;afterward&quot;);</b>
+<b class="fc"><i>286</i>&nbsp;            pw.println(&quot;afterwards&quot;);</b>
+<b class="fc"><i>287</i>&nbsp;            pw.println(&quot;after&quot;);</b>
+<b class="fc"><i>288</i>&nbsp;            pw.println(&quot;afterest&quot;);</b>
+<b class="fc"><i>289</i>&nbsp;            pw.println(&quot;afterer&quot;);</b>
+<b class="fc"><i>290</i>&nbsp;            pw.println(&quot;ain&quot;);</b>
+<b class="fc"><i>291</i>&nbsp;            pw.println(&quot;an&quot;);</b>
+<b class="fc"><i>292</i>&nbsp;            pw.println(&quot;any&quot;);</b>
+<b class="fc"><i>293</i>&nbsp;            pw.println(&quot;anything&quot;);</b>
+<b class="fc"><i>294</i>&nbsp;            pw.println(&quot;anybody&quot;);</b>
+<b class="fc"><i>295</i>&nbsp;            pw.println(&quot;anyone&quot;);</b>
+<b class="fc"><i>296</i>&nbsp;            pw.println(&quot;anyhow&quot;);</b>
+<b class="fc"><i>297</i>&nbsp;            pw.println(&quot;anywhere&quot;);</b>
+<b class="fc"><i>298</i>&nbsp;            pw.println(&quot;anent&quot;);</b>
+<b class="fc"><i>299</i>&nbsp;            pw.println(&quot;anear&quot;);</b>
+<b class="fc"><i>300</i>&nbsp;            pw.println(&quot;and&quot;);</b>
+<b class="fc"><i>301</i>&nbsp;            pw.println(&quot;andor&quot;);</b>
+<b class="fc"><i>302</i>&nbsp;            pw.println(&quot;another&quot;);</b>
+<b class="fc"><i>303</i>&nbsp;            pw.println(&quot;around&quot;);</b>
+<b class="fc"><i>304</i>&nbsp;            pw.println(&quot;ares&quot;);</b>
+<b class="fc"><i>305</i>&nbsp;            pw.println(&quot;are&quot;);</b>
+<b class="fc"><i>306</i>&nbsp;            pw.println(&quot;aest&quot;);</b>
+<b class="fc"><i>307</i>&nbsp;            pw.println(&quot;aer&quot;);</b>
+<b class="fc"><i>308</i>&nbsp;            pw.println(&quot;against&quot;);</b>
+<b class="fc"><i>309</i>&nbsp;            pw.println(&quot;again&quot;);</b>
+<b class="fc"><i>310</i>&nbsp;            pw.println(&quot;accordingly&quot;);</b>
+<b class="fc"><i>311</i>&nbsp;            pw.println(&quot;abaft&quot;);</b>
+<b class="fc"><i>312</i>&nbsp;            pw.println(&quot;abafter&quot;);</b>
+<b class="fc"><i>313</i>&nbsp;            pw.println(&quot;abaftest&quot;);</b>
+<b class="fc"><i>314</i>&nbsp;            pw.println(&quot;abovest&quot;);</b>
+<b class="fc"><i>315</i>&nbsp;            pw.println(&quot;above&quot;);</b>
+<b class="fc"><i>316</i>&nbsp;            pw.println(&quot;abover&quot;);</b>
+<b class="fc"><i>317</i>&nbsp;            pw.println(&quot;abouter&quot;);</b>
+<b class="fc"><i>318</i>&nbsp;            pw.println(&quot;aboutest&quot;);</b>
+<b class="fc"><i>319</i>&nbsp;            pw.println(&quot;about&quot;);</b>
+<b class="fc"><i>320</i>&nbsp;            pw.println(&quot;aid&quot;);</b>
+<b class="fc"><i>321</i>&nbsp;            pw.println(&quot;amidst&quot;);</b>
+<b class="fc"><i>322</i>&nbsp;            pw.println(&quot;amid&quot;);</b>
+<b class="fc"><i>323</i>&nbsp;            pw.println(&quot;among&quot;);</b>
+<b class="fc"><i>324</i>&nbsp;            pw.println(&quot;amongst&quot;);</b>
+<b class="fc"><i>325</i>&nbsp;            pw.println(&quot;apartest&quot;);</b>
+<b class="fc"><i>326</i>&nbsp;            pw.println(&quot;aparter&quot;);</b>
+<b class="fc"><i>327</i>&nbsp;            pw.println(&quot;apart&quot;);</b>
+<b class="fc"><i>328</i>&nbsp;            pw.println(&quot;appeared&quot;);</b>
+<b class="fc"><i>329</i>&nbsp;            pw.println(&quot;appears&quot;);</b>
+<b class="fc"><i>330</i>&nbsp;            pw.println(&quot;appear&quot;);</b>
+<b class="fc"><i>331</i>&nbsp;            pw.println(&quot;appearing&quot;);</b>
+<b class="fc"><i>332</i>&nbsp;            pw.println(&quot;appropriating&quot;);</b>
+<b class="fc"><i>333</i>&nbsp;            pw.println(&quot;appropriate&quot;);</b>
+<b class="fc"><i>334</i>&nbsp;            pw.println(&quot;appropriatest&quot;);</b>
+<b class="fc"><i>335</i>&nbsp;            pw.println(&quot;appropriates&quot;);</b>
+<b class="fc"><i>336</i>&nbsp;            pw.println(&quot;appropriater&quot;);</b>
+<b class="fc"><i>337</i>&nbsp;            pw.println(&quot;appropriated&quot;);</b>
+<b class="fc"><i>338</i>&nbsp;            pw.println(&quot;already&quot;);</b>
+<b class="fc"><i>339</i>&nbsp;            pw.println(&quot;always&quot;);</b>
+<b class="fc"><i>340</i>&nbsp;            pw.println(&quot;also&quot;);</b>
+<b class="fc"><i>341</i>&nbsp;            pw.println(&quot;along&quot;);</b>
+<b class="fc"><i>342</i>&nbsp;            pw.println(&quot;alongside&quot;);</b>
+<b class="fc"><i>343</i>&nbsp;            pw.println(&quot;although&quot;);</b>
+<b class="fc"><i>344</i>&nbsp;            pw.println(&quot;almost&quot;);</b>
+<b class="fc"><i>345</i>&nbsp;            pw.println(&quot;all&quot;);</b>
+<b class="fc"><i>346</i>&nbsp;            pw.println(&quot;allest&quot;);</b>
+<b class="fc"><i>347</i>&nbsp;            pw.println(&quot;aller&quot;);</b>
+<b class="fc"><i>348</i>&nbsp;            pw.println(&quot;allyou&quot;);</b>
+<b class="fc"><i>349</i>&nbsp;            pw.println(&quot;alls&quot;);</b>
+<b class="fc"><i>350</i>&nbsp;            pw.println(&quot;albeit&quot;);</b>
+<b class="fc"><i>351</i>&nbsp;            pw.println(&quot;awfully&quot;);</b>
+<b class="fc"><i>352</i>&nbsp;            pw.println(&quot;as&quot;);</b>
+<b class="fc"><i>353</i>&nbsp;            pw.println(&quot;aside&quot;);</b>
+<b class="fc"><i>354</i>&nbsp;            pw.println(&quot;asides&quot;);</b>
+<b class="fc"><i>355</i>&nbsp;            pw.println(&quot;aslant&quot;);</b>
+<b class="fc"><i>356</i>&nbsp;            pw.println(&quot;ases&quot;);</b>
+<b class="fc"><i>357</i>&nbsp;            pw.println(&quot;astrider&quot;);</b>
+<b class="fc"><i>358</i>&nbsp;            pw.println(&quot;astride&quot;);</b>
+<b class="fc"><i>359</i>&nbsp;            pw.println(&quot;astridest&quot;);</b>
+<b class="fc"><i>360</i>&nbsp;            pw.println(&quot;astraddlest&quot;);</b>
+<b class="fc"><i>361</i>&nbsp;            pw.println(&quot;astraddler&quot;);</b>
+<b class="fc"><i>362</i>&nbsp;            pw.println(&quot;astraddle&quot;);</b>
+<b class="fc"><i>363</i>&nbsp;            pw.println(&quot;availablest&quot;);</b>
+<b class="fc"><i>364</i>&nbsp;            pw.println(&quot;availabler&quot;);</b>
+<b class="fc"><i>365</i>&nbsp;            pw.println(&quot;available&quot;);</b>
+<b class="fc"><i>366</i>&nbsp;            pw.println(&quot;aughts&quot;);</b>
+<b class="fc"><i>367</i>&nbsp;            pw.println(&quot;aught&quot;);</b>
+<b class="fc"><i>368</i>&nbsp;            pw.println(&quot;vs&quot;);</b>
+<b class="fc"><i>369</i>&nbsp;            pw.println(&quot;v&quot;);</b>
+<b class="fc"><i>370</i>&nbsp;            pw.println(&quot;variousest&quot;);</b>
+<b class="fc"><i>371</i>&nbsp;            pw.println(&quot;variouser&quot;);</b>
+<b class="fc"><i>372</i>&nbsp;            pw.println(&quot;various&quot;);</b>
+<b class="fc"><i>373</i>&nbsp;            pw.println(&quot;via&quot;);</b>
+<b class="fc"><i>374</i>&nbsp;            pw.println(&quot;vis-a-vis&quot;);</b>
+<b class="fc"><i>375</i>&nbsp;            pw.println(&quot;vis-a-viser&quot;);</b>
+<b class="fc"><i>376</i>&nbsp;            pw.println(&quot;vis-a-visest&quot;);</b>
+<b class="fc"><i>377</i>&nbsp;            pw.println(&quot;viz&quot;);</b>
+<b class="fc"><i>378</i>&nbsp;            pw.println(&quot;very&quot;);</b>
+<b class="fc"><i>379</i>&nbsp;            pw.println(&quot;veriest&quot;);</b>
+<b class="fc"><i>380</i>&nbsp;            pw.println(&quot;verier&quot;);</b>
+<b class="fc"><i>381</i>&nbsp;            pw.println(&quot;versus&quot;);</b>
+<b class="fc"><i>382</i>&nbsp;            pw.println(&quot;k&quot;);</b>
+<b class="fc"><i>383</i>&nbsp;            pw.println(&quot;g&quot;);</b>
+<b class="fc"><i>384</i>&nbsp;            pw.println(&quot;go&quot;);</b>
+<b class="fc"><i>385</i>&nbsp;            pw.println(&quot;gone&quot;);</b>
+<b class="fc"><i>386</i>&nbsp;            pw.println(&quot;good&quot;);</b>
+<b class="fc"><i>387</i>&nbsp;            pw.println(&quot;got&quot;);</b>
+<b class="fc"><i>388</i>&nbsp;            pw.println(&quot;gotta&quot;);</b>
+<b class="fc"><i>389</i>&nbsp;            pw.println(&quot;gotten&quot;);</b>
+<b class="fc"><i>390</i>&nbsp;            pw.println(&quot;get&quot;);</b>
+<b class="fc"><i>391</i>&nbsp;            pw.println(&quot;gets&quot;);</b>
+<b class="fc"><i>392</i>&nbsp;            pw.println(&quot;getting&quot;);</b>
+<b class="fc"><i>393</i>&nbsp;            pw.println(&quot;b&quot;);</b>
+<b class="fc"><i>394</i>&nbsp;            pw.println(&quot;by&quot;);</b>
+<b class="fc"><i>395</i>&nbsp;            pw.println(&quot;byandby&quot;);</b>
+<b class="fc"><i>396</i>&nbsp;            pw.println(&quot;by-and-by&quot;);</b>
+<b class="fc"><i>397</i>&nbsp;            pw.println(&quot;bist&quot;);</b>
+<b class="fc"><i>398</i>&nbsp;            pw.println(&quot;both&quot;);</b>
+<b class="fc"><i>399</i>&nbsp;            pw.println(&quot;but&quot;);</b>
+<b class="fc"><i>400</i>&nbsp;            pw.println(&quot;buts&quot;);</b>
+<b class="fc"><i>401</i>&nbsp;            pw.println(&quot;be&quot;);</b>
+<b class="fc"><i>402</i>&nbsp;            pw.println(&quot;beyond&quot;);</b>
+<b class="fc"><i>403</i>&nbsp;            pw.println(&quot;because&quot;);</b>
+<b class="fc"><i>404</i>&nbsp;            pw.println(&quot;became&quot;);</b>
+<b class="fc"><i>405</i>&nbsp;            pw.println(&quot;becomes&quot;);</b>
+<b class="fc"><i>406</i>&nbsp;            pw.println(&quot;become&quot;);</b>
+<b class="fc"><i>407</i>&nbsp;            pw.println(&quot;becoming&quot;);</b>
+<b class="fc"><i>408</i>&nbsp;            pw.println(&quot;becomings&quot;);</b>
+<b class="fc"><i>409</i>&nbsp;            pw.println(&quot;becominger&quot;);</b>
+<b class="fc"><i>410</i>&nbsp;            pw.println(&quot;becomingest&quot;);</b>
+<b class="fc"><i>411</i>&nbsp;            pw.println(&quot;behind&quot;);</b>
+<b class="fc"><i>412</i>&nbsp;            pw.println(&quot;behinds&quot;);</b>
+<b class="fc"><i>413</i>&nbsp;            pw.println(&quot;before&quot;);</b>
+<b class="fc"><i>414</i>&nbsp;            pw.println(&quot;beforehand&quot;);</b>
+<b class="fc"><i>415</i>&nbsp;            pw.println(&quot;beforehandest&quot;);</b>
+<b class="fc"><i>416</i>&nbsp;            pw.println(&quot;beforehander&quot;);</b>
+<b class="fc"><i>417</i>&nbsp;            pw.println(&quot;bettered&quot;);</b>
+<b class="fc"><i>418</i>&nbsp;            pw.println(&quot;betters&quot;);</b>
+<b class="fc"><i>419</i>&nbsp;            pw.println(&quot;better&quot;);</b>
+<b class="fc"><i>420</i>&nbsp;            pw.println(&quot;bettering&quot;);</b>
+<b class="fc"><i>421</i>&nbsp;            pw.println(&quot;betwixt&quot;);</b>
+<b class="fc"><i>422</i>&nbsp;            pw.println(&quot;between&quot;);</b>
+<b class="fc"><i>423</i>&nbsp;            pw.println(&quot;beneath&quot;);</b>
+<b class="fc"><i>424</i>&nbsp;            pw.println(&quot;been&quot;);</b>
+<b class="fc"><i>425</i>&nbsp;            pw.println(&quot;below&quot;);</b>
+<b class="fc"><i>426</i>&nbsp;            pw.println(&quot;besides&quot;);</b>
+<b class="fc"><i>427</i>&nbsp;            pw.println(&quot;beside&quot;);</b>
+<b class="fc"><i>428</i>&nbsp;            pw.println(&quot;m&quot;);</b>
+<b class="fc"><i>429</i>&nbsp;            pw.println(&quot;my&quot;);</b>
+<b class="fc"><i>430</i>&nbsp;            pw.println(&quot;myself&quot;);</b>
+<b class="fc"><i>431</i>&nbsp;            pw.println(&quot;mucher&quot;);</b>
+<b class="fc"><i>432</i>&nbsp;            pw.println(&quot;muchest&quot;);</b>
+<b class="fc"><i>433</i>&nbsp;            pw.println(&quot;much&quot;);</b>
+<b class="fc"><i>434</i>&nbsp;            pw.println(&quot;must&quot;);</b>
+<b class="fc"><i>435</i>&nbsp;            pw.println(&quot;musts&quot;);</b>
+<b class="fc"><i>436</i>&nbsp;            pw.println(&quot;musths&quot;);</b>
+<b class="fc"><i>437</i>&nbsp;            pw.println(&quot;musth&quot;);</b>
+<b class="fc"><i>438</i>&nbsp;            pw.println(&quot;main&quot;);</b>
+<b class="fc"><i>439</i>&nbsp;            pw.println(&quot;make&quot;);</b>
+<b class="fc"><i>440</i>&nbsp;            pw.println(&quot;mayest&quot;);</b>
+<b class="fc"><i>441</i>&nbsp;            pw.println(&quot;many&quot;);</b>
+<b class="fc"><i>442</i>&nbsp;            pw.println(&quot;mauger&quot;);</b>
+<b class="fc"><i>443</i>&nbsp;            pw.println(&quot;maugre&quot;);</b>
+<b class="fc"><i>444</i>&nbsp;            pw.println(&quot;me&quot;);</b>
+<b class="fc"><i>445</i>&nbsp;            pw.println(&quot;meanwhiles&quot;);</b>
+<b class="fc"><i>446</i>&nbsp;            pw.println(&quot;meanwhile&quot;);</b>
+<b class="fc"><i>447</i>&nbsp;            pw.println(&quot;mostly&quot;);</b>
+<b class="fc"><i>448</i>&nbsp;            pw.println(&quot;most&quot;);</b>
+<b class="fc"><i>449</i>&nbsp;            pw.println(&quot;moreover&quot;);</b>
+<b class="fc"><i>450</i>&nbsp;            pw.println(&quot;more&quot;);</b>
+<b class="fc"><i>451</i>&nbsp;            pw.println(&quot;might&quot;);</b>
+<b class="fc"><i>452</i>&nbsp;            pw.println(&quot;mights&quot;);</b>
+<b class="fc"><i>453</i>&nbsp;            pw.println(&quot;midst&quot;);</b>
+<b class="fc"><i>454</i>&nbsp;            pw.println(&quot;midsts&quot;);</b>
+<b class="fc"><i>455</i>&nbsp;            pw.println(&quot;h&quot;);</b>
+<b class="fc"><i>456</i>&nbsp;            pw.println(&quot;huh&quot;);</b>
+<b class="fc"><i>457</i>&nbsp;            pw.println(&quot;humph&quot;);</b>
+<b class="fc"><i>458</i>&nbsp;            pw.println(&quot;he&quot;);</b>
+<b class="fc"><i>459</i>&nbsp;            pw.println(&quot;hers&quot;);</b>
+<b class="fc"><i>460</i>&nbsp;            pw.println(&quot;herself&quot;);</b>
+<b class="fc"><i>461</i>&nbsp;            pw.println(&quot;her&quot;);</b>
+<b class="fc"><i>462</i>&nbsp;            pw.println(&quot;hereby&quot;);</b>
+<b class="fc"><i>463</i>&nbsp;            pw.println(&quot;herein&quot;);</b>
+<b class="fc"><i>464</i>&nbsp;            pw.println(&quot;hereafters&quot;);</b>
+<b class="fc"><i>465</i>&nbsp;            pw.println(&quot;hereafter&quot;);</b>
+<b class="fc"><i>466</i>&nbsp;            pw.println(&quot;hereupon&quot;);</b>
+<b class="fc"><i>467</i>&nbsp;            pw.println(&quot;hence&quot;);</b>
+<b class="fc"><i>468</i>&nbsp;            pw.println(&quot;hadst&quot;);</b>
+<b class="fc"><i>469</i>&nbsp;            pw.println(&quot;had&quot;);</b>
+<b class="fc"><i>470</i>&nbsp;            pw.println(&quot;having&quot;);</b>
+<b class="fc"><i>471</i>&nbsp;            pw.println(&quot;haves&quot;);</b>
+<b class="fc"><i>472</i>&nbsp;            pw.println(&quot;have&quot;);</b>
+<b class="fc"><i>473</i>&nbsp;            pw.println(&quot;has&quot;);</b>
+<b class="fc"><i>474</i>&nbsp;            pw.println(&quot;hast&quot;);</b>
+<b class="fc"><i>475</i>&nbsp;            pw.println(&quot;hardly&quot;);</b>
+<b class="fc"><i>476</i>&nbsp;            pw.println(&quot;hae&quot;);</b>
+<b class="fc"><i>477</i>&nbsp;            pw.println(&quot;hath&quot;);</b>
+<b class="fc"><i>478</i>&nbsp;            pw.println(&quot;him&quot;);</b>
+<b class="fc"><i>479</i>&nbsp;            pw.println(&quot;himself&quot;);</b>
+<b class="fc"><i>480</i>&nbsp;            pw.println(&quot;hither&quot;);</b>
+<b class="fc"><i>481</i>&nbsp;            pw.println(&quot;hitherest&quot;);</b>
+<b class="fc"><i>482</i>&nbsp;            pw.println(&quot;hitherer&quot;);</b>
+<b class="fc"><i>483</i>&nbsp;            pw.println(&quot;his&quot;);</b>
+<b class="fc"><i>484</i>&nbsp;            pw.println(&quot;how-do-you-do&quot;);</b>
+<b class="fc"><i>485</i>&nbsp;            pw.println(&quot;however&quot;);</b>
+<b class="fc"><i>486</i>&nbsp;            pw.println(&quot;how&quot;);</b>
+<b class="fc"><i>487</i>&nbsp;            pw.println(&quot;howbeit&quot;);</b>
+<b class="fc"><i>488</i>&nbsp;            pw.println(&quot;howdoyoudo&quot;);</b>
+<b class="fc"><i>489</i>&nbsp;            pw.println(&quot;hoos&quot;);</b>
+<b class="fc"><i>490</i>&nbsp;            pw.println(&quot;hoo&quot;);</b>
+<b class="fc"><i>491</i>&nbsp;            pw.println(&quot;w&quot;);</b>
+<b class="fc"><i>492</i>&nbsp;            pw.println(&quot;woulded&quot;);</b>
+<b class="fc"><i>493</i>&nbsp;            pw.println(&quot;woulding&quot;);</b>
+<b class="fc"><i>494</i>&nbsp;            pw.println(&quot;would&quot;);</b>
+<b class="fc"><i>495</i>&nbsp;            pw.println(&quot;woulds&quot;);</b>
+<b class="fc"><i>496</i>&nbsp;            pw.println(&quot;was&quot;);</b>
+<b class="fc"><i>497</i>&nbsp;            pw.println(&quot;wast&quot;);</b>
+<b class="fc"><i>498</i>&nbsp;            pw.println(&quot;we&quot;);</b>
+<b class="fc"><i>499</i>&nbsp;            pw.println(&quot;wert&quot;);</b>
+<b class="fc"><i>500</i>&nbsp;            pw.println(&quot;were&quot;);</b>
+<b class="fc"><i>501</i>&nbsp;            pw.println(&quot;with&quot;);</b>
+<b class="fc"><i>502</i>&nbsp;            pw.println(&quot;withal&quot;);</b>
+<b class="fc"><i>503</i>&nbsp;            pw.println(&quot;without&quot;);</b>
+<b class="fc"><i>504</i>&nbsp;            pw.println(&quot;within&quot;);</b>
+<b class="fc"><i>505</i>&nbsp;            pw.println(&quot;why&quot;);</b>
+<b class="fc"><i>506</i>&nbsp;            pw.println(&quot;what&quot;);</b>
+<b class="fc"><i>507</i>&nbsp;            pw.println(&quot;whatever&quot;);</b>
+<b class="fc"><i>508</i>&nbsp;            pw.println(&quot;whateverer&quot;);</b>
+<b class="fc"><i>509</i>&nbsp;            pw.println(&quot;whateverest&quot;);</b>
+<b class="fc"><i>510</i>&nbsp;            pw.println(&quot;whatsoeverer&quot;);</b>
+<b class="fc"><i>511</i>&nbsp;            pw.println(&quot;whatsoeverest&quot;);</b>
+<b class="fc"><i>512</i>&nbsp;            pw.println(&quot;whatsoever&quot;);</b>
+<b class="fc"><i>513</i>&nbsp;            pw.println(&quot;whence&quot;);</b>
+<b class="fc"><i>514</i>&nbsp;            pw.println(&quot;whencesoever&quot;);</b>
+<b class="fc"><i>515</i>&nbsp;            pw.println(&quot;whenever&quot;);</b>
+<b class="fc"><i>516</i>&nbsp;            pw.println(&quot;whensoever&quot;);</b>
+<b class="fc"><i>517</i>&nbsp;            pw.println(&quot;when&quot;);</b>
+<b class="fc"><i>518</i>&nbsp;            pw.println(&quot;whenas&quot;);</b>
+<b class="fc"><i>519</i>&nbsp;            pw.println(&quot;whether&quot;);</b>
+<b class="fc"><i>520</i>&nbsp;            pw.println(&quot;wheen&quot;);</b>
+<b class="fc"><i>521</i>&nbsp;            pw.println(&quot;whereto&quot;);</b>
+<b class="fc"><i>522</i>&nbsp;            pw.println(&quot;whereupon&quot;);</b>
+<b class="fc"><i>523</i>&nbsp;            pw.println(&quot;wherever&quot;);</b>
+<b class="fc"><i>524</i>&nbsp;            pw.println(&quot;whereon&quot;);</b>
+<b class="fc"><i>525</i>&nbsp;            pw.println(&quot;whereof&quot;);</b>
+<b class="fc"><i>526</i>&nbsp;            pw.println(&quot;where&quot;);</b>
+<b class="fc"><i>527</i>&nbsp;            pw.println(&quot;whereby&quot;);</b>
+<b class="fc"><i>528</i>&nbsp;            pw.println(&quot;wherewithal&quot;);</b>
+<b class="fc"><i>529</i>&nbsp;            pw.println(&quot;wherewith&quot;);</b>
+<b class="fc"><i>530</i>&nbsp;            pw.println(&quot;whereinto&quot;);</b>
+<b class="fc"><i>531</i>&nbsp;            pw.println(&quot;wherein&quot;);</b>
+<b class="fc"><i>532</i>&nbsp;            pw.println(&quot;whereafter&quot;);</b>
+<b class="fc"><i>533</i>&nbsp;            pw.println(&quot;whereas&quot;);</b>
+<b class="fc"><i>534</i>&nbsp;            pw.println(&quot;wheresoever&quot;);</b>
+<b class="fc"><i>535</i>&nbsp;            pw.println(&quot;wherefrom&quot;);</b>
+<b class="fc"><i>536</i>&nbsp;            pw.println(&quot;which&quot;);</b>
+<b class="fc"><i>537</i>&nbsp;            pw.println(&quot;whichever&quot;);</b>
+<b class="fc"><i>538</i>&nbsp;            pw.println(&quot;whichsoever&quot;);</b>
+<b class="fc"><i>539</i>&nbsp;            pw.println(&quot;whilst&quot;);</b>
+<b class="fc"><i>540</i>&nbsp;            pw.println(&quot;while&quot;);</b>
+<b class="fc"><i>541</i>&nbsp;            pw.println(&quot;whiles&quot;);</b>
+<b class="fc"><i>542</i>&nbsp;            pw.println(&quot;whithersoever&quot;);</b>
+<b class="fc"><i>543</i>&nbsp;            pw.println(&quot;whither&quot;);</b>
+<b class="fc"><i>544</i>&nbsp;            pw.println(&quot;whoever&quot;);</b>
+<b class="fc"><i>545</i>&nbsp;            pw.println(&quot;whosoever&quot;);</b>
+<b class="fc"><i>546</i>&nbsp;            pw.println(&quot;whoso&quot;);</b>
+<b class="fc"><i>547</i>&nbsp;            pw.println(&quot;whose&quot;);</b>
+<b class="fc"><i>548</i>&nbsp;            pw.println(&quot;whomever&quot;);</b>
+<b class="fc"><i>549</i>&nbsp;            pw.println(&quot;s&quot;);</b>
+<b class="fc"><i>550</i>&nbsp;            pw.println(&quot;syne&quot;);</b>
+<b class="fc"><i>551</i>&nbsp;            pw.println(&quot;syn&quot;);</b>
+<b class="fc"><i>552</i>&nbsp;            pw.println(&quot;shalling&quot;);</b>
+<b class="fc"><i>553</i>&nbsp;            pw.println(&quot;shall&quot;);</b>
+<b class="fc"><i>554</i>&nbsp;            pw.println(&quot;shalled&quot;);</b>
+<b class="fc"><i>555</i>&nbsp;            pw.println(&quot;shalls&quot;);</b>
+<b class="fc"><i>556</i>&nbsp;            pw.println(&quot;shoulding&quot;);</b>
+<b class="fc"><i>557</i>&nbsp;            pw.println(&quot;should&quot;);</b>
+<b class="fc"><i>558</i>&nbsp;            pw.println(&quot;shoulded&quot;);</b>
+<b class="fc"><i>559</i>&nbsp;            pw.println(&quot;shoulds&quot;);</b>
+<b class="fc"><i>560</i>&nbsp;            pw.println(&quot;she&quot;);</b>
+<b class="fc"><i>561</i>&nbsp;            pw.println(&quot;sayyid&quot;);</b>
+<b class="fc"><i>562</i>&nbsp;            pw.println(&quot;sayid&quot;);</b>
+<b class="fc"><i>563</i>&nbsp;            pw.println(&quot;said&quot;);</b>
+<b class="fc"><i>564</i>&nbsp;            pw.println(&quot;saider&quot;);</b>
+<b class="fc"><i>565</i>&nbsp;            pw.println(&quot;saidest&quot;);</b>
+<b class="fc"><i>566</i>&nbsp;            pw.println(&quot;same&quot;);</b>
+<b class="fc"><i>567</i>&nbsp;            pw.println(&quot;samest&quot;);</b>
+<b class="fc"><i>568</i>&nbsp;            pw.println(&quot;sames&quot;);</b>
+<b class="fc"><i>569</i>&nbsp;            pw.println(&quot;samer&quot;);</b>
+<b class="fc"><i>570</i>&nbsp;            pw.println(&quot;saved&quot;);</b>
+<b class="fc"><i>571</i>&nbsp;            pw.println(&quot;sans&quot;);</b>
+<b class="fc"><i>572</i>&nbsp;            pw.println(&quot;sanses&quot;);</b>
+<b class="fc"><i>573</i>&nbsp;            pw.println(&quot;sanserifs&quot;);</b>
+<b class="fc"><i>574</i>&nbsp;            pw.println(&quot;sanserif&quot;);</b>
+<b class="fc"><i>575</i>&nbsp;            pw.println(&quot;so&quot;);</b>
+<b class="fc"><i>576</i>&nbsp;            pw.println(&quot;soer&quot;);</b>
+<b class="fc"><i>577</i>&nbsp;            pw.println(&quot;soest&quot;);</b>
+<b class="fc"><i>578</i>&nbsp;            pw.println(&quot;sobeit&quot;);</b>
+<b class="fc"><i>579</i>&nbsp;            pw.println(&quot;someone&quot;);</b>
+<b class="fc"><i>580</i>&nbsp;            pw.println(&quot;somebody&quot;);</b>
+<b class="fc"><i>581</i>&nbsp;            pw.println(&quot;somehow&quot;);</b>
+<b class="fc"><i>582</i>&nbsp;            pw.println(&quot;some&quot;);</b>
+<b class="fc"><i>583</i>&nbsp;            pw.println(&quot;somewhere&quot;);</b>
+<b class="fc"><i>584</i>&nbsp;            pw.println(&quot;somewhat&quot;);</b>
+<b class="fc"><i>585</i>&nbsp;            pw.println(&quot;something&quot;);</b>
+<b class="fc"><i>586</i>&nbsp;            pw.println(&quot;sometimest&quot;);</b>
+<b class="fc"><i>587</i>&nbsp;            pw.println(&quot;sometimes&quot;);</b>
+<b class="fc"><i>588</i>&nbsp;            pw.println(&quot;sometimer&quot;);</b>
+<b class="fc"><i>589</i>&nbsp;            pw.println(&quot;sometime&quot;);</b>
+<b class="fc"><i>590</i>&nbsp;            pw.println(&quot;several&quot;);</b>
+<b class="fc"><i>591</i>&nbsp;            pw.println(&quot;severaler&quot;);</b>
+<b class="fc"><i>592</i>&nbsp;            pw.println(&quot;severalest&quot;);</b>
+<b class="fc"><i>593</i>&nbsp;            pw.println(&quot;serious&quot;);</b>
+<b class="fc"><i>594</i>&nbsp;            pw.println(&quot;seriousest&quot;);</b>
+<b class="fc"><i>595</i>&nbsp;            pw.println(&quot;seriouser&quot;);</b>
+<b class="fc"><i>596</i>&nbsp;            pw.println(&quot;senza&quot;);</b>
+<b class="fc"><i>597</i>&nbsp;            pw.println(&quot;send&quot;);</b>
+<b class="fc"><i>598</i>&nbsp;            pw.println(&quot;sent&quot;);</b>
+<b class="fc"><i>599</i>&nbsp;            pw.println(&quot;seem&quot;);</b>
+<b class="fc"><i>600</i>&nbsp;            pw.println(&quot;seems&quot;);</b>
+<b class="fc"><i>601</i>&nbsp;            pw.println(&quot;seemed&quot;);</b>
+<b class="fc"><i>602</i>&nbsp;            pw.println(&quot;seemingest&quot;);</b>
+<b class="fc"><i>603</i>&nbsp;            pw.println(&quot;seeminger&quot;);</b>
+<b class="fc"><i>604</i>&nbsp;            pw.println(&quot;seemings&quot;);</b>
+<b class="fc"><i>605</i>&nbsp;            pw.println(&quot;seven&quot;);</b>
+<b class="fc"><i>606</i>&nbsp;            pw.println(&quot;summat&quot;);</b>
+<b class="fc"><i>607</i>&nbsp;            pw.println(&quot;sups&quot;);</b>
+<b class="fc"><i>608</i>&nbsp;            pw.println(&quot;sup&quot;);</b>
+<b class="fc"><i>609</i>&nbsp;            pw.println(&quot;supping&quot;);</b>
+<b class="fc"><i>610</i>&nbsp;            pw.println(&quot;supped&quot;);</b>
+<b class="fc"><i>611</i>&nbsp;            pw.println(&quot;such&quot;);</b>
+<b class="fc"><i>612</i>&nbsp;            pw.println(&quot;since&quot;);</b>
+<b class="fc"><i>613</i>&nbsp;            pw.println(&quot;sine&quot;);</b>
+<b class="fc"><i>614</i>&nbsp;            pw.println(&quot;sines&quot;);</b>
+<b class="fc"><i>615</i>&nbsp;            pw.println(&quot;sith&quot;);</b>
+<b class="fc"><i>616</i>&nbsp;            pw.println(&quot;six&quot;);</b>
+<b class="fc"><i>617</i>&nbsp;            pw.println(&quot;stop&quot;);</b>
+<b class="fc"><i>618</i>&nbsp;            pw.println(&quot;stopped&quot;);</b>
+<b class="fc"><i>619</i>&nbsp;            pw.println(&quot;p&quot;);</b>
+<b class="fc"><i>620</i>&nbsp;            pw.println(&quot;plaintiff&quot;);</b>
+<b class="fc"><i>621</i>&nbsp;            pw.println(&quot;plenty&quot;);</b>
+<b class="fc"><i>622</i>&nbsp;            pw.println(&quot;plenties&quot;);</b>
+<b class="fc"><i>623</i>&nbsp;            pw.println(&quot;please&quot;);</b>
+<b class="fc"><i>624</i>&nbsp;            pw.println(&quot;pleased&quot;);</b>
+<b class="fc"><i>625</i>&nbsp;            pw.println(&quot;pleases&quot;);</b>
+<b class="fc"><i>626</i>&nbsp;            pw.println(&quot;per&quot;);</b>
+<b class="fc"><i>627</i>&nbsp;            pw.println(&quot;perhaps&quot;);</b>
+<b class="fc"><i>628</i>&nbsp;            pw.println(&quot;particulars&quot;);</b>
+<b class="fc"><i>629</i>&nbsp;            pw.println(&quot;particularly&quot;);</b>
+<b class="fc"><i>630</i>&nbsp;            pw.println(&quot;particular&quot;);</b>
+<b class="fc"><i>631</i>&nbsp;            pw.println(&quot;particularest&quot;);</b>
+<b class="fc"><i>632</i>&nbsp;            pw.println(&quot;particularer&quot;);</b>
+<b class="fc"><i>633</i>&nbsp;            pw.println(&quot;pro&quot;);</b>
+<b class="fc"><i>634</i>&nbsp;            pw.println(&quot;providing&quot;);</b>
+<b class="fc"><i>635</i>&nbsp;            pw.println(&quot;provides&quot;);</b>
+<b class="fc"><i>636</i>&nbsp;            pw.println(&quot;provided&quot;);</b>
+<b class="fc"><i>637</i>&nbsp;            pw.println(&quot;provide&quot;);</b>
+<b class="fc"><i>638</i>&nbsp;            pw.println(&quot;probably&quot;);</b>
+<b class="fc"><i>639</i>&nbsp;            pw.println(&quot;l&quot;);</b>
+<b class="fc"><i>640</i>&nbsp;            pw.println(&quot;layabout&quot;);</b>
+<b class="fc"><i>641</i>&nbsp;            pw.println(&quot;layabouts&quot;);</b>
+<b class="fc"><i>642</i>&nbsp;            pw.println(&quot;latter&quot;);</b>
+<b class="fc"><i>643</i>&nbsp;            pw.println(&quot;latterest&quot;);</b>
+<b class="fc"><i>644</i>&nbsp;            pw.println(&quot;latterer&quot;);</b>
+<b class="fc"><i>645</i>&nbsp;            pw.println(&quot;latterly&quot;);</b>
+<b class="fc"><i>646</i>&nbsp;            pw.println(&quot;latters&quot;);</b>
+<b class="fc"><i>647</i>&nbsp;            pw.println(&quot;lots&quot;);</b>
+<b class="fc"><i>648</i>&nbsp;            pw.println(&quot;lotting&quot;);</b>
+<b class="fc"><i>649</i>&nbsp;            pw.println(&quot;lotted&quot;);</b>
+<b class="fc"><i>650</i>&nbsp;            pw.println(&quot;lot&quot;);</b>
+<b class="fc"><i>651</i>&nbsp;            pw.println(&quot;lest&quot;);</b>
+<b class="fc"><i>652</i>&nbsp;            pw.println(&quot;less&quot;);</b>
+<b class="fc"><i>653</i>&nbsp;            pw.println(&quot;ie&quot;);</b>
+<b class="fc"><i>654</i>&nbsp;            pw.println(&quot;ifs&quot;);</b>
+<b class="fc"><i>655</i>&nbsp;            pw.println(&quot;if&quot;);</b>
+<b class="fc"><i>656</i>&nbsp;            pw.println(&quot;i&quot;);</b>
+<b class="fc"><i>657</i>&nbsp;            pw.println(&quot;itself&quot;);</b>
+<b class="fc"><i>658</i>&nbsp;            pw.println(&quot;its&quot;);</b>
+<b class="fc"><i>659</i>&nbsp;            pw.println(&quot;it&quot;);</b>
+<b class="fc"><i>660</i>&nbsp;            pw.println(&quot;is&quot;);</b>
+<b class="fc"><i>661</i>&nbsp;            pw.println(&quot;idem&quot;);</b>
+<b class="fc"><i>662</i>&nbsp;            pw.println(&quot;idemer&quot;);</b>
+<b class="fc"><i>663</i>&nbsp;            pw.println(&quot;idemest&quot;);</b>
+<b class="fc"><i>664</i>&nbsp;            pw.println(&quot;immediate&quot;);</b>
+<b class="fc"><i>665</i>&nbsp;            pw.println(&quot;immediately&quot;);</b>
+<b class="fc"><i>666</i>&nbsp;            pw.println(&quot;immediatest&quot;);</b>
+<b class="fc"><i>667</i>&nbsp;            pw.println(&quot;immediater&quot;);</b>
+<b class="fc"><i>668</i>&nbsp;            pw.println(&quot;inwards&quot;);</b>
+<b class="fc"><i>669</i>&nbsp;            pw.println(&quot;inwardest&quot;);</b>
+<b class="fc"><i>670</i>&nbsp;            pw.println(&quot;inwarder&quot;);</b>
+<b class="fc"><i>671</i>&nbsp;            pw.println(&quot;inward&quot;);</b>
+<b class="fc"><i>672</i>&nbsp;            pw.println(&quot;inasmuch&quot;);</b>
+<b class="fc"><i>673</i>&nbsp;            pw.println(&quot;into&quot;);</b>
+<b class="fc"><i>674</i>&nbsp;            pw.println(&quot;instead&quot;);</b>
+<b class="fc"><i>675</i>&nbsp;            pw.println(&quot;insofar&quot;);</b>
+<b class="fc"><i>676</i>&nbsp;            pw.println(&quot;indicates&quot;);</b>
+<b class="fc"><i>677</i>&nbsp;            pw.println(&quot;indicated&quot;);</b>
+<b class="fc"><i>678</i>&nbsp;            pw.println(&quot;indicate&quot;);</b>
+<b class="fc"><i>679</i>&nbsp;            pw.println(&quot;indicating&quot;);</b>
+<b class="fc"><i>680</i>&nbsp;            pw.println(&quot;indeed&quot;);</b>
+<b class="fc"><i>681</i>&nbsp;            pw.println(&quot;inc&quot;);</b>
+<b class="fc"><i>682</i>&nbsp;            pw.println(&quot;f&quot;);</b>
+<b class="fc"><i>683</i>&nbsp;            pw.println(&quot;fact&quot;);</b>
+<b class="fc"><i>684</i>&nbsp;            pw.println(&quot;facts&quot;);</b>
+<b class="fc"><i>685</i>&nbsp;            pw.println(&quot;fs&quot;);</b>
+<b class="fc"><i>686</i>&nbsp;            pw.println(&quot;figupon&quot;);</b>
+<b class="fc"><i>687</i>&nbsp;            pw.println(&quot;figupons&quot;);</b>
+<b class="fc"><i>688</i>&nbsp;            pw.println(&quot;figuponing&quot;);</b>
+<b class="fc"><i>689</i>&nbsp;            pw.println(&quot;figuponed&quot;);</b>
+<b class="fc"><i>690</i>&nbsp;            pw.println(&quot;few&quot;);</b>
+<b class="fc"><i>691</i>&nbsp;            pw.println(&quot;fewer&quot;);</b>
+<b class="fc"><i>692</i>&nbsp;            pw.println(&quot;fewest&quot;);</b>
+<b class="fc"><i>693</i>&nbsp;            pw.println(&quot;frae&quot;);</b>
+<b class="fc"><i>694</i>&nbsp;            pw.println(&quot;from&quot;);</b>
+<b class="fc"><i>695</i>&nbsp;            pw.println(&quot;failing&quot;);</b>
+<b class="fc"><i>696</i>&nbsp;            pw.println(&quot;failings&quot;);</b>
+<b class="fc"><i>697</i>&nbsp;            pw.println(&quot;five&quot;);</b>
+<b class="fc"><i>698</i>&nbsp;            pw.println(&quot;furthers&quot;);</b>
+<b class="fc"><i>699</i>&nbsp;            pw.println(&quot;furtherer&quot;);</b>
+<b class="fc"><i>700</i>&nbsp;            pw.println(&quot;furthered&quot;);</b>
+<b class="fc"><i>701</i>&nbsp;            pw.println(&quot;furtherest&quot;);</b>
+<b class="fc"><i>702</i>&nbsp;            pw.println(&quot;further&quot;);</b>
+<b class="fc"><i>703</i>&nbsp;            pw.println(&quot;furthering&quot;);</b>
+<b class="fc"><i>704</i>&nbsp;            pw.println(&quot;furthermore&quot;);</b>
+<b class="fc"><i>705</i>&nbsp;            pw.println(&quot;fourscore&quot;);</b>
+<b class="fc"><i>706</i>&nbsp;            pw.println(&quot;followthrough&quot;);</b>
+<b class="fc"><i>707</i>&nbsp;            pw.println(&quot;for&quot;);</b>
+<b class="fc"><i>708</i>&nbsp;            pw.println(&quot;forwhy&quot;);</b>
+<b class="fc"><i>709</i>&nbsp;            pw.println(&quot;fornenst&quot;);</b>
+<b class="fc"><i>710</i>&nbsp;            pw.println(&quot;formerly&quot;);</b>
+<b class="fc"><i>711</i>&nbsp;            pw.println(&quot;former&quot;);</b>
+<b class="fc"><i>712</i>&nbsp;            pw.println(&quot;formerer&quot;);</b>
+<b class="fc"><i>713</i>&nbsp;            pw.println(&quot;formerest&quot;);</b>
+<b class="fc"><i>714</i>&nbsp;            pw.println(&quot;formers&quot;);</b>
+<b class="fc"><i>715</i>&nbsp;            pw.println(&quot;forbye&quot;);</b>
+<b class="fc"><i>716</i>&nbsp;            pw.println(&quot;forby&quot;);</b>
+<b class="fc"><i>717</i>&nbsp;            pw.println(&quot;fore&quot;);</b>
+<b class="fc"><i>718</i>&nbsp;            pw.println(&quot;forever&quot;);</b>
+<b class="fc"><i>719</i>&nbsp;            pw.println(&quot;forer&quot;);</b>
+<b class="fc"><i>720</i>&nbsp;            pw.println(&quot;fores&quot;);</b>
+<b class="fc"><i>721</i>&nbsp;            pw.println(&quot;four&quot;);</b>
+<b class="fc"><i>722</i>&nbsp;            pw.println(&quot;d&quot;);</b>
+<b class="fc"><i>723</i>&nbsp;            pw.println(&quot;ddays&quot;);</b>
+<b class="fc"><i>724</i>&nbsp;            pw.println(&quot;dday&quot;);</b>
+<b class="fc"><i>725</i>&nbsp;            pw.println(&quot;do&quot;);</b>
+<b class="fc"><i>726</i>&nbsp;            pw.println(&quot;doing&quot;);</b>
+<b class="fc"><i>727</i>&nbsp;            pw.println(&quot;doings&quot;);</b>
+<b class="fc"><i>728</i>&nbsp;            pw.println(&quot;doe&quot;);</b>
+<b class="fc"><i>729</i>&nbsp;            pw.println(&quot;does&quot;);</b>
+<b class="fc"><i>730</i>&nbsp;            pw.println(&quot;doth&quot;);</b>
+<b class="fc"><i>731</i>&nbsp;            pw.println(&quot;downwarder&quot;);</b>
+<b class="fc"><i>732</i>&nbsp;            pw.println(&quot;downwardest&quot;);</b>
+<b class="fc"><i>733</i>&nbsp;            pw.println(&quot;downward&quot;);</b>
+<b class="fc"><i>734</i>&nbsp;            pw.println(&quot;downwards&quot;);</b>
+<b class="fc"><i>735</i>&nbsp;            pw.println(&quot;downs&quot;);</b>
+<b class="fc"><i>736</i>&nbsp;            pw.println(&quot;done&quot;);</b>
+<b class="fc"><i>737</i>&nbsp;            pw.println(&quot;doner&quot;);</b>
+<b class="fc"><i>738</i>&nbsp;            pw.println(&quot;dones&quot;);</b>
+<b class="fc"><i>739</i>&nbsp;            pw.println(&quot;donest&quot;);</b>
+<b class="fc"><i>740</i>&nbsp;            pw.println(&quot;dos&quot;);</b>
+<b class="fc"><i>741</i>&nbsp;            pw.println(&quot;dost&quot;);</b>
+<b class="fc"><i>742</i>&nbsp;            pw.println(&quot;did&quot;);</b>
+<b class="fc"><i>743</i>&nbsp;            pw.println(&quot;differentest&quot;);</b>
+<b class="fc"><i>744</i>&nbsp;            pw.println(&quot;differenter&quot;);</b>
+<b class="fc"><i>745</i>&nbsp;            pw.println(&quot;different&quot;);</b>
+<b class="fc"><i>746</i>&nbsp;            pw.println(&quot;describing&quot;);</b>
+<b class="fc"><i>747</i>&nbsp;            pw.println(&quot;describe&quot;);</b>
+<b class="fc"><i>748</i>&nbsp;            pw.println(&quot;describes&quot;);</b>
+<b class="fc"><i>749</i>&nbsp;            pw.println(&quot;described&quot;);</b>
+<b class="fc"><i>750</i>&nbsp;            pw.println(&quot;despiting&quot;);</b>
+<b class="fc"><i>751</i>&nbsp;            pw.println(&quot;despites&quot;);</b>
+<b class="fc"><i>752</i>&nbsp;            pw.println(&quot;despited&quot;);</b>
+<b class="fc"><i>753</i>&nbsp;            pw.println(&quot;despite&quot;);</b>
+<b class="fc"><i>754</i>&nbsp;            pw.println(&quot;during&quot;);</b>
+<b class="fc"><i>755</i>&nbsp;            pw.println(&quot;c&quot;);</b>
+<b class="fc"><i>756</i>&nbsp;            pw.println(&quot;cum&quot;);</b>
+<b class="fc"><i>757</i>&nbsp;            pw.println(&quot;circa&quot;);</b>
+<b class="fc"><i>758</i>&nbsp;            pw.println(&quot;chez&quot;);</b>
+<b class="fc"><i>759</i>&nbsp;            pw.println(&quot;cer&quot;);</b>
+<b class="fc"><i>760</i>&nbsp;            pw.println(&quot;certain&quot;);</b>
+<b class="fc"><i>761</i>&nbsp;            pw.println(&quot;certainest&quot;);</b>
+<b class="fc"><i>762</i>&nbsp;            pw.println(&quot;certainer&quot;);</b>
+<b class="fc"><i>763</i>&nbsp;            pw.println(&quot;cest&quot;);</b>
+<b class="fc"><i>764</i>&nbsp;            pw.println(&quot;canst&quot;);</b>
+<b class="fc"><i>765</i>&nbsp;            pw.println(&quot;cannot&quot;);</b>
+<b class="fc"><i>766</i>&nbsp;            pw.println(&quot;cant&quot;);</b>
+<b class="fc"><i>767</i>&nbsp;            pw.println(&quot;cants&quot;);</b>
+<b class="fc"><i>768</i>&nbsp;            pw.println(&quot;canting&quot;);</b>
+<b class="fc"><i>769</i>&nbsp;            pw.println(&quot;cantest&quot;);</b>
+<b class="fc"><i>770</i>&nbsp;            pw.println(&quot;canted&quot;);</b>
+<b class="fc"><i>771</i>&nbsp;            pw.println(&quot;co&quot;);</b>
+<b class="fc"><i>772</i>&nbsp;            pw.println(&quot;could&quot;);</b>
+<b class="fc"><i>773</i>&nbsp;            pw.println(&quot;couldst&quot;);</b>
+<b class="fc"><i>774</i>&nbsp;            pw.println(&quot;comeon&quot;);</b>
+<b class="fc"><i>775</i>&nbsp;            pw.println(&quot;comeons&quot;);</b>
+<b class="fc"><i>776</i>&nbsp;            pw.println(&quot;come-ons&quot;);</b>
+<b class="fc"><i>777</i>&nbsp;            pw.println(&quot;come-on&quot;);</b>
+<b class="fc"><i>778</i>&nbsp;            pw.println(&quot;concerning&quot;);</b>
+<b class="fc"><i>779</i>&nbsp;            pw.println(&quot;concerninger&quot;);</b>
+<b class="fc"><i>780</i>&nbsp;            pw.println(&quot;concerningest&quot;);</b>
+<b class="fc"><i>781</i>&nbsp;            pw.println(&quot;consequently&quot;);</b>
+<b class="fc"><i>782</i>&nbsp;            pw.println(&quot;considering&quot;);</b>
+<b class="fc"><i>783</i>&nbsp;            pw.println(&quot;e&quot;);</b>
+<b class="fc"><i>784</i>&nbsp;            pw.println(&quot;eg&quot;);</b>
+<b class="fc"><i>785</i>&nbsp;            pw.println(&quot;eight&quot;);</b>
+<b class="fc"><i>786</i>&nbsp;            pw.println(&quot;either&quot;);</b>
+<b class="fc"><i>787</i>&nbsp;            pw.println(&quot;even&quot;);</b>
+<b class="fc"><i>788</i>&nbsp;            pw.println(&quot;evens&quot;);</b>
+<b class="fc"><i>789</i>&nbsp;            pw.println(&quot;evenser&quot;);</b>
+<b class="fc"><i>790</i>&nbsp;            pw.println(&quot;evensest&quot;);</b>
+<b class="fc"><i>791</i>&nbsp;            pw.println(&quot;evened&quot;);</b>
+<b class="fc"><i>792</i>&nbsp;            pw.println(&quot;evenest&quot;);</b>
+<b class="fc"><i>793</i>&nbsp;            pw.println(&quot;ever&quot;);</b>
+<b class="fc"><i>794</i>&nbsp;            pw.println(&quot;everyone&quot;);</b>
+<b class="fc"><i>795</i>&nbsp;            pw.println(&quot;everything&quot;);</b>
+<b class="fc"><i>796</i>&nbsp;            pw.println(&quot;everybody&quot;);</b>
+<b class="fc"><i>797</i>&nbsp;            pw.println(&quot;everywhere&quot;);</b>
+<b class="fc"><i>798</i>&nbsp;            pw.println(&quot;every&quot;);</b>
+<b class="fc"><i>799</i>&nbsp;            pw.println(&quot;ere&quot;);</b>
+<b class="fc"><i>800</i>&nbsp;            pw.println(&quot;each&quot;);</b>
+<b class="fc"><i>801</i>&nbsp;            pw.println(&quot;et&quot;);</b>
+<b class="fc"><i>802</i>&nbsp;            pw.println(&quot;etc&quot;);</b>
+<b class="fc"><i>803</i>&nbsp;            pw.println(&quot;elsewhere&quot;);</b>
+<b class="fc"><i>804</i>&nbsp;            pw.println(&quot;else&quot;);</b>
+<b class="fc"><i>805</i>&nbsp;            pw.println(&quot;ex&quot;);</b>
+<b class="fc"><i>806</i>&nbsp;            pw.println(&quot;excepted&quot;);</b>
+<b class="fc"><i>807</i>&nbsp;            pw.println(&quot;excepts&quot;);</b>
+<b class="fc"><i>808</i>&nbsp;            pw.println(&quot;except&quot;);</b>
+<b class="fc"><i>809</i>&nbsp;            pw.println(&quot;excepting&quot;);</b>
+<b class="fc"><i>810</i>&nbsp;            pw.println(&quot;exes&quot;);</b>
+<b class="fc"><i>811</i>&nbsp;            pw.println(&quot;enough&quot;);</b>
+<b class="fc"><i>812</i>&nbsp;            pw.println(&quot;f&quot;);</b>
+<b class="fc"><i>813</i>&nbsp;            pw.println(&quot;0&quot;);</b>
+<b class="fc"><i>814</i>&nbsp;            pw.println(&quot;1&quot;);</b>
+<b class="fc"><i>815</i>&nbsp;            pw.println(&quot;2&quot;);</b>
+<b class="fc"><i>816</i>&nbsp;            pw.println(&quot;3&quot;);</b>
+<b class="fc"><i>817</i>&nbsp;            pw.println(&quot;4&quot;);</b>
+<b class="fc"><i>818</i>&nbsp;            pw.println(&quot;2009&quot;);</b>
+<b class="fc"><i>819</i>&nbsp;            pw.println(&quot;ad&quot;);</b>
+<b class="fc"><i>820</i>&nbsp;            pw.println(&quot;add&quot;);</b>
+<b class="fc"><i>821</i>&nbsp;            pw.println(&quot;al&quot;);</b>
+<b class="fc"><i>822</i>&nbsp;            pw.println(&quot;alla&quot;);</b>
+<b class="fc"><i>823</i>&nbsp;            pw.println(&quot;altrimenti&quot;);</b>
+<b class="fc"><i>824</i>&nbsp;            pw.println(&quot;amora&quot;);</b>
+<b class="fc"><i>825</i>&nbsp;            pw.println(&quot;appartenenti&quot;);</b>
+<b class="fc"><i>826</i>&nbsp;            pw.println(&quot;applic&quot;);</b>
+<b class="fc"><i>827</i>&nbsp;            pw.println(&quot;author&quot;);</b>
+<b class="fc"><i>828</i>&nbsp;            pw.println(&quot;boolean&quot;);</b>
+<b class="fc"><i>829</i>&nbsp;            pw.println(&quot;block&quot;);</b>
+<b class="fc"><i>830</i>&nbsp;            pw.println(&quot;bean&quot;);</b>
+<b class="fc"><i>831</i>&nbsp;            pw.println(&quot;catch&quot;);</b>
+<b class="fc"><i>832</i>&nbsp;            pw.println(&quot;ci&quot;);</b>
+<b class="fc"><i>833</i>&nbsp;            pw.println(&quot;che&quot;);</b>
+<b class="fc"><i>834</i>&nbsp;            pw.println(&quot;con&quot;);</b>
+<b class="fc"><i>835</i>&nbsp;            pw.println(&quot;connect&quot;);</b>
+<b class="fc"><i>836</i>&nbsp;            pw.println(&quot;copyright&quot;);</b>
+<b class="fc"><i>837</i>&nbsp;            pw.println(&quot;cui&quot;);</b>
+<b class="fc"><i>838</i>&nbsp;            pw.println(&quot;da&quot;);</b>
+<b class="fc"><i>839</i>&nbsp;            pw.println(&quot;dal&quot;);</b>
+<b class="fc"><i>840</i>&nbsp;            pw.println(&quot;dall&quot;);</b>
+<b class="fc"><i>841</i>&nbsp;            pw.println(&quot;dalla&quot;);</b>
+<b class="fc"><i>842</i>&nbsp;            pw.println(&quot;databas&quot;);</b>
+<b class="fc"><i>843</i>&nbsp;            pw.println(&quot;dato&quot;);</b>
+<b class="fc"><i>844</i>&nbsp;            pw.println(&quot;dbconnect&quot;);</b>
+<b class="fc"><i>845</i>&nbsp;            pw.println(&quot;default&quot;);</b>
+<b class="fc"><i>846</i>&nbsp;            pw.println(&quot;deg&quot;);</b>
+<b class="fc"><i>847</i>&nbsp;            pw.println(&quot;dei&quot;);</b>
+<b class="fc"><i>848</i>&nbsp;            pw.println(&quot;delete&quot;);</b>
+<b class="fc"><i>849</i>&nbsp;            pw.println(&quot;dell&quot;);</b>
+<b class="fc"><i>850</i>&nbsp;            pw.println(&quot;della&quot;);</b>
+<b class="fc"><i>851</i>&nbsp;            pw.println(&quot;deve&quot;);</b>
+<b class="fc"><i>852</i>&nbsp;            pw.println(&quot;di&quot;);</b>
+<b class="fc"><i>853</i>&nbsp;            pw.println(&quot;entity&quot;);</b>
+<b class="fc"><i>854</i>&nbsp;            pw.println(&quot;not&quot;);</b>
+<b class="fc"><i>855</i>&nbsp;            pw.println(&quot;found&quot;);</b>
+<b class="fc"><i>856</i>&nbsp;            pw.println(&quot;error&quot;);</b>
+<b class="fc"><i>857</i>&nbsp;            pw.println(&quot;message&quot;);</b>
+<b class="fc"><i>858</i>&nbsp;            pw.println(&quot;extend&quot;);</b>
+<b class="fc"><i>859</i>&nbsp;            pw.println(&quot;gesa&quot;);</b>
+<b class="fc"><i>860</i>&nbsp;            pw.close();</b>
+<i>861</i>&nbsp;        }
+<i>862</i>&nbsp;
+<b class="fc"><i>863</i>&nbsp;        pDocumentOne = normalize(pDocumentOne);</b>
+<b class="fc"><i>864</i>&nbsp;        pDocumentTwo = normalize(pDocumentTwo);</b>
+<i>865</i>&nbsp;
+<b class="fc"><i>866</i>&nbsp;        Map&lt;String, Double&gt; featureOne = this.countOccourrences(pDocumentOne);</b>
+<b class="fc"><i>867</i>&nbsp;        Map&lt;String, Double&gt; featureTwo = this.countOccourrences(pDocumentTwo);</b>
+<i>868</i>&nbsp;
+<b class="fc"><i>869</i>&nbsp;        return CosineSimilarity.computeCosineSimilarity(featureOne, featureTwo);</b>
+<i>870</i>&nbsp;
+<i>871</i>&nbsp;    }
+<i>872</i>&nbsp;
+<i>873</i>&nbsp;    private Map&lt;String, Double&gt; countOccourrences(String[] pDocument) {
+<b class="fc"><i>874</i>&nbsp;        Map&lt;String, Double&gt; terms = new HashMap&lt;&gt;();</b>
+<b class="fc"><i>875</i>&nbsp;        String[] initialWords = pDocument[1].split(&quot; &quot;);</b>
+<i>876</i>&nbsp;
+<b class="fc"><i>877</i>&nbsp;        for (String word : initialWords) {</b>
+<i>878</i>&nbsp;
+<b class="fc"><i>879</i>&nbsp;            if (!terms.containsKey(word)) {</b>
+<b class="fc"><i>880</i>&nbsp;                terms.put(word, 1.0);</b>
+<i>881</i>&nbsp;            } else {
+<b class="fc"><i>882</i>&nbsp;                terms.put(word, terms.get(word) + 1.0);</b>
+<i>883</i>&nbsp;            }
+<i>884</i>&nbsp;        }
+<b class="fc"><i>885</i>&nbsp;        return terms;</b>
+<i>886</i>&nbsp;    }
+<i>887</i>&nbsp;
+<i>888</i>&nbsp;    private String[] normalize(String[] document) throws IOException {
+<b class="fc"><i>889</i>&nbsp;        String stopWordListFile = readFile(this.stopwordList.getAbsolutePath());</b>
+<b class="fc"><i>890</i>&nbsp;        String[] stopWordList = stopWordListFile.split(&quot;\n&quot;);</b>
+<b class="fc"><i>891</i>&nbsp;        Vector&lt;String&gt; finalWords = new Vector&lt;&gt;();</b>
+<i>892</i>&nbsp;
+<b class="fc"><i>893</i>&nbsp;        document[1] = splitCamelCase(document[1]);</b>
+<b class="fc"><i>894</i>&nbsp;        document[1] = document[1].toLowerCase();</b>
+<i>895</i>&nbsp;
+<b class="fc"><i>896</i>&nbsp;        document[1] = deleteAllSymbols(document[1]);</b>
+<i>897</i>&nbsp;
+<b class="fc"><i>898</i>&nbsp;        String[] newDoc = document[1].split(&quot; &quot;);</b>
+<i>899</i>&nbsp;
+<b class="fc"><i>900</i>&nbsp;        for (String s : newDoc)</b>
+<b class="fc"><i>901</i>&nbsp;            s = s.replaceAll(&quot; &quot;, &quot;&quot;);</b>
+<i>902</i>&nbsp;
+<b class="fc"><i>903</i>&nbsp;        newDoc = deleteAllWhiteSpaces(newDoc);</b>
+<i>904</i>&nbsp;
+<b class="fc"><i>905</i>&nbsp;        for (String word : newDoc) {</b>
+<b class="fc"><i>906</i>&nbsp;            if (word.length() &gt; 1)</b>
+<b class="fc"><i>907</i>&nbsp;                finalWords.add(word);</b>
+<i>908</i>&nbsp;        }
+<i>909</i>&nbsp;
+<b class="fc"><i>910</i>&nbsp;        for (String stopWord : stopWordList) {</b>
+<b class="fc"><i>911</i>&nbsp;            for (String word : newDoc) {</b>
+<b class="fc"><i>912</i>&nbsp;                if (stopWord.equals(word)) {</b>
+<b class="nc"><i>913</i>&nbsp;                    finalWords.remove(word);</b>
+<i>914</i>&nbsp;                }
+<i>915</i>&nbsp;            }
+<i>916</i>&nbsp;        }
+<i>917</i>&nbsp;
+<b class="fc"><i>918</i>&nbsp;        String[] toReturn = new String[2];</b>
+<i>919</i>&nbsp;
+<b class="fc"><i>920</i>&nbsp;        String value = &quot;&quot;;</b>
+<b class="fc"><i>921</i>&nbsp;        for (String s : finalWords) {</b>
+<b class="fc"><i>922</i>&nbsp;            value += &quot;&quot; + s + &quot; &quot;;</b>
+<b class="fc"><i>923</i>&nbsp;        }</b>
+<i>924</i>&nbsp;
+<b class="fc"><i>925</i>&nbsp;        toReturn[0] = document[0];</b>
+<b class="fc"><i>926</i>&nbsp;        toReturn[1] = value;</b>
+<i>927</i>&nbsp;
+<b class="fc"><i>928</i>&nbsp;        return toReturn;</b>
+<i>929</i>&nbsp;    }
+<i>930</i>&nbsp;
+<i>931</i>&nbsp;    private String splitCamelCase(String s) {
+<b class="fc"><i>932</i>&nbsp;        return s.replaceAll(String.format(&quot;%s|%s|%s&quot;,</b>
+<i>933</i>&nbsp;                &quot;(?&lt;=[A-Z])(?=[A-Z][a-z])&quot;, &quot;(?&lt;=[^A-Z])(?=[A-Z])&quot;,
+<i>934</i>&nbsp;                &quot;(?&lt;=[A-Za-z])(?=[^A-Za-z])&quot;), &quot; &quot;);
+<i>935</i>&nbsp;    }
+<i>936</i>&nbsp;
+<i>937</i>&nbsp;    private String[] deleteAllWhiteSpaces(String[] pArray) {
+<b class="fc"><i>938</i>&nbsp;        Vector&lt;String&gt; newVector = new Vector&lt;String&gt;();</b>
+<i>939</i>&nbsp;
+<b class="fc"><i>940</i>&nbsp;        for (String s : pArray) {</b>
+<b class="fc"><i>941</i>&nbsp;            if (!s.isEmpty())</b>
+<b class="fc"><i>942</i>&nbsp;                newVector.add(s);</b>
+<i>943</i>&nbsp;        }
+<i>944</i>&nbsp;
+<b class="fc"><i>945</i>&nbsp;        String[] words = new String[newVector.size()];</b>
+<b class="fc"><i>946</i>&nbsp;        for (int k = 0; k &lt; newVector.size(); k++)</b>
+<b class="fc"><i>947</i>&nbsp;            words[k] = newVector.get(k);</b>
+<i>948</i>&nbsp;
+<b class="fc"><i>949</i>&nbsp;        return words;</b>
+<i>950</i>&nbsp;    }
+<i>951</i>&nbsp;
+<i>952</i>&nbsp;    private String deleteAllSymbols(String s) {
+<b class="fc"><i>953</i>&nbsp;        s = s.replaceAll(&quot;\\(&quot;, &quot; &quot;);</b>
+<b class="fc"><i>954</i>&nbsp;        s = s.replaceAll(&quot;\\)&quot;, &quot; &quot;);</b>
+<b class="fc"><i>955</i>&nbsp;        s = s.replaceAll(&quot;\\[&quot;, &quot; &quot;);</b>
+<b class="fc"><i>956</i>&nbsp;        s = s.replaceAll(&quot;\\]&quot;, &quot; &quot;);</b>
+<b class="fc"><i>957</i>&nbsp;        s = s.replaceAll(&quot;\\{&quot;, &quot; &quot;);</b>
+<b class="fc"><i>958</i>&nbsp;        s = s.replaceAll(&quot;\\}&quot;, &quot; &quot;);</b>
+<b class="fc"><i>959</i>&nbsp;        s = s.replaceAll(&quot;\\=&quot;, &quot; &quot;);</b>
+<b class="fc"><i>960</i>&nbsp;        s = s.replaceAll(&quot;\\/&quot;, &quot; &quot;);</b>
+<b class="fc"><i>961</i>&nbsp;        s = s.replaceAll(&quot;\\+&quot;, &quot; &quot;);</b>
+<b class="fc"><i>962</i>&nbsp;        s = s.replaceAll(&quot;\\-&quot;, &quot; &quot;);</b>
+<b class="fc"><i>963</i>&nbsp;        s = s.replaceAll(&quot;\\*&quot;, &quot; &quot;);</b>
+<b class="fc"><i>964</i>&nbsp;        s = s.replaceAll(&quot;\\_&quot;, &quot; &quot;);</b>
+<b class="fc"><i>965</i>&nbsp;        s = s.replaceAll(&quot;\\%&quot;, &quot; &quot;);</b>
+<b class="fc"><i>966</i>&nbsp;        s = s.replaceAll(&quot;\\!&quot;, &quot; &quot;);</b>
+<b class="fc"><i>967</i>&nbsp;        s = s.replaceAll(&quot;\\;&quot;, &quot; &quot;);</b>
+<b class="fc"><i>968</i>&nbsp;        s = s.replaceAll(&quot;\\,&quot;, &quot; &quot;);</b>
+<b class="fc"><i>969</i>&nbsp;        s = s.replaceAll(&quot;\\.&quot;, &quot; &quot;);</b>
+<b class="fc"><i>970</i>&nbsp;        s = s.replaceAll(&quot;\&quot;&quot;, &quot; &quot;);</b>
+<b class="fc"><i>971</i>&nbsp;        s = s.replaceAll(&quot;\\:&quot;, &quot; &quot;);</b>
+<b class="fc"><i>972</i>&nbsp;        s = s.replaceAll(&quot;\\&lt;&quot;, &quot; &quot;);</b>
+<b class="fc"><i>973</i>&nbsp;        s = s.replaceAll(&quot;\\&gt;&quot;, &quot; &quot;);</b>
+<b class="fc"><i>974</i>&nbsp;        s = s.replaceAll(&quot;\\&#39;&quot;, &quot; &quot;);</b>
+<b class="fc"><i>975</i>&nbsp;        s = s.replaceAll(&quot;\\n&quot;, &quot; &quot;);</b>
+<b class="fc"><i>976</i>&nbsp;        s = s.replaceAll(&quot;\\t&quot;, &quot; &quot;);</b>
+<b class="fc"><i>977</i>&nbsp;        return s;</b>
+<i>978</i>&nbsp;    }
+<i>979</i>&nbsp;
+<i>980</i>&nbsp;    private static Double computeCosineSimilarity(Map&lt;String, Double&gt; firstFeatures, Map&lt;String, Double&gt; secondFeatures) {
+<b class="fc"><i>981</i>&nbsp;        Double similarity = 0.0;</b>
+<b class="fc"><i>982</i>&nbsp;        Double sum = 0.0;          // the numerator of the cosine similarity</b>
+<b class="fc"><i>983</i>&nbsp;        Double fnorm = 0.0;        // the first part of the denominator of the cosine similarity</b>
+<b class="fc"><i>984</i>&nbsp;        Double snorm = 0.0;        // the second part of the denominator of the cosine similarity</b>
+<b class="fc"><i>985</i>&nbsp;        Set&lt;String&gt; fkeys = firstFeatures.keySet();</b>
+<b class="fc"><i>986</i>&nbsp;        Iterator&lt;String&gt; fit = fkeys.iterator();</b>
+<b class="fc"><i>987</i>&nbsp;        while (fit.hasNext()) {</b>
+<b class="fc"><i>988</i>&nbsp;            String featurename = fit.next();</b>
+<b class="fc"><i>989</i>&nbsp;            boolean containKey = secondFeatures.containsKey(featurename);</b>
+<b class="fc"><i>990</i>&nbsp;            if (containKey) {</b>
+<b class="fc"><i>991</i>&nbsp;                sum = sum + firstFeatures.get(featurename) * secondFeatures.get(featurename);</b>
+<i>992</i>&nbsp;            }
+<b class="fc"><i>993</i>&nbsp;        }</b>
+<b class="fc"><i>994</i>&nbsp;        fnorm = calculateNorm(firstFeatures);</b>
+<b class="fc"><i>995</i>&nbsp;        snorm = calculateNorm(secondFeatures);</b>
+<b class="fc"><i>996</i>&nbsp;        similarity = sum / (fnorm * snorm);</b>
+<i>997</i>&nbsp;
+<b class="fc"><i>998</i>&nbsp;        return similarity;</b>
+<i>999</i>&nbsp;    }
+<i>1000</i>&nbsp;
+<i>1001</i>&nbsp;    private static Double calculateNorm(Map&lt;String, Double&gt; feature) {
+<b class="fc"><i>1002</i>&nbsp;        Double norm = 0.0;</b>
+<b class="fc"><i>1003</i>&nbsp;        Set&lt;String&gt; keys = feature.keySet();</b>
+<b class="fc"><i>1004</i>&nbsp;        Iterator&lt;String&gt; it = keys.iterator();</b>
+<b class="fc"><i>1005</i>&nbsp;        while (it.hasNext()) {</b>
+<b class="fc"><i>1006</i>&nbsp;            String featurename = it.next();</b>
+<b class="fc"><i>1007</i>&nbsp;            norm = norm + Math.pow(feature.get(featurename), 2);</b>
+<b class="fc"><i>1008</i>&nbsp;        }</b>
+<b class="fc"><i>1009</i>&nbsp;        return Math.sqrt(norm);</b>
+<i>1010</i>&nbsp;    }
+<i>1011</i>&nbsp;
+<i>1012</i>&nbsp;    public static String readFile(String nomeFile) throws IOException {
+<b class="fc"><i>1013</i>&nbsp;        InputStream is = null;</b>
+<b class="fc"><i>1014</i>&nbsp;        InputStreamReader isr = null;</b>
+<i>1015</i>&nbsp;
+<b class="fc"><i>1016</i>&nbsp;        StringBuffer sb = new StringBuffer();</b>
+<b class="fc"><i>1017</i>&nbsp;        char[] buf = new char[1024];</b>
+<i>1018</i>&nbsp;        int len;
+<i>1019</i>&nbsp;
+<i>1020</i>&nbsp;        try {
+<b class="fc"><i>1021</i>&nbsp;            is = new FileInputStream(nomeFile);</b>
+<b class="fc"><i>1022</i>&nbsp;            isr = new InputStreamReader(is);</b>
+<i>1023</i>&nbsp;
+<b class="fc"><i>1024</i>&nbsp;            while ((len = isr.read(buf)) &gt; 0)</b>
+<b class="fc"><i>1025</i>&nbsp;                sb.append(buf, 0, len);</b>
+<i>1026</i>&nbsp;
+<b class="fc"><i>1027</i>&nbsp;            return sb.toString();</b>
+<i>1028</i>&nbsp;        } finally {
+<b class="fc"><i>1029</i>&nbsp;            if (isr != null)</b>
+<b class="fc"><i>1030</i>&nbsp;                isr.close();</b>
+<b class="nc"><i>1031</i>&nbsp;        }</b>
+<i>1032</i>&nbsp;    }
+<i>1033</i>&nbsp;
+<i>1034</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

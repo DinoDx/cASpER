@@ -1,0 +1,295 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BlobPage</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.gui</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BlobPage (it.unisa.casper.gui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BlobPage</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 69)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">BlobPage$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 18)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 87)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.gui;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.intellij.openapi.progress.ProgressManager;
+<i>4</i>&nbsp;import com.intellij.openapi.project.Project;
+<i>5</i>&nbsp;import com.intellij.openapi.ui.DialogWrapper;
+<i>6</i>&nbsp;import com.intellij.openapi.ui.Messages;
+<i>7</i>&nbsp;import com.intellij.ui.components.JBScrollPane;
+<i>8</i>&nbsp;import com.intellij.ui.table.JBTable;
+<i>9</i>&nbsp;import it.unisa.casper.gui.radarMap.RadarMapUtils;
+<i>10</i>&nbsp;import it.unisa.casper.gui.radarMap.RadarMapUtilsAdapter;
+<i>11</i>&nbsp;import it.unisa.casper.refactor.splitting_algorithm.SplitClasses;
+<i>12</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>13</i>&nbsp;import it.unisa.casper.structuralMetrics.CKMetrics;
+<i>14</i>&nbsp;import org.jetbrains.annotations.NotNull;
+<i>15</i>&nbsp;import org.jetbrains.annotations.Nullable;
+<i>16</i>&nbsp;import src.main.java.it.unisa.casper.gui.StyleText;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;import javax.swing.*;
+<i>19</i>&nbsp;import javax.swing.border.TitledBorder;
+<i>20</i>&nbsp;import javax.swing.table.DefaultTableModel;
+<i>21</i>&nbsp;import java.awt.*;
+<i>22</i>&nbsp;import java.awt.event.ActionEvent;
+<i>23</i>&nbsp;import java.util.List;
+<i>24</i>&nbsp;import java.util.Vector;
+<i>25</i>&nbsp;
+<b class="nc"><i>26</i>&nbsp;public class BlobPage extends DialogWrapper {</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    private RadarMapUtils radarMapUtils;        //roba che serve per le radar map
+<i>29</i>&nbsp;    private ClassBean classBeanBlob;            //ClassBean sul quale avviene l&#39;analisi
+<i>30</i>&nbsp;    private List&lt;ClassBean&gt; splittedClasses;    //lista di classi splittate
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    private Project project;
+<i>33</i>&nbsp;    private JTextPane area;                     //area di testo dove viene mostrato in dettaglio il codice del CodeSmell selezionato
+<i>34</i>&nbsp;    private JPanel contentPanel;                //panel che raggruppa tutti gli elementi
+<i>35</i>&nbsp;    private JPanel panelRadarMapMaster;         //panel che ingloba la radar map
+<i>36</i>&nbsp;    private JPanel panelRadarMap;
+<i>37</i>&nbsp;    private JPanel panelMetric;                 //panel per le metriche
+<i>38</i>&nbsp;    private JPanel panelButton;                 //panel che raggruppa i bottoni
+<i>39</i>&nbsp;    private JPanel panelWest;                   //panel che raggruppa gli elementi a sinistra
+<i>40</i>&nbsp;    private JPanel panelEast;                   //panel che raggruppa gli elementi a destra
+<i>41</i>&nbsp;    private JPanel panelGrid2;                  //panel inserito nella seconda cella del gridLayout
+<i>42</i>&nbsp;    private JBTable table;                      //tabella dove sono visualizzati i codeSmell
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    private boolean errorOccured;               //serve per determinare se qualcosa è andato storto
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    public BlobPage(ClassBean classBeanBlob, Project project) {
+<b class="nc"><i>47</i>&nbsp;        super(true);</b>
+<b class="nc"><i>48</i>&nbsp;        this.classBeanBlob = classBeanBlob;</b>
+<b class="nc"><i>49</i>&nbsp;        this.project = project;</b>
+<b class="nc"><i>50</i>&nbsp;        this.errorOccured = false;</b>
+<b class="nc"><i>51</i>&nbsp;        setResizable(false);</b>
+<b class="nc"><i>52</i>&nbsp;        init();</b>
+<b class="nc"><i>53</i>&nbsp;        setTitle(&quot;BLOB PAGE&quot;);</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    @Nullable
+<i>57</i>&nbsp;    @Override
+<i>58</i>&nbsp;    protected JComponent createCenterPanel() {
+<i>59</i>&nbsp;
+<b class="nc"><i>60</i>&nbsp;        radarMapUtils = new RadarMapUtilsAdapter();</b>
+<i>61</i>&nbsp;
+<b class="nc"><i>62</i>&nbsp;        panelRadarMap = radarMapUtils.createRadarMapFromClassBean(classBeanBlob, classBeanBlob.getFullQualifiedName());</b>
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;        //INIZIALIZZO I PANEL
+<b class="nc"><i>65</i>&nbsp;        contentPanel = new JPanel();            //pannello principale</b>
+<b class="nc"><i>66</i>&nbsp;        panelButton = new JPanel();             //pannello dei bottoni</b>
+<b class="nc"><i>67</i>&nbsp;        panelRadarMapMaster = new JPanel();     //pannello che ingloba le radarMap</b>
+<b class="nc"><i>68</i>&nbsp;        panelMetric = new JPanel();             //pannello che ingloba le metriche</b>
+<b class="nc"><i>69</i>&nbsp;        panelWest = new JPanel();               //pannello che ingloba gli elementi di sinistra</b>
+<b class="nc"><i>70</i>&nbsp;        panelEast = new JPanel();               //pannello che ingloba gli elementi di destra</b>
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;        //INIZIALIZZO LA TABELLA E LA TEXT AREA
+<b class="nc"><i>73</i>&nbsp;        area = new JTextPane();                 //text area dove viene visualizzato il codice in esame</b>
+<b class="nc"><i>74</i>&nbsp;        table = new JBTable();                  //tabella dove sono presenti gli smell da prendere in esame</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;        //SETTO TESTO NELLA TEXT AREA
+<b class="nc"><i>77</i>&nbsp;        JPanel app = new JPanel();</b>
+<b class="nc"><i>78</i>&nbsp;        app.setLayout(new BorderLayout(0, 0));</b>
+<b class="nc"><i>79</i>&nbsp;        app.setBorder(new TitledBorder(&quot;Text content&quot;));</b>
+<b class="nc"><i>80</i>&nbsp;        StyleText generator = new StyleText();</b>
+<b class="nc"><i>81</i>&nbsp;        area.setStyledDocument(generator.createDocument(classBeanBlob.getTextContent()));</b>
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;        //SETTO LA TABELLA PER LE METRICHE
+<b class="nc"><i>84</i>&nbsp;        table = new JBTable();</b>
+<b class="nc"><i>85</i>&nbsp;        Vector&lt;String&gt; tableHeaders = new Vector&lt;&gt;();</b>
+<b class="nc"><i>86</i>&nbsp;        tableHeaders.add(&quot;LOC&quot;);</b>
+<b class="nc"><i>87</i>&nbsp;        tableHeaders.add(&quot;WMC&quot;);</b>
+<b class="nc"><i>88</i>&nbsp;        tableHeaders.add(&quot;RFC&quot;);</b>
+<b class="nc"><i>89</i>&nbsp;        tableHeaders.add(&quot;CBO&quot;);</b>
+<b class="nc"><i>90</i>&nbsp;        tableHeaders.add(&quot;LCOM&quot;);</b>
+<i>91</i>&nbsp;
+<b class="nc"><i>92</i>&nbsp;        tableHeaders.add(&quot;NOA&quot;);</b>
+<b class="nc"><i>93</i>&nbsp;        tableHeaders.add(&quot;NOM&quot;);</b>
+<b class="nc"><i>94</i>&nbsp;        tableHeaders.add(&quot;NOPA&quot;);</b>
+<i>95</i>&nbsp;
+<b class="nc"><i>96</i>&nbsp;        Vector&lt;String&gt; tableElemet = new Vector&lt;&gt;();</b>
+<b class="nc"><i>97</i>&nbsp;        tableElemet.add(CKMetrics.getLOC(classBeanBlob) + &quot;&quot;);</b>
+<b class="nc"><i>98</i>&nbsp;        tableElemet.add(CKMetrics.getWMC(classBeanBlob) + &quot;&quot;);</b>
+<b class="nc"><i>99</i>&nbsp;        tableElemet.add(CKMetrics.getRFC(classBeanBlob) + &quot;&quot;);</b>
+<b class="nc"><i>100</i>&nbsp;        tableElemet.add(CKMetrics.getCBO(classBeanBlob) + &quot;&quot;);</b>
+<b class="nc"><i>101</i>&nbsp;        tableElemet.add(CKMetrics.getLCOM(classBeanBlob) + &quot;&quot;);</b>
+<i>102</i>&nbsp;
+<b class="nc"><i>103</i>&nbsp;        tableElemet.add(String.valueOf(CKMetrics.getNOA(classBeanBlob)));</b>
+<b class="nc"><i>104</i>&nbsp;        tableElemet.add(String.valueOf(CKMetrics.getNOM(classBeanBlob)));</b>
+<b class="nc"><i>105</i>&nbsp;        tableElemet.add(String.valueOf(CKMetrics.getNOPA(classBeanBlob)));</b>
+<i>106</i>&nbsp;
+<b class="nc"><i>107</i>&nbsp;        DefaultTableModel model = new DefaultTableModel(tableHeaders, 0);</b>
+<b class="nc"><i>108</i>&nbsp;        model.addRow(tableElemet);</b>
+<i>109</i>&nbsp;
+<b class="nc"><i>110</i>&nbsp;        table.setModel(model);</b>
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;        //SETTO I LAYOUT DEI PANEL
+<b class="nc"><i>113</i>&nbsp;        panelButton.setLayout(new FlowLayout());</b>
+<b class="nc"><i>114</i>&nbsp;        panelRadarMapMaster.setLayout(new BorderLayout());</b>
+<b class="nc"><i>115</i>&nbsp;        panelWest.setLayout(new GridLayout(2, 1));</b>
+<b class="nc"><i>116</i>&nbsp;        panelEast.setLayout(new BorderLayout());</b>
+<b class="nc"><i>117</i>&nbsp;        panelMetric.setLayout((new BorderLayout()));</b>
+<b class="nc"><i>118</i>&nbsp;        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));</b>
+<i>119</i>&nbsp;
+<b class="nc"><i>120</i>&nbsp;        panelGrid2 = new JPanel();</b>
+<b class="nc"><i>121</i>&nbsp;        panelGrid2.setLayout(new BorderLayout());</b>
+<i>122</i>&nbsp;
+<i>123</i>&nbsp;
+<b class="nc"><i>124</i>&nbsp;        panelRadarMapMaster.add(panelRadarMap, BorderLayout.CENTER);</b>
+<i>125</i>&nbsp;
+<b class="nc"><i>126</i>&nbsp;        panelMetric.setBorder(new TitledBorder(&quot;Metrics&quot;));</b>
+<b class="nc"><i>127</i>&nbsp;        panelMetric.add(new JBScrollPane(table));</b>
+<b class="nc"><i>128</i>&nbsp;        table.setFillsViewportHeight(true);</b>
+<b class="nc"><i>129</i>&nbsp;        panelGrid2.add(panelMetric, BorderLayout.CENTER);</b>
+<b class="nc"><i>130</i>&nbsp;        panelGrid2.add(panelButton, BorderLayout.SOUTH);</b>
+<i>131</i>&nbsp;
+<b class="nc"><i>132</i>&nbsp;        panelWest.add(panelRadarMapMaster);</b>
+<b class="nc"><i>133</i>&nbsp;        panelWest.add(panelGrid2);</b>
+<i>134</i>&nbsp;
+<b class="nc"><i>135</i>&nbsp;        contentPanel.add(panelWest);</b>
+<b class="nc"><i>136</i>&nbsp;        JScrollPane scroll = new JScrollPane(area);</b>
+<b class="nc"><i>137</i>&nbsp;        app.add(scroll, BorderLayout.CENTER);</b>
+<b class="nc"><i>138</i>&nbsp;        contentPanel.add(app);</b>
+<i>139</i>&nbsp;
+<b class="nc"><i>140</i>&nbsp;        contentPanel.setPreferredSize(new Dimension(1050, 900));</b>
+<i>141</i>&nbsp;
+<b class="nc"><i>142</i>&nbsp;        return contentPanel;</b>
+<i>143</i>&nbsp;    }
+<i>144</i>&nbsp;
+<i>145</i>&nbsp;    @NotNull
+<i>146</i>&nbsp;    @Override
+<i>147</i>&nbsp;    protected Action[] createActions() {
+<b class="nc"><i>148</i>&nbsp;        Action okAction = new DialogWrapperAction(&quot;FIND SOLUTION&quot;) {</b>
+<i>149</i>&nbsp;
+<i>150</i>&nbsp;            String message;
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;            @Override
+<i>153</i>&nbsp;            protected void doAction(ActionEvent actionEvent) {
+<i>154</i>&nbsp;
+<b class="nc"><i>155</i>&nbsp;                message = &quot;Something went wrong in computing solution&quot;;</b>
+<b class="nc"><i>156</i>&nbsp;                ProgressManager.getInstance().runProcessWithProgressSynchronously(() -&gt; {</b>
+<i>157</i>&nbsp;                    try {
+<b class="nc"><i>158</i>&nbsp;                        splittedClasses = (List&lt;ClassBean&gt;) new SplitClasses().split(classBeanBlob, 0.09);</b>
+<i>159</i>&nbsp;
+<b class="nc"><i>160</i>&nbsp;                        if (splittedClasses.size() == 1) {</b>
+<b class="nc"><i>161</i>&nbsp;                            message += &quot;\nIt is not possible to split the class without introducing new smell&quot;;</b>
+<b class="nc"><i>162</i>&nbsp;                            errorOccured = true;</b>
+<i>163</i>&nbsp;                        }
+<b class="nc"><i>164</i>&nbsp;                    } catch (Exception e) {</b>
+<b class="nc"><i>165</i>&nbsp;                        errorOccured = true;</b>
+<b class="nc"><i>166</i>&nbsp;                    }</b>
+<i>167</i>&nbsp;                }, &quot;Blob&quot;, false, project);
+<i>168</i>&nbsp;
+<b class="nc"><i>169</i>&nbsp;                if (errorOccured) {</b>
+<b class="nc"><i>170</i>&nbsp;                    Messages.showMessageDialog(message, &quot;Oh!No!&quot;, Messages.getErrorIcon());</b>
+<i>171</i>&nbsp;                } else {
+<b class="nc"><i>172</i>&nbsp;                    if (splittedClasses.size() &lt; 2) {</b>
+<b class="nc"><i>173</i>&nbsp;                        message = &quot;Error during creation of solution&quot;;</b>
+<b class="nc"><i>174</i>&nbsp;                        Messages.showMessageDialog(message, &quot;Error&quot;, Messages.getErrorIcon());</b>
+<i>175</i>&nbsp;                    } else {
+<b class="nc"><i>176</i>&nbsp;                        BlobWizard blobWizardMock = new BlobWizard(classBeanBlob, splittedClasses, project);</b>
+<b class="nc"><i>177</i>&nbsp;                        blobWizardMock.show();</b>
+<i>178</i>&nbsp;                    }
+<b class="nc"><i>179</i>&nbsp;                    close(0);</b>
+<i>180</i>&nbsp;                }
+<i>181</i>&nbsp;            }
+<i>182</i>&nbsp;        };
+<i>183</i>&nbsp;
+<b class="nc"><i>184</i>&nbsp;        return new Action[]{okAction, new DialogWrapperExitAction(&quot;CANCEL&quot;, 0)};</b>
+<i>185</i>&nbsp;    }
+<i>186</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

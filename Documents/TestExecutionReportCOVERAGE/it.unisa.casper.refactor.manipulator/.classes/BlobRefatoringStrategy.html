@@ -1,0 +1,236 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BlobRefatoringStrategy</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.refactor.manipulator</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BlobRefatoringStrategy (it.unisa.casper.refactor.manipulator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BlobRefatoringStrategy</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 86)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.refactor.manipulator;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.intellij.openapi.command.WriteCommandAction;
+<i>4</i>&nbsp;import com.intellij.openapi.project.Project;
+<i>5</i>&nbsp;import com.intellij.psi.*;
+<i>6</i>&nbsp;import com.intellij.psi.search.GlobalSearchScope;
+<i>7</i>&nbsp;import com.intellij.refactoring.extractclass.ExtractClassProcessor;
+<i>8</i>&nbsp;import it.unisa.casper.refactor.exceptions.BlobException;
+<i>9</i>&nbsp;import it.unisa.casper.refactor.strategy.RefactoringStrategy;
+<i>10</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>11</i>&nbsp;import it.unisa.casper.storage.beans.InstanceVariableBean;
+<i>12</i>&nbsp;import it.unisa.casper.storage.beans.MethodBean;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import java.io.File;
+<i>15</i>&nbsp;import java.util.ArrayList;
+<i>16</i>&nbsp;import java.util.List;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;public class BlobRefatoringStrategy implements RefactoringStrategy {
+<i>19</i>&nbsp;    private ClassBean originalClass;
+<i>20</i>&nbsp;    private List&lt;ClassBean&gt; splittedList;
+<i>21</i>&nbsp;    protected Project project;
+<b class="nc"><i>22</i>&nbsp;    private PsiClass psiOriginalClass = null;</b>
+<i>23</i>&nbsp;
+<b class="nc"><i>24</i>&nbsp;    public BlobRefatoringStrategy(ClassBean originalClass, List&lt;ClassBean&gt; splittedList, Project project) {</b>
+<b class="nc"><i>25</i>&nbsp;        this.originalClass = originalClass;</b>
+<b class="nc"><i>26</i>&nbsp;        this.splittedList = splittedList;</b>
+<b class="nc"><i>27</i>&nbsp;        this.project = project;</b>
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    @Override
+<i>31</i>&nbsp;    public void doRefactor() throws BlobException {
+<i>32</i>&nbsp;
+<b class="nc"><i>33</i>&nbsp;        String pathClass = originalClass.getPathToFile();</b>
+<b class="nc"><i>34</i>&nbsp;        String incopletePath = pathClass.substring(0, pathClass.lastIndexOf(&#39;/&#39;));</b>
+<b class="nc"><i>35</i>&nbsp;        String packageName = originalClass.getBelongingPackage().getFullQualifiedName();</b>
+<b class="nc"><i>36</i>&nbsp;        List&lt;PsiMethod&gt; methodsToMove = null;</b>
+<i>37</i>&nbsp;        List&lt;PsiField&gt; fieldsToMove;
+<i>38</i>&nbsp;        List&lt;PsiClass&gt; innerClasses;
+<b class="nc"><i>39</i>&nbsp;        JavaPsiFacade javaPsiFacade = JavaPsiFacade.getInstance(project);</b>
+<b class="nc"><i>40</i>&nbsp;        psiOriginalClass = PsiUtil.getPsi(originalClass, project);</b>
+<i>41</i>&nbsp;
+<b class="nc"><i>42</i>&nbsp;        for (ClassBean classBean : splittedList) {</b>
+<b class="nc"><i>43</i>&nbsp;            methodsToMove = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>44</i>&nbsp;            fieldsToMove = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>45</i>&nbsp;            innerClasses = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>46</i>&nbsp;            String classShortName = classBean.getFullQualifiedName().substring(classBean.getFullQualifiedName().lastIndexOf(&#39;.&#39;) + 1);</b>
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;            // creo una lista di metodi
+<b class="nc"><i>49</i>&nbsp;            for (MethodBean metodoSplittato : classBean.getMethodList()) {</b>
+<b class="nc"><i>50</i>&nbsp;                String methodShortName = metodoSplittato.getFullQualifiedName().substring(metodoSplittato.getFullQualifiedName().lastIndexOf(&#39;.&#39;) + 1);</b>
+<b class="nc"><i>51</i>&nbsp;                methodsToMove.add(psiOriginalClass.findMethodsByName(methodShortName, true)[0]);</b>
+<b class="nc"><i>52</i>&nbsp;            }</b>
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;            //creo una lista di fields
+<b class="nc"><i>55</i>&nbsp;            for (InstanceVariableBean instanceVariableBean : classBean.getInstanceVariablesList()) {</b>
+<b class="nc"><i>56</i>&nbsp;                fieldsToMove.add(psiOriginalClass.findFieldByName(instanceVariableBean.getFullQualifiedName(), true));</b>
+<b class="nc"><i>57</i>&nbsp;            }</b>
+<i>58</i>&nbsp;
+<b class="nc"><i>59</i>&nbsp;            for (PsiClass innerClass : psiOriginalClass.getInnerClasses()) {</b>
+<b class="nc"><i>60</i>&nbsp;                innerClasses.add(innerClass);</b>
+<i>61</i>&nbsp;            }
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;            try {
+<b class="nc"><i>64</i>&nbsp;                ExtractClassProcessor processor = new ExtractClassProcessor(psiOriginalClass, fieldsToMove, methodsToMove, innerClasses, packageName, classShortName);</b>
+<b class="nc"><i>65</i>&nbsp;                processor.run();</b>
+<b class="nc"><i>66</i>&nbsp;            } catch (Exception e) {</b>
+<i>67</i>&nbsp;
+<b class="nc"><i>68</i>&nbsp;                throw new BlobException(e.getMessage());</b>
+<b class="nc"><i>69</i>&nbsp;            }</b>
+<b class="nc"><i>70</i>&nbsp;        }</b>
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;        PsiClass aClass;
+<b class="nc"><i>73</i>&nbsp;        final int[] i = {0};</b>
+<b class="nc"><i>74</i>&nbsp;        for (ClassBean classToMove : splittedList) {</b>
+<b class="nc"><i>75</i>&nbsp;            aClass = javaPsiFacade.findClasses(classToMove.getFullQualifiedName(), GlobalSearchScope.allScope(project))[0];</b>
+<i>76</i>&nbsp;
+<b class="nc"><i>77</i>&nbsp;            methodsToMove = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>78</i>&nbsp;            methodsToMove.add(aClass.getMethods()[0]);</b>
+<b class="nc"><i>79</i>&nbsp;            ExtractClassProcessor processor = new ExtractClassProcessor(aClass, new ArrayList&lt;&gt;(), methodsToMove, new ArrayList&lt;&gt;(), packageName, &quot;classForFixingBlobClass&quot; + i[0]);</b>
+<b class="nc"><i>80</i>&nbsp;            processor.run();</b>
+<b class="nc"><i>81</i>&nbsp;            i[0]++;</b>
+<b class="nc"><i>82</i>&nbsp;        }</b>
+<i>83</i>&nbsp;
+<b class="nc"><i>84</i>&nbsp;        WriteCommandAction.runWriteCommandAction(project, () -&gt; {</b>
+<b class="nc"><i>85</i>&nbsp;            i[0] = 0;</b>
+<i>86</i>&nbsp;            int j;
+<i>87</i>&nbsp;            List&lt;MethodBean&gt; listName;
+<b class="nc"><i>88</i>&nbsp;            boolean found = false;</b>
+<b class="nc"><i>89</i>&nbsp;            for (PsiMethod metodoSplittato : psiOriginalClass.getMethods()) {</b>
+<i>90</i>&nbsp;
+<b class="nc"><i>91</i>&nbsp;                while (i[0] &lt; splittedList.size() &amp;&amp; !found) {</b>
+<b class="nc"><i>92</i>&nbsp;                    j = 0;</b>
+<b class="nc"><i>93</i>&nbsp;                    listName = splittedList.get(i[0]).getMethodList();</b>
+<b class="nc"><i>94</i>&nbsp;                    while (j &lt; listName.size() &amp;&amp; !listName.get(j).getFullQualifiedName().contains(metodoSplittato.getName())) {</b>
+<i>95</i>&nbsp;
+<b class="nc"><i>96</i>&nbsp;                        j++;</b>
+<i>97</i>&nbsp;                    }
+<b class="nc"><i>98</i>&nbsp;                    if (j &lt; listName.size()) found = true;</b>
+<b class="nc"><i>99</i>&nbsp;                    i[0]++;</b>
+<i>100</i>&nbsp;                }
+<b class="nc"><i>101</i>&nbsp;                createDelegation(metodoSplittato, &quot;Class_&quot; + (i[0]));</b>
+<b class="nc"><i>102</i>&nbsp;                i[0] = 0;</b>
+<b class="nc"><i>103</i>&nbsp;                found = false;</b>
+<i>104</i>&nbsp;            }
+<i>105</i>&nbsp;
+<b class="nc"><i>106</i>&nbsp;            i[0] = 0;</b>
+<i>107</i>&nbsp;            File file;
+<b class="nc"><i>108</i>&nbsp;            String path = &quot;&quot;;</b>
+<b class="nc"><i>109</i>&nbsp;            while (i[0] &lt; splittedList.size()) {</b>
+<b class="nc"><i>110</i>&nbsp;                path = incopletePath + &quot;/&quot; + packageName.substring(packageName.lastIndexOf(&quot;.&quot;) + 1);</b>
+<b class="nc"><i>111</i>&nbsp;                path = path.substring(packageName.lastIndexOf(&quot;/&quot;) + 1) + &quot;/classForFixingBlobClass&quot; + i[0] + &quot;.java&quot;;</b>
+<b class="nc"><i>112</i>&nbsp;                file = new File(path);</b>
+<b class="nc"><i>113</i>&nbsp;                file.delete();</b>
+<b class="nc"><i>114</i>&nbsp;                i[0]++;</b>
+<i>115</i>&nbsp;            }
+<i>116</i>&nbsp;        });
+<i>117</i>&nbsp;
+<i>118</i>&nbsp;    }
+<i>119</i>&nbsp;
+<i>120</i>&nbsp;    private void createDelegation(PsiMethod metodoSplittato, String newName) {
+<i>121</i>&nbsp;        //ottengo il metodo da aggiornare
+<b class="nc"><i>122</i>&nbsp;        PsiMethod metodoDaAggiornare = psiOriginalClass.findMethodsByName(metodoSplittato.getName(), true)[0];</b>
+<i>123</i>&nbsp;        //Creo il corpo del metodo da modificare
+<b class="nc"><i>124</i>&nbsp;        String scope = metodoDaAggiornare.getModifierList().getText();</b>
+<b class="nc"><i>125</i>&nbsp;        String returnType = metodoDaAggiornare.getReturnType().getPresentableText();</b>
+<b class="nc"><i>126</i>&nbsp;        String name = metodoDaAggiornare.getName();</b>
+<b class="nc"><i>127</i>&nbsp;        String parameters = metodoDaAggiornare.getParameterList().getText();</b>
+<b class="nc"><i>128</i>&nbsp;        String throwsList = metodoDaAggiornare.getThrowsList().getText();</b>
+<i>129</i>&nbsp;        //Creo il nuovo Body
+<b class="nc"><i>130</i>&nbsp;        StringBuilder newMethodBody = new StringBuilder(&quot;{\n\t&quot;);</b>
+<b class="nc"><i>131</i>&nbsp;        newMethodBody.append(newName + &quot; variable = new &quot; + newName + &quot;();\n\t&quot;);</b>
+<b class="nc"><i>132</i>&nbsp;        if (metodoDaAggiornare.getReturnType().getCanonicalText() != &quot;void&quot;)</b>
+<b class="nc"><i>133</i>&nbsp;            newMethodBody.append(&quot;return  &quot;);</b>
+<i>134</i>&nbsp;        //Setto la lista dei parametri da passare
+<b class="nc"><i>135</i>&nbsp;        StringBuilder parametriDaPassareBuilder = new StringBuilder(&quot;(&quot;);</b>
+<b class="nc"><i>136</i>&nbsp;        for (PsiParameter parametroName : metodoDaAggiornare.getParameterList().getParameters()) {</b>
+<b class="nc"><i>137</i>&nbsp;            parametriDaPassareBuilder.append(parametroName.getName() + &quot;, &quot;);</b>
+<i>138</i>&nbsp;        }
+<b class="nc"><i>139</i>&nbsp;        String parametriDaPassare = parametriDaPassareBuilder.toString();</b>
+<i>140</i>&nbsp;        try {
+<b class="nc"><i>141</i>&nbsp;            parametriDaPassare = parametriDaPassare.substring(0, parametriDaPassare.length() - 2);</b>
+<b class="nc"><i>142</i>&nbsp;        } catch (IndexOutOfBoundsException ioB) {</b>
+<b class="nc"><i>143</i>&nbsp;            parametriDaPassare = parametriDaPassare.substring(0, parametriDaPassare.length() - 1);</b>
+<b class="nc"><i>144</i>&nbsp;        }</b>
+<b class="nc"><i>145</i>&nbsp;        parametriDaPassare += &quot;)&quot;;</b>
+<b class="nc"><i>146</i>&nbsp;        if (parameters.length() &lt; 3)</b>
+<b class="nc"><i>147</i>&nbsp;            parametriDaPassare = parameters;</b>
+<i>148</i>&nbsp;
+<b class="nc"><i>149</i>&nbsp;        newMethodBody.append(&quot;variable.&quot; + metodoSplittato.getName() + parametriDaPassare + &quot;;\n}&quot;);</b>
+<b class="nc"><i>150</i>&nbsp;        String textToWrite = MethodMover.buildMethod(scope, returnType, name, parameters, throwsList, newMethodBody.toString());</b>
+<b class="nc"><i>151</i>&nbsp;        MethodMover.methodWriter(textToWrite, metodoDaAggiornare, psiOriginalClass, true, project);</b>
+<i>152</i>&nbsp;    }
+<i>153</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

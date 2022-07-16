@@ -1,0 +1,265 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: FeatureEnvyPage</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.gui</a> ]
+</div>
+
+<h1>Coverage Summary for Class: FeatureEnvyPage (it.unisa.casper.gui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FeatureEnvyPage</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 73)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">FeatureEnvyPage$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 77)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.gui;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.intellij.openapi.project.Project;
+<i>4</i>&nbsp;import com.intellij.openapi.ui.DialogWrapper;
+<i>5</i>&nbsp;import com.intellij.ui.table.JBTable;
+<i>6</i>&nbsp;import com.intellij.util.ui.JBUI;
+<i>7</i>&nbsp;import it.unisa.casper.gui.radarMap.RadarMapUtils;
+<i>8</i>&nbsp;import it.unisa.casper.gui.radarMap.RadarMapUtilsAdapter;
+<i>9</i>&nbsp;import it.unisa.casper.refactor.manipulator.UpdateClassUtility;
+<i>10</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>11</i>&nbsp;import it.unisa.casper.storage.beans.MethodBean;
+<i>12</i>&nbsp;import it.unisa.casper.storage.beans.PackageBean;
+<i>13</i>&nbsp;import it.unisa.casper.structuralMetrics.CKMetrics;
+<i>14</i>&nbsp;import org.jetbrains.annotations.NotNull;
+<i>15</i>&nbsp;import org.jetbrains.annotations.Nullable;
+<i>16</i>&nbsp;import org.jfree.chart.ChartPanel;
+<i>17</i>&nbsp;import src.main.java.it.unisa.casper.gui.StyleText;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;import javax.swing.*;
+<i>20</i>&nbsp;import javax.swing.border.TitledBorder;
+<i>21</i>&nbsp;import javax.swing.table.DefaultTableModel;
+<i>22</i>&nbsp;import java.awt.*;
+<i>23</i>&nbsp;import java.awt.event.ActionEvent;
+<i>24</i>&nbsp;import java.util.List;
+<i>25</i>&nbsp;import java.util.Vector;
+<i>26</i>&nbsp;
+<b class="nc"><i>27</i>&nbsp;public class FeatureEnvyPage extends DialogWrapper {</b>
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    private Project project;
+<i>30</i>&nbsp;    private MethodBean featureEnvyBean;
+<i>31</i>&nbsp;    private List&lt;PackageBean&gt; packageBeans;
+<i>32</i>&nbsp;    private JPanel centerPanel;
+<i>33</i>&nbsp;    private JPanel radarmapContainer;
+<i>34</i>&nbsp;    private JPanel methodRadarmapContainer;
+<i>35</i>&nbsp;    private JPanel currentClassRadarmapContainer;
+<i>36</i>&nbsp;    private JPanel enviedClassRadarmapContainer;
+<i>37</i>&nbsp;    private JPanel tableContainer;
+<i>38</i>&nbsp;    private RadarMapUtils radarMapGenerator;
+<i>39</i>&nbsp;    private JTable table;
+<i>40</i>&nbsp;    private JPanel level2Panel;
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    protected FeatureEnvyPage(boolean canBeParent) {
+<b class="nc"><i>43</i>&nbsp;        super(canBeParent);</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    public FeatureEnvyPage(MethodBean featureEnvyBean, Project project, List&lt;PackageBean&gt; systemPackages) {
+<b class="nc"><i>47</i>&nbsp;        super(true);</b>
+<b class="nc"><i>48</i>&nbsp;        this.featureEnvyBean = featureEnvyBean;</b>
+<b class="nc"><i>49</i>&nbsp;        this.project = project;</b>
+<b class="nc"><i>50</i>&nbsp;        this.packageBeans = systemPackages;</b>
+<b class="nc"><i>51</i>&nbsp;        this.radarMapGenerator = new RadarMapUtilsAdapter();</b>
+<b class="nc"><i>52</i>&nbsp;        setResizable(false);</b>
+<b class="nc"><i>53</i>&nbsp;        init();</b>
+<b class="nc"><i>54</i>&nbsp;        setTitle(&quot;FEATURE ENVY ANALYSIS&quot;);</b>
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    @Nullable
+<i>58</i>&nbsp;    @Override
+<i>59</i>&nbsp;    protected JComponent createCenterPanel() {
+<i>60</i>&nbsp;        //main panel init
+<b class="nc"><i>61</i>&nbsp;        centerPanel = new JPanel();</b>
+<b class="nc"><i>62</i>&nbsp;        centerPanel.setBorder(JBUI.Borders.empty(5));</b>
+<b class="nc"><i>63</i>&nbsp;        centerPanel.setLayout(new GridLayout(2, 1, 0, 0));</b>
+<b class="nc"><i>64</i>&nbsp;        centerPanel.setPreferredSize(new Dimension(1050, 900));</b>
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;        //radarmap containre init
+<b class="nc"><i>67</i>&nbsp;        radarmapContainer = new JPanel();</b>
+<b class="nc"><i>68</i>&nbsp;        centerPanel.add(radarmapContainer);</b>
+<b class="nc"><i>69</i>&nbsp;        radarmapContainer.setLayout(new BoxLayout(radarmapContainer, BoxLayout.X_AXIS));</b>
+<i>70</i>&nbsp;
+<b class="nc"><i>71</i>&nbsp;        Dimension radarmapPreferredSize = new Dimension(100, 300);</b>
+<b class="nc"><i>72</i>&nbsp;        JPanel methodRadarmap = radarMapGenerator.createRadarMapFromMethodBean(featureEnvyBean, featureEnvyBean.getFullQualifiedName());</b>
+<b class="nc"><i>73</i>&nbsp;        methodRadarmap.setPreferredSize(radarmapPreferredSize);</b>
+<b class="nc"><i>74</i>&nbsp;        methodRadarmapContainer = new JPanel();</b>
+<b class="nc"><i>75</i>&nbsp;        methodRadarmapContainer.setLayout(new BorderLayout());</b>
+<b class="nc"><i>76</i>&nbsp;        methodRadarmapContainer.add(methodRadarmap);</b>
+<b class="nc"><i>77</i>&nbsp;        methodRadarmapContainer.setPreferredSize(radarmapPreferredSize);</b>
+<b class="nc"><i>78</i>&nbsp;        radarmapContainer.add(methodRadarmapContainer);</b>
+<i>79</i>&nbsp;
+<b class="nc"><i>80</i>&nbsp;        radarmapContainer.add(Box.createHorizontalGlue());</b>
+<i>81</i>&nbsp;
+<b class="nc"><i>82</i>&nbsp;        currentClassRadarmapContainer = new JPanel();</b>
+<b class="nc"><i>83</i>&nbsp;        currentClassRadarmapContainer.setLayout(new BorderLayout());</b>
+<b class="nc"><i>84</i>&nbsp;        ChartPanel currentClassRadarmap = radarMapGenerator.createRadarMapFromClassBean(featureEnvyBean.getBelongingClass(), featureEnvyBean.getBelongingClass().getFullQualifiedName());</b>
+<b class="nc"><i>85</i>&nbsp;        currentClassRadarmap.setPreferredSize(radarmapPreferredSize);</b>
+<b class="nc"><i>86</i>&nbsp;        currentClassRadarmapContainer.add(currentClassRadarmap);</b>
+<b class="nc"><i>87</i>&nbsp;        currentClassRadarmap.setPreferredSize(radarmapPreferredSize);</b>
+<b class="nc"><i>88</i>&nbsp;        radarmapContainer.add(currentClassRadarmapContainer);</b>
+<i>89</i>&nbsp;
+<b class="nc"><i>90</i>&nbsp;        radarmapContainer.add(Box.createHorizontalGlue());</b>
+<i>91</i>&nbsp;
+<b class="nc"><i>92</i>&nbsp;        enviedClassRadarmapContainer = new JPanel();</b>
+<b class="nc"><i>93</i>&nbsp;        enviedClassRadarmapContainer.setLayout(new BorderLayout());</b>
+<b class="nc"><i>94</i>&nbsp;        ChartPanel enviedClassRadarmap = radarMapGenerator.createRadarMapFromClassBean(featureEnvyBean.getEnviedClass(), featureEnvyBean.getEnviedClass().getFullQualifiedName());</b>
+<b class="nc"><i>95</i>&nbsp;        enviedClassRadarmap.setPreferredSize(radarmapPreferredSize);</b>
+<b class="nc"><i>96</i>&nbsp;        enviedClassRadarmapContainer.add(enviedClassRadarmap);</b>
+<b class="nc"><i>97</i>&nbsp;        enviedClassRadarmapContainer.setPreferredSize(radarmapPreferredSize);</b>
+<b class="nc"><i>98</i>&nbsp;        radarmapContainer.add(enviedClassRadarmapContainer);</b>
+<i>99</i>&nbsp;
+<b class="nc"><i>100</i>&nbsp;        level2Panel = new JPanel();</b>
+<b class="nc"><i>101</i>&nbsp;        JPanel p = new JPanel();</b>
+<b class="nc"><i>102</i>&nbsp;        level2Panel.setLayout(new GridLayout(0, 2, 0, 0));</b>
+<b class="nc"><i>103</i>&nbsp;        centerPanel.add(level2Panel);</b>
+<i>104</i>&nbsp;
+<b class="nc"><i>105</i>&nbsp;        JTextPane textContentArea = new JTextPane();</b>
+<b class="nc"><i>106</i>&nbsp;        textContentArea.setEditable(false);</b>
+<b class="nc"><i>107</i>&nbsp;        p.setBorder(new TitledBorder(&quot;Text Content&quot;));</b>
+<b class="nc"><i>108</i>&nbsp;        JScrollPane scroll = new JScrollPane(textContentArea);</b>
+<b class="nc"><i>109</i>&nbsp;        p.setLayout(new BorderLayout(0, 0));</b>
+<b class="nc"><i>110</i>&nbsp;        p.add(scroll, BorderLayout.CENTER);</b>
+<b class="nc"><i>111</i>&nbsp;        StyleText generator = new StyleText();</b>
+<b class="nc"><i>112</i>&nbsp;        textContentArea.setStyledDocument(generator.createDocument(featureEnvyBean.getTextContent()));</b>
+<b class="nc"><i>113</i>&nbsp;        level2Panel.add(p);</b>
+<i>114</i>&nbsp;
+<b class="nc"><i>115</i>&nbsp;        tableContainer = new JPanel();</b>
+<b class="nc"><i>116</i>&nbsp;        tableContainer.setLayout(new BorderLayout());</b>
+<b class="nc"><i>117</i>&nbsp;        level2Panel.add(tableContainer);</b>
+<b class="nc"><i>118</i>&nbsp;        createTable();</b>
+<b class="nc"><i>119</i>&nbsp;        return centerPanel;</b>
+<i>120</i>&nbsp;    }
+<i>121</i>&nbsp;
+<i>122</i>&nbsp;    private void createTable() {
+<b class="nc"><i>123</i>&nbsp;        table = new JBTable();</b>
+<i>124</i>&nbsp;
+<b class="nc"><i>125</i>&nbsp;        String[] columnsNames = {&quot;Method&quot;, &quot;LOC&quot;, &quot;McCabeComplexity&quot;};</b>
+<b class="nc"><i>126</i>&nbsp;        DefaultTableModel tableModel = new DefaultTableModel(columnsNames, 0);</b>
+<i>127</i>&nbsp;
+<b class="nc"><i>128</i>&nbsp;        Vector&lt;String&gt; row = new Vector&lt;&gt;();</b>
+<b class="nc"><i>129</i>&nbsp;        row.add(featureEnvyBean.getFullQualifiedName());</b>
+<b class="nc"><i>130</i>&nbsp;        row.add(CKMetrics.getLOC(featureEnvyBean) + &quot;&quot;);</b>
+<b class="nc"><i>131</i>&nbsp;        row.add(CKMetrics.getMcCabeCycloComplexity(featureEnvyBean) + &quot;&quot;);</b>
+<b class="nc"><i>132</i>&nbsp;        tableModel.addRow(row);</b>
+<i>133</i>&nbsp;
+<b class="nc"><i>134</i>&nbsp;        table.setModel(tableModel);</b>
+<b class="nc"><i>135</i>&nbsp;        tableContainer.add(new JScrollPane(table));</b>
+<b class="nc"><i>136</i>&nbsp;        tableContainer.setBorder(new TitledBorder(&quot;Metrics&quot;));</b>
+<b class="nc"><i>137</i>&nbsp;        table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);</b>
+<i>138</i>&nbsp;        //table.setFillsViewportHeight(true);
+<i>139</i>&nbsp;    }
+<i>140</i>&nbsp;
+<i>141</i>&nbsp;    @NotNull
+<i>142</i>&nbsp;    @Override
+<i>143</i>&nbsp;    protected Action[] createActions() {
+<b class="nc"><i>144</i>&nbsp;        Action okAction = new DialogWrapperAction(&quot;FIND SOLUTION&quot;) {</b>
+<i>145</i>&nbsp;
+<i>146</i>&nbsp;            @Override
+<i>147</i>&nbsp;            protected void doAction(ActionEvent actionEvent) {
+<b class="nc"><i>148</i>&nbsp;                FeatureEnvyWizard featureEnvyWizard = new FeatureEnvyWizard(featureEnvyBean, project, packageBeans);</b>
+<b class="nc"><i>149</i>&nbsp;                featureEnvyWizard.show();</b>
+<b class="nc"><i>150</i>&nbsp;                close(0);</b>
+<i>151</i>&nbsp;            }
+<i>152</i>&nbsp;        };
+<i>153</i>&nbsp;
+<b class="nc"><i>154</i>&nbsp;        return new Action[]{okAction, new DialogWrapperExitAction(&quot;CANCEL&quot;, 0)};</b>
+<i>155</i>&nbsp;    }
+<i>156</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>

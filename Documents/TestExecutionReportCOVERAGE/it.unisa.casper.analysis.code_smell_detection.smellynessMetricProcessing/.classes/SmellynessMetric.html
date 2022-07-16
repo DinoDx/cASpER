@@ -1,0 +1,138 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SmellynessMetric</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SmellynessMetric (it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SmellynessMetric</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96,3%
+  </span>
+  <span class="absValue">
+    (26/ 27)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.analysis.code_smell_detection.smellynessMetricProcessing;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.similarityComputation.CosineSimilarity;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.io.IOException;
+<i>6</i>&nbsp;import java.util.ArrayList;
+<i>7</i>&nbsp;
+<b class="fc"><i>8</i>&nbsp;public class SmellynessMetric {</b>
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;    public double computeSmellyness(String pTestCase) throws IOException {
+<b class="fc"><i>11</i>&nbsp;        CosineSimilarity cosineSimilarity = new CosineSimilarity();</b>
+<b class="fc"><i>12</i>&nbsp;        String[] blocks = pTestCase.split(&quot;_____&quot;);</b>
+<b class="fc"><i>13</i>&nbsp;        ArrayList&lt;String&gt; filteredBlocks = new ArrayList&lt;String&gt;();</b>
+<b class="fc"><i>14</i>&nbsp;        Double smellyness = 0.0;</b>
+<i>15</i>&nbsp;
+<b class="fc"><i>16</i>&nbsp;        for (int k = 0; k &lt; blocks.length; k++) {</b>
+<b class="fc"><i>17</i>&nbsp;            if (blocks[k].split(&quot;\n&quot;).length &gt; 3) {</b>
+<b class="fc"><i>18</i>&nbsp;                filteredBlocks.add(blocks[k]);</b>
+<i>19</i>&nbsp;            }
+<i>20</i>&nbsp;        }
+<i>21</i>&nbsp;
+<b class="fc"><i>22</i>&nbsp;        if (filteredBlocks.size() == 1) {</b>
+<b class="fc"><i>23</i>&nbsp;            return 0.0;</b>
+<i>24</i>&nbsp;        }
+<i>25</i>&nbsp;
+<b class="fc"><i>26</i>&nbsp;        int comparison = 0;</b>
+<i>27</i>&nbsp;
+<b class="fc"><i>28</i>&nbsp;        for (int k = 0; k &lt; filteredBlocks.size(); k++) {</b>
+<b class="fc"><i>29</i>&nbsp;            for (int i = 1; i &lt; filteredBlocks.size(); i++) {</b>
+<i>30</i>&nbsp;
+<b class="fc"><i>31</i>&nbsp;                String[] document1 = new String[2];</b>
+<b class="fc"><i>32</i>&nbsp;                document1[0] = &quot;block_&quot; + k;</b>
+<i>33</i>&nbsp;
+<b class="fc"><i>34</i>&nbsp;                String[] document2 = new String[2];</b>
+<b class="fc"><i>35</i>&nbsp;                document2[0] = &quot;block_&quot; + i;</b>
+<i>36</i>&nbsp;
+<b class="fc"><i>37</i>&nbsp;                document1[1] = filteredBlocks.get(k);</b>
+<b class="fc"><i>38</i>&nbsp;                document2[1] = filteredBlocks.get(i);</b>
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;                smellyness += cosineSimilarity.computeSimilarity(document1, document2);</b>
+<b class="fc"><i>41</i>&nbsp;                comparison++;</b>
+<i>42</i>&nbsp;            }
+<i>43</i>&nbsp;        }
+<i>44</i>&nbsp;
+<b class="fc"><i>45</i>&nbsp;        smellyness = 1 - (smellyness / comparison);</b>
+<i>46</i>&nbsp;
+<b class="fc"><i>47</i>&nbsp;        if (smellyness.isNaN()) {</b>
+<b class="fc"><i>48</i>&nbsp;            return 0.0;</b>
+<b class="fc"><i>49</i>&nbsp;        } else if (smellyness.isInfinite()) {</b>
+<b class="nc"><i>50</i>&nbsp;            return 0.0;</b>
+<b class="fc"><i>51</i>&nbsp;        } else return smellyness;</b>
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-16 16:32</div>
+</div>
+</body>
+</html>
