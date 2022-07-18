@@ -38,7 +38,7 @@ public class DeepLearningBlobStrategyTest {
             log.info("\n" + e.getMessage());
             result = "[0. 1. 0. 0. 0.]";
         }
-        assertNotEquals("Error", strategy.getRisultato());
+        assertNotEquals("Error", result);
     }
 
     @Test
