@@ -17,6 +17,7 @@ public class DeepLearningSpaghettiCodeStrategyTest {
     private Vector<String> metrics= new Vector<String>();
     private Vector<String> wrongMetrics = new Vector<String>();
     private Vector<String> lessMetrics = new Vector<String>();
+    private Vector<String> moreMetrics = new Vector<String>();
 
     @Before
     public void setUp() {
@@ -24,6 +25,7 @@ public class DeepLearningSpaghettiCodeStrategyTest {
         metrics.add("31,156,2,1606,87,167,608,1606,1606,36,0,41,41,1,0.04878048780487805,0,20.365853658536587,156,0");
         wrongMetrics.add("stringa senza metriche");
         lessMetrics.add("31,156,2,1606,87,167,608,1606,1606,36");
+        moreMetrics.add("31,156,2,1606,87,167,608,1606,1606,36,0,41,41,1,0.04878048780487805,0,20.365853658536587,156,0,31,156,2,1606,87,167,608,1606,1606,36");
     }
 
     @Test
@@ -82,6 +84,24 @@ public class DeepLearningSpaghettiCodeStrategyTest {
         String result;
         java.util.logging.Logger log = Logger.getLogger(getClass().getName());
         DeepLearningSpaghettiCodeStrategy strategy = new DeepLearningSpaghettiCodeStrategy(lessMetrics);
+        SpaghettiCodeCodeSmell smell = new SpaghettiCodeCodeSmell(strategy, "Deep Learning");
+        try {
+            classe.isAffected(smell);
+            result = strategy.getRisultato();
+        }
+        catch (RuntimeException e){
+            log.info("\n" + e.getMessage());
+            result = "Error";
+        }
+        assertEquals("Error", result);
+    }
+
+
+    @Test
+    public void moreMetricsParameter(){
+        String result;
+        java.util.logging.Logger log = Logger.getLogger(getClass().getName());
+        DeepLearningSpaghettiCodeStrategy strategy = new DeepLearningSpaghettiCodeStrategy(moreMetrics);
         SpaghettiCodeCodeSmell smell = new SpaghettiCodeCodeSmell(strategy, "Deep Learning");
         try {
             classe.isAffected(smell);
