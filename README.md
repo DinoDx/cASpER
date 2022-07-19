@@ -16,6 +16,9 @@ Once the installation is complete, the cASpER- Analyze Project section will appe
 
 cASpER can be installed through the official store. As a first step you need to open the settings panel and access the plugins store. Then select and search for this plugin under "cASpER".
 
+## How to use the Deep Learning Strategy
+The project of the detector can be downloaded at https://github.com/DinoDx/NNcASpER and then run the api.py script.
+
 ## How to see the source code
 
 To view the open source code, download the .zip file from this repository. Open the project by accessing the "Code" subfolder and selecting "java" as the source foulder.
