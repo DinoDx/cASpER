@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="47afe1f5-89a3-48a7-a848-fb15bcd093ed" name="Default Changelist" comment="CKMetrics modified for CR1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/.idea/code_smell_detection.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/casper/analysis/code_smell_detection/.idea/vcs.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -418,6 +414,8 @@
       <workItem from="1658160424005" duration="355000" />
       <workItem from="1658223431787" duration="674000" />
       <workItem from="1658242814753" duration="325000" />
+      <workItem from="1658247708727" duration="183000" />
+      <workItem from="1658260111410" duration="596000" />
     </task>
     <task id="LOCAL-00001" summary="project initialization">
       <created>1657721606704</created>
@@ -552,10 +550,10 @@
     </state>
     <state x="863" y="233" key="SettingsEditor/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1657895272951" />
     <state x="647" y="173" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1657802290386" />
-    <state x="881" y="459" key="com.intellij.ide.util.TipDialog" timestamp="1658242888397">
+    <state x="881" y="459" key="com.intellij.ide.util.TipDialog" timestamp="1658260113809">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
-    <state x="881" y="459" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658242888397" />
+    <state x="881" y="459" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658260113809" />
     <state x="661" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1657912935808" />
     <state x="881" y="459" key="com.intellij.ide.util.TipDialog/0.0.2560.1392@0.0.2560.1392" timestamp="1658160424099" />
     <state x="1089" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1657817388978">
