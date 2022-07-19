@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47afe1f5-89a3-48a7-a848-fb15bcd093ed" name="Default Changelist" comment="CKMetrics modified for CR1">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/blob/DeepLearningBlobStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/complex_class/DeepLearningComplexClassStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/lazy_class/DeepLearningLazyClassStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/refused_bequest/DeepLearningRefusedBequestStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unisa/casper/analysis/code_smell_detection/spaghetti_code/DeepLearningSpaghettiCodeStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/Test Case Specification POST.pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +19,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$/../.." userTempatePath="" />
+  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$/../Documents" userTempatePath="" />
   <component name="ExportToHTMLSettings">
     <option name="OPEN_IN_BROWSER" value="true" />
     <option name="OUTPUT_DIRECTORY" value="C:\Users\Dino\IdeaProjects\cASpER\Documents\TestExecutionReportCOVERAGE" />
@@ -422,7 +413,7 @@
       <workItem from="1657978418945" duration="2617000" />
       <workItem from="1657981857144" duration="134000" />
       <workItem from="1658160424005" duration="355000" />
-      <workItem from="1658223431787" duration="258000" />
+      <workItem from="1658223431787" duration="674000" />
     </task>
     <task id="LOCAL-00001" summary="project initialization">
       <created>1657721606704</created>
@@ -500,32 +491,32 @@
     </state>
     <state x="987" y="364" key="FileChooserDialogImpl/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658223809278" />
     <state x="740" y="270" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1657749490015" />
-    <state width="2517" height="366" key="GridCell.Tab.0.bottom" timestamp="1658223895824">
+    <state width="2517" height="366" key="GridCell.Tab.0.bottom" timestamp="1658224112664">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="366" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658223895824" />
+    <state width="2517" height="366" key="GridCell.Tab.0.bottom/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658224112664" />
     <state width="1876" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
     <state width="2517" height="366" key="GridCell.Tab.0.bottom/0.0.2560.1392@0.0.2560.1392" timestamp="1658160782274" />
-    <state width="2517" height="366" key="GridCell.Tab.0.center" timestamp="1658223895824">
+    <state width="2517" height="366" key="GridCell.Tab.0.center" timestamp="1658224112664">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="366" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658223895824" />
+    <state width="2517" height="366" key="GridCell.Tab.0.center/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658224112664" />
     <state width="1876" height="338" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
     <state width="2517" height="366" key="GridCell.Tab.0.center/0.0.2560.1392@0.0.2560.1392" timestamp="1658160782274" />
-    <state width="2517" height="366" key="GridCell.Tab.0.left" timestamp="1658223895824">
+    <state width="2517" height="366" key="GridCell.Tab.0.left" timestamp="1658224112664">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="366" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658223895824" />
+    <state width="2517" height="366" key="GridCell.Tab.0.left/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658224112664" />
     <state width="1876" height="338" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
     <state width="2517" height="366" key="GridCell.Tab.0.left/0.0.2560.1392@0.0.2560.1392" timestamp="1658160782274" />
-    <state width="2517" height="366" key="GridCell.Tab.0.right" timestamp="1658223895824">
+    <state width="2517" height="366" key="GridCell.Tab.0.right" timestamp="1658224112664">
       <screen x="0" y="0" width="2560" height="1392" />
     </state>
     <state width="1877" height="276" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@-1920.0.1920.1032" timestamp="1657816232132" />
-    <state width="2517" height="366" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658223895824" />
+    <state width="2517" height="366" key="GridCell.Tab.0.right/-1920.0.1920.1032/0.0.2560.1392@0.0.2560.1392" timestamp="1658224112664" />
     <state width="1876" height="338" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1657916832705" />
     <state width="2517" height="366" key="GridCell.Tab.0.right/0.0.2560.1392@0.0.2560.1392" timestamp="1658160782274" />
     <state width="1876" height="338" key="GridCell.Tab.1.bottom" timestamp="1657916832705">
