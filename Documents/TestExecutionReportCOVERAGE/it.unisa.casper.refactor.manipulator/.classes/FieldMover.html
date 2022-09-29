@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: FieldMover</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.refactor.manipulator</a> ]
+</div>
+
+<h1>Coverage Summary for Class: FieldMover (it.unisa.casper.refactor.manipulator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FieldMover</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 50)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.refactor.manipulator;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import com.intellij.openapi.application.ApplicationManager;
+<i>5</i>&nbsp;import com.intellij.openapi.command.WriteCommandAction;
+<i>6</i>&nbsp;import com.intellij.openapi.project.Project;
+<i>7</i>&nbsp;import com.intellij.psi.*;
+<i>8</i>&nbsp;import com.intellij.psi.search.GlobalSearchScope;
+<i>9</i>&nbsp;import com.intellij.refactoring.move.moveMembers.MoveMembersOptions;
+<i>10</i>&nbsp;import com.intellij.refactoring.move.moveMembers.MoveMembersProcessor;
+<i>11</i>&nbsp;import com.intellij.refactoring.rename.RenameJavaMemberProcessor;
+<i>12</i>&nbsp;import com.intellij.refactoring.rename.RenameJavaVariableProcessor;
+<i>13</i>&nbsp;import com.intellij.refactoring.rename.RenameVariableUsageInfo;
+<i>14</i>&nbsp;import com.intellij.usageView.UsageInfo;
+<i>15</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>16</i>&nbsp;import it.unisa.casper.storage.beans.InstanceVariableBean;
+<i>17</i>&nbsp;import it.unisa.casper.storage.beans.InstanceVariableBeanList;
+<i>18</i>&nbsp;import it.unisa.casper.storage.beans.MethodBean;
+<i>19</i>&nbsp;import org.jetbrains.annotations.NotNull;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;import java.lang.reflect.Method;
+<i>22</i>&nbsp;import java.util.ArrayList;
+<i>23</i>&nbsp;import java.util.LinkedHashSet;
+<i>24</i>&nbsp;import java.util.List;
+<i>25</i>&nbsp;import java.util.Vector;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;public class FieldMover{
+<i>28</i>&nbsp;    private ClassBean targetClass, sourceClass;
+<i>29</i>&nbsp;    private List&lt;InstanceVariableBean&gt; fieldsToMove;
+<i>30</i>&nbsp;    private Project project;
+<i>31</i>&nbsp;    private PsiClass psiTargetClass, psiSourceClass;
+<i>32</i>&nbsp;    private Vector&lt;UsageInfo&gt; usages;
+<i>33</i>&nbsp;    private String scope, returnType, name, parameters, throwsList, body;
+<i>34</i>&nbsp;
+<b class="nc"><i>35</i>&nbsp;    public FieldMover(ClassBean targetClass, ClassBean sourceClass, List&lt;InstanceVariableBean&gt; fieldsToMove, Project project){</b>
+<b class="nc"><i>36</i>&nbsp;        this.targetClass = targetClass;</b>
+<b class="nc"><i>37</i>&nbsp;        this.sourceClass = sourceClass;</b>
+<b class="nc"><i>38</i>&nbsp;        this.fieldsToMove = fieldsToMove;</b>
+<b class="nc"><i>39</i>&nbsp;        this.project = project;</b>
+<b class="nc"><i>40</i>&nbsp;        this.psiTargetClass = PsiUtil.getPsi(targetClass, project);</b>
+<b class="nc"><i>41</i>&nbsp;        this.psiSourceClass = PsiUtil.getPsi(sourceClass, project);</b>
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    public void MoveField(){
+<i>45</i>&nbsp;
+<b class="nc"><i>46</i>&nbsp;            LinkedHashSet&lt;PsiMember&gt; memberSet = new LinkedHashSet&lt;&gt;();</b>
+<b class="nc"><i>47</i>&nbsp;            for (InstanceVariableBean i : fieldsToMove) {</b>
+<b class="nc"><i>48</i>&nbsp;                PsiMember member = PsiUtil.getPsi(i, sourceClass, project);</b>
+<i>49</i>&nbsp;                //verifica che nella target class esiste una variabile di istanza con lo stesso nome
+<b class="nc"><i>50</i>&nbsp;                if(existsFieldWithName(member.getName())){</b>
+<b class="nc"><i>51</i>&nbsp;                    String oldName = (member.getName());</b>
+<b class="nc"><i>52</i>&nbsp;                    String newName = changeName(member.getName(), member);</b>
+<b class="nc"><i>53</i>&nbsp;                    updateMethods(newName, oldName, i);</b>
+<i>54</i>&nbsp;                }
+<i>55</i>&nbsp;
+<b class="nc"><i>56</i>&nbsp;                memberSet.add(member);</b>
+<b class="nc"><i>57</i>&nbsp;            }</b>
+<i>58</i>&nbsp;
+<b class="nc"><i>59</i>&nbsp;            MockMoveMembersOptions options =  new MockMoveMembersOptions(psiTargetClass.getQualifiedName(), memberSet);</b>
+<b class="nc"><i>60</i>&nbsp;            options.setMemberVisibility(null);</b>
+<b class="nc"><i>61</i>&nbsp;            new MoveMembersProcessor(project, null, options).run();</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    private void updateMethods(String newName, String oldName, InstanceVariableBean instanceVariableBean){
+<b class="nc"><i>65</i>&nbsp;        for(MethodBean m : sourceClass.getMethodList()) {</b>
+<b class="nc"><i>66</i>&nbsp;            String tmp = m.getFullQualifiedName();</b>
+<b class="nc"><i>67</i>&nbsp;            if(!(tmp.contains(&quot;set&quot;) || tmp.contains(&quot;get&quot;))) {</b>
+<b class="nc"><i>68</i>&nbsp;                if (m.getInstanceVariableList().contains(instanceVariableBean)) {</b>
+<b class="nc"><i>69</i>&nbsp;                    PsiMethod psiMethod = PsiUtil.getPsi(m, project);</b>
+<i>70</i>&nbsp;
+<b class="nc"><i>71</i>&nbsp;                    scope = psiMethod.getModifierList().getText();</b>
+<b class="nc"><i>72</i>&nbsp;                    returnType = psiMethod.getReturnType().getPresentableText();</b>
+<b class="nc"><i>73</i>&nbsp;                    name = psiMethod.getName();</b>
+<b class="nc"><i>74</i>&nbsp;                    parameters = psiMethod.getParameterList().getText();</b>
+<i>75</i>&nbsp;                   /* parameters = parameters.substring(0, parameters.length() - 1);
+<i>76</i>&nbsp;                    if (parameters.length() &gt; 1) {
+<i>77</i>&nbsp;                        parameters = parameters + &quot;, &quot;;
+<i>78</i>&nbsp;                    }
+<i>79</i>&nbsp;                    parameters = parameters + instanceVariableBean.getType() + &quot; &quot; + newName + &quot;)&quot;;*/
+<b class="nc"><i>80</i>&nbsp;                    throwsList = psiMethod.getThrowsList().getText();</b>
+<b class="nc"><i>81</i>&nbsp;                    body = psiMethod.getBody().getText();</b>
+<b class="nc"><i>82</i>&nbsp;                    body = body.replaceAll(oldName, newName);</b>
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;
+<b class="nc"><i>85</i>&nbsp;                    String methodToWrite = MethodMover.buildMethod(scope, returnType, name, parameters, throwsList, body);</b>
+<i>86</i>&nbsp;
+<b class="nc"><i>87</i>&nbsp;                    WriteCommandAction.runWriteCommandAction(project, () -&gt; {</b>
+<b class="nc"><i>88</i>&nbsp;                        MethodMover.methodWriter(methodToWrite, psiMethod, psiTargetClass, true, project);</b>
+<i>89</i>&nbsp;                    });
+<i>90</i>&nbsp;                }
+<i>91</i>&nbsp;            }
+<b class="nc"><i>92</i>&nbsp;        }</b>
+<i>93</i>&nbsp;    }
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;    private String getFieldName(InstanceVariableBean fieldBean){
+<b class="nc"><i>96</i>&nbsp;        String fieldName = fieldBean.getFullQualifiedName().substring(fieldBean.getFullQualifiedName().lastIndexOf(&#39;.&#39;) + 1);</b>
+<b class="nc"><i>97</i>&nbsp;        return fieldName;</b>
+<i>98</i>&nbsp;    }
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;    private String changeName(String name, PsiMember member){
+<b class="nc"><i>101</i>&nbsp;        String newName = name + &quot;_refactor&quot;;</b>
+<b class="nc"><i>102</i>&nbsp;        WriteCommandAction.runWriteCommandAction(project, () -&gt; {</b>
+<b class="nc"><i>103</i>&nbsp;            RenameJavaMemberProcessor r = new RenameJavaVariableProcessor();</b>
+<b class="nc"><i>104</i>&nbsp;            RenameVariableUsageInfo u = new RenameVariableUsageInfo((PsiVariable) member, newName);</b>
+<b class="nc"><i>105</i>&nbsp;            UsageInfo[] array = new UsageInfo[1];</b>
+<b class="nc"><i>106</i>&nbsp;            array[0] = u;</b>
+<b class="nc"><i>107</i>&nbsp;            r.renameElement(member, newName, array, null);</b>
+<i>108</i>&nbsp;        });
+<i>109</i>&nbsp;
+<b class="nc"><i>110</i>&nbsp;        return newName;</b>
+<i>111</i>&nbsp;    }
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;    private boolean existsFieldWithName(String name) {
+<b class="nc"><i>114</i>&nbsp;        final PsiField[] allFields = psiTargetClass.getAllFields();</b>
+<b class="nc"><i>115</i>&nbsp;        for (PsiField field : allFields) {</b>
+<b class="nc"><i>116</i>&nbsp;            if (name.equals(field.getName())) {</b>
+<b class="nc"><i>117</i>&nbsp;                return true;</b>
+<i>118</i>&nbsp;            }
+<i>119</i>&nbsp;        }
+<b class="nc"><i>120</i>&nbsp;        return false;</b>
+<i>121</i>&nbsp;    }
+<i>122</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-19 11:44</div>
+</div>
+</body>
+</html>

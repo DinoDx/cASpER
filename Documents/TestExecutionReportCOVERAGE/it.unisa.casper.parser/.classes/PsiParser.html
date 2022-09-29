@@ -1,0 +1,672 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PsiParser</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.parser</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PsiParser (it.unisa.casper.parser)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PsiParser</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 280)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">PsiParser$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 286)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.parser;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.intellij.analysis.AnalysisScope;
+<i>4</i>&nbsp;import com.intellij.openapi.project.Project;
+<i>5</i>&nbsp;import com.intellij.psi.*;
+<i>6</i>&nbsp;import com.intellij.psi.util.PsiTreeUtil;
+<i>7</i>&nbsp;import it.unisa.casper.analysis.code_smell.*;
+<i>8</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.blob.DeepLearningBlobStrategy;
+<i>9</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.blob.StructuralBlobStrategy;
+<i>10</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.blob.TextualBlobStrategy;
+<i>11</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.complex_class.DeepLearningComplexClassStrategy;
+<i>12</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.feature_envy.StructuralFeatureEnvyStrategy;
+<i>13</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.feature_envy.TextualFeatureEnvyStrategy;
+<i>14</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.lazy_class.DeepLearningLazyClassStrategy;
+<i>15</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.misplaced_class.StructuralMisplacedClassStrategy;
+<i>16</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.misplaced_class.TextualMisplacedClassStrategy;
+<i>17</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.promiscuous_package.StructuralPromiscuousPackageStrategy;
+<i>18</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.promiscuous_package.TextualPromiscuousPackageStrategy;
+<i>19</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.refused_bequest.DeepLearningRefusedBequestStrategy;
+<i>20</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.spaghetti_code.DeepLearningSpaghettiCodeStrategy;
+<i>21</i>&nbsp;import it.unisa.casper.storage.beans.*;
+<i>22</i>&nbsp;import it.unisa.casper.structuralMetrics.CKMetrics;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;import java.io.BufferedReader;
+<i>25</i>&nbsp;import java.io.File;
+<i>26</i>&nbsp;import java.io.FileReader;
+<i>27</i>&nbsp;import java.util.*;
+<i>28</i>&nbsp;import java.util.regex.Pattern;
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;//import it.unisa.casper.storage.beans.*;
+<i>31</i>&nbsp;
+<b class="nc"><i>32</i>&nbsp;public class PsiParser implements Parser {</b>
+<i>33</i>&nbsp;    private Project project;
+<i>34</i>&nbsp;    private final List&lt;PackageBean&gt; projectPackages;
+<i>35</i>&nbsp;    private static String path;
+<i>36</i>&nbsp;    //Lista di threads
+<i>37</i>&nbsp;    private List&lt;Thread&gt; threadList;
+<i>38</i>&nbsp;
+<b class="nc"><i>39</i>&nbsp;    public PsiParser(Project project) {</b>
+<b class="nc"><i>40</i>&nbsp;        this.project = project;</b>
+<b class="nc"><i>41</i>&nbsp;        path = project.getBasePath();</b>
+<b class="nc"><i>42</i>&nbsp;        projectPackages = new ArrayList&lt;PackageBean&gt;();</b>
+<b class="nc"><i>43</i>&nbsp;        threadList = new ArrayList&lt;&gt;();</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    @Override
+<i>47</i>&nbsp;    public List&lt;PackageBean&gt; parse() throws ParsingException {
+<i>48</i>&nbsp;        try {
+<i>49</i>&nbsp;            PackageBean parsedPackageBean;
+<b class="nc"><i>50</i>&nbsp;            Set&lt;PsiPackage&gt; listPackages = getAllPackagesBeans();</b>
+<b class="nc"><i>51</i>&nbsp;            for (PsiPackage psiPackage : listPackages) {</b>
+<b class="nc"><i>52</i>&nbsp;                parsedPackageBean = parse(psiPackage);</b>
+<b class="nc"><i>53</i>&nbsp;                projectPackages.add(parsedPackageBean);</b>
+<b class="nc"><i>54</i>&nbsp;            }</b>
+<i>55</i>&nbsp;
+<b class="nc"><i>56</i>&nbsp;            HashMap&lt;String, Double&gt; coseno = new HashMap&lt;String, Double&gt;();</b>
+<b class="nc"><i>57</i>&nbsp;            HashMap&lt;String, Integer&gt; dipendence = new HashMap&lt;String, Integer&gt;();</b>
+<i>58</i>&nbsp;
+<b class="nc"><i>59</i>&nbsp;            ArrayList&lt;String&gt; smell = new ArrayList&lt;String&gt;();</b>
+<b class="nc"><i>60</i>&nbsp;            smell.add(&quot;Feature&quot;);</b>
+<b class="nc"><i>61</i>&nbsp;            smell.add(&quot;Misplaced&quot;);</b>
+<b class="nc"><i>62</i>&nbsp;            smell.add(&quot;Blob&quot;);</b>
+<b class="nc"><i>63</i>&nbsp;            smell.add(&quot;Promiscuous&quot;);</b>
+<i>64</i>&nbsp;            try {
+<b class="nc"><i>65</i>&nbsp;                FileReader f = new FileReader(System.getProperty(&quot;user.home&quot;) + File.separator + &quot;.casper&quot; + File.separator + &quot;threshold.txt&quot;);</b>
+<b class="nc"><i>66</i>&nbsp;                BufferedReader b = new BufferedReader(f);</b>
+<i>67</i>&nbsp;
+<b class="nc"><i>68</i>&nbsp;                String[] list = null;</b>
+<b class="nc"><i>69</i>&nbsp;                for (String s : smell) {</b>
+<b class="nc"><i>70</i>&nbsp;                    list = b.readLine().split(&quot;,&quot;);</b>
+<b class="nc"><i>71</i>&nbsp;                    coseno.put(&quot;coseno&quot; + s, Double.parseDouble(list[0]));</b>
+<b class="nc"><i>72</i>&nbsp;                    dipendence.put(&quot;dip&quot; + s, Integer.parseInt(list[1]));</b>
+<b class="nc"><i>73</i>&nbsp;                    if (s.equalsIgnoreCase(&quot;promiscuous&quot;)) {</b>
+<b class="nc"><i>74</i>&nbsp;                        dipendence.put(&quot;dip&quot; + s + &quot;2&quot;, Integer.parseInt(list[2]));</b>
+<i>75</i>&nbsp;                    }
+<b class="nc"><i>76</i>&nbsp;                    if (s.equalsIgnoreCase(&quot;blob&quot;)) {</b>
+<b class="nc"><i>77</i>&nbsp;                        dipendence.put(&quot;dip&quot; + s + &quot;2&quot;, Integer.parseInt(list[2]));</b>
+<b class="nc"><i>78</i>&nbsp;                        dipendence.put(&quot;dip&quot; + s + &quot;3&quot;, Integer.parseInt(list[3]));</b>
+<i>79</i>&nbsp;                    }
+<b class="nc"><i>80</i>&nbsp;                }</b>
+<b class="nc"><i>81</i>&nbsp;            } catch (Exception e) {</b>
+<i>82</i>&nbsp;
+<b class="nc"><i>83</i>&nbsp;            }</b>
+<i>84</i>&nbsp;
+<b class="nc"><i>85</i>&nbsp;            for (PackageBean packageBean : projectPackages) {</b>
+<i>86</i>&nbsp;
+<b class="nc"><i>87</i>&nbsp;                packageAnalysis(coseno, dipendence, packageBean);</b>
+<i>88</i>&nbsp;
+<b class="nc"><i>89</i>&nbsp;                for (ClassBean classBean : packageBean.getClassList()) {</b>
+<i>90</i>&nbsp;
+<b class="nc"><i>91</i>&nbsp;                    classAnalysis(coseno, dipendence, classBean);</b>
+<i>92</i>&nbsp;
+<b class="nc"><i>93</i>&nbsp;                    for (MethodBean methodBean : classBean.getMethodList()) {</b>
+<i>94</i>&nbsp;
+<b class="nc"><i>95</i>&nbsp;                        methosAnalysis(coseno, dipendence, methodBean);</b>
+<b class="nc"><i>96</i>&nbsp;                    }</b>
+<b class="nc"><i>97</i>&nbsp;                }</b>
+<b class="nc"><i>98</i>&nbsp;            }</b>
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;            //join sui thread
+<b class="nc"><i>101</i>&nbsp;            for(Thread t : threadList){</b>
+<b class="nc"><i>102</i>&nbsp;                t.join();</b>
+<b class="nc"><i>103</i>&nbsp;            }</b>
+<i>104</i>&nbsp;
+<b class="nc"><i>105</i>&nbsp;            return projectPackages;</b>
+<b class="nc"><i>106</i>&nbsp;        } catch (Exception e) {</b>
+<b class="nc"><i>107</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i>108</i>&nbsp;            throw new ParsingException();</b>
+<i>109</i>&nbsp;        }
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;    private void methosAnalysis(HashMap&lt;String, Double&gt; coseno, HashMap&lt;String, Integer&gt; dipendence, MethodBean methodBean) {
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;        /*//ANALISI STORICA
+<i>115</i>&nbsp;        //feature envy
+<i>116</i>&nbsp;
+<i>117</i>&nbsp;        HistoryFeatureEnvyStrategy historyFeatureEnvyStrategy = new HistoryFeatureEnvyStrategy(projectPackages);
+<i>118</i>&nbsp;        FeatureEnvyCodeSmell hFeatureEnvyCodeSmell = new FeatureEnvyCodeSmell(historyFeatureEnvyStrategy, &quot;History&quot;);
+<i>119</i>&nbsp;        methodBean.isAffected(hFeatureEnvyCodeSmell);*/
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;
+<b class="nc"><i>122</i>&nbsp;        TextualFeatureEnvyStrategy textualFeatureEnvyStrategy = new TextualFeatureEnvyStrategy(projectPackages, coseno.get(&quot;cosenoFeature&quot;));</b>
+<b class="nc"><i>123</i>&nbsp;        FeatureEnvyCodeSmell tFeatureEnvyCodeSmell = new FeatureEnvyCodeSmell(textualFeatureEnvyStrategy, &quot;Textual&quot;);</b>
+<b class="nc"><i>124</i>&nbsp;        methodBean.isAffected(tFeatureEnvyCodeSmell);</b>
+<i>125</i>&nbsp;
+<b class="nc"><i>126</i>&nbsp;        StructuralFeatureEnvyStrategy structuralFeatureEnvyStrategy = new StructuralFeatureEnvyStrategy(projectPackages, dipendence.get(&quot;dipFeature&quot;));</b>
+<b class="nc"><i>127</i>&nbsp;        FeatureEnvyCodeSmell sFeatureEnvyCodeSmell = new FeatureEnvyCodeSmell(structuralFeatureEnvyStrategy, &quot;Structural&quot;);</b>
+<b class="nc"><i>128</i>&nbsp;        methodBean.isAffected(sFeatureEnvyCodeSmell);</b>
+<i>129</i>&nbsp;
+<i>130</i>&nbsp;    }
+<i>131</i>&nbsp;
+<i>132</i>&nbsp;    private void classAnalysis(HashMap&lt;String, Double&gt; coseno, HashMap&lt;String, Integer&gt; dipendence, ClassBean classBean) {
+<i>133</i>&nbsp;        /*//ANALISI STORICA
+<i>134</i>&nbsp;        //blob
+<i>135</i>&nbsp;       HistoryBlobStrategy historyBlobStrategy = new HistoryBlobStrategy();
+<i>136</i>&nbsp;        BlobCodeSmell hBlobCodeSmell = new BlobCodeSmell(historyBlobStrategy, &quot;History&quot;);
+<i>137</i>&nbsp;        Thread t = new Thread(new AnalyzerThread(classBean, hBlobCodeSmell));
+<i>138</i>&nbsp;        threadList.add(t);
+<i>139</i>&nbsp;        t.start();
+<i>140</i>&nbsp;
+<i>141</i>&nbsp;
+<i>142</i>&nbsp;        //Shotgun surgery
+<i>143</i>&nbsp;        HistoryShotgunSurgeryStrategy historyShotgunSurgeryStrategy = new HistoryShotgunSurgeryStrategy(projectPackages);
+<i>144</i>&nbsp;        ShotgunSurgeryCodeSmell shotgunSurgeryCodeSmell = new ShotgunSurgeryCodeSmell(historyShotgunSurgeryStrategy, &quot;History&quot;);
+<i>145</i>&nbsp;        classBean.isAffected(shotgunSurgeryCodeSmell);
+<i>146</i>&nbsp;
+<i>147</i>&nbsp;
+<i>148</i>&nbsp;
+<i>149</i>&nbsp;        //Divergent change
+<i>150</i>&nbsp;        HistoryDivergentChangeStrategy historyDivergentChangeStrategy = new HistoryDivergentChangeStrategy();
+<i>151</i>&nbsp;        DivergentChangeCodeSmell divergentChangeCodeSmell = new DivergentChangeCodeSmell(historyDivergentChangeStrategy, &quot;History&quot;);
+<i>152</i>&nbsp;        classBean.isAffected(divergentChangeCodeSmell);
+<i>153</i>&nbsp;
+<i>154</i>&nbsp;
+<i>155</i>&nbsp;
+<i>156</i>&nbsp;        //Parallel Inheritance
+<i>157</i>&nbsp;        HistoryParallelInheritanceStrategy historyParallelInheritanceStrategy = new HistoryParallelInheritanceStrategy(projectPackages);
+<i>158</i>&nbsp;        ParallelInheritanceCodeSmell parallelInheritanceCodeSmell = new ParallelInheritanceCodeSmell(historyParallelInheritanceStrategy, &quot;History&quot;);
+<i>159</i>&nbsp;        classBean.isAffected(parallelInheritanceCodeSmell);*/
+<i>160</i>&nbsp;
+<i>161</i>&nbsp;
+<b class="nc"><i>162</i>&nbsp;        TextualBlobStrategy textualBlobStrategy = new TextualBlobStrategy(coseno.get(&quot;cosenoBlob&quot;));</b>
+<b class="nc"><i>163</i>&nbsp;        BlobCodeSmell tBlobCodeSmell = new BlobCodeSmell(textualBlobStrategy, &quot;Textual&quot;);</b>
+<b class="nc"><i>164</i>&nbsp;        TextualMisplacedClassStrategy textualMisplacedClassStrategy = new TextualMisplacedClassStrategy(projectPackages, coseno.get(&quot;cosenoMisplaced&quot;));</b>
+<b class="nc"><i>165</i>&nbsp;        MisplacedClassCodeSmell tMisplacedClassCodeSmell = new MisplacedClassCodeSmell(textualMisplacedClassStrategy, &quot;Textual&quot;);</b>
+<b class="nc"><i>166</i>&nbsp;        classBean.isAffected(tBlobCodeSmell);</b>
+<b class="nc"><i>167</i>&nbsp;        classBean.isAffected(tMisplacedClassCodeSmell);</b>
+<b class="nc"><i>168</i>&nbsp;        classBean.setSimilarity(0);</b>
+<i>169</i>&nbsp;
+<b class="nc"><i>170</i>&nbsp;        StructuralBlobStrategy structuralBlobStrategy = new StructuralBlobStrategy(dipendence.get(&quot;dipBlob&quot;), dipendence.get(&quot;dipBlob2&quot;), dipendence.get(&quot;dipBlob3&quot;));</b>
+<b class="nc"><i>171</i>&nbsp;        BlobCodeSmell sBlobCodeSmell = new BlobCodeSmell(structuralBlobStrategy, &quot;Structural&quot;);</b>
+<b class="nc"><i>172</i>&nbsp;        StructuralMisplacedClassStrategy structuralMisplacedClassStrategy = new StructuralMisplacedClassStrategy(projectPackages, dipendence.get(&quot;dipMisplaced&quot;));</b>
+<b class="nc"><i>173</i>&nbsp;        MisplacedClassCodeSmell sMisplacedClassCodeSmell = new MisplacedClassCodeSmell(structuralMisplacedClassStrategy, &quot;Structural&quot;);</b>
+<b class="nc"><i>174</i>&nbsp;        classBean.isAffected(sBlobCodeSmell);</b>
+<b class="nc"><i>175</i>&nbsp;        classBean.isAffected(sMisplacedClassCodeSmell);</b>
+<b class="nc"><i>176</i>&nbsp;        classBean.setSimilarity(0);</b>
+<i>177</i>&nbsp;
+<b class="nc"><i>178</i>&nbsp;        Vector&lt;String&gt; metrics = new Vector&lt;String&gt;();</b>
+<b class="nc"><i>179</i>&nbsp;        Vector&lt;ClassBean&gt; system = new Vector&lt;ClassBean&gt;();</b>
+<b class="nc"><i>180</i>&nbsp;        for(PackageBean packageBean : projectPackages){</b>
+<b class="nc"><i>181</i>&nbsp;            system.addAll(packageBean.getClassList());</b>
+<b class="nc"><i>182</i>&nbsp;        }</b>
+<i>183</i>&nbsp;
+<b class="nc"><i>184</i>&nbsp;        double fanin = 0;</b>
+<b class="nc"><i>185</i>&nbsp;        for(PackageBean packageBean : projectPackages){</b>
+<b class="nc"><i>186</i>&nbsp;            for(ClassBean classBean1 : packageBean.getClassList()){</b>
+<b class="nc"><i>187</i>&nbsp;                fanin = CKMetrics.getNumberOfDependencies(classBean1, packageBean);</b>
+<b class="nc"><i>188</i>&nbsp;            }</b>
+<b class="nc"><i>189</i>&nbsp;        }</b>
+<b class="nc"><i>190</i>&nbsp;        double fanin1 = 0;</b>
+<b class="nc"><i>191</i>&nbsp;        for(PackageBean packageBean : projectPackages){</b>
+<b class="nc"><i>192</i>&nbsp;            for(ClassBean classBean1 : packageBean.getClassList()){</b>
+<b class="nc"><i>193</i>&nbsp;                for(MethodBean methodBean : classBean1.getMethodList()){</b>
+<b class="nc"><i>194</i>&nbsp;                    fanin1 = CKMetrics.getNumberOfDependencies(methodBean, classBean1);</b>
+<b class="nc"><i>195</i>&nbsp;                }</b>
+<i>196</i>&nbsp;
+<b class="nc"><i>197</i>&nbsp;            }</b>
+<b class="nc"><i>198</i>&nbsp;        }</b>
+<i>199</i>&nbsp;
+<b class="nc"><i>200</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getCBO(classBean)));</b>
+<b class="nc"><i>201</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getMcCabeCycloComplexity(classBean)));</b>
+<b class="nc"><i>202</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getDIT(classBean,system,0)));</b>
+<b class="nc"><i>203</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getELOC(classBean)));</b>
+<b class="nc"><i>204</i>&nbsp;        metrics.add(String.valueOf(fanin));</b>
+<b class="nc"><i>205</i>&nbsp;        metrics.add(String.valueOf(fanin1));</b>
+<b class="nc"><i>206</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getLCOM(classBean)));</b>
+<b class="nc"><i>207</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getLOC(classBean)));</b>
+<b class="nc"><i>208</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getLinesOfCodeWithoutAccessorOrMutatorMethods(classBean)));</b>
+<b class="nc"><i>209</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getNOA(classBean)));</b>
+<b class="nc"><i>210</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getNOC(classBean,system)));</b>
+<b class="nc"><i>211</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getNOM(classBean)));</b>
+<b class="nc"><i>212</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getNumberOfNotAccessorOrMutatorMethods(classBean)));</b>
+<b class="nc"><i>213</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getNOPA(classBean)));</b>
+<b class="nc"><i>214</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getProbabilityOfMiddleManMethod(classBean)));</b>
+<b class="nc"><i>215</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getProbabilityOfRefusedBequest(classBean)));</b>
+<b class="nc"><i>216</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getWeightedLOCNotAccessorOrMutatorMethods(classBean)));</b>
+<b class="nc"><i>217</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getWMC(classBean)));</b>
+<b class="nc"><i>218</i>&nbsp;        metrics.add(String.valueOf(CKMetrics.getWeightedMethodCountOfNotAccessorOrMutatorMethods(classBean)));</b>
+<i>219</i>&nbsp;
+<b class="nc"><i>220</i>&nbsp;        DeepLearningBlobStrategy deepLearningBlobStrategy = new DeepLearningBlobStrategy(metrics);</b>
+<b class="nc"><i>221</i>&nbsp;        DeepLearningComplexClassStrategy deepLearningComplexClassStrategy = new DeepLearningComplexClassStrategy(metrics);</b>
+<b class="nc"><i>222</i>&nbsp;        DeepLearningLazyClassStrategy deepLearningLazyClassStrategy = new DeepLearningLazyClassStrategy(metrics);</b>
+<b class="nc"><i>223</i>&nbsp;        DeepLearningRefusedBequestStrategy deepLearningRefusedBequestStrategy = new DeepLearningRefusedBequestStrategy(metrics);</b>
+<b class="nc"><i>224</i>&nbsp;        DeepLearningSpaghettiCodeStrategy deepLearningSpaghettiCodeStrategy = new DeepLearningSpaghettiCodeStrategy(metrics);</b>
+<i>225</i>&nbsp;
+<b class="nc"><i>226</i>&nbsp;        BlobCodeSmell dBlob = new BlobCodeSmell(deepLearningBlobStrategy, &quot;Deep Learning&quot;);</b>
+<b class="nc"><i>227</i>&nbsp;        ComplexClassCodeSmell dComplexClass = new ComplexClassCodeSmell(deepLearningComplexClassStrategy, &quot;Deep Learning&quot;);</b>
+<b class="nc"><i>228</i>&nbsp;        LazyClassCodeSmell dLazyClass = new LazyClassCodeSmell(deepLearningLazyClassStrategy, &quot;Deep Learning&quot;);</b>
+<b class="nc"><i>229</i>&nbsp;        RefusedBequestCodeSmell dRefusedBequest = new RefusedBequestCodeSmell(deepLearningRefusedBequestStrategy, &quot;Deep Learning&quot;);</b>
+<b class="nc"><i>230</i>&nbsp;        SpaghettiCodeCodeSmell dSpaghettiCode = new SpaghettiCodeCodeSmell(deepLearningSpaghettiCodeStrategy, &quot;Deep Learning&quot;);</b>
+<b class="nc"><i>231</i>&nbsp;        classBean.isAffected(dBlob);</b>
+<b class="nc"><i>232</i>&nbsp;        classBean.isAffected(dComplexClass);</b>
+<b class="nc"><i>233</i>&nbsp;        classBean.isAffected(dLazyClass);</b>
+<b class="nc"><i>234</i>&nbsp;        classBean.isAffected(dRefusedBequest);</b>
+<b class="nc"><i>235</i>&nbsp;        classBean.isAffected(dSpaghettiCode);</b>
+<i>236</i>&nbsp;
+<i>237</i>&nbsp;    }
+<i>238</i>&nbsp;
+<i>239</i>&nbsp;    private void packageAnalysis(HashMap&lt;String, Double&gt; coseno, HashMap&lt;String, Integer&gt; dipendence, PackageBean packageBean) {
+<i>240</i>&nbsp;
+<i>241</i>&nbsp;
+<b class="nc"><i>242</i>&nbsp;        TextualPromiscuousPackageStrategy textualPromiscuousPackageStrategy = new TextualPromiscuousPackageStrategy(coseno.get(&quot;cosenoPromiscuous&quot;));</b>
+<b class="nc"><i>243</i>&nbsp;        PromiscuousPackageCodeSmell tPromiscuousPackagecodeSmell = new PromiscuousPackageCodeSmell(textualPromiscuousPackageStrategy, &quot;Textual&quot;);</b>
+<b class="nc"><i>244</i>&nbsp;        packageBean.isAffected(tPromiscuousPackagecodeSmell);</b>
+<b class="nc"><i>245</i>&nbsp;        packageBean.setSimilarity(0);</b>
+<i>246</i>&nbsp;
+<b class="nc"><i>247</i>&nbsp;        StructuralPromiscuousPackageStrategy structuralPromiscuousPackageStrategy = new StructuralPromiscuousPackageStrategy(projectPackages, dipendence.get(&quot;dipPromiscuous&quot;) / 100, dipendence.get(&quot;dipPromiscuous2&quot;) / 100);</b>
+<b class="nc"><i>248</i>&nbsp;        PromiscuousPackageCodeSmell sPromiscuousPackagecodeSmell = new PromiscuousPackageCodeSmell(structuralPromiscuousPackageStrategy, &quot;Structural&quot;);</b>
+<b class="nc"><i>249</i>&nbsp;        packageBean.isAffected(sPromiscuousPackagecodeSmell);</b>
+<b class="nc"><i>250</i>&nbsp;        packageBean.setSimilarity(0);</b>
+<i>251</i>&nbsp;
+<i>252</i>&nbsp;    }
+<i>253</i>&nbsp;
+<i>254</i>&nbsp;    /**
+<i>255</i>&nbsp;     * Creates a PackageBean from an intellij PsiPackage.
+<i>256</i>&nbsp;     * The method obtains all the information from the
+<i>257</i>&nbsp;     * PsiPackage and uses them to create a PackageBean.
+<i>258</i>&nbsp;     *
+<i>259</i>&nbsp;     * @param psiPackage
+<i>260</i>&nbsp;     * @return
+<i>261</i>&nbsp;     */
+<i>262</i>&nbsp;    private PackageBean parse(PsiPackage psiPackage) {
+<i>263</i>&nbsp;        //Package da parsare
+<b class="nc"><i>264</i>&nbsp;        StringBuilder textContent = new StringBuilder();</b>
+<i>265</i>&nbsp;        String name;
+<b class="nc"><i>266</i>&nbsp;        ArrayList&lt;ClassBean&gt; list = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>267</i>&nbsp;        name = psiPackage.getQualifiedName();</b>
+<i>268</i>&nbsp;
+<b class="nc"><i>269</i>&nbsp;        for (PsiClass psiClass : psiPackage.getClasses()) {</b>
+<b class="nc"><i>270</i>&nbsp;            textContent.append(psiClass.getContext().getText());</b>
+<i>271</i>&nbsp;        }
+<i>272</i>&nbsp;
+<b class="nc"><i>273</i>&nbsp;        PackageBean.Builder builder = new PackageBean.Builder(name, textContent.toString());</b>
+<b class="nc"><i>274</i>&nbsp;        PsiClass[] classes = psiPackage.getClasses();</b>
+<b class="nc"><i>275</i>&nbsp;        ClassList classBeanList = new ClassList();</b>
+<b class="nc"><i>276</i>&nbsp;        for (PsiClass psiClass : classes) {</b>
+<b class="nc"><i>277</i>&nbsp;            list.add(parse(psiClass, textContent.toString()));</b>
+<i>278</i>&nbsp;        }
+<b class="nc"><i>279</i>&nbsp;        classBeanList.setList(list);</b>
+<b class="nc"><i>280</i>&nbsp;        builder.setClassList(classBeanList);</b>
+<b class="nc"><i>281</i>&nbsp;        return builder.build();</b>
+<i>282</i>&nbsp;    }
+<i>283</i>&nbsp;
+<i>284</i>&nbsp;    /**
+<i>285</i>&nbsp;     * Creates an ClassBean from an intellij psiClass.
+<i>286</i>&nbsp;     *
+<i>287</i>&nbsp;     * @param psiClass
+<i>288</i>&nbsp;     * @return ClassBean
+<i>289</i>&nbsp;     */
+<i>290</i>&nbsp;    public ClassBean parse(PsiClass psiClass, String contentForPackage) {
+<i>291</i>&nbsp;        //Classe da parsare
+<b class="nc"><i>292</i>&nbsp;        PsiJavaFile file = (PsiJavaFile) psiClass.getContainingFile();</b>
+<b class="nc"><i>293</i>&nbsp;        PsiPackage psiPackage = JavaPsiFacade.getInstance(project).findPackage(file.getPackageName());</b>
+<b class="nc"><i>294</i>&nbsp;        String pkgName = psiPackage.getQualifiedName();</b>
+<i>295</i>&nbsp;        //PackageBean per supporto
+<b class="nc"><i>296</i>&nbsp;        PackageBean packageBean = new PackageBean.Builder(pkgName, contentForPackage).build();</b>
+<i>297</i>&nbsp;        //analizzo la classe
+<b class="nc"><i>298</i>&nbsp;        String name = psiClass.getQualifiedName();</b>
+<b class="nc"><i>299</i>&nbsp;        String text = psiClass.getScope().getText();</b>
+<i>300</i>&nbsp;
+<i>301</i>&nbsp;        //creo la lista delle variabili d&#39;istanza
+<b class="nc"><i>302</i>&nbsp;        ClassBean.Builder builder = new ClassBean.Builder(name, text);</b>
+<b class="nc"><i>303</i>&nbsp;        builder.setBelongingPackage(packageBean);</b>
+<i>304</i>&nbsp;
+<i>305</i>&nbsp;        //ottengo il path assoluto
+<b class="nc"><i>306</i>&nbsp;        name = name.replace(&quot;.&quot;, &quot;/&quot;);</b>
+<b class="nc"><i>307</i>&nbsp;        String[] list = name.split(&quot;/&quot;);</b>
+<b class="nc"><i>308</i>&nbsp;        String root = list[0];</b>
+<b class="nc"><i>309</i>&nbsp;        File source = new File(path);</b>
+<b class="nc"><i>310</i>&nbsp;        boolean controllo = false;</b>
+<b class="nc"><i>311</i>&nbsp;        int j = 0, i = 0;</b>
+<b class="nc"><i>312</i>&nbsp;        File[] all = source.listFiles();</b>
+<i>313</i>&nbsp;        File[] in;
+<b class="nc"><i>314</i>&nbsp;        while (j &lt; all.length &amp;&amp; !controllo) {</b>
+<b class="nc"><i>315</i>&nbsp;            in = all[j].listFiles();</b>
+<b class="nc"><i>316</i>&nbsp;            if (in != null) {</b>
+<b class="nc"><i>317</i>&nbsp;                while (i &lt; in.length &amp;&amp; !controllo) {</b>
+<b class="nc"><i>318</i>&nbsp;                    if (in[i].getName().equalsIgnoreCase(root)) {</b>
+<b class="nc"><i>319</i>&nbsp;                        controllo = true;</b>
+<b class="nc"><i>320</i>&nbsp;                        root = path + &quot;/&quot; + all[j].getName();</b>
+<i>321</i>&nbsp;                    }
+<b class="nc"><i>322</i>&nbsp;                    i++;</b>
+<i>323</i>&nbsp;                }
+<i>324</i>&nbsp;            }
+<b class="nc"><i>325</i>&nbsp;            i = 0;</b>
+<b class="nc"><i>326</i>&nbsp;            j++;</b>
+<i>327</i>&nbsp;        }
+<b class="nc"><i>328</i>&nbsp;        if (controllo) {</b>
+<b class="nc"><i>329</i>&nbsp;            for (j = 0; j &lt; list.length - 1; j++) {</b>
+<b class="nc"><i>330</i>&nbsp;                root += &quot;/&quot; + list[j];</b>
+<i>331</i>&nbsp;            }
+<b class="nc"><i>332</i>&nbsp;            builder.setPathToFile(root);</b>
+<i>333</i>&nbsp;        }
+<i>334</i>&nbsp;
+<i>335</i>&nbsp;        //controllo se presenta superclasse
+<b class="nc"><i>336</i>&nbsp;        if (psiClass.getSuperClass() != null) {</b>
+<b class="nc"><i>337</i>&nbsp;            builder.setSuperclass(psiClass.getSuperClass().getQualifiedName());</b>
+<i>338</i>&nbsp;        }
+<i>339</i>&nbsp;
+<i>340</i>&nbsp;        //calcolo LOC
+<b class="nc"><i>341</i>&nbsp;        Pattern newLine = Pattern.compile(&quot;\n&quot;);</b>
+<b class="nc"><i>342</i>&nbsp;        String[] lines = newLine.split(psiClass.getText());</b>
+<b class="nc"><i>343</i>&nbsp;        builder.setLOC(lines.length);</b>
+<i>344</i>&nbsp;
+<b class="nc"><i>345</i>&nbsp;        ArrayList&lt;InstanceVariableBean&gt; listVariabili = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>346</i>&nbsp;        PsiField[] fields = psiClass.getFields();</b>
+<b class="nc"><i>347</i>&nbsp;        for (PsiField field : fields) {</b>
+<b class="nc"><i>348</i>&nbsp;            listVariabili.add(parse(field));</b>
+<i>349</i>&nbsp;        }
+<b class="nc"><i>350</i>&nbsp;        InstanceVariableList instanceVariableList = new InstanceVariableList();</b>
+<b class="nc"><i>351</i>&nbsp;        instanceVariableList.setList(listVariabili);</b>
+<b class="nc"><i>352</i>&nbsp;        builder.setInstanceVariables(instanceVariableList);</b>
+<i>353</i>&nbsp;
+<i>354</i>&nbsp;        //creo la lista dei metodi
+<b class="nc"><i>355</i>&nbsp;        ArrayList&lt;MethodBean&gt; listaMetodi = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>356</i>&nbsp;        PsiMethod[] methods = psiClass.getMethods();</b>
+<b class="nc"><i>357</i>&nbsp;        for (PsiMethod method : methods) {</b>
+<b class="nc"><i>358</i>&nbsp;            listaMetodi.add(parse(method, text));</b>
+<i>359</i>&nbsp;        }
+<b class="nc"><i>360</i>&nbsp;        MethodList methodList = new MethodList();</b>
+<b class="nc"><i>361</i>&nbsp;        methodList.setList(listaMetodi);</b>
+<b class="nc"><i>362</i>&nbsp;        builder.setMethods(methodList);</b>
+<i>363</i>&nbsp;
+<b class="nc"><i>364</i>&nbsp;        List&lt;String&gt; imports = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>365</i>&nbsp;        for (PsiElement e : ((PsiJavaFile) psiClass.getContainingFile()).getImportList().getChildren()) {</b>
+<b class="nc"><i>366</i>&nbsp;            if (!e.getText().contains(&quot;\n&quot;)) {</b>
+<b class="nc"><i>367</i>&nbsp;                imports.add(e.getText());</b>
+<i>368</i>&nbsp;            }
+<i>369</i>&nbsp;        }
+<b class="nc"><i>370</i>&nbsp;        builder.setImports(imports);</b>
+<b class="nc"><i>371</i>&nbsp;        return builder.build();</b>
+<i>372</i>&nbsp;    }
+<i>373</i>&nbsp;
+<i>374</i>&nbsp;    /**
+<i>375</i>&nbsp;     * Creates a MethodBean from an intellij PsiMethod.
+<i>376</i>&nbsp;     * The method obtains all the information from the
+<i>377</i>&nbsp;     * PsiMethod and uses them to create a MethodBean.
+<i>378</i>&nbsp;     *
+<i>379</i>&nbsp;     * @param psiMethod the method to convert
+<i>380</i>&nbsp;     * @return MethodBean
+<i>381</i>&nbsp;     */
+<i>382</i>&nbsp;    public MethodBean parse(PsiMethod psiMethod, String textContent) {
+<i>383</i>&nbsp;        //MethodBan da Parsare
+<b class="nc"><i>384</i>&nbsp;        MethodBean.Builder builder = new MethodBean.Builder(psiMethod.getContainingClass().getQualifiedName() + &quot;.&quot; + psiMethod.getName(), psiMethod.getText());</b>
+<b class="nc"><i>385</i>&nbsp;        builder.setStaticMethod(psiMethod.getModifierList().hasExplicitModifier(&quot;static&quot;));</b>
+<i>386</i>&nbsp;
+<i>387</i>&nbsp;        //Genero la Lista di Variabili d&#39;istanza utilizzate
+<b class="nc"><i>388</i>&nbsp;        ArrayList&lt;InstanceVariableBean&gt; list = new ArrayList&lt;&gt;();</b>
+<i>389</i>&nbsp;        // controllo se nel metodo ci sono variabili d&#39;istanza
+<i>390</i>&nbsp;        try {
+<b class="nc"><i>391</i>&nbsp;            PsiField[] fields = psiMethod.getContainingClass().getFields();</b>
+<i>392</i>&nbsp;            String methodBody;
+<b class="nc"><i>393</i>&nbsp;            if (psiMethod.getBody() == null) {</b>
+<b class="nc"><i>394</i>&nbsp;                methodBody = &quot;&quot;;</b>
+<i>395</i>&nbsp;            } else {
+<b class="nc"><i>396</i>&nbsp;                methodBody = psiMethod.getBody().getText();</b>
+<i>397</i>&nbsp;            }
+<b class="nc"><i>398</i>&nbsp;            for (PsiField field : fields) {</b>
+<b class="nc"><i>399</i>&nbsp;                if (methodBody.contains(field.getName()))</b>
+<b class="nc"><i>400</i>&nbsp;                    list.add(parse(field));</b>
+<i>401</i>&nbsp;            }
+<b class="nc"><i>402</i>&nbsp;        } catch (NullPointerException e) {</b>
+<i>403</i>&nbsp;
+<b class="nc"><i>404</i>&nbsp;        }</b>
+<b class="nc"><i>405</i>&nbsp;        InstanceVariableList instanceVariableList = new InstanceVariableList();</b>
+<b class="nc"><i>406</i>&nbsp;        instanceVariableList.setList(list);</b>
+<i>407</i>&nbsp;
+<i>408</i>&nbsp;        //ClassBean Return Type
+<i>409</i>&nbsp;        String returnTypeName;
+<i>410</i>&nbsp;        try {
+<b class="nc"><i>411</i>&nbsp;            returnTypeName = psiMethod.getReturnType().getInternalCanonicalText();</b>
+<b class="nc"><i>412</i>&nbsp;        } catch (NullPointerException e) {</b>
+<b class="nc"><i>413</i>&nbsp;            returnTypeName = &quot;void&quot;;</b>
+<b class="nc"><i>414</i>&nbsp;        }</b>
+<b class="nc"><i>415</i>&nbsp;        ClassBean returnTypeBean = new ClassBean.Builder(returnTypeName, &quot;&quot;).build();</b>
+<b class="nc"><i>416</i>&nbsp;        builder.setReturnType(returnTypeBean);</b>
+<b class="nc"><i>417</i>&nbsp;        builder.setInstanceVariableList(instanceVariableList);</b>
+<i>418</i>&nbsp;
+<i>419</i>&nbsp;
+<i>420</i>&nbsp;        //ClassBean Belonging Class
+<b class="nc"><i>421</i>&nbsp;        ClassBean belongingClass = new ClassBean.Builder(psiMethod.getContainingClass().getQualifiedName(), textContent).build();</b>
+<b class="nc"><i>422</i>&nbsp;        builder.setBelongingClass(belongingClass);</b>
+<i>423</i>&nbsp;        //setto i parametri del metodo
+<b class="nc"><i>424</i>&nbsp;        HashMap&lt;String, ClassBean&gt; map = new HashMap&lt;&gt;();</b>
+<b class="nc"><i>425</i>&nbsp;        for (PsiParameter parametri : psiMethod.getParameterList().getParameters()) {</b>
+<b class="nc"><i>426</i>&nbsp;            map.put(parametri.getName(), new ClassBean.Builder(parametri.getType().getInternalCanonicalText(), &quot;&quot;).build());</b>
+<i>427</i>&nbsp;        }
+<b class="nc"><i>428</i>&nbsp;        builder.setParameters(map);</b>
+<i>429</i>&nbsp;
+<b class="nc"><i>430</i>&nbsp;        builder.setVisibility(getFieldVisibilityString(psiMethod.getModifierList()));</b>
+<b class="nc"><i>431</i>&nbsp;        MethodBeanList methodCalls = new MethodList();</b>
+<b class="nc"><i>432</i>&nbsp;        List&lt;MethodBean&gt; methodCallList = new ArrayList&lt;MethodBean&gt;();</b>
+<i>433</i>&nbsp;
+<b class="nc"><i>434</i>&nbsp;        for (MethodBean m : findMethodInvocations(psiMethod)) {</b>
+<b class="nc"><i>435</i>&nbsp;            methodCallList.add(m);</b>
+<b class="nc"><i>436</i>&nbsp;        }</b>
+<b class="nc"><i>437</i>&nbsp;        ((MethodList) methodCalls).setList(methodCallList);</b>
+<b class="nc"><i>438</i>&nbsp;        builder.setMethodsCalls(methodCalls);</b>
+<b class="nc"><i>439</i>&nbsp;        return builder.build();</b>
+<i>440</i>&nbsp;    }
+<i>441</i>&nbsp;
+<i>442</i>&nbsp;    /**
+<i>443</i>&nbsp;     * Creates an InstanceVariableBean from an intellij PsiField.
+<i>444</i>&nbsp;     * The method obtains the name,the visibility, the type and
+<i>445</i>&nbsp;     * the initialization value from the PsiField and uses them to
+<i>446</i>&nbsp;     * set InstanceVariableBean properties.
+<i>447</i>&nbsp;     *
+<i>448</i>&nbsp;     * @param psiField to convert.
+<i>449</i>&nbsp;     * @return the InstanceVariableBean corresponding to the given PsiField
+<i>450</i>&nbsp;     */
+<i>451</i>&nbsp;    public InstanceVariableBean parse(PsiField psiField) {
+<i>452</i>&nbsp;        //Variabili d&#39;instanza da parsare
+<b class="nc"><i>453</i>&nbsp;        String name = psiField.getName();</b>
+<b class="nc"><i>454</i>&nbsp;        String type = psiField.getType().getCanonicalText();</b>
+<b class="nc"><i>455</i>&nbsp;        String initialization = &quot;&quot;;</b>
+<b class="nc"><i>456</i>&nbsp;        String visibility = getFieldVisibilityString(psiField.getModifierList());</b>
+<i>457</i>&nbsp;
+<b class="nc"><i>458</i>&nbsp;        if (psiField.getInitializer() != null)</b>
+<b class="nc"><i>459</i>&nbsp;            initialization = psiField.getInitializer().getText();</b>
+<b class="nc"><i>460</i>&nbsp;        return new InstanceVariableBean(name, type, initialization, visibility);</b>
+<i>461</i>&nbsp;    }
+<i>462</i>&nbsp;
+<i>463</i>&nbsp;    /**
+<i>464</i>&nbsp;     * This method obtain the visibility for an Object of type PsiModifierList.
+<i>465</i>&nbsp;     * The method check if the parameter is a parameter of type &quot;public&quot; || &quot;private&quot;
+<i>466</i>&nbsp;     * || protected || null, and return the result.
+<i>467</i>&nbsp;     *
+<i>468</i>&nbsp;     * @param modifierList of a PsiField
+<i>469</i>&nbsp;     * @return &quot;public&quot; || &quot;private&quot; || &quot;protected&quot; || null.
+<i>470</i>&nbsp;     */
+<i>471</i>&nbsp;    private String getFieldVisibilityString(PsiModifierList modifierList) {
+<b class="nc"><i>472</i>&nbsp;        final String PUBLIC_PROP = &quot;public&quot;;</b>
+<b class="nc"><i>473</i>&nbsp;        final String PRIVATE_PROP = &quot;private&quot;;</b>
+<b class="nc"><i>474</i>&nbsp;        final String PROTECTED_PROP = &quot;protected&quot;;</b>
+<b class="nc"><i>475</i>&nbsp;        if (modifierList.hasModifierProperty(&quot;public&quot;)) {</b>
+<b class="nc"><i>476</i>&nbsp;            return PUBLIC_PROP;</b>
+<b class="nc"><i>477</i>&nbsp;        } else if (modifierList.hasModifierProperty(&quot;private&quot;)) {</b>
+<b class="nc"><i>478</i>&nbsp;            return PRIVATE_PROP;</b>
+<b class="nc"><i>479</i>&nbsp;        } else if (modifierList.hasModifierProperty(&quot;protected&quot;)) {</b>
+<b class="nc"><i>480</i>&nbsp;            return PROTECTED_PROP;</b>
+<i>481</i>&nbsp;        } else {
+<b class="nc"><i>482</i>&nbsp;            return null;</b>
+<i>483</i>&nbsp;        }
+<i>484</i>&nbsp;    }
+<i>485</i>&nbsp;
+<i>486</i>&nbsp;    /**
+<i>487</i>&nbsp;     * Restituisce una lista di method beans corrispondenti ai metodi invocati
+<i>488</i>&nbsp;     * dal metodo dato in input
+<i>489</i>&nbsp;     *
+<i>490</i>&nbsp;     * @param psiMethod il metodo in cui trovare le chiamate a metodi
+<i>491</i>&nbsp;     * @return
+<i>492</i>&nbsp;     */
+<i>493</i>&nbsp;    private List&lt;MethodBean&gt; findMethodInvocations(PsiMethod psiMethod) {
+<b class="nc"><i>494</i>&nbsp;        List&lt;MethodBean&gt; invocations = new ArrayList&lt;MethodBean&gt;();</b>
+<i>495</i>&nbsp;
+<b class="nc"><i>496</i>&nbsp;        String qualifiedName = &quot;&quot;;</b>
+<i>497</i>&nbsp;
+<b class="nc"><i>498</i>&nbsp;        Collection&lt;PsiMethodCallExpression&gt; psiMethodCallExpressions = PsiTreeUtil.findChildrenOfType(psiMethod, PsiMethodCallExpression.class);</b>
+<b class="nc"><i>499</i>&nbsp;        Collection&lt;PsiConstructorCall&gt; psiIstanceOfClass = PsiTreeUtil.findChildrenOfType(psiMethod, PsiConstructorCall.class);</b>
+<i>500</i>&nbsp;
+<i>501</i>&nbsp;        MethodBean bean;
+<b class="nc"><i>502</i>&nbsp;        for (PsiMethodCallExpression call : psiMethodCallExpressions) {</b>
+<i>503</i>&nbsp;
+<b class="nc"><i>504</i>&nbsp;            PsiElement elementFound = call.getMethodExpression().resolve();</b>
+<b class="nc"><i>505</i>&nbsp;            if (elementFound instanceof PsiMethod) {</b>
+<b class="nc"><i>506</i>&nbsp;                PsiMethod method = (PsiMethod) elementFound;</b>
+<b class="nc"><i>507</i>&nbsp;                qualifiedName = method.getContainingClass().getQualifiedName();</b>
+<b class="nc"><i>508</i>&nbsp;                if (qualifiedName!= null &amp;&amp; !qualifiedName.contains(&quot;java.util.&quot;) &amp;&amp; !qualifiedName.contains(&quot;java.lang.&quot;) &amp;&amp; !qualifiedName.contains(&quot;java.io.&quot;)) {</b>
+<i>509</i>&nbsp;
+<b class="nc"><i>510</i>&nbsp;                    bean = new MethodBean.Builder(qualifiedName + &quot;.&quot; + method.getName(), &quot;&quot;).build();</b>
+<b class="nc"><i>511</i>&nbsp;                    if (!invocations.contains(bean)) {</b>
+<b class="nc"><i>512</i>&nbsp;                        invocations.add(bean);</b>
+<i>513</i>&nbsp;                    }
+<i>514</i>&nbsp;                }
+<i>515</i>&nbsp;            }
+<b class="nc"><i>516</i>&nbsp;        }</b>
+<b class="nc"><i>517</i>&nbsp;        qualifiedName = &quot;&quot;;</b>
+<b class="nc"><i>518</i>&nbsp;        bean = null;</b>
+<i>519</i>&nbsp;
+<b class="nc"><i>520</i>&nbsp;        for (PsiConstructorCall call2 : psiIstanceOfClass) {</b>
+<i>521</i>&nbsp;
+<b class="nc"><i>522</i>&nbsp;            PsiMethod elementFound2 = call2.resolveMethod();</b>
+<b class="nc"><i>523</i>&nbsp;            if (elementFound2 != null) {</b>
+<b class="nc"><i>524</i>&nbsp;                qualifiedName = elementFound2.getContainingClass().getQualifiedName();</b>
+<b class="nc"><i>525</i>&nbsp;                if (!qualifiedName.contains(&quot;java.util.&quot;) &amp;&amp; !qualifiedName.contains(&quot;java.lang.&quot;) &amp;&amp; !qualifiedName.contains(&quot;java.io.&quot;)) {</b>
+<i>526</i>&nbsp;
+<b class="nc"><i>527</i>&nbsp;                    bean = new MethodBean.Builder(qualifiedName + &quot;.&quot; + elementFound2.getName(), &quot;&quot;).build();</b>
+<b class="nc"><i>528</i>&nbsp;                    if (!invocations.contains(bean)) {</b>
+<b class="nc"><i>529</i>&nbsp;                        invocations.add(bean);</b>
+<i>530</i>&nbsp;                    }
+<i>531</i>&nbsp;                }
+<i>532</i>&nbsp;            }
+<b class="nc"><i>533</i>&nbsp;        }</b>
+<i>534</i>&nbsp;
+<b class="nc"><i>535</i>&nbsp;        return invocations;</b>
+<i>536</i>&nbsp;    }
+<i>537</i>&nbsp;
+<i>538</i>&nbsp;    /**
+<i>539</i>&nbsp;     * CODICE DI MANUEL ATTENZIONE
+<i>540</i>&nbsp;     * non toccare qui sennò Gesù si arrabbia
+<i>541</i>&nbsp;     *
+<i>542</i>&nbsp;     * @return Restituisce la lista dei Package
+<i>543</i>&nbsp;     */
+<i>544</i>&nbsp;    private Set&lt;PsiPackage&gt; getAllPackagesBeans() {
+<i>545</i>&nbsp;
+<b class="nc"><i>546</i>&nbsp;        final Set&lt;PsiPackage&gt; foundPackages = new HashSet&lt;&gt;();</b>
+<i>547</i>&nbsp;
+<b class="nc"><i>548</i>&nbsp;        AnalysisScope scope = new AnalysisScope(this.project);</b>
+<b class="nc"><i>549</i>&nbsp;        scope.accept(new PsiRecursiveElementVisitor() {</b>
+<i>550</i>&nbsp;            @Override
+<i>551</i>&nbsp;            public void visitFile(final PsiFile file) {
+<b class="nc"><i>552</i>&nbsp;                if (file instanceof PsiJavaFile) {</b>
+<b class="nc"><i>553</i>&nbsp;                    PsiJavaFile psiJavaFile = (PsiJavaFile) file;</b>
+<b class="nc"><i>554</i>&nbsp;                    final PsiPackage aPackage = JavaPsiFacade.getInstance(project).findPackage(psiJavaFile.getPackageName());</b>
+<b class="nc"><i>555</i>&nbsp;                    if (aPackage != null) {</b>
+<b class="nc"><i>556</i>&nbsp;                        foundPackages.add(aPackage);</b>
+<i>557</i>&nbsp;                    }
+<i>558</i>&nbsp;                }
+<i>559</i>&nbsp;            }
+<i>560</i>&nbsp;        });
+<b class="nc"><i>561</i>&nbsp;        return foundPackages;</b>
+<i>562</i>&nbsp;    }
+<i>563</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-19 11:44</div>
+</div>
+</body>
+</html>

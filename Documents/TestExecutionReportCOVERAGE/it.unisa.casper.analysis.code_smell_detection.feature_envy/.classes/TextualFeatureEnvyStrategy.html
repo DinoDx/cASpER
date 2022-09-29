@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TextualFeatureEnvyStrategy</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.analysis.code_smell_detection.feature_envy</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TextualFeatureEnvyStrategy (it.unisa.casper.analysis.code_smell_detection.feature_envy)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TextualFeatureEnvyStrategy</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90,2%
+  </span>
+  <span class="absValue">
+    (46/ 51)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.analysis.code_smell_detection.feature_envy;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.BeanDetection;
+<i>4</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.similarityComputation.CosineSimilarity;
+<i>5</i>&nbsp;import it.unisa.casper.analysis.code_smell_detection.strategy.MethodSmellDetectionStrategy;
+<i>6</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>7</i>&nbsp;import it.unisa.casper.storage.beans.MethodBean;
+<i>8</i>&nbsp;import it.unisa.casper.storage.beans.PackageBean;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.io.IOException;
+<i>11</i>&nbsp;import java.util.HashMap;
+<i>12</i>&nbsp;import java.util.List;
+<i>13</i>&nbsp;import java.util.SortedMap;
+<i>14</i>&nbsp;import java.util.TreeMap;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;/*
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;Feature Envy: Si ha quando un metodo è più usato in un&#39;altra classe rispetto a quella in cui si trova.
+<i>19</i>&nbsp;Quindi questo metodo non è correttamente posizionato ed aumenta l&#39;accoppiamento con classi differenti da quella in cui si trova.
+<i>20</i>&nbsp;Il refactoring per rimuovere questo smell è il Move Method, che sposta il metodo nella classe adatta.
+<i>21</i>&nbsp;Un metodo è affetto da questo smell quando è molto più simile ai concetti implementati nella classe esterna rispetto a quella in cui si trova.
+<i>22</i>&nbsp;
+<i>23</i>&nbsp; */
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;public class TextualFeatureEnvyStrategy implements MethodSmellDetectionStrategy {
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    private List&lt;PackageBean&gt; systemPackages;
+<i>28</i>&nbsp;    private double soglia;
+<i>29</i>&nbsp;
+<b class="fc"><i>30</i>&nbsp;    public TextualFeatureEnvyStrategy(List&lt;PackageBean&gt; systemPackages, double soglia) {</b>
+<b class="fc"><i>31</i>&nbsp;        this.systemPackages = systemPackages;</b>
+<b class="fc"><i>32</i>&nbsp;        this.soglia = soglia;</b>
+<b class="fc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    public boolean isSmelly(MethodBean pMethod) {
+<i>36</i>&nbsp;        double cosine;
+<i>37</i>&nbsp;
+<b class="fc"><i>38</i>&nbsp;        if (!BeanDetection.detection(pMethod)) {</b>
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;            SortedMap&lt;Double, ClassBean&gt; similaritiesWithMethod = new TreeMap&lt;Double, ClassBean&gt;();</b>
+<b class="fc"><i>41</i>&nbsp;            CosineSimilarity cosineSimilarity = new CosineSimilarity();</b>
+<i>42</i>&nbsp;            Double maxCosine, belongingCosine;
+<b class="fc"><i>43</i>&nbsp;            String[] document1 = new String[2];</b>
+<b class="fc"><i>44</i>&nbsp;            document1[0] = &quot;method&quot;;</b>
+<b class="fc"><i>45</i>&nbsp;            document1[1] = pMethod.getTextContent();</b>
+<i>46</i>&nbsp;
+<b class="fc"><i>47</i>&nbsp;            String[] document2 = new String[2];</b>
+<b class="fc"><i>48</i>&nbsp;            document2[0] = &quot;class&quot;;</b>
+<b class="fc"><i>49</i>&nbsp;            document2[1] = pMethod.getBelongingClass().getTextContent();</b>
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;            try {
+<b class="fc"><i>52</i>&nbsp;                belongingCosine = cosineSimilarity.computeSimilarity(document1, document2);</b>
+<i>53</i>&nbsp;
+<b class="fc"><i>54</i>&nbsp;                for (PackageBean packageBean : systemPackages) {</b>
+<b class="fc"><i>55</i>&nbsp;                    for (ClassBean classBean : packageBean.getClassList()) {</b>
+<b class="fc"><i>56</i>&nbsp;                        document2 = new String[2];</b>
+<b class="fc"><i>57</i>&nbsp;                        document2[0] = &quot;class&quot;;</b>
+<b class="fc"><i>58</i>&nbsp;                        document2[1] = classBean.getTextContent();</b>
+<b class="fc"><i>59</i>&nbsp;                        cosine = cosineSimilarity.computeSimilarity(document1, document2);</b>
+<i>60</i>&nbsp;
+<b class="fc"><i>61</i>&nbsp;                        similaritiesWithMethod.put(cosine, classBean);</b>
+<i>62</i>&nbsp;
+<b class="fc"><i>63</i>&nbsp;                    }</b>
+<b class="fc"><i>64</i>&nbsp;                }</b>
+<b class="nc"><i>65</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>66</i>&nbsp;                e.getMessage();</b>
+<b class="nc"><i>67</i>&nbsp;                return false;</b>
+<b class="fc"><i>68</i>&nbsp;            }</b>
+<i>69</i>&nbsp;
+<b class="fc"><i>70</i>&nbsp;            if (!similaritiesWithMethod.entrySet().iterator().hasNext()) {</b>
+<b class="nc"><i>71</i>&nbsp;                return false;</b>
+<i>72</i>&nbsp;            }
+<i>73</i>&nbsp;
+<b class="fc"><i>74</i>&nbsp;            maxCosine = similaritiesWithMethod.lastKey();</b>
+<b class="fc"><i>75</i>&nbsp;            ClassBean firstRankedClass = similaritiesWithMethod.get(maxCosine);</b>
+<i>76</i>&nbsp;
+<b class="fc"><i>77</i>&nbsp;            if (!firstRankedClass.getFullQualifiedName().equals(pMethod.getBelongingClass().getFullQualifiedName()) &amp;&amp; (maxCosine - belongingCosine &gt; soglia)) {</b>
+<b class="fc"><i>78</i>&nbsp;                pMethod.setEnviedClass(firstRankedClass);</b>
+<b class="fc"><i>79</i>&nbsp;                return true;</b>
+<i>80</i>&nbsp;            } else {
+<b class="fc"><i>81</i>&nbsp;                return false;</b>
+<i>82</i>&nbsp;            }
+<i>83</i>&nbsp;        }
+<b class="fc"><i>84</i>&nbsp;        return false;</b>
+<i>85</i>&nbsp;    }
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;    public HashMap&lt;String, Double&gt; getThresold(MethodBean pMethod) {
+<b class="fc"><i>88</i>&nbsp;        HashMap&lt;String, Double&gt; list = new HashMap&lt;String, Double&gt;();</b>
+<i>89</i>&nbsp;
+<b class="fc"><i>90</i>&nbsp;        String[] document1 = new String[2];</b>
+<b class="fc"><i>91</i>&nbsp;        document1[0] = &quot;method&quot;;</b>
+<b class="fc"><i>92</i>&nbsp;        document1[1] = pMethod.getTextContent();</b>
+<i>93</i>&nbsp;
+<b class="fc"><i>94</i>&nbsp;        String[] document2 = new String[2];</b>
+<b class="fc"><i>95</i>&nbsp;        document2[0] = &quot;class&quot;;</b>
+<b class="fc"><i>96</i>&nbsp;        document2[1] = pMethod.getEnviedClass().getTextContent();</b>
+<i>97</i>&nbsp;
+<b class="fc"><i>98</i>&nbsp;        String[] document3 = new String[2];</b>
+<b class="fc"><i>99</i>&nbsp;        document3[0] = &quot;class&quot;;</b>
+<b class="fc"><i>100</i>&nbsp;        document3[1] = pMethod.getBelongingClass().getTextContent();</b>
+<i>101</i>&nbsp;        try {
+<b class="fc"><i>102</i>&nbsp;            CosineSimilarity cosineSimilarity = new CosineSimilarity();</b>
+<b class="fc"><i>103</i>&nbsp;            list.put(&quot;coseno&quot;, cosineSimilarity.computeSimilarity(document1, document2) - cosineSimilarity.computeSimilarity(document1, document3));</b>
+<b class="nc"><i>104</i>&nbsp;        } catch (IOException e) {</b>
+<i>105</i>&nbsp;
+<b class="fc"><i>106</i>&nbsp;        }</b>
+<b class="fc"><i>107</i>&nbsp;        return list;</b>
+<i>108</i>&nbsp;    }
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-19 11:44</div>
+</div>
+</body>
+</html>

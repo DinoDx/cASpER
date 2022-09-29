@@ -1,0 +1,75 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ClassSmellDetectionStrategy</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.unisa.casper.analysis.code_smell_detection.strategy</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ClassSmellDetectionStrategy (it.unisa.casper.analysis.code_smell_detection.strategy)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ClassSmellDetectionStrategy</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.unisa.casper.analysis.code_smell_detection.strategy;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.unisa.casper.storage.beans.ClassBean;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.util.HashMap;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * Interfaccia che dichiara i metodi da implementare negli Strategy addetti al rilevamento
+<i>9</i>&nbsp; * di smell nelle classi
+<i>10</i>&nbsp; */
+<i>11</i>&nbsp;public interface ClassSmellDetectionStrategy extends CodeSmellDetectionStrategy&lt;ClassBean&gt; {
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    /**
+<i>14</i>&nbsp;     * Metodo che analizza una classe per verificare se è affetta da smell
+<i>15</i>&nbsp;     *
+<i>16</i>&nbsp;     * @param aClass Classe da passare allo strategy per effettuare l&#39;analisi
+<i>17</i>&nbsp;     * @return true se la classe è affetta da smell, false altrimenti
+<i>18</i>&nbsp;     */
+<i>19</i>&nbsp;    boolean isSmelly(ClassBean aClass);
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    /**
+<i>22</i>&nbsp;     * metodo che ritorna la lista di soglie individuate durante l&#39;analisi
+<i>23</i>&nbsp;     *
+<i>24</i>&nbsp;     * @param aClass Classe da dare in input allo strategy per l&#39;analisi
+<i>25</i>&nbsp;     * @return List&lt;Double&gt; lista delle soglie individuate durante l&#39;analisi
+<i>26</i>&nbsp;     */
+<i>27</i>&nbsp;    HashMap&lt;String, Double&gt; getThresold(ClassBean aClass);
+<i>28</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-19 11:44</div>
+</div>
+</body>
+</html>
